@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rafiq/views/painter/bottom_cloud.dart';
 import 'package:rafiq/views/painter/top_cloud.dart';
 
 class SignUp extends StatelessWidget {
@@ -16,10 +17,10 @@ class SignUp extends StatelessWidget {
     }
 
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [TopCloud()],
-        ),
+      body: Column(
+        children: [
+          const TopCloud(),
+        ],
       ),
     );
   }

@@ -21,7 +21,7 @@ class TopCloud extends StatelessWidget {
           ClipShadowPath(
             shadow: BoxShadow(
               color: Colors.grey.shade400,
-              offset: const Offset(-10, 25),
+              offset: const Offset(-10, 15),
               blurRadius: 0,
               spreadRadius: 10,
             ),
@@ -32,41 +32,45 @@ class TopCloud extends StatelessWidget {
               color: const Color(0xffE8DEEB),
             ),
           ),
-          Positioned(
-            left: width(74.5),
-            top: height(60.5),
-            child: TextButton(
-              onPressed: () {},
-              child: const AutoSizeText(
-                'Log in',
-                style: TextStyle(
-                  fontSize: 30,
-                  color: Color(0xff6E75A0),
+          Padding(
+            padding: EdgeInsets.fromLTRB(width(58), height(64), 0, 0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                InkWell(
+                  onTap: () {},
+                  child: SizedBox(
+                    width: width(100),
+                    height: height(30),
+                    child: const AutoSizeText(
+                      'Log in',
+                      style: TextStyle(
+                        fontSize: 30,
+                        color: Color(0xff6E75A0),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Positioned(
-            left: width(190),
-            top: height(75),
-            height: 28,
-            width: 2,
-            child: Container(
-              color: const Color(0xff6E75A0),
-            ),
-          ),
-          Positioned(
-            left: width(219),
-            top: height(60.5),
-            child: TextButton(
-              onPressed: () {},
-              child: const AutoSizeText(
-                'Sign up',
-                style: TextStyle(
-                  fontSize: 35,
-                  color: Color(0xff6E75A0),
+                Container(
+                  height: height(28),
+                  width: width(2),
+                  color: const Color(0xff6E75A0),
                 ),
-              ),
+                InkWell(
+                  onTap: () {},
+                  child: SizedBox(
+                    width: width(116),
+                    height: height(30),
+                    child: const AutoSizeText(
+                      'Sign up',
+                      style: TextStyle(
+                          fontSize: 35,
+                          color: Color(0xff6E75A0),
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
