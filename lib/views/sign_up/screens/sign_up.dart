@@ -33,6 +33,7 @@ class SignUp extends StatelessWidget {
           InputField(
             label: 'First Name',
             sizeoflabel: 18,
+            obscureText: false,
           ),
           SizedBox(
             height: height(22),
@@ -40,6 +41,7 @@ class SignUp extends StatelessWidget {
           InputField(
             label: 'Last Name',
             sizeoflabel: 18,
+            obscureText: false,
           ),
           SizedBox(
             height: height(22),
@@ -47,6 +49,7 @@ class SignUp extends StatelessWidget {
           InputField(
             label: 'Username',
             sizeoflabel: 18,
+            obscureText: false,
           ),
           SizedBox(
             height: height(61),

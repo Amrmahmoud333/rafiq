@@ -4,18 +4,22 @@ import 'package:flutter/material.dart';
 import '../../style.dart';
 
 class InputField extends StatelessWidget {
-  const InputField(
-      {Key? key,
-      required this.label,
-      this.widget,
-      this.controller,
-      required this.sizeoflabel})
-      : super(key: key);
+  const InputField({
+    Key? key,
+    required this.label,
+    this.widget,
+    this.controller,
+    required this.sizeoflabel,
+    this.keyboardType,
+    required this.obscureText,
+  }) : super(key: key);
 
   final String label;
   final Widget? widget;
   final TextEditingController? controller;
   final double sizeoflabel;
+  final TextInputType? keyboardType;
+  final bool obscureText;
   @override
   Widget build(BuildContext context) {
     double height(double n) {
@@ -43,7 +47,7 @@ class InputField extends StatelessWidget {
             border: Border(
               bottom: BorderSide(
                 width: width(3),
-                color: const Color(0xFF6E75A0),
+                color: const Color(0xFF5B618A),
               ),
             ),
             color: const Color(0xFFF5F5F5),
@@ -51,31 +55,35 @@ class InputField extends StatelessWidget {
           child: Row(
             children: [
               Expanded(
-                child: TextField(
+                child: TextFormField(
                   style: const TextStyle(
                     fontSize: 16,
                     color: Color(0xFF6E75A0),
-
                     //////////////// //ناقص نوع الخط
                   ),
+                  obscureText: obscureText,
+                  keyboardType: keyboardType,
                   controller: controller,
                   decoration: InputDecoration(
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
                         width: width(0),
-                        color: const Color(0xFF6E75A0),
+                        color: const Color(0xFF5B618A),
                       ),
                     ),
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
                         width: width(0),
-                        color: const Color(0xFF6E75A0),
+                        color: const Color(0xFF5B618A),
                       ),
                     ),
                   ),
                 ),
               ),
               widget ?? Container(),
+              SizedBox(
+                width: width(9),
+              )
             ],
           ),
         )

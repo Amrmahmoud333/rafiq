@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rafiq/views/shared/input_field.dart';
@@ -58,10 +59,11 @@ class FirstForgetPassword extends StatelessWidget {
               const SizedBox(
                 height: 37,
               ),
-              const Text(
+              const AutoSizeText(
                 'Forget Password?',
                 style: TextStyle(
                   fontSize: 35,
+                  fontWeight: FontWeight.bold,
                   color: Color(0xFF6E75A0),
                 ),
               ),
@@ -70,7 +72,7 @@ class FirstForgetPassword extends StatelessWidget {
               ),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 32),
-                child: Text(
+                child: AutoSizeText(
                   'Enter your username or your email address and we will send a link to reset your password.',
                   style: TextStyle(
                     fontSize: 20,
@@ -100,6 +102,8 @@ class FirstForgetPassword extends StatelessWidget {
                         child: InputField(
                           label: 'Username or Email',
                           sizeoflabel: 20,
+                          obscureText: false,
+                          keyboardType: TextInputType.emailAddress,
                         ),
                       ),
                       Container(

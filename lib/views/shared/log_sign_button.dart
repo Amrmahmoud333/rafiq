@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class LogSignButton extends StatelessWidget {
@@ -25,10 +26,10 @@ class LogSignButton extends StatelessWidget {
         width: width(216),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: const Color(0xFF6E75A0),
+          color: const Color(0xFF5B618A),
         ),
         child: Center(
-          child: Text(
+          child: AutoSizeText(
             label,
             style: const TextStyle(
               color: Color(0xFFFFFFFF),

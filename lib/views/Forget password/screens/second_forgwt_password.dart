@@ -4,9 +4,17 @@ import 'package:flutter/services.dart';
 import 'package:rafiq/views/shared/input_field.dart';
 import 'package:rafiq/views/shared/log_sign_button.dart';
 
-class SecondForgetPassword extends StatelessWidget {
+class SecondForgetPassword extends StatefulWidget {
   const SecondForgetPassword({Key? key}) : super(key: key);
 
+  @override
+  State<SecondForgetPassword> createState() => _SecondForgetPasswordState();
+}
+
+bool showPassowrd = true;
+bool showConfirmPassowrd = true;
+
+class _SecondForgetPasswordState extends State<SecondForgetPassword> {
   @override
   Widget build(BuildContext context) {
     double height(double n) {
@@ -47,7 +55,7 @@ class SecondForgetPassword extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 35,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF6E75A0),
+                    color: Color(0xFF5B618A),
                   ),
                 ),
               ),
@@ -61,14 +69,14 @@ class SecondForgetPassword extends StatelessWidget {
                     'Enter a ',
                     style: TextStyle(
                       fontSize: 18,
-                      color: Color(0xFF6E75A0),
+                      color: Color(0xFF5B618A),
                     ),
                   ),
                   AutoSizeText(
                     'New Password.',
                     style: TextStyle(
                       fontSize: 19,
-                      color: Color(0xFF6E75A0),
+                      color: Color(0xFF5B618A),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -93,26 +101,62 @@ class SecondForgetPassword extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const InputField(
+                        InputField(
                           label: 'Password',
                           sizeoflabel: 20,
+                          obscureText: showPassowrd,
+                          widget: InkWell(
+                            onTap: () {
+                              setState(() {
+                                showPassowrd == true
+                                    ? showPassowrd = false
+                                    : showPassowrd = true;
+                              });
+                            },
+                            child: const AutoSizeText(
+                              'Show',
+                              style: TextStyle(
+                                fontSize: 16,
+                                //ناقص نوع الخط
+                                color: Color(0xFF5B618A),
+                              ),
+                            ),
+                          ),
                         ),
-                        const InputField(
+                        SizedBox(
+                          height: height(44),
+                        ),
+                        InputField(
                           label: 'Confirm Password',
                           sizeoflabel: 20,
+                          obscureText: showConfirmPassowrd,
+                          widget: InkWell(
+                            onTap: () {
+                              setState(() {
+                                showConfirmPassowrd == true
+                                    ? showConfirmPassowrd = false
+                                    : showConfirmPassowrd = true;
+                              });
+                            },
+                            child: const AutoSizeText(
+                              'Show',
+                              style: TextStyle(
+                                fontSize: 16,
+                                //ناقص نوع الخط
+                                color: Color(0xFF5B618A),
+                              ),
+                            ),
+                          ),
                         ),
-                        Container(
-                          alignment: Alignment.center,
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                              top: 34,
-                            ),
-                            child: LogSignButton(
-                              label: 'Send',
-                              ontap: () {
-                                print('object');
-                              },
-                            ),
+                        SizedBox(
+                          height: height(47),
+                        ),
+                        Center(
+                          child: LogSignButton(
+                            label: 'Reset',
+                            ontap: () {
+                              print('object');
+                            },
                           ),
                         )
                       ],
