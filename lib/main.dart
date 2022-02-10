@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq/views/sign_up/sign_up.dart';
+import 'package:rafiq/views/Forget%20password/first_forget_password.dart';
 import 'package:device_preview/device_preview.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SignUp(),
+      home: const FirstForgetPassword(),
       debugShowCheckedModeBanner: false,
     );
   }
