@@ -88,32 +88,35 @@ class SecondForgetPassword extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                     horizontal: 24,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const InputField(
-                        label: 'Password',
-                        sizeoflabel: 20,
-                      ),
-                      const InputField(
-                        label: 'Confirm Password',
-                        sizeoflabel: 20,
-                      ),
-                      Container(
-                        alignment: Alignment.center,
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            top: 34,
-                          ),
-                          child: LogSignButton(
-                            label: 'Send',
-                            ontap: () {
-                              print('object');
-                            },
-                          ),
+                  child: Padding(
+                    padding: EdgeInsets.only(top: height(44)),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const InputField(
+                          label: 'Password',
+                          sizeoflabel: 20,
                         ),
-                      )
-                    ],
+                        const InputField(
+                          label: 'Confirm Password',
+                          sizeoflabel: 20,
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              top: 34,
+                            ),
+                            child: LogSignButton(
+                              label: 'Send',
+                              ontap: () {
+                                print('object');
+                              },
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
