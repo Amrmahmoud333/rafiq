@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq/views/Forget%20password/first_forget_password.dart';
+import 'package:rafiq/views/Forget%20password/screens/first_forget_password.dart';
 import 'package:device_preview/device_preview.dart';
+
+import 'views/Forget password/screens/second_forgwt_password.dart';
 
 void main() {
   runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const FirstForgetPassword(),
+      home: const SecondForgetPassword(),
       debugShowCheckedModeBanner: false,
     );
   }

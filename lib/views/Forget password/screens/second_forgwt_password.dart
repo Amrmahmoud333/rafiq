@@ -1,10 +1,11 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rafiq/views/shared/input_field.dart';
 import 'package:rafiq/views/shared/log_sign_button.dart';
 
-class FirstForgetPassword extends StatelessWidget {
-  const FirstForgetPassword({Key? key}) : super(key: key);
+class SecondForgetPassword extends StatelessWidget {
+  const SecondForgetPassword({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,54 +33,49 @@ class FirstForgetPassword extends StatelessWidget {
           ),
           child: Column(
             children: [
-              Container(
-                margin: const EdgeInsets.only(left: 3),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    InkWell(
-                      onTap: () {},
-                      child: const Icon(
-                        Icons.arrow_back,
-                        color: Color(0xFF000000),
-                        size: 25,
-                      ),
-                    ),
-                    Expanded(
-                      child: Image.asset(
-                        'assets/images/Forget password.png',
-                        width: width(295),
-                        height: height(217),
-                      ),
-                    )
-                  ],
-                ),
+              Image.asset(
+                'assets/images/Forget password.png',
+                width: width(295),
+                height: height(217),
               ),
               const SizedBox(
                 height: 37,
               ),
-              const Text(
-                'Forget Password?',
-                style: TextStyle(
-                  fontSize: 35,
-                  color: Color(0xFF6E75A0),
-                ),
-              ),
-              const SizedBox(
-                height: 31,
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 32),
-                child: Text(
-                  'Enter your username or your email address and we will send a link to reset your password.',
+              const Center(
+                child: AutoSizeText(
+                  'Reset Password',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold,
                     color: Color(0xFF6E75A0),
                   ),
                 ),
               ),
               const SizedBox(
-                height: 37,
+                height: 21,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  AutoSizeText(
+                    'Enter a ',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Color(0xFF6E75A0),
+                    ),
+                  ),
+                  AutoSizeText(
+                    'New Password.',
+                    style: TextStyle(
+                      fontSize: 19,
+                      color: Color(0xFF6E75A0),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 16,
               ),
               Container(
                 decoration: BoxDecoration(
@@ -87,7 +83,7 @@ class FirstForgetPassword extends StatelessWidget {
                   color: const Color(0xFFFFFFFF),
                 ),
                 width: double.infinity,
-                height: height(218),
+                height: height(369),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 24,
@@ -95,12 +91,13 @@ class FirstForgetPassword extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Padding(
-                        padding: EdgeInsets.only(top: 35),
-                        child: InputField(
-                          label: 'Username or Email',
-                          sizeoflabel: 20,
-                        ),
+                      const InputField(
+                        label: 'Password',
+                        sizeoflabel: 20,
+                      ),
+                      const InputField(
+                        label: 'Confirm Password',
+                        sizeoflabel: 20,
                       ),
                       Container(
                         alignment: Alignment.center,

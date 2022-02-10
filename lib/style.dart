@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
-TextStyle lableInputField() {
-  return const TextStyle(
-      fontSize: 18,
+TextStyle lableInputField(double size) {
+  return TextStyle(
+      fontSize: size,
       //fontWeight: FontWeight.bold,
-      color: Color(0xFF6E75A0));
+      color: const Color(0xFF6E75A0));
 }
