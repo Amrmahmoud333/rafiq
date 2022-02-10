@@ -34,10 +34,10 @@ class _SecondForgetPasswordState extends State<SecondForgetPassword> {
       backgroundColor: const Color(0xFFE3E3E3),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(
-            left: 16,
-            right: 16,
-            top: 40,
+          padding: EdgeInsets.only(
+            left: width(16),
+            right: width(16),
+            top: height(61),
           ),
           child: Column(
             children: [
@@ -46,8 +46,8 @@ class _SecondForgetPasswordState extends State<SecondForgetPassword> {
                 width: width(295),
                 height: height(217),
               ),
-              const SizedBox(
-                height: 37,
+              SizedBox(
+                height: height(37),
               ),
               const Center(
                 child: AutoSizeText(
@@ -59,8 +59,8 @@ class _SecondForgetPasswordState extends State<SecondForgetPassword> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 21,
+              SizedBox(
+                height: height(21),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -82,8 +82,8 @@ class _SecondForgetPasswordState extends State<SecondForgetPassword> {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 16,
+              SizedBox(
+                height: height(16),
               ),
               Container(
                 decoration: BoxDecoration(

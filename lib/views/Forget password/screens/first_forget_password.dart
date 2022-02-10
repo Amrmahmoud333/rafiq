@@ -26,15 +26,15 @@ class FirstForgetPassword extends StatelessWidget {
       backgroundColor: const Color(0xFFE3E3E3),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(
-            left: 16,
-            right: 16,
-            top: 40,
+          padding: EdgeInsets.only(
+            left: width(16),
+            right: width(16),
+            top: height(61),
           ),
           child: Column(
             children: [
               Container(
-                margin: const EdgeInsets.only(left: 3),
+                margin: EdgeInsets.only(left: width(3)),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -56,8 +56,8 @@ class FirstForgetPassword extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 37,
+              SizedBox(
+                height: height(37),
               ),
               const AutoSizeText(
                 'Forget Password?',
@@ -67,12 +67,12 @@ class FirstForgetPassword extends StatelessWidget {
                   color: Color(0xFF6E75A0),
                 ),
               ),
-              const SizedBox(
-                height: 31,
+              SizedBox(
+                height: height(31),
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 32),
-                child: AutoSizeText(
+              Padding(
+                padding: EdgeInsets.only(left: width(32), right: width(32)),
+                child: const AutoSizeText(
                   'Enter your username or your email address and we will send a link to reset your password.',
                   style: TextStyle(
                     fontSize: 20,
@@ -80,8 +80,8 @@ class FirstForgetPassword extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 37,
+              SizedBox(
+                height: height(37),
               ),
               Container(
                 decoration: BoxDecoration(
@@ -91,15 +91,16 @@ class FirstForgetPassword extends StatelessWidget {
                 width: double.infinity,
                 height: height(218),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 24,
+                  padding: EdgeInsets.only(
+                    left: width(32),
+                    right: width(32),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Padding(
-                        padding: EdgeInsets.only(top: 35),
-                        child: InputField(
+                      Padding(
+                        padding: EdgeInsets.only(top: height(35)),
+                        child: const InputField(
                           label: 'Username or Email',
                           sizeoflabel: 20,
                           obscureText: false,
@@ -109,8 +110,8 @@ class FirstForgetPassword extends StatelessWidget {
                       Container(
                         alignment: Alignment.center,
                         child: Padding(
-                          padding: const EdgeInsets.only(
-                            top: 34,
+                          padding: EdgeInsets.only(
+                            top: height(34),
                           ),
                           child: LogSignButton(
                             label: 'Send',
