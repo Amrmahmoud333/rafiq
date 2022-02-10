@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BottomCLoud extends StatelessWidget {
   const BottomCLoud({Key? key}) : super(key: key);
@@ -35,7 +36,7 @@ class CustombottomCloud extends CustomClipper<Path> {
   Path getClip(Size size) {
     Path path = Path();
     final double _xScaling = size.width / 393;
-    final double _yScaling = size.height / 210.191;
+    final double _yScaling = size.height / 209;
     path.lineTo(14.746 * _xScaling, 59.509 * _yScaling);
     path.cubicTo(
       14.746 * _xScaling,

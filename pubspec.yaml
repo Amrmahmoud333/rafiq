@@ -39,6 +39,7 @@ dependencies:
   flutter_screenutil: ^5.1.1
   provider: ^6.0.2
   device_preview: ^1.0.0
+  fl_chart: ^0.41.0
 
 dev_dependencies:
   flutter_test:
