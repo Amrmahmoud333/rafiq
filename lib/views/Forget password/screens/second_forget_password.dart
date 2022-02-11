@@ -11,10 +11,10 @@ class SecondForgetPassword extends StatefulWidget {
   State<SecondForgetPassword> createState() => _SecondForgetPasswordState();
 }
 
-bool showPassowrd = true;
-bool showConfirmPassowrd = true;
-
 class _SecondForgetPasswordState extends State<SecondForgetPassword> {
+  bool showPassowrd = true;
+  bool showConfirmPassowrd = true;
+  List<String> selectShowpassword = ['Show', 'Hide'];
   @override
   Widget build(BuildContext context) {
     double height(double n) {
@@ -113,9 +113,11 @@ class _SecondForgetPasswordState extends State<SecondForgetPassword> {
                                     : showPassowrd = true;
                               });
                             },
-                            child: const AutoSizeText(
-                              'Show',
-                              style: TextStyle(
+                            child: AutoSizeText(
+                              showPassowrd == true
+                                  ? selectShowpassword[0]
+                                  : selectShowpassword[1],
+                              style: const TextStyle(
                                 fontSize: 16,
                                 //ناقص نوع الخط
                                 color: Color(0xFF5B618A),
@@ -138,9 +140,11 @@ class _SecondForgetPasswordState extends State<SecondForgetPassword> {
                                     : showConfirmPassowrd = true;
                               });
                             },
-                            child: const AutoSizeText(
-                              'Show',
-                              style: TextStyle(
+                            child: AutoSizeText(
+                              showConfirmPassowrd == true
+                                  ? selectShowpassword[0]
+                                  : selectShowpassword[1],
+                              style: const TextStyle(
                                 fontSize: 16,
                                 //ناقص نوع الخط
                                 color: Color(0xFF5B618A),

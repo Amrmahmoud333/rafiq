@@ -3,10 +3,11 @@ import 'package:device_preview/device_preview.dart';
 import 'package:rafiq/views/sign_up/screens/sign_up.dart';
 import 'views/Forget password/screens/first_forget_password.dart';
 
-import 'views/Forget password/screens/second_forgwt_password.dart';
+import 'views/Forget password/screens/second_forget_password.dart';
+import 'views/Forget password/screens/third_forget_password.dart';
 
 void main() {
-  runApp(DevicePreview(enabled: false, builder: (context) => const MyApp()));
+  runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
