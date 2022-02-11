@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:rafiq/views/painter/bottom_cloud.dart';
 import 'package:rafiq/views/painter/top_cloud.dart';
@@ -5,8 +6,8 @@ import 'package:rafiq/views/shared/input_field.dart';
 import 'package:rafiq/views/shared/log_sign_button.dart';
 import 'package:rafiq/views/sign_up/widgets/horizontal_line.dart';
 
-class SignUp extends StatelessWidget {
-  const SignUp({Key? key}) : super(key: key);
+class SecondSignUp extends StatelessWidget {
+  const SecondSignUp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +28,13 @@ class SignUp extends StatelessWidget {
               height: height(15),
             ),
             const HorizontalLinee(
-              precent: 45,
+              precent: 35,
             ),
             SizedBox(
               height: height(52),
             ),
             InputField(
-              label: 'First Name',
+              label: 'Email',
               sizeoflabel: 18,
               obscureText: false,
             ),
@@ -41,17 +42,31 @@ class SignUp extends StatelessWidget {
               height: height(22),
             ),
             InputField(
-              label: 'Last Name',
+              label: 'Password',
               sizeoflabel: 18,
-              obscureText: false,
+              obscureText: true,
+              widget: InkWell(
+                  onTap: () {},
+                  child: const AutoSizeText(
+                    'Show',
+                    style: TextStyle(fontSize: 16),
+                  )),
             ),
             SizedBox(
               height: height(29),
             ),
             InputField(
-              label: 'Username',
+              label: 'Confirm Password',
               sizeoflabel: 18,
-              obscureText: false,
+              obscureText: true,
+              widget: InkWell(
+                  onTap: () {
+                    // TODO change obscureText
+                  },
+                  child: const AutoSizeText(
+                    'Show',
+                    style: TextStyle(fontSize: 16),
+                  )),
             ),
             SizedBox(
               height: height(61),

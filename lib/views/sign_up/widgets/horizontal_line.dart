@@ -1,7 +1,11 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class HorizontalLinee extends StatelessWidget {
-  const HorizontalLinee({Key? key}) : super(key: key);
+  const HorizontalLinee({
+    required this.precent,
+  });
+  final double precent;
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +23,37 @@ class HorizontalLinee extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            const Text('0% completed'),
+            AutoSizeText("$precent% completed"),
             Container(
               width: width(313),
               height: height(14),
               decoration: BoxDecoration(
                 color: const Color(0xffE8DEEB),
+
                 border: Border.all(
                   color: const Color(0xff6E75A0),
                   width: 1,
                 ), //Border.all
                 borderRadius: BorderRadius.circular(15),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    width: width(
+                      precent,
+                    ),
+                    height: height(14),
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+
+                      border: Border.all(
+                        color: const Color(0xff6E75A0),
+                        width: 1,
+                      ), //Border.all
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

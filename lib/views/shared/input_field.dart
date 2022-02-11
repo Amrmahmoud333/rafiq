@@ -50,7 +50,7 @@ class InputField extends StatelessWidget {
                 color: const Color(0xFF5B618A),
               ),
             ),
-            color: const Color(0xFFF5F5F5),
+            color: const Color(0xFFEBEBEB),
           ),
           child: Row(
             children: [
@@ -64,19 +64,8 @@ class InputField extends StatelessWidget {
                   obscureText: obscureText,
                   keyboardType: keyboardType,
                   controller: controller,
-                  decoration: InputDecoration(
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        width: width(0),
-                        color: const Color(0xFF5B618A),
-                      ),
-                    ),
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        width: width(0),
-                        color: const Color(0xFF5B618A),
-                      ),
-                    ),
+                  decoration: const InputDecoration(
+                    enabledBorder: InputBorder.none,
                   ),
                 ),
               ),

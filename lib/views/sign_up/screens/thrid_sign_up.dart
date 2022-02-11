@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:rafiq/views/painter/bottom_cloud.dart';
 import 'package:rafiq/views/painter/top_cloud.dart';
@@ -5,8 +6,8 @@ import 'package:rafiq/views/shared/input_field.dart';
 import 'package:rafiq/views/shared/log_sign_button.dart';
 import 'package:rafiq/views/sign_up/widgets/horizontal_line.dart';
 
-class SignUp extends StatelessWidget {
-  const SignUp({Key? key}) : super(key: key);
+class ThridSignUp extends StatelessWidget {
+  const ThridSignUp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +28,13 @@ class SignUp extends StatelessWidget {
               height: height(15),
             ),
             const HorizontalLinee(
-              precent: 45,
+              precent: 70,
             ),
             SizedBox(
               height: height(52),
             ),
             InputField(
-              label: 'First Name',
+              label: 'Country',
               sizeoflabel: 18,
               obscureText: false,
             ),
@@ -41,23 +42,23 @@ class SignUp extends StatelessWidget {
               height: height(22),
             ),
             InputField(
-              label: 'Last Name',
+              label: 'Date of birth',
               sizeoflabel: 18,
-              obscureText: false,
+              obscureText: true,
             ),
             SizedBox(
               height: height(29),
             ),
             InputField(
-              label: 'Username',
+              label: 'Gender',
               sizeoflabel: 18,
-              obscureText: false,
+              obscureText: true,
             ),
             SizedBox(
               height: height(61),
             ),
             LogSignButton(
-              label: 'Next',
+              label: 'Sign up',
               ontap: () {},
             ),
             SizedBox(
