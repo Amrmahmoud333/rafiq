@@ -22,36 +22,42 @@ class BottomCLoud extends StatelessWidget {
             width: double.infinity,
             height: height(209),
             child: SvgPicture.asset(
-              'assets/images/pink_area.svg',
+              'assets/images/bottom_cloud.svg',
               width: width(295),
               height: height(217),
               fit: BoxFit.cover,
             ),
           ),
-          Positioned(
+          /*   Positioned(
             top: height(42),
             left: width(0),
             child: SvgPicture.asset(
               'assets/images/Path.svg',
               height: height(43),
             ),
-          ),
+          ),*/
           Positioned(
             top: height(114.83),
             left: width(137),
-            child: SvgPicture.asset(
-              'assets/images/gmail.svg',
-              height: height(62),
-              width: width(62),
+            child: InkWell(
+              onTap: () {},
+              child: SvgPicture.asset(
+                'assets/images/gmail.svg',
+                height: height(68),
+                width: width(68),
+              ),
             ),
           ),
           Positioned(
             top: height(114.83),
             left: width(214.33),
-            child: SvgPicture.asset(
-              'assets/images/facebook.svg',
-              height: height(62),
-              width: width(62),
+            child: InkWell(
+              onTap: () {},
+              child: SvgPicture.asset(
+                'assets/images/facebook.svg',
+                height: height(68),
+                width: width(68),
+              ),
             ),
           ),
         ],
