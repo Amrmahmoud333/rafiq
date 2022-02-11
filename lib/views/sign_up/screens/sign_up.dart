@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:rafiq/views/painter/bottom_cloud.dart';
 import 'package:rafiq/views/painter/top_cloud.dart';
 import 'package:rafiq/views/shared/input_field.dart';
@@ -60,7 +61,19 @@ class SignUp extends StatelessWidget {
               print(height(209));
             },
           ),
-          const BottomCLoud(),
+          Container(
+            width: width(393),
+            height: height(209),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: Colors.black,
+              image: DecorationImage(
+                image: AssetImage(
+                    '/home/amr/Documents/projects/rafiq/assets/images/pink_area2.png'),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
         ],
       ),
     );
