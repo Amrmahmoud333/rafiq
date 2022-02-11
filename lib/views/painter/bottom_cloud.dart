@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class BottomCLoud extends StatelessWidget {
   const BottomCLoud({Key? key}) : super(key: key);
@@ -17,12 +18,40 @@ class BottomCLoud extends StatelessWidget {
     return Material(
       child: Stack(
         children: [
-          ClipPath(
-            clipper: CustombottomCloud(),
-            child: Container(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height * 0.24559342,
-              color: const Color(0xffE8DEEB),
+          Container(
+            width: double.infinity,
+            height: height(209),
+            child: SvgPicture.asset(
+              'assets/images/pink_area.svg',
+              width: width(295),
+              height: height(217),
+              fit: BoxFit.cover,
+            ),
+          ),
+          Positioned(
+            top: height(42),
+            left: width(0),
+            child: SvgPicture.asset(
+              'assets/images/Path.svg',
+              height: height(43),
+            ),
+          ),
+          Positioned(
+            top: height(114.83),
+            left: width(137),
+            child: SvgPicture.asset(
+              'assets/images/gmail.svg',
+              height: height(62),
+              width: width(62),
+            ),
+          ),
+          Positioned(
+            top: height(114.83),
+            left: width(214.33),
+            child: SvgPicture.asset(
+              'assets/images/facebook.svg',
+              height: height(62),
+              width: width(62),
             ),
           ),
         ],
@@ -55,7 +84,7 @@ class CustombottomCloud extends CustomClipper<Path> {
       51.793 * _yScaling,
     );
     path.cubicTo(
-      43.1992 * _xScaling,
+      10.1992 * _xScaling,
       51.793 * _yScaling,
       54.2305 * _xScaling,
       56.0391 * _yScaling,
@@ -63,10 +92,10 @@ class CustombottomCloud extends CustomClipper<Path> {
       56.0391 * _yScaling,
     );
     path.cubicTo(
-      54.2305 * _xScaling,
-      56.0391 * _yScaling,
+      35.2305 * _xScaling,
+      60.0391 * _yScaling,
       82.3281 * _xScaling,
-      77.2813 * _yScaling,
+      87.2813 * _yScaling,
       82.3281 * _xScaling,
       77.2813 * _yScaling,
     );
