@@ -40,11 +40,11 @@ class HorizontalLinee extends StatelessWidget {
                 children: [
                   Container(
                     width: width(
-                      precent,
+                      precent == 70 ? 185.25 : 30,
                     ),
                     height: height(14),
                     decoration: BoxDecoration(
-                      color: Colors.black,
+                      color: const Color(0xff6E75A0),
 
                       border: Border.all(
                         color: const Color(0xff6E75A0),
