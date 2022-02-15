@@ -6,6 +6,7 @@ import 'package:rafiq/views/shared/log_sign_button.dart';
 
 class SecondForgetPassword extends StatefulWidget {
   const SecondForgetPassword({Key? key}) : super(key: key);
+  static const routeName = '/second_forget_password';
 
   @override
   State<SecondForgetPassword> createState() => _SecondForgetPasswordState();

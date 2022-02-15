@@ -4,6 +4,7 @@ import 'package:rafiq/views/Forget%20password/widgets/resend_button.dart';
 
 class ThirdForgetPassword extends StatefulWidget {
   const ThirdForgetPassword({Key? key}) : super(key: key);
+  static const routeName = '/third_forget_password';
 
   @override
   State<ThirdForgetPassword> createState() => _ThirdForgetPasswordState();

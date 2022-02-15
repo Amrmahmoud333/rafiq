@@ -3,6 +3,7 @@ import 'package:rafiq/views/painter/bottom_cloud.dart';
 import 'package:rafiq/views/painter/top_cloud.dart';
 import 'package:rafiq/views/shared/input_field.dart';
 import 'package:rafiq/views/shared/log_sign_button.dart';
+import 'package:rafiq/views/sign_up/screens/second_sign_up.dart';
 import 'package:rafiq/views/sign_up/widgets/horizontal_line.dart';
 
 class SignUp extends StatelessWidget {
@@ -22,12 +23,12 @@ class SignUp extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const TopCloud(),
+            TopCloud('sign up'),
             SizedBox(
               height: height(15),
             ),
-            const HorizontalLinee(
-              precent: 45,
+            HorizontalLinee(
+              precent: 0,
             ),
             SizedBox(
               height: height(52),
@@ -58,7 +59,12 @@ class SignUp extends StatelessWidget {
             ),
             LogSignButton(
               label: 'Next',
-              ontap: () {},
+              ontap: () {
+                Navigator.pushNamed(
+                  context,
+                  SecondSignUp.routeName,
+                );
+              },
             ),
             SizedBox(
               height: height(1),

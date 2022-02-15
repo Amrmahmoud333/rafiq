@@ -4,11 +4,12 @@ import 'package:rafiq/views/painter/bottom_cloud.dart';
 import 'package:rafiq/views/painter/top_cloud.dart';
 import 'package:rafiq/views/shared/input_field.dart';
 import 'package:rafiq/views/shared/log_sign_button.dart';
+import 'package:rafiq/views/sign_up/screens/third_sign_up.dart';
 import 'package:rafiq/views/sign_up/widgets/horizontal_line.dart';
 
 class SecondSignUp extends StatelessWidget {
   const SecondSignUp({Key? key}) : super(key: key);
-
+  static const routeName = '/second_sign_up';
   @override
   Widget build(BuildContext context) {
     double height(double n) {
@@ -23,11 +24,11 @@ class SecondSignUp extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const TopCloud(),
+            TopCloud('sign up'),
             SizedBox(
               height: height(15),
             ),
-            const HorizontalLinee(
+            HorizontalLinee(
               precent: 35,
             ),
             SizedBox(
@@ -73,7 +74,9 @@ class SecondSignUp extends StatelessWidget {
             ),
             LogSignButton(
               label: 'Next',
-              ontap: () {},
+              ontap: () {
+                Navigator.pushNamed(context, ThirdSignUp.routeName);
+              },
             ),
             SizedBox(
               height: height(1),

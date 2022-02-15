@@ -1,10 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:rafiq/views/painter/clip_shadow_path.dart';
+import 'package:rafiq/views/sign_up/screens/sign_up.dart';
 
 class TopCloud extends StatelessWidget {
-  const TopCloud({Key? key}) : super(key: key);
-
+  String page;
+  TopCloud(this.page, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     double height(double n) {
@@ -57,7 +58,9 @@ class TopCloud extends StatelessWidget {
                   color: const Color(0xff6E75A0),
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, '/');
+                  },
                   child: SizedBox(
                     width: width(116),
                     height: height(30),

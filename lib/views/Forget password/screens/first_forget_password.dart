@@ -6,7 +6,7 @@ import 'package:rafiq/views/shared/log_sign_button.dart';
 
 class FirstForgetPassword extends StatelessWidget {
   const FirstForgetPassword({Key? key}) : super(key: key);
-
+  static const routeName = '/first_forget_password';
   @override
   Widget build(BuildContext context) {
     double height(double n) {

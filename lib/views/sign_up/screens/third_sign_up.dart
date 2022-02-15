@@ -1,26 +1,26 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:country_picker/country_picker.dart';
-import 'package:csc_picker/csc_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:rafiq/views/painter/bottom_cloud.dart';
 import 'package:rafiq/views/painter/top_cloud.dart';
-import 'package:rafiq/views/shared/input_field.dart';
 import 'package:rafiq/views/shared/log_sign_button.dart';
+import 'package:rafiq/views/sign_up/screens/widget/container_choose.dart';
 import 'package:rafiq/views/sign_up/screens/widget/country_list.dart';
-import 'package:rafiq/views/sign_up/screens/widget/country_picker.dart';
 import 'package:rafiq/views/sign_up/widgets/horizontal_line.dart';
 
-class ThridSignUp extends StatefulWidget {
-  const ThridSignUp({Key? key}) : super(key: key);
+class ThirdSignUp extends StatefulWidget {
+  const ThirdSignUp({Key? key}) : super(key: key);
+  static const routeName = '/third_sign_up';
 
   @override
-  State<ThridSignUp> createState() => _ThridSignUpState();
+  State<ThirdSignUp> createState() => _ThridSignUpState();
 }
 
-class _ThridSignUpState extends State<ThridSignUp> {
+class _ThridSignUpState extends State<ThirdSignUp> {
   var countryValue;
   late DateTime _dateTime = DateTime.now();
-
+  String _genderChoose = '';
+  bool _isGenderMale = false;
+  bool _isGenderFemale = false;
   @override
   Widget build(BuildContext context) {
     double height(double n) {
@@ -35,11 +35,11 @@ class _ThridSignUpState extends State<ThridSignUp> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const TopCloud(),
+            TopCloud('sign up'),
             SizedBox(
               height: height(15),
             ),
-            const HorizontalLinee(
+            HorizontalLinee(
               precent: 70,
             ),
             SizedBox(
@@ -50,7 +50,13 @@ class _ThridSignUpState extends State<ThridSignUp> {
               children: [
                 const AutoSizeText(
                   'Country',
-                  style: TextStyle(fontSize: 18.0, color: Color(0xff5B618A)),
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    color: Color(0xff5B618A),
+                  ),
+                ),
+                SizedBox(
+                  height: height(4),
                 ),
                 Container(
                   height: height(38),
@@ -90,6 +96,9 @@ class _ThridSignUpState extends State<ThridSignUp> {
                   'Date of birth',
                   style: TextStyle(fontSize: 18.0, color: Color(0xff5B618A)),
                 ),
+                SizedBox(
+                  height: height(4),
+                ),
                 InkWell(
                   onTap: () async {
                     DateTime? newDateTime = await showDatePicker(
@@ -125,7 +134,7 @@ class _ThridSignUpState extends State<ThridSignUp> {
                       ),
                       child: AutoSizeText(
                         '${_dateTime.day}/${_dateTime.month}/${_dateTime.year}',
-                        style: TextStyle(fontSize: 16),
+                        style: const TextStyle(fontSize: 16),
                       ),
                     ),
                   ),
@@ -144,54 +153,35 @@ class _ThridSignUpState extends State<ThridSignUp> {
                     'Gender',
                     style: TextStyle(fontSize: 18.0, color: Color(0xff5B618A)),
                   ),
+                  SizedBox(
+                    height: height(10),
+                  ),
                   Row(
                     children: [
                       InkWell(
-                        onTap: () {},
-                        child: Container(
-                          width: width(94),
-                          height: height(33),
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF5B618A),
-                            border: Border.all(
-                              color: const Color(0xff6E75A0),
-                              width: 1,
-                            ), //Border.all
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: const Center(
-                            child: AutoSizeText(
-                              'Male',
-                              style:
-                                  TextStyle(fontSize: 20, color: Colors.white),
-                            ),
-                          ),
-                        ),
+                        onTap: () {
+                          setState(() {
+                            _genderChoose = 'Male';
+                            _isGenderMale = !_isGenderMale;
+                            _isGenderFemale = false;
+                          });
+                        },
+                        child: ContainerChoose(
+                            'Male', width(94), height(33), _isGenderMale),
                       ),
                       SizedBox(
                         width: width(40),
                       ),
                       InkWell(
-                        onTap: () {},
-                        child: Container(
-                          width: width(94),
-                          height: height(33),
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF5B618A),
-                            border: Border.all(
-                              color: const Color(0xff6E75A0),
-                              width: 1,
-                            ), //Border.all
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: const Center(
-                            child: AutoSizeText(
-                              'Female',
-                              style:
-                                  TextStyle(fontSize: 20, color: Colors.white),
-                            ),
-                          ),
-                        ),
+                        onTap: () {
+                          setState(() {
+                            _genderChoose = 'Female';
+                            _isGenderFemale = !_isGenderFemale;
+                            _isGenderMale = false;
+                          });
+                        },
+                        child: ContainerChoose(
+                            'Female', width(94), height(33), _isGenderFemale),
                       ),
                     ],
                   ),
