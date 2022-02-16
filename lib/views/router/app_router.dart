@@ -10,7 +10,7 @@ class AppRouter {
   Route onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case '/':
-        return MaterialPageRoute(builder: (_) => const SignUp());
+        return MaterialPageRoute(builder: (_) => SignUp());
       case SecondSignUp.routeName:
         return MaterialPageRoute(builder: (_) => const SecondSignUp());
       case ThirdSignUp.routeName:
@@ -22,7 +22,7 @@ class AppRouter {
       case ThirdForgetPassword.routeName:
         return MaterialPageRoute(builder: (_) => const ThirdForgetPassword());
       default:
-        return MaterialPageRoute(builder: (_) => const SignUp());
+        return MaterialPageRoute(builder: (_) => SignUp());
     }
   }
 }

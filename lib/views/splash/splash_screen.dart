@@ -37,7 +37,7 @@ class SplashScreen extends StatelessWidget {
       splashIconSize: 300,
       splashTransition: SplashTransition.fadeTransition,
       pageTransitionType: PageTransitionType.bottomToTop,
-      nextScreen: const SignUp(),
+      nextScreen: SignUp(),
     );
   }
 }
