@@ -20,65 +20,72 @@ class SignUp extends StatelessWidget {
     }
 
     return Scaffold(
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        child: Stack(
+      body: SingleChildScrollView(
+        child: Column(
           children: [
-            Align(alignment: Alignment.topCenter, child: TopCloud('sign up')),
-            Positioned(
-              top: height(190),
-              child: Column(
+            SizedBox(
+              height: height(642),
+              child: Stack(
                 children: [
-                  SizedBox(
-                    height: height(15),
-                  ),
-                  HorizontalLinee(
-                    precent: 0,
-                  ),
-                  SizedBox(
-                    height: height(32),
-                  ),
-                  InputField(
-                    label: 'First Name',
-                    sizeoflabel: 18,
-                    obscureText: false,
-                  ),
-                  SizedBox(
-                    height: height(22),
-                  ),
-                  InputField(
-                    label: 'Last Name',
-                    sizeoflabel: 18,
-                    obscureText: false,
-                  ),
-                  SizedBox(
-                    height: height(22),
-                  ),
-                  InputField(
-                    label: 'Username',
-                    sizeoflabel: 18,
-                    obscureText: false,
-                  ),
-                  SizedBox(
-                    height: height(48),
-                  ),
-                  LogSignButton(
-                    label: 'Next',
-                    ontap: () {
-                      Navigator.pushNamed(
-                        context,
-                        SecondSignUp.routeName,
-                      );
-                    },
-                  ),
-                  SizedBox(
-                    height: height(1),
+                  Align(
+                      alignment: Alignment.topCenter,
+                      child: TopCloud('sign up')),
+                  Positioned(
+                    top: height(190),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: height(20),
+                        ),
+                        HorizontalLinee(
+                          precent: 0,
+                        ),
+                        SizedBox(
+                          height: height(52),
+                        ),
+                        InputField(
+                          label: 'First Name',
+                          sizeoflabel: 18,
+                          obscureText: false,
+                        ),
+                        SizedBox(
+                          height: height(22),
+                        ),
+                        InputField(
+                          label: 'Last Name',
+                          sizeoflabel: 18,
+                          obscureText: false,
+                        ),
+                        SizedBox(
+                          height: height(29),
+                        ),
+                        InputField(
+                          label: 'Username',
+                          sizeoflabel: 18,
+                          obscureText: false,
+                        ),
+                        SizedBox(
+                          height: height(61),
+                        ),
+                        LogSignButton(
+                          label: 'Next',
+                          ontap: () {
+                            Navigator.pushNamed(
+                              context,
+                              SecondSignUp.routeName,
+                            );
+                          },
+                        ),
+                        SizedBox(
+                          height: height(1),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
             ),
-            const Align(
-                alignment: Alignment.bottomCenter, child: BottomCLoud()),
+            BottomCLoud(),
           ],
         ),
       ),

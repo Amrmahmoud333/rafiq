@@ -24,62 +24,81 @@ class SecondSignUp extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TopCloud('sign up'),
             SizedBox(
-              height: height(15),
-            ),
-            HorizontalLinee(
-              precent: 35,
-            ),
-            SizedBox(
-              height: height(52),
-            ),
-            InputField(
-              label: 'Email',
-              sizeoflabel: 18,
-              obscureText: false,
-            ),
-            SizedBox(
-              height: height(22),
-            ),
-            InputField(
-              label: 'Password',
-              sizeoflabel: 18,
-              obscureText: true,
-              widget: InkWell(
-                  onTap: () {},
-                  child: const AutoSizeText(
-                    'Show',
-                    style: TextStyle(fontSize: 16, color: Color(0xff5B618A)),
-                  )),
-            ),
-            SizedBox(
-              height: height(29),
-            ),
-            InputField(
-              label: 'Confirm Password',
-              sizeoflabel: 18,
-              obscureText: true,
-              widget: InkWell(
-                  onTap: () {
-                    // TODO change obscureText
-                  },
-                  child: const AutoSizeText(
-                    'Show',
-                    style: TextStyle(fontSize: 16, color: Color(0xff5B618A)),
-                  )),
-            ),
-            SizedBox(
-              height: height(61),
-            ),
-            LogSignButton(
-              label: 'Next',
-              ontap: () {
-                Navigator.pushNamed(context, ThirdSignUp.routeName);
-              },
-            ),
-            SizedBox(
-              height: height(1),
+              height: height(642),
+              child: Stack(
+                children: [
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: TopCloud('sign up'),
+                  ),
+                  Positioned(
+                    top: height(190),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: height(20),
+                        ),
+                        HorizontalLinee(
+                          precent: 35,
+                        ),
+                        SizedBox(
+                          height: height(52),
+                        ),
+                        InputField(
+                          label: 'Email',
+                          sizeoflabel: 18,
+                          obscureText: false,
+                        ),
+                        SizedBox(
+                          height: height(22),
+                        ),
+                        InputField(
+                          label: 'Password',
+                          sizeoflabel: 18,
+                          obscureText: true,
+                          widget: InkWell(
+                              onTap: () {},
+                              child: const AutoSizeText(
+                                'Show',
+                                style: TextStyle(
+                                    fontSize: 16, color: Color(0xff5B618A)),
+                              )),
+                        ),
+                        SizedBox(
+                          height: height(29),
+                        ),
+                        InputField(
+                          label: 'Confirm Password',
+                          sizeoflabel: 18,
+                          obscureText: true,
+                          widget: InkWell(
+                              onTap: () {
+                                // TODO change obscureText
+                              },
+                              child: const AutoSizeText(
+                                'Show',
+                                style: TextStyle(
+                                    fontSize: 16, color: Color(0xff5B618A)),
+                              )),
+                        ),
+                        SizedBox(
+                          height: height(61),
+                        ),
+                        LogSignButton(
+                          label: 'Next',
+                          ontap: () {
+                            Navigator.pushNamed(context, ThirdSignUp.routeName);
+                          },
+                        ),
+                        SizedBox(
+                          height: height(1),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
             const BottomCLoud(),
           ],
