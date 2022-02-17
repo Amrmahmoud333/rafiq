@@ -126,7 +126,7 @@ class _ThirdWidgetState extends State<ThirdWidget> {
             ],
           ),
           SizedBox(
-            height: height(29),
+            height: height(33),
           ),
           Padding(
             padding: EdgeInsets.only(left: width(40)),

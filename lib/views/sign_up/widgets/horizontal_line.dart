@@ -31,12 +31,15 @@ class HorizontalLinee extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            AutoSizeText(
-              '$precent% completed',
-              style: const TextStyle(
-                fontSize: 12,
-                fontFamily: 'DavidLibre',
-                color: Color(0xff5B618A),
+            SizedBox(
+              height: height(12),
+              child: AutoSizeText(
+                '$precent% completed',
+                style: const TextStyle(
+                  fontSize: 12,
+                  fontFamily: 'DavidLibre',
+                  color: Color(0xff5B618A),
+                ),
               ),
             ),
             Container(

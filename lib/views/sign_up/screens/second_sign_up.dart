@@ -50,7 +50,7 @@ class SecondSignUp extends StatelessWidget {
                   onTap: () {},
                   child: const AutoSizeText(
                     'Show',
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(fontSize: 16, color: Color(0xff5B618A)),
                   )),
             ),
             SizedBox(
@@ -66,7 +66,7 @@ class SecondSignUp extends StatelessWidget {
                   },
                   child: const AutoSizeText(
                     'Show',
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(fontSize: 16, color: Color(0xff5B618A)),
                   )),
             ),
             SizedBox(

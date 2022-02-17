@@ -22,9 +22,9 @@ class BottomCLoud extends StatelessWidget {
             height: height(209),
             child: SvgPicture.asset(
               'assets/images/bottom_cloud.svg',
-              width: width(295),
-              height: height(217),
-              fit: BoxFit.cover,
+              width: width(293),
+              height: height(209),
+              fit: BoxFit.fill,
             ),
           ),
           Positioned(

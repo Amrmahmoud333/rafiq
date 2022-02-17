@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:rafiq/views/painter/clip_shadow_path.dart';
 
 class TopCloud extends StatelessWidget {
@@ -18,18 +19,14 @@ class TopCloud extends StatelessWidget {
     return Material(
       child: Stack(
         children: [
-          ClipShadowPath(
-            shadow: BoxShadow(
-              color: Colors.grey.shade400,
-              offset: const Offset(-10, 15),
-              blurRadius: 0,
-              spreadRadius: 10,
-            ),
-            clipper: CustomTopCloud(),
-            child: Container(
-              width: double.infinity,
-              height: height(188.59),
-              color: const Color(0xffE8DEEB),
+          Container(
+            height: height(207),
+            width: double.infinity,
+            child: SvgPicture.asset(
+              'assets/images/top_cloud.svg',
+              width: width(392),
+              height: height(207),
+              fit: BoxFit.fill,
             ),
           ),
           Padding(
@@ -46,6 +43,7 @@ class TopCloud extends StatelessWidget {
                       'Log in',
                       style: TextStyle(
                         fontSize: 30,
+                        fontFamily: 'DavidLibre',
                         color: Color(0xff6E75A0),
                       ),
                     ),
@@ -68,6 +66,7 @@ class TopCloud extends StatelessWidget {
                       style: TextStyle(
                           fontSize: 35,
                           color: Color(0xff6E75A0),
+                          fontFamily: 'DavidLibre',
                           fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -86,7 +85,7 @@ class CustomTopCloud extends CustomClipper<Path> {
   Path getClip(Size size) {
     Path path = Path();
     final double _xScaling = size.width / 393;
-    final double _yScaling = size.height / 188.59;
+    final double _yScaling = size.height / 167.34;
     path.lineTo(177.867 * _xScaling, 158.238 * _yScaling);
     path.cubicTo(
       169.648 * _xScaling,

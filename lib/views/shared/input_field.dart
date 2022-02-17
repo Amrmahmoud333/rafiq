@@ -39,14 +39,14 @@ class InputField extends StatelessWidget {
         ),
         Container(
           margin: EdgeInsets.only(
-            top: height(8),
+            top: height(4),
           ),
           width: width(313),
           height: height(38),
           decoration: BoxDecoration(
             border: Border(
               bottom: BorderSide(
-                width: width(3),
+                width: width(1),
                 color: const Color(0xFF5B618A),
               ),
             ),
@@ -57,9 +57,9 @@ class InputField extends StatelessWidget {
               Expanded(
                 child: TextFormField(
                   style: const TextStyle(
-                    fontSize: 16,
+                    fontSize: 20,
                     color: Color(0xFF6E75A0),
-                    //////////////// //ناقص نوع الخط
+                    fontFamily: 'DavidLibre',
                   ),
                   obscureText: obscureText,
                   keyboardType: keyboardType,
@@ -75,7 +75,7 @@ class InputField extends StatelessWidget {
               )
             ],
           ),
-        )
+        ),
       ],
     );
   }
