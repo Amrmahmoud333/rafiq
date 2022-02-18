@@ -60,6 +60,7 @@ class InputField extends StatelessWidget {
                     fontSize: 20,
                     color: Color(0xFF6E75A0),
                     fontFamily: 'DavidLibre',
+                    fontWeight: FontWeight.w500,
                   ),
                   obscureText: obscureText,
                   keyboardType: keyboardType,

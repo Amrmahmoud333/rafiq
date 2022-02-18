@@ -34,6 +34,8 @@ class LogSignButton extends StatelessWidget {
             style: const TextStyle(
               color: Color(0xFFFFFFFF),
               fontSize: 25,
+              fontFamily: 'DavidLibre',
+              fontWeight: FontWeight.w500,
             ),
           ),
         ),

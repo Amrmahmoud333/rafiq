@@ -20,11 +20,12 @@ class SignUp extends StatelessWidget {
     }
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(
-              height: height(642),
+              height: height(851),
               child: Stack(
                 children: [
                   Align(
@@ -82,10 +83,13 @@ class SignUp extends StatelessWidget {
                       ],
                     ),
                   ),
+                  const Align(
+                    alignment: Alignment.bottomCenter,
+                    child: BottomCLoud(),
+                  )
                 ],
               ),
             ),
-            BottomCLoud(),
           ],
         ),
       ),
