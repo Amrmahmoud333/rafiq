@@ -33,7 +33,7 @@ class TopCloud extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(width(58), height(64), 0, 0),
+            padding: EdgeInsets.fromLTRB(width(38), height(64), 0, 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -41,28 +41,24 @@ class TopCloud extends StatelessWidget {
                   onTap: () {
                     Navigator.pushNamed(context, LoginScreen.routeName);
                   },
-                  child: SizedBox(
-                    width: width(100),
-                    height: height(30),
-                    child: _isLogin
-                        ? const AutoSizeText(
-                            'Log in',
-                            style: TextStyle(
-                              fontSize: 35,
-                              fontFamily: 'DavidLibre',
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xff6E75A0),
-                            ),
-                          )
-                        : const AutoSizeText(
-                            'Log in',
-                            style: TextStyle(
-                              fontSize: 30,
-                              fontFamily: 'DavidLibre',
-                              color: Color(0xff6E75A0),
-                            ),
+                  child: _isLogin
+                      ? const AutoSizeText(
+                          'Log in',
+                          style: TextStyle(
+                            fontSize: 35,
+                            fontFamily: 'DavidLibre',
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xff6E75A0),
                           ),
-                  ),
+                        )
+                      : const AutoSizeText(
+                          'Log in',
+                          style: TextStyle(
+                            fontSize: 30,
+                            fontFamily: 'DavidLibre',
+                            color: Color(0xff6E75A0),
+                          ),
+                        ),
                 ),
                 Container(
                   height: height(28),
@@ -73,28 +69,24 @@ class TopCloud extends StatelessWidget {
                   onTap: () {
                     Navigator.pushNamed(context, SignUp.routeName);
                   },
-                  child: SizedBox(
-                    width: width(116),
-                    height: height(30),
-                    child: _isLogin == false
-                        ? const AutoSizeText(
-                            'Sign up',
-                            style: TextStyle(
-                              fontSize: 35,
-                              fontFamily: 'DavidLibre',
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xff6E75A0),
-                            ),
-                          )
-                        : const AutoSizeText(
-                            'Sign up',
-                            style: TextStyle(
-                              fontSize: 30,
-                              color: Color(0xff6E75A0),
-                              fontFamily: 'DavidLibre',
-                            ),
+                  child: _isLogin == false
+                      ? const AutoSizeText(
+                          'Sign up',
+                          style: TextStyle(
+                            fontSize: 35,
+                            fontFamily: 'DavidLibre',
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xff6E75A0),
                           ),
-                  ),
+                        )
+                      : const AutoSizeText(
+                          'Sign up',
+                          style: TextStyle(
+                            fontSize: 30,
+                            color: Color(0xff6E75A0),
+                            fontFamily: 'DavidLibre',
+                          ),
+                        ),
                 ),
               ],
             ),
