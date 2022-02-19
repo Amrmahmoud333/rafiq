@@ -8,7 +8,7 @@ import 'package:rafiq/views/sign_up/widgets/horizontal_line.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({Key? key}) : super(key: key);
-  //TODO status bar
+  static const routeName = '/sign_up';
   @override
   Widget build(BuildContext context) {
     double height(double n) {
@@ -28,9 +28,7 @@ class SignUp extends StatelessWidget {
               height: height(851),
               child: Stack(
                 children: [
-                  Align(
-                      alignment: Alignment.topCenter,
-                      child: TopCloud('sign up')),
+                  Align(alignment: Alignment.topCenter, child: TopCloud(false)),
                   Positioned(
                     top: height(190),
                     child: Column(

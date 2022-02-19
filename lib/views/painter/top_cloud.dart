@@ -1,11 +1,14 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rafiq/views/login/screens/login_screen.dart';
 import 'package:rafiq/views/painter/clip_shadow_path.dart';
+import 'package:rafiq/views/sign_up/screens/sign_up.dart';
 
 class TopCloud extends StatelessWidget {
-  String page;
-  TopCloud(this.page, {Key? key}) : super(key: key);
+  final bool _isLogin;
+
+  const TopCloud(this._isLogin, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     double height(double n) {
@@ -16,19 +19,10 @@ class TopCloud extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
-    bool _isLogin = false;
-    FontWeight fontWeightLogin = FontWeight.normal;
-    FontWeight fontWeightSginUp = FontWeight.normal;
-
-    if (page == 'login') {
-      fontWeightLogin = FontWeight.bold;
-    } else {
-      fontWeightSginUp = FontWeight.bold;
-    }
     return Material(
       child: Stack(
         children: [
-          Container(
+          SizedBox(
             height: height(207),
             width: double.infinity,
             child: SvgPicture.asset(
@@ -44,18 +38,30 @@ class TopCloud extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, LoginScreen.routeName);
+                  },
                   child: SizedBox(
                     width: width(100),
                     height: height(30),
-                    child: const AutoSizeText(
-                      'Log in',
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontFamily: 'DavidLibre',
-                        color: Color(0xff6E75A0),
-                      ),
-                    ),
+                    child: _isLogin
+                        ? const AutoSizeText(
+                            'Log in',
+                            style: TextStyle(
+                              fontSize: 35,
+                              fontFamily: 'DavidLibre',
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xff6E75A0),
+                            ),
+                          )
+                        : const AutoSizeText(
+                            'Log in',
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontFamily: 'DavidLibre',
+                              color: Color(0xff6E75A0),
+                            ),
+                          ),
                   ),
                 ),
                 Container(
@@ -65,19 +71,29 @@ class TopCloud extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, '/');
+                    Navigator.pushNamed(context, SignUp.routeName);
                   },
                   child: SizedBox(
                     width: width(116),
                     height: height(30),
-                    child: const AutoSizeText(
-                      'Sign up',
-                      style: TextStyle(
-                          fontSize: 35,
-                          color: Color(0xff6E75A0),
-                          fontFamily: 'DavidLibre',
-                          fontWeight: FontWeight.bold),
-                    ),
+                    child: _isLogin == false
+                        ? const AutoSizeText(
+                            'Sign up',
+                            style: TextStyle(
+                              fontSize: 35,
+                              fontFamily: 'DavidLibre',
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xff6E75A0),
+                            ),
+                          )
+                        : const AutoSizeText(
+                            'Sign up',
+                            style: TextStyle(
+                              fontSize: 30,
+                              color: Color(0xff6E75A0),
+                              fontFamily: 'DavidLibre',
+                            ),
+                          ),
                   ),
                 ),
               ],

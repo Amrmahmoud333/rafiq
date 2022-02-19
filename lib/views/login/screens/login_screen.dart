@@ -34,7 +34,7 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   Align(
                     alignment: Alignment.topCenter,
-                    child: TopCloud('login'),
+                    child: TopCloud(true),
                   ),
                   const Align(
                     alignment: Alignment.bottomCenter,
@@ -50,13 +50,18 @@ class LoginScreen extends StatelessWidget {
                           SizedBox(
                             height: h(48.16),
                           ),
-                          const AutoSizeText(
-                            'Welcome back',
-                            style: TextStyle(
+                          SizedBox(
+                            width: w(217),
+                            height: h(35),
+                            child: const AutoSizeText(
+                              'Welcome back',
+                              style: TextStyle(
                                 fontFamily: 'DavidLibre',
                                 fontWeight: FontWeight.w500,
                                 fontSize: 35,
-                                color: Color(0xff5B618A)),
+                                color: Color(0xff5B618A),
+                              ),
+                            ),
                           ),
                           SizedBox(height: h(41)),
                           const InputField(

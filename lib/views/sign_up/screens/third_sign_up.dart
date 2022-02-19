@@ -42,7 +42,7 @@ class _ThridSignUpState extends State<ThirdSignUp> {
                 children: [
                   Align(
                     alignment: Alignment.topCenter,
-                    child: TopCloud('sign up'),
+                    child: TopCloud(false),
                   ),
                   Positioned(
                     top: height(190),

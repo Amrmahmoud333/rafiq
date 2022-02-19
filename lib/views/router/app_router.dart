@@ -12,6 +12,8 @@ class AppRouter {
     switch (routeSettings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => const LoginScreen());
+      case SignUp.routeName:
+        return MaterialPageRoute(builder: (_) => const SignUp());
       case SecondSignUp.routeName:
         return MaterialPageRoute(builder: (_) => const SecondSignUp());
       case ThirdSignUp.routeName:
