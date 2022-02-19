@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:rafiq/views/login/screens/widgets/custom_check_box.dart';
 import 'package:rafiq/views/painter/bottom_cloud.dart';
 import 'package:rafiq/views/painter/top_cloud.dart';
 import 'package:rafiq/views/shared/input_field.dart';
@@ -25,6 +26,7 @@ class LoginScreen extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
               height: h(851),
@@ -32,28 +34,29 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   Align(
                     alignment: Alignment.topCenter,
-                    child: TopCloud('Login'),
+                    child: TopCloud('login'),
+                  ),
+                  const Align(
+                    alignment: Alignment.bottomCenter,
+                    child: BottomCLoud(),
                   ),
                   Positioned(
                     top: h(190),
                     child: Padding(
                       padding: EdgeInsets.only(left: w(40)),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
                             height: h(48.16),
                           ),
-                          SizedBox(
-                            width: w(217),
-                            height: h(35),
-                            child: const AutoSizeText(
-                              'Welcome back',
-                              style: TextStyle(
-                                  fontFamily: 'DavidLibre',
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 35,
-                                  color: Color(0xff5B618A)),
-                            ),
+                          const AutoSizeText(
+                            'Welcome back',
+                            style: TextStyle(
+                                fontFamily: 'DavidLibre',
+                                fontWeight: FontWeight.w500,
+                                fontSize: 35,
+                                color: Color(0xff5B618A)),
                           ),
                           SizedBox(height: h(41)),
                           const InputField(
@@ -72,7 +75,7 @@ class LoginScreen extends StatelessWidget {
                                   fontSize: 16,
                                   fontFamily: 'DavidLibre',
                                   fontWeight: FontWeight.w500,
-                                  color: const Color(0xFF5B618A),
+                                  color: Color(0xFF5B618A),
                                 ),
                               ),
                             ),
@@ -82,6 +85,13 @@ class LoginScreen extends StatelessWidget {
                           ),
                           Row(
                             children: [
+                              InkWell(
+                                onTap: () {},
+                                child: CustomCheckBox(true),
+                              ),
+                              SizedBox(
+                                width: w(8),
+                              ),
                               const AutoSizeText(
                                 'Remember me',
                                 style: TextStyle(
@@ -94,28 +104,31 @@ class LoginScreen extends StatelessWidget {
                             ],
                           ),
                           SizedBox(height: h(45)),
-                          LogSignButton(label: 'Log in', ontap: () {}),
-                          SizedBox(height: h(24)),
-                          TextButton(
-                            child: const AutoSizeText(
-                              'Forget password?',
-                              style: TextStyle(
-                                fontSize: 16,
-                                decoration: TextDecoration.underline,
-                                fontFamily: 'DavidLibre',
-                                fontWeight: FontWeight.w500,
-                                color: Color(0xFF5B618A),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: w(53)),
+                            child: LogSignButton(label: 'Log in', ontap: () {}),
+                          ),
+                          SizedBox(height: h(20)),
+                          Padding(
+                            padding:
+                                EdgeInsets.only(left: w(87), right: w(115)),
+                            child: TextButton(
+                              child: const AutoSizeText(
+                                'Forget password?',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  decoration: TextDecoration.underline,
+                                  fontFamily: 'DavidLibre',
+                                  fontWeight: FontWeight.w500,
+                                  color: Color(0xFF5B618A),
+                                ),
                               ),
+                              onPressed: () {},
                             ),
-                            onPressed: () {},
                           ),
                         ],
                       ),
                     ),
-                  ),
-                  const Align(
-                    alignment: Alignment.bottomCenter,
-                    child: BottomCLoud(),
                   ),
                 ],
               ),

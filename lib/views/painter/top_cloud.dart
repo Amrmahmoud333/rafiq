@@ -16,6 +16,15 @@ class TopCloud extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
+    bool _isLogin = false;
+    FontWeight fontWeightLogin = FontWeight.normal;
+    FontWeight fontWeightSginUp = FontWeight.normal;
+
+    if (page == 'login') {
+      fontWeightLogin = FontWeight.bold;
+    } else {
+      fontWeightSginUp = FontWeight.bold;
+    }
     return Material(
       child: Stack(
         children: [
