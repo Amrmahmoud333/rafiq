@@ -42,6 +42,7 @@ dependencies:
   fl_chart: ^0.41.0
   animated_splash_screen: ^1.2.0
   intl: ^0.17.0
+  splashscreen: ^1.3.5
 
 dev_dependencies:
   flutter_test:

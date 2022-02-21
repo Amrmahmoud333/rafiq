@@ -6,12 +6,13 @@ import 'package:rafiq/views/login/screens/login_screen.dart';
 import 'package:rafiq/views/sign_up/screens/second_sign_up.dart';
 import 'package:rafiq/views/sign_up/screens/sign_up.dart';
 import 'package:rafiq/views/sign_up/screens/third_sign_up.dart';
+import 'package:rafiq/views/splash/splash_screen.dart';
 
 class AppRouter {
   Route onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case '/':
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
+        return MaterialPageRoute(builder: (_) => const SplashScreenn());
       case SignUp.routeName:
         return MaterialPageRoute(builder: (_) => const SignUp());
       case SecondSignUp.routeName:

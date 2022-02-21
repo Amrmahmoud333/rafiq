@@ -2,7 +2,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rafiq/views/login/screens/login_screen.dart';
-import 'package:rafiq/views/painter/clip_shadow_path.dart';
 import 'package:rafiq/views/sign_up/screens/sign_up.dart';
 
 class TopCloud extends StatelessWidget {
@@ -39,7 +38,8 @@ class TopCloud extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, LoginScreen.routeName);
+                    Navigator.pushReplacementNamed(
+                        context, LoginScreen.routeName);
                   },
                   child: _isLogin
                       ? const AutoSizeText(
@@ -67,7 +67,7 @@ class TopCloud extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, SignUp.routeName);
+                    Navigator.pushReplacementNamed(context, SignUp.routeName);
                   },
                   child: _isLogin == false
                       ? const AutoSizeText(
