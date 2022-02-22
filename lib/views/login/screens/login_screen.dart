@@ -1,7 +1,6 @@
-import 'dart:ui';
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:rafiq/views/Forget%20password/screens/first_forget_password.dart';
 import 'package:rafiq/views/login/screens/widgets/custom_check_box.dart';
 import 'package:rafiq/views/painter/bottom_cloud.dart';
 import 'package:rafiq/views/painter/top_cloud.dart';
@@ -9,8 +8,25 @@ import 'package:rafiq/views/shared/input_field.dart';
 import 'package:rafiq/views/shared/log_sign_button.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  LoginScreen({Key? key}) : super(key: key);
   static const routeName = '/login_screen';
+  final fromKey = GlobalKey<FormState>();
+
+  String? customValidteEmail(String? email) {
+    if (email!.isEmpty || email.length < 2 || email.length >= 35) {
+      return 'Enter a Correct Email or User Name';
+    } else {
+      return null;
+    }
+  }
+
+  String? customValidtePasswrod(String? passwrod) {
+    if (passwrod!.isEmpty || passwrod.length < 7 || passwrod.length >= 65) {
+      return 'Enter a Correct Password';
+    } else {
+      return null;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +48,7 @@ class LoginScreen extends StatelessWidget {
               height: h(851),
               child: Stack(
                 children: [
-                  Align(
+                  const Align(
                     alignment: Alignment.topCenter,
                     child: TopCloud(true),
                   ),
@@ -44,94 +60,109 @@ class LoginScreen extends StatelessWidget {
                     top: h(190),
                     child: Padding(
                       padding: EdgeInsets.only(left: w(40)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: h(48.16),
-                          ),
-                          SizedBox(
-                            width: w(217),
-                            height: h(35),
-                            child: const AutoSizeText(
-                              'Welcome back',
-                              style: TextStyle(
-                                fontFamily: 'DavidLibre',
-                                fontWeight: FontWeight.w500,
-                                fontSize: 35,
-                                color: Color(0xff5B618A),
+                      child: Form(
+                        key: fromKey,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: h(48.16),
+                            ),
+                            SizedBox(
+                              width: w(217),
+                              height: h(35),
+                              child: const AutoSizeText(
+                                'Welcome back',
+                                style: TextStyle(
+                                  fontFamily: 'DavidLibre',
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 35,
+                                  color: Color(0xff5B618A),
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(height: h(41)),
-                          const InputField(
+                            SizedBox(height: h(41)),
+                            InputField(
                               label: 'Username or Email',
                               sizeoflabel: 18,
-                              obscureText: false),
-                          SizedBox(height: h(34)),
-                          InputField(
-                            label: 'Password',
-                            sizeoflabel: 18,
-                            obscureText: true,
-                            widget: Container(
-                              child: const AutoSizeText(
-                                'Show',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontFamily: 'DavidLibre',
-                                  fontWeight: FontWeight.w500,
-                                  color: Color(0xFF5B618A),
+                              obscureText: false,
+                              valdator: customValidteEmail,
+                            ),
+                            SizedBox(height: h(34)),
+                            InputField(
+                              label: 'Password',
+                              sizeoflabel: 18,
+                              obscureText: true,
+                              valdator: customValidtePasswrod,
+                              widget: Container(
+                                child: const AutoSizeText(
+                                  'Show',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontFamily: 'DavidLibre',
+                                    fontWeight: FontWeight.w500,
+                                    color: Color(0xFF5B618A),
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            height: h(8),
-                          ),
-                          Row(
-                            children: [
-                              InkWell(
-                                onTap: () {},
-                                child: CustomCheckBox(true),
-                              ),
-                              SizedBox(
-                                width: w(8),
-                              ),
-                              const AutoSizeText(
-                                'Remember me',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontFamily: 'DavidLibre',
-                                  fontWeight: FontWeight.w500,
-                                  color: Color(0xFF5B618A),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: h(45)),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: w(53)),
-                            child: LogSignButton(label: 'Log in', ontap: () {}),
-                          ),
-                          SizedBox(height: h(20)),
-                          Padding(
-                            padding:
-                                EdgeInsets.only(left: w(87), right: w(115)),
-                            child: TextButton(
-                              child: const AutoSizeText(
-                                'Forget password?',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  decoration: TextDecoration.underline,
-                                  fontFamily: 'DavidLibre',
-                                  fontWeight: FontWeight.w500,
-                                  color: Color(0xFF5B618A),
-                                ),
-                              ),
-                              onPressed: () {},
+                            SizedBox(
+                              height: h(8),
                             ),
-                          ),
-                        ],
+                            Row(
+                              children: [
+                                InkWell(
+                                  onTap: () {},
+                                  child: CustomCheckBox(true),
+                                ),
+                                SizedBox(
+                                  width: w(8),
+                                ),
+                                const AutoSizeText(
+                                  'Remember me',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontFamily: 'DavidLibre',
+                                    fontWeight: FontWeight.w500,
+                                    color: Color(0xFF5B618A),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: h(45)),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: w(53)),
+                              child: LogSignButton(
+                                  label: 'Log in',
+                                  ontap: () {
+                                    if (fromKey.currentState!.validate()) {
+                                      print('login');
+                                    }
+                                  }),
+                            ),
+                            SizedBox(height: h(20)),
+                            Padding(
+                              padding:
+                                  EdgeInsets.only(left: w(87), right: w(115)),
+                              child: TextButton(
+                                child: const AutoSizeText(
+                                  'Forget password?',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    decoration: TextDecoration.underline,
+                                    fontFamily: 'DavidLibre',
+                                    fontWeight: FontWeight.w500,
+                                    color: Color(0xFF5B618A),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                      context, FirstForgetPassword.routeName);
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

@@ -1,15 +1,27 @@
-import 'package:flutter/material.dart';
-import 'package:rafiq/views/login/screens/login_screen.dart';
-import 'package:splashscreen/splashscreen.dart';
+import 'dart:async';
 
-class SplashScreenn extends StatefulWidget {
-  const SplashScreenn({Key? key}) : super(key: key);
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/parser.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:rafiq/views/login/screens/login_screen.dart';
+
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreenn> {
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(const Duration(seconds: 100), () {
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (_) =>  LoginScreen()));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double h(double n) {
@@ -20,12 +32,38 @@ class _SplashScreenState extends State<SplashScreenn> {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
-    return SplashScreen(
-      seconds: 14,
-      navigateAfterSeconds: const LoginScreen(),
-      image: Image.asset('assets/images/hello-hi.gif'),
-      backgroundColor: Colors.white,
-      photoSize: 100.0,
+    return Scaffold(
+      backgroundColor: const Color(0xffE8DEEB),
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        child: Stack(
+          children: [
+            AnimatedContainer(
+              width: w(372),
+              height: h(255),
+              duration: Duration(milliseconds: 500),
+              curve: Curves.easeInBack,
+              child: SvgPicture.asset(
+                'assets/images/rafiq_logo_new.svg',
+                fit: BoxFit.fill,
+              ),
+            ),
+            /*  Align(
+              alignment: Alignment.bottomCenter,
+              child: AnimatedContainer(
+                width: double.infinity,
+                height: h(553),
+                duration: Duration(milliseconds: 500),
+                curve: Curves.easeInBack,
+                child: SvgPicture.asset(
+                  'assets/images/clouds.svg',
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),*/
+          ],
+        ),
+      ),
     );
   }
 }

@@ -7,8 +7,45 @@ import 'package:rafiq/views/sign_up/screens/second_sign_up.dart';
 import 'package:rafiq/views/sign_up/widgets/horizontal_line.dart';
 
 class SignUp extends StatelessWidget {
-  const SignUp({Key? key}) : super(key: key);
+  SignUp({Key? key}) : super(key: key);
   static const routeName = '/sign_up';
+  final _fromKey = GlobalKey<FormState>();
+
+  String? customValidteFirstName(String? firstName) {
+    if (firstName!.isEmpty ||
+        firstName.length < 2 ||
+        firstName.length > 35 ||
+        firstName.contains(' ')) {
+      // (RegExp(r'[a-zA-Z]{2,35}').hasMatch(firstName.toString()))
+      return 'Enter a correct first name';
+    } else {
+      return null;
+    }
+  }
+
+  String? customValidteLastName(String? lastName) {
+    if (lastName!.isEmpty ||
+        lastName.length < 2 ||
+        lastName.length > 35 ||
+        lastName.contains(' ')) {
+      return 'Enter a correct last name';
+    } else {
+      return null;
+    }
+  }
+
+  String? customValidteUserName(String? userName) {
+    if (userName!.isEmpty ||
+        userName.length < 3 ||
+        userName.length > 35 ||
+        !(userName[0].contains(RegExp(r'[A-Za-z]')))) {
+      return 'Enter a Correct user name';
+      // TODO doesn't have two consecutive ' ' && .
+    } else {
+      return null;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double height(double n) {
@@ -28,57 +65,67 @@ class SignUp extends StatelessWidget {
               height: height(851),
               child: Stack(
                 children: [
-                  Align(alignment: Alignment.topCenter, child: TopCloud(false)),
+                  const Align(
+                      alignment: Alignment.topCenter, child: TopCloud(false)),
                   Positioned(
                     top: height(190),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: height(20),
-                        ),
-                        HorizontalLinee(
-                          precent: 0,
-                        ),
-                        SizedBox(
-                          height: height(52),
-                        ),
-                        InputField(
-                          label: 'First Name',
-                          sizeoflabel: 18,
-                          obscureText: false,
-                        ),
-                        SizedBox(
-                          height: height(22),
-                        ),
-                        InputField(
-                          label: 'Last Name',
-                          sizeoflabel: 18,
-                          obscureText: false,
-                        ),
-                        SizedBox(
-                          height: height(29),
-                        ),
-                        InputField(
-                          label: 'Username',
-                          sizeoflabel: 18,
-                          obscureText: false,
-                        ),
-                        SizedBox(
-                          height: height(61),
-                        ),
-                        LogSignButton(
-                          label: 'Next',
-                          ontap: () {
-                            Navigator.pushNamed(
-                              context,
-                              SecondSignUp.routeName,
-                            );
-                          },
-                        ),
-                        SizedBox(
-                          height: height(1),
-                        ),
-                      ],
+                    child: Form(
+                      key: _fromKey,
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: height(20),
+                          ),
+                          HorizontalLinee(
+                            precent: 0,
+                          ),
+                          SizedBox(
+                            height: height(52),
+                          ),
+                          InputField(
+                            label: 'First Name',
+                            sizeoflabel: 18,
+                            obscureText: false,
+                            valdator: customValidteFirstName,
+                          ),
+                          SizedBox(
+                            height: height(22),
+                          ),
+                          InputField(
+                            label: 'Last Name',
+                            sizeoflabel: 18,
+                            obscureText: false,
+                            valdator: customValidteLastName,
+                          ),
+                          SizedBox(
+                            height: height(29),
+                          ),
+                          InputField(
+                            label: 'Username',
+                            sizeoflabel: 18,
+                            obscureText: false,
+                            valdator: customValidteUserName,
+                          ),
+                          SizedBox(
+                            height: height(61),
+                          ),
+                          LogSignButton(
+                            label: 'Next',
+                            ontap: () {
+                              if (_fromKey.currentState!.validate()) {
+                                print('first sign up  ');
+                                Navigator.pushNamed(
+                                  context,
+                                  SecondSignUp.routeName,
+                                );
+                              }
+                            },
+                          ),
+                          SizedBox(
+                            height: height(1),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   const Align(
