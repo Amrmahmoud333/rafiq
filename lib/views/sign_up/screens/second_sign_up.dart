@@ -82,6 +82,7 @@ class SecondSignUp extends StatelessWidget {
                             sizeoflabel: 18,
                             obscureText: true,
                             valdator: customValidtePassword,
+                            maxLength: 65,
                             widget: InkWell(
                                 onTap: () {},
                                 child: const AutoSizeText(

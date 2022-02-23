@@ -62,6 +62,7 @@ class LoginScreen extends StatelessWidget {
                       padding: EdgeInsets.only(left: w(40)),
                       child: Form(
                         key: fromKey,
+                        // TODO autovalidateMode: ,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [

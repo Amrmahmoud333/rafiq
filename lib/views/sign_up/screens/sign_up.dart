@@ -12,10 +12,7 @@ class SignUp extends StatelessWidget {
   final _fromKey = GlobalKey<FormState>();
 
   String? customValidteFirstName(String? firstName) {
-    if (firstName!.isEmpty ||
-        firstName.length < 2 ||
-        firstName.length > 35 ||
-        firstName.contains(' ')) {
+    if (!(RegExp(r'[a-z A-Z]{2,35}').hasMatch(firstName!))) {
       // (RegExp(r'[a-zA-Z]{2,35}').hasMatch(firstName.toString()))
       return 'Enter a correct first name';
     } else {
