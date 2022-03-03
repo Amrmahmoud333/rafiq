@@ -12,8 +12,7 @@ class SignUp extends StatelessWidget {
   final _fromKey = GlobalKey<FormState>();
 
   String? customValidteFirstName(String? firstName) {
-    if (!(RegExp(r'[a-z A-Z]{2,35}').hasMatch(firstName!))) {
-      // (RegExp(r'[a-zA-Z]{2,35}').hasMatch(firstName.toString()))
+    if (!(RegExp(r'^[a-zA-Z]{2,35}$').hasMatch(firstName!))) {
       return 'Enter a correct first name';
     } else {
       return null;
@@ -21,23 +20,37 @@ class SignUp extends StatelessWidget {
   }
 
   String? customValidteLastName(String? lastName) {
-    if (lastName!.isEmpty ||
-        lastName.length < 2 ||
-        lastName.length > 35 ||
-        lastName.contains(' ')) {
+    if (!(RegExp(r'^[a-zA-Z]{2,35}$').hasMatch(lastName!))) {
       return 'Enter a correct last name';
     } else {
       return null;
     }
   }
 
+  bool? checkTwoSpace(String? userName) {
+    bool b = false;
+    for (int i = 0; i < userName!.length; i++) {
+      if (userName[i] == ' ' && userName[i + 1] == ' ') {
+        b == true;
+      }
+    }
+    return b;
+  }
+
   String? customValidteUserName(String? userName) {
-    if (userName!.isEmpty ||
-        userName.length < 3 ||
-        userName.length > 35 ||
-        !(userName[0].contains(RegExp(r'[A-Za-z]')))) {
-      return 'Enter a Correct user name';
-      // TODO doesn't have two consecutive ' ' && .
+    bool b = false;
+    // dont work
+    for (int i = 1; i < userName!.length; i++) {
+      if (userName[i] == ' ' && userName[i + 1] == ' ') {
+        b == true;
+      }
+    }
+    if (!(RegExp(r'^[a-z A-Z0-9]{2,35}$').hasMatch(userName))) {
+      if (b == true) {
+        return 'Enter a Correct user name';
+      } else {
+        return 'Enter a Correct user name';
+      }
     } else {
       return null;
     }
@@ -64,6 +77,10 @@ class SignUp extends StatelessWidget {
                 children: [
                   const Align(
                       alignment: Alignment.topCenter, child: TopCloud(false)),
+                  const Align(
+                    alignment: Alignment.bottomCenter,
+                    child: BottomCLoud(),
+                  ),
                   Positioned(
                     top: height(190),
                     child: Form(
@@ -125,10 +142,6 @@ class SignUp extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Align(
-                    alignment: Alignment.bottomCenter,
-                    child: BottomCLoud(),
-                  )
                 ],
               ),
             ),

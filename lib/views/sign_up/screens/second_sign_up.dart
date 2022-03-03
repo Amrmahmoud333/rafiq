@@ -53,6 +53,10 @@ class SecondSignUp extends StatelessWidget {
                     alignment: Alignment.topCenter,
                     child: TopCloud(false),
                   ),
+                  const Align(
+                    alignment: Alignment.bottomCenter,
+                    child: BottomCLoud(),
+                  ),
                   Positioned(
                     top: height(190),
                     child: Form(
@@ -127,10 +131,6 @@ class SecondSignUp extends StatelessWidget {
                         ],
                       ),
                     ),
-                  ),
-                  const Align(
-                    alignment: Alignment.bottomCenter,
-                    child: BottomCLoud(),
                   ),
                 ],
               ),

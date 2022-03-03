@@ -95,15 +95,13 @@ class LoginScreen extends StatelessWidget {
                               sizeoflabel: 18,
                               obscureText: true,
                               valdator: customValidtePasswrod,
-                              widget: Container(
-                                child: const AutoSizeText(
-                                  'Show',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontFamily: 'DavidLibre',
-                                    fontWeight: FontWeight.w500,
-                                    color: Color(0xFF5B618A),
-                                  ),
+                              widget: const AutoSizeText(
+                                'Show',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontFamily: 'DavidLibre',
+                                  fontWeight: FontWeight.w500,
+                                  color: Color(0xFF5B618A),
                                 ),
                               ),
                             ),

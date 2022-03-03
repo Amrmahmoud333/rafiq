@@ -21,6 +21,7 @@ class _ThridSignUpState extends State<ThirdSignUp> {
   String _genderChoose = '';
   bool _isGenderMale = false;
   bool _isGenderFemale = false;
+
   @override
   Widget build(BuildContext context) {
     double height(double n) {
