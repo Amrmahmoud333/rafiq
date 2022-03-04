@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
+import 'package:rafiq/data/data_API/dio_helper.dart';
 import 'package:rafiq/views/router/app_router.dart';
 
 void main() {
+  DioHelper.init();
   runApp(DevicePreview(enabled: false, builder: (context) => MyApp()));
 }
 

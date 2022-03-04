@@ -1,19 +1,34 @@
 class RegisterModel {
   bool? success;
-  RegistError? status;
+  RegistError? registError;
   Registsuccess? registsuccess;
-  RegisterModel({this.success, this.status ,this.registsuccess});
+  RegisterModel({this.success, this.registError, this.registsuccess});
 
+  // because there is different in second parameter in response
+  // can be 'error' that contan 4 arument
+  // or results that contan onlu massege
   RegisterModel.fromJson(Map<String, dynamic> json) {
-    success = json['success'] == true ?  : {};
-    status = json['error'] != null ? RegistError.fromJson(json['error']) : null;
+    success = json['success'];
+    if (success = json['success'] == true) {
+      if (json['results'] != null) {
+        Registsuccess.fromJson(json['results']);
+      } else {
+        json['results'] == null;
+      }
+    } else {
+      if (json['error'] != null) {
+        RegistError.fromJson(json['error']);
+      } else {
+        json['error'] == null;
+      }
+    }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = Map<String, dynamic>();
     data['success'] = success;
-    if (status != null) {
-      data['error'] = status!.toJson();
+    if (registError != null) {
+      data['error'] = registError!.toJson();
     }
     return data;
   }
