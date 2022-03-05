@@ -1,11 +1,15 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rafiq/data/models/register_model.dart';
+import 'package:rafiq/logic/cubit/register_cubit.dart';
 import 'package:rafiq/views/painter/bottom_cloud.dart';
 import 'package:rafiq/views/painter/top_cloud.dart';
 import 'package:rafiq/views/shared/log_sign_button.dart';
 import 'package:rafiq/views/sign_up/screens/widget/container_choose.dart';
 import 'package:rafiq/views/sign_up/screens/widget/country_list.dart';
 import 'package:rafiq/views/sign_up/widgets/horizontal_line.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ThirdSignUp extends StatefulWidget {
   const ThirdSignUp({Key? key}) : super(key: key);
@@ -24,6 +28,8 @@ class _ThridSignUpState extends State<ThirdSignUp> {
 
   @override
   Widget build(BuildContext context) {
+    AuthRequsetModel authRequsetModel = AuthRequsetModel();
+
     double height(double n) {
       return MediaQuery.of(context).size.height * (n / 851);
     }
@@ -208,7 +214,10 @@ class _ThridSignUpState extends State<ThirdSignUp> {
                         ),
                         LogSignButton(
                           label: 'Sign up',
-                          ontap: () {},
+                          ontap: () {
+                            BlocProvider.of<RegisterCubit>(context)
+                                .userRegister(authRequsetModel);
+                          },
                         ),
                         SizedBox(
                           height: height(1),

@@ -1,3 +1,5 @@
+import 'package:flutter/widgets.dart';
+
 class RegisterModel {
   bool? success;
   RegistError? registError;
@@ -9,6 +11,7 @@ class RegisterModel {
   // or results that contan onlu massege
   RegisterModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
+
     if (success = json['success'] == true) {
       if (json['results'] != null) {
         Registsuccess.fromJson(json['results']);
@@ -71,6 +74,46 @@ class RegistError {
     data['name'] = name;
     data['message'] = message;
     data['stack'] = stack;
+    return data;
+  }
+}
+
+class AuthRequsetModel {
+  String firstName = "amr";
+  String lastName = "amr";
+  String userName = 'SAmdsaldksad';
+  String email = "AmrMahmoudfdsf@gmail.com";
+  String password = "password";
+  String confirmPassword = "password";
+  String country = "Egypt";
+  String gender = 'male';
+  String dateOfBirth = "2002-12-09";
+
+  AuthRequsetModel();
+
+  AuthRequsetModel.fromJson(Map<String, dynamic> json) {
+    firstName = json['firstName'];
+    lastName = json['lastName'];
+    userName = json['userName'];
+    email = json['email'];
+    password = json['password'];
+    confirmPassword = json['confirmPassword'];
+    country = json['country'];
+    gender = json['gender'];
+    dateOfBirth = json['dateOfBirth'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['firstName'] = firstName;
+    data['lastName'] = lastName;
+    data['userName'] = userName;
+    data['email'] = email;
+    data['password'] = password;
+    data['confirmPassword'] = confirmPassword;
+    data['country'] = country;
+    data['gender'] = gender;
+    data['dateOfBirth'] = dateOfBirth;
     return data;
   }
 }

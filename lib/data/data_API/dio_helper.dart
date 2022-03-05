@@ -15,7 +15,7 @@ class DioHelper {
 
   static Future<Response> getData({
     @required String? path,
-    @required Map<String, dynamic>? query,
+    Map<String, dynamic>? query,
   }) async {
     return await dio.get(
       path!,
@@ -24,6 +24,15 @@ class DioHelper {
   }
 
   
+  static Future<Response> postData({
+    @required String? url,
+    @required Map<String, dynamic>? data,
+  }) async {
+    return await dio.post(
+      url!,
+      data: data,
+    );
+  }
 }
 
 
