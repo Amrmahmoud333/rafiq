@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/data/models/register_model.dart';
-import 'package:rafiq/logic/cubit/register_cubit.dart';
+import 'package:rafiq/logic/cubit/register_cubit/register_cubit.dart';
 import 'package:rafiq/views/painter/bottom_cloud.dart';
 import 'package:rafiq/views/painter/top_cloud.dart';
 import 'package:rafiq/views/shared/input_field.dart';
@@ -61,12 +61,12 @@ class SignUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AuthRequsetModel authRequsetModel = AuthRequsetModel(
+    RequsetRegisterModel authRequsetModel = RequsetRegisterModel(
       firstName: "afgdfmdr",
       lastName: "afgdfdmr",
-      userName: "zzzdddzzdzz",
-      email: "zzdzdddzz@gmail.com",
-      password: "padssword",
+      userName: "zzzdfdsdddzzdzz",
+      email: "zzdzdsfdddzz@gmail.com",
+      password: "password",
       confirmPassword: "password",
       country: "Egypt",
       gender: "Male",

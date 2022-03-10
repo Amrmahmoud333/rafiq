@@ -71,7 +71,7 @@ class Error {
   }
 }
 
-class AuthRequsetModel {
+class RequsetRegisterModel {
   String? firstName;
   String? lastName;
   String? userName;
@@ -82,7 +82,7 @@ class AuthRequsetModel {
   String? gender;
   String? dateOfBirth;
 
-  AuthRequsetModel({
+  RequsetRegisterModel({
     @required this.firstName,
     @required this.lastName,
     @required this.userName,
@@ -94,7 +94,7 @@ class AuthRequsetModel {
     @required this.dateOfBirth,
   });
 
-  AuthRequsetModel.fromJson(Map<String, dynamic> json) {
+  RequsetRegisterModel.fromJson(Map<String, dynamic> json) {
     firstName = json['firstName'];
     lastName = json['lastName'];
     userName = json['userName'];

@@ -1,17 +1,17 @@
+import 'package:rafiq/core/constants/url.dart';
 import 'package:rafiq/data/data_API/dio_helper.dart';
 import 'package:rafiq/data/models/register_model.dart';
-import 'package:rafiq/data/repositories/register_repo.dart';
+import 'package:rafiq/data/repositories/authentication/register_repo.dart';
 
-class RegisterAPI extends AuthRepo {
+class RegisterAPI extends RegisterRepo {
   @override
   Future<RegisterModel> registerRepo(
-    AuthRequsetModel authRequsetModel,
+    RequsetRegisterModel requsetRegisterModel,
   ) async {
     final response = await DioHelper.postData(
-      url: 'https://travel-with-rafiq.herokuapp.com/api/v1/auth/register/',
-      data: authRequsetModel.toJson(),
+      url: '$URL/$REGISTER',
+      data: requsetRegisterModel.toJson(),
     );
-    //print(RegisterModel.fromJson(response.data).success);
     return RegisterModel.fromJson(response.data);
   }
 }
