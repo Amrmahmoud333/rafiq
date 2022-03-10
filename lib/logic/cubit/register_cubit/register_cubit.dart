@@ -26,4 +26,33 @@ class RegisterCubit extends Cubit<RegisterState> {
       emit(RegisterErrorState());
     }
   }
+
+  // manage register
+  String? firstName,
+      lastName,
+      userName,
+      email,
+      password,
+      confirmPassword,
+      country,
+      gender,
+      dateOfBirth;
+
+  void setFirstSignUp(String firstName, String lastName, String userName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.userName = userName;
+  }
+
+  void setSecondSignUp(String email, String password, String confirmPassword) {
+    this.password = password;
+    this.confirmPassword = confirmPassword;
+    this.email = email;
+  }
+
+  void setThirdSignUp(String country, String dateOfBirth, String gender) {
+    this.country = country;
+    this.dateOfBirth = dateOfBirth;
+    this.gender = gender;
+  }
 }

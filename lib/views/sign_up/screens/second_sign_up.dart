@@ -1,5 +1,9 @@
+import 'dart:html';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rafiq/logic/cubit/register_cubit/register_cubit.dart';
 import 'package:rafiq/views/painter/bottom_cloud.dart';
 import 'package:rafiq/views/painter/top_cloud.dart';
 import 'package:rafiq/views/shared/input_field.dart';
@@ -11,7 +15,10 @@ class SecondSignUp extends StatelessWidget {
   SecondSignUp({Key? key}) : super(key: key);
   static const routeName = '/second_sign_up';
   final _formKey = GlobalKey<FormState>();
-
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+  final TextEditingController emailController = TextEditingController();
   String? customValidteEmail(String? email) {
     if (!(RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
@@ -76,6 +83,7 @@ class SecondSignUp extends StatelessWidget {
                             label: 'Email',
                             sizeoflabel: 18,
                             obscureText: false,
+                            controller: emailController,
                             valdator: customValidteEmail,
                           ),
                           SizedBox(
@@ -86,7 +94,7 @@ class SecondSignUp extends StatelessWidget {
                             sizeoflabel: 18,
                             obscureText: true,
                             valdator: customValidtePassword,
-                            maxLength: 65,
+                            controller: passwordController,
                             widget: InkWell(
                                 onTap: () {},
                                 child: const AutoSizeText(
@@ -103,6 +111,7 @@ class SecondSignUp extends StatelessWidget {
                             sizeoflabel: 18,
                             obscureText: true,
                             valdator: customValidtePassword,
+                            controller: confirmPasswordController,
                             widget: InkWell(
                                 onTap: () {
                                   // TODO change obscureText
@@ -120,6 +129,11 @@ class SecondSignUp extends StatelessWidget {
                             label: 'Next',
                             ontap: () {
                               if (_formKey.currentState!.validate()) {
+                                BlocProvider.of<RegisterCubit>(context)
+                                    .setSecondSignUp(
+                                        emailController.text,
+                                        passwordController.text,
+                                        confirmPasswordController.text);
                                 Navigator.pushNamed(
                                     context, ThirdSignUp.routeName);
                               }

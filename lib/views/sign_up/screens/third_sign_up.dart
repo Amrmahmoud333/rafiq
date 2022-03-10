@@ -226,7 +226,20 @@ class _ThridSignUpState extends State<ThirdSignUp> {
                           label: 'Sign up',
                           ontap: () {
                             BlocProvider.of<RegisterCubit>(context)
-                                .userRegister(authRequsetModel);
+                                .userRegister(RequsetRegisterModel(
+                              firstName:
+                                  context.read<RegisterCubit>().firstName,
+                              lastName: context.read<RegisterCubit>().lastName,
+                              userName: context.read<RegisterCubit>().userName,
+                              email: context.read<RegisterCubit>().email,
+                              password: context.read<RegisterCubit>().password,
+                              confirmPassword:
+                                  context.read<RegisterCubit>().confirmPassword,
+                              country: countryValue,
+                              gender: _genderChoose,
+                              dateOfBirth:
+                                  '${_dateTime.day}/${_dateTime.month}/${_dateTime.year}',
+                            ));
                           },
                         ),
                         SizedBox(

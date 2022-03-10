@@ -12,7 +12,6 @@ class InputField extends StatelessWidget {
     required this.sizeoflabel,
     this.keyboardType,
     this.valdator,
-    this.maxLength,
     required this.obscureText,
   }) : super(key: key);
 
@@ -23,7 +22,7 @@ class InputField extends StatelessWidget {
   final TextInputType? keyboardType;
   final bool obscureText;
   final FormFieldValidator<String>? valdator;
-  final int? maxLength;
+
   @override
   Widget build(BuildContext context) {
     double height(double n) {
@@ -70,7 +69,6 @@ class InputField extends StatelessWidget {
                   keyboardType: keyboardType,
                   controller: controller,
                   validator: valdator,
-                  maxLength: maxLength,
                   decoration: const InputDecoration(
                     enabledBorder: InputBorder.none,
                   ),

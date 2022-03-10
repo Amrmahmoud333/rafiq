@@ -16,6 +16,9 @@ class SignUp extends StatelessWidget {
   SignUp({Key? key}) : super(key: key);
   static const routeName = '/sign_up';
   final _fromKey = GlobalKey<FormState>();
+  final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController lastNameController = TextEditingController();
+  final TextEditingController userNameController = TextEditingController();
 
   String? customValidteFirstName(String? firstName) {
     if (!(RegExp(r'^[a-zA-Z]{2,35}$').hasMatch(firstName!))) {
@@ -64,18 +67,6 @@ class SignUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    RequsetRegisterModel authRequsetModel = RequsetRegisterModel(
-      firstName: "afgdfmdr",
-      lastName: "afgdfdmr",
-      userName: "amrma",
-      email: "amr@gmail.com",
-      password: "password",
-      confirmPassword: "password",
-      country: "Egypt",
-      gender: "Male",
-      dateOfBirth: "2000-02-01",
-    );
-
     double height(double n) {
       return MediaQuery.of(context).size.height * (n / 851);
     }
@@ -118,6 +109,7 @@ class SignUp extends StatelessWidget {
                             label: 'First Name',
                             sizeoflabel: 18,
                             obscureText: false,
+                            controller: firstNameController,
                             valdator: customValidteFirstName,
                           ),
                           SizedBox(
@@ -127,6 +119,7 @@ class SignUp extends StatelessWidget {
                             label: 'Last Name',
                             sizeoflabel: 18,
                             obscureText: false,
+                            controller: lastNameController,
                             valdator: customValidteLastName,
                           ),
                           SizedBox(
@@ -136,6 +129,7 @@ class SignUp extends StatelessWidget {
                             label: 'Username',
                             sizeoflabel: 18,
                             obscureText: false,
+                            controller: userNameController,
                             valdator: customValidteUserName,
                           ),
                           SizedBox(
@@ -146,16 +140,14 @@ class SignUp extends StatelessWidget {
                             ontap: () {
                               if (_fromKey.currentState!.validate()) {
                                 BlocProvider.of<RegisterCubit>(context)
-                                    .userRegister(authRequsetModel);
-                                BlocProvider.of<LoginCubit>(context).login(
-                                    RequestLoginModel(
-                                        userName: 'amrma',
-                                        password: 'password'));
-                                print(ACCESSTOKEN);
-                                /*  Navigator.pushNamed(
+                                    .setFirstSignUp(
+                                        firstNameController.text,
+                                        lastNameController.text,
+                                        userNameController.text);
+                                Navigator.pushNamed(
                                   context,
                                   SecondSignUp.routeName,
-                                );*/
+                                );
                               }
                             },
                           ),

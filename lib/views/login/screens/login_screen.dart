@@ -17,6 +17,7 @@ class LoginScreen extends StatelessWidget {
   final fromKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
   String? customValidteEmail(String? email) {
     if (email!.isEmpty || email.length < 2 || email.length >= 35) {
       return 'Enter a Correct Email or User Name';
