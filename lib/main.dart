@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
   final AppRouter appRouter = AppRouter();
   @override
   Widget build(BuildContext context) {
+    // make an instence of RegisterCubit in the root widget
     return BlocProvider(
       create: (context) => RegisterCubit(authRepo: RegisterAPI()),
       child: MaterialApp(

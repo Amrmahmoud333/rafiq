@@ -23,7 +23,6 @@ class DioHelper {
     );
   }
 
-  
   static Future<Response> postData({
     @required String? url,
     @required Map<String, dynamic>? data,
@@ -34,5 +33,3 @@ class DioHelper {
     );
   }
 }
-
-

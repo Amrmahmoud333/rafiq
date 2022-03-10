@@ -28,7 +28,17 @@ class _ThridSignUpState extends State<ThirdSignUp> {
 
   @override
   Widget build(BuildContext context) {
-    AuthRequsetModel authRequsetModel = AuthRequsetModel();
+    AuthRequsetModel authRequsetModel = AuthRequsetModel(
+      firstName: "amdr",
+      lastName: "admr",
+      userName: "sada0dddddddsdsad",
+      email: "amr190000@gmail.com",
+      password: "password",
+      confirmPassword: "password",
+      country: "Egypt",
+      gender: "Male",
+      dateOfBirth: "2000-02-01",
+    );
 
     double height(double n) {
       return MediaQuery.of(context).size.height * (n / 851);
@@ -47,7 +57,7 @@ class _ThridSignUpState extends State<ThirdSignUp> {
               height: height(851),
               child: Stack(
                 children: [
-                  Align(
+                  const Align(
                     alignment: Alignment.topCenter,
                     child: TopCloud(false),
                   ),

@@ -8,7 +8,7 @@ class RegisterAPI extends AuthRepo {
     AuthRequsetModel authRequsetModel,
   ) async {
     final response = await DioHelper.postData(
-      url: 'http://localhost:3000/api/v1/auth/register/',
+      url: 'https://travel-with-rafiq.herokuapp.com/api/v1/auth/register/',
       data: authRequsetModel.toJson(),
     );
     //print(RegisterModel.fromJson(response.data).success);
