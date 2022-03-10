@@ -100,13 +100,13 @@ class RequestLoginModel {
   RequestLoginModel({this.userName, this.password});
 
   RequestLoginModel.fromJson(Map<String, dynamic> json) {
-    userName = json['userName'];
+    userName = json['emailOrUserName'];
     password = json['password'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['userName'] = userName;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['emailOrUserName'] = userName;
     data['password'] = password;
     return data;
   }

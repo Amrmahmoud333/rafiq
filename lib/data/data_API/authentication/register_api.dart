@@ -6,12 +6,9 @@ import 'package:rafiq/data/repositories/authentication/register_repo.dart';
 class RegisterAPI extends RegisterRepo {
   @override
   Future<RegisterModel> registerRepo(
-    RequsetRegisterModel requsetRegisterModel,
-  ) async {
+      RequsetRegisterModel requsetRegisterModel) async {
     final response = await DioHelper.postData(
-      url: '$URL/$REGISTER',
-      data: requsetRegisterModel.toJson(),
-    );
+        url: '$URL/$REGISTER', data: requsetRegisterModel.toJson());
     return RegisterModel.fromJson(response.data);
   }
 }

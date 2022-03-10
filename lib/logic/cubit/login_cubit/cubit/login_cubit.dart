@@ -5,7 +5,7 @@ import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/data/models/login_model.dart';
 import 'package:rafiq/data/repositories/authentication/login_repo.dart';
 
-part 'login_cubit_state.dart';
+part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginRepo loginRepo;

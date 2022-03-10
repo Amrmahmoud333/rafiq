@@ -5,7 +5,7 @@ import 'package:rafiq/data/data_API/authentication/login_API.dart';
 import 'package:rafiq/data/data_API/dio_helper.dart';
 import 'package:rafiq/data/data_API/authentication/register_api.dart';
 import 'package:rafiq/data/repositories/authentication/register_repo.dart';
-import 'package:rafiq/logic/cubit/login_cubit/cubit/login_cubit_cubit.dart';
+import 'package:rafiq/logic/cubit/login_cubit/cubit/login_cubit.dart';
 import 'package:rafiq/logic/cubit/register_cubit/register_cubit.dart';
 import 'package:rafiq/views/router/app_router.dart';
 

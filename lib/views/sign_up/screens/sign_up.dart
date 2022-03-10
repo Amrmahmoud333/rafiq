@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rafiq/core/constants/authentication_const.dart';
+import 'package:rafiq/data/models/login_model.dart';
 import 'package:rafiq/data/models/register_model.dart';
+import 'package:rafiq/logic/cubit/login_cubit/cubit/login_cubit.dart';
 import 'package:rafiq/logic/cubit/register_cubit/register_cubit.dart';
 import 'package:rafiq/views/painter/bottom_cloud.dart';
 import 'package:rafiq/views/painter/top_cloud.dart';
@@ -64,8 +67,8 @@ class SignUp extends StatelessWidget {
     RequsetRegisterModel authRequsetModel = RequsetRegisterModel(
       firstName: "afgdfmdr",
       lastName: "afgdfdmr",
-      userName: "zzzdfdsdddzzdzz",
-      email: "zzdzdsfdddzz@gmail.com",
+      userName: "amrma",
+      email: "amr@gmail.com",
       password: "password",
       confirmPassword: "password",
       country: "Egypt",
@@ -144,7 +147,11 @@ class SignUp extends StatelessWidget {
                               if (_fromKey.currentState!.validate()) {
                                 BlocProvider.of<RegisterCubit>(context)
                                     .userRegister(authRequsetModel);
-
+                                BlocProvider.of<LoginCubit>(context).login(
+                                    RequestLoginModel(
+                                        userName: 'amrma',
+                                        password: 'password'));
+                                print(ACCESSTOKEN);
                                 /*  Navigator.pushNamed(
                                   context,
                                   SecondSignUp.routeName,
