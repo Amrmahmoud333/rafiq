@@ -27,16 +27,8 @@ class RegisterCubit extends Cubit<RegisterState> {
     }
   }
 
-  // manage register
-  String? firstName,
-      lastName,
-      userName,
-      email,
-      password,
-      confirmPassword,
-      country,
-      gender,
-      dateOfBirth;
+  // manage register screens
+  String? firstName, lastName, userName, email, password, confirmPassword;
 
   void setFirstSignUp(String firstName, String lastName, String userName) {
     this.firstName = firstName;
@@ -50,9 +42,34 @@ class RegisterCubit extends Cubit<RegisterState> {
     this.email = email;
   }
 
-  void setThirdSignUp(String country, String dateOfBirth, String gender) {
-    this.country = country;
-    this.dateOfBirth = dateOfBirth;
-    this.gender = gender;
+  String? countryValue;
+
+  void changeCountryValue(String newCountryValue) {
+    countryValue = newCountryValue;
+    emit(ChangeCountryValueState());
+  }
+
+  String genderChoose = '';
+  bool isMale = false, isFemale = false;
+
+  void changeGenderValue(String gender) {
+    if (gender == 'Male') {
+      isMale = !isMale;
+      isFemale = false;
+      genderChoose = 'Male';
+    } else {
+      isFemale = !isFemale;
+      isMale = false;
+      genderChoose = 'Female';
+    }
+    emit(ChangeGenderValueState());
+  }
+
+  late DateTime dateTime = DateTime.now();
+
+  void chandeDateTime(DateTime newDateTime) {
+    dateTime = newDateTime;
+
+    emit(ChandeDateTimeState());
   }
 }

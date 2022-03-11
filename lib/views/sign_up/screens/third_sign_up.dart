@@ -6,40 +6,17 @@ import 'package:rafiq/logic/cubit/register_cubit/register_cubit.dart';
 import 'package:rafiq/views/painter/bottom_cloud.dart';
 import 'package:rafiq/views/painter/top_cloud.dart';
 import 'package:rafiq/views/shared/log_sign_button.dart';
-import 'package:rafiq/views/sign_up/screens/widget/container_choose.dart';
-import 'package:rafiq/views/sign_up/screens/widget/country_list.dart';
-import 'package:rafiq/views/sign_up/widgets/horizontal_line.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rafiq/views/sign_up/widget/container_choose.dart';
+import 'package:rafiq/views/sign_up/const/country_list.dart';
+import 'package:rafiq/views/sign_up/widget/horizontal_line.dart';
 
-class ThirdSignUp extends StatefulWidget {
+class ThirdSignUp extends StatelessWidget {
   const ThirdSignUp({Key? key}) : super(key: key);
   static const routeName = '/third_sign_up';
 
   @override
-  State<ThirdSignUp> createState() => _ThridSignUpState();
-}
-
-class _ThridSignUpState extends State<ThirdSignUp> {
-  var countryValue;
-  late DateTime _dateTime = DateTime.now();
-  String _genderChoose = '';
-  bool _isGenderMale = false;
-  bool _isGenderFemale = false;
-
-  @override
   Widget build(BuildContext context) {
-    RequsetRegisterModel authRequsetModel = RequsetRegisterModel(
-      firstName: "amdr",
-      lastName: "admr",
-      userName: "sada0dddddddsdsad",
-      email: "amr190000@gmail.com",
-      password: "password",
-      confirmPassword: "password",
-      country: "Egypt",
-      gender: "Male",
-      dateOfBirth: "2000-02-01",
-    );
-
+    var cubit = context.read<RegisterCubit>();
     double height(double n) {
       return MediaQuery.of(context).size.height * (n / 851);
     }
@@ -60,6 +37,10 @@ class _ThridSignUpState extends State<ThirdSignUp> {
                   const Align(
                     alignment: Alignment.topCenter,
                     child: TopCloud(false),
+                  ),
+                  const Align(
+                    alignment: Alignment.bottomCenter,
+                    child: BottomCLoud(),
                   ),
                   Positioned(
                     top: height(190),
@@ -99,17 +80,23 @@ class _ThridSignUpState extends State<ThirdSignUp> {
                                   ),
                                 ),
                               ),
-                              child: DropdownButtonHideUnderline(
-                                child: DropdownButton<String>(
-                                  value: countryValue,
-                                  isExpanded: true,
-                                  iconSize: height(26),
-                                  items: countries.map(buildMenuItem).toList(),
-                                  onChanged: (value) {
-                                    setState(() {
-                                      countryValue = value;
-                                    });
-                                  },
+                              child: BlocBuilder<RegisterCubit, RegisterState>(
+                                builder: (context, state) =>
+                                    DropdownButtonHideUnderline(
+                                  child: DropdownButton<String>(
+                                    value: context
+                                        .read<RegisterCubit>()
+                                        .countryValue,
+                                    isExpanded: true,
+                                    iconSize: height(26),
+                                    items:
+                                        countries.map(buildMenuItem).toList(),
+                                    onChanged: (value) {
+                                      context
+                                          .read<RegisterCubit>()
+                                          .changeCountryValue(value!);
+                                    },
+                                  ),
                                 ),
                               ),
                             ),
@@ -133,14 +120,12 @@ class _ThridSignUpState extends State<ThirdSignUp> {
                               onTap: () async {
                                 DateTime? newDateTime = await showDatePicker(
                                   context: context,
-                                  initialDate: _dateTime,
+                                  initialDate: cubit.dateTime,
                                   firstDate: DateTime(1900),
                                   lastDate: DateTime(2100),
                                 );
                                 if (newDateTime == null) return;
-                                setState(() {
-                                  _dateTime = newDateTime;
-                                });
+                                cubit.chandeDateTime(newDateTime);
                               },
                               child: Container(
                                 height: height(38),
@@ -162,9 +147,12 @@ class _ThridSignUpState extends State<ThirdSignUp> {
                                     top: height(8),
                                     left: width(8),
                                   ),
-                                  child: AutoSizeText(
-                                    '${_dateTime.day}/${_dateTime.month}/${_dateTime.year}',
-                                    style: const TextStyle(fontSize: 16),
+                                  child:
+                                      BlocBuilder<RegisterCubit, RegisterState>(
+                                    builder: (context, state) => AutoSizeText(
+                                      '${cubit.dateTime.day}/${cubit.dateTime.month}/${cubit.dateTime.year}',
+                                      style: const TextStyle(fontSize: 16),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -187,34 +175,35 @@ class _ThridSignUpState extends State<ThirdSignUp> {
                               SizedBox(
                                 height: height(10),
                               ),
-                              Row(
-                                children: [
-                                  InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        _genderChoose = 'Male';
-                                        _isGenderMale = !_isGenderMale;
-                                        _isGenderFemale = false;
-                                      });
-                                    },
-                                    child: ContainerChoose('Male', width(94),
-                                        height(33), _isGenderMale),
-                                  ),
-                                  SizedBox(
-                                    width: width(40),
-                                  ),
-                                  InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        _genderChoose = 'Female';
-                                        _isGenderFemale = !_isGenderFemale;
-                                        _isGenderMale = false;
-                                      });
-                                    },
-                                    child: ContainerChoose('Female', width(94),
-                                        height(33), _isGenderFemale),
-                                  ),
-                                ],
+                              BlocBuilder<RegisterCubit, RegisterState>(
+                                builder: (context, state) => Row(
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        context
+                                            .read<RegisterCubit>()
+                                            .changeGenderValue('Male');
+                                      },
+                                      child: ContainerChoose('Male', width(94),
+                                          height(33), cubit.isMale),
+                                    ),
+                                    SizedBox(
+                                      width: width(40),
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        context
+                                            .read<RegisterCubit>()
+                                            .changeGenderValue('Female');
+                                      },
+                                      child: ContainerChoose(
+                                          'Female',
+                                          width(94),
+                                          height(33),
+                                          cubit.isFemale),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
@@ -227,18 +216,16 @@ class _ThridSignUpState extends State<ThirdSignUp> {
                           ontap: () {
                             BlocProvider.of<RegisterCubit>(context)
                                 .userRegister(RequsetRegisterModel(
-                              firstName:
-                                  context.read<RegisterCubit>().firstName,
-                              lastName: context.read<RegisterCubit>().lastName,
-                              userName: context.read<RegisterCubit>().userName,
-                              email: context.read<RegisterCubit>().email,
-                              password: context.read<RegisterCubit>().password,
-                              confirmPassword:
-                                  context.read<RegisterCubit>().confirmPassword,
-                              country: countryValue,
-                              gender: _genderChoose,
+                              firstName: cubit.firstName,
+                              lastName: cubit.lastName,
+                              userName: cubit.userName,
+                              email: cubit.email,
+                              password: cubit.password,
+                              confirmPassword: cubit.confirmPassword,
+                              country: cubit.countryValue,
+                              gender: cubit.genderChoose,
                               dateOfBirth:
-                                  '${_dateTime.day}/${_dateTime.month}/${_dateTime.year}',
+                                  '${cubit.dateTime.day}/${cubit.dateTime.month}/${cubit.dateTime.year}',
                             ));
                           },
                         ),
@@ -247,10 +234,6 @@ class _ThridSignUpState extends State<ThirdSignUp> {
                         ),
                       ],
                     ),
-                  ),
-                  const Align(
-                    alignment: Alignment.bottomCenter,
-                    child: BottomCLoud(),
                   ),
                 ],
               ),

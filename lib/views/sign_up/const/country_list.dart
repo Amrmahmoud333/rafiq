@@ -1,4 +1,4 @@
-List<String> countries = [
+const List<String> countries = [
   'Afghanistan',
   'Albania',
   'Algeria',
