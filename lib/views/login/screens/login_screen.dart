@@ -14,6 +14,7 @@ import 'package:rafiq/views/shared/log_sign_button.dart';
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
   static const routeName = '/login_screen';
+
   final fromKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -98,19 +99,29 @@ class LoginScreen extends StatelessWidget {
                               valdator: customValidteEmail,
                             ),
                             SizedBox(height: h(34)),
-                            InputField(
-                              label: 'Password',
-                              sizeoflabel: 18,
-                              obscureText: true,
-                              valdator: customValidtePasswrod,
-                              controller: passwordController,
-                              widget: const AutoSizeText(
-                                'Show',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontFamily: 'DavidLibre',
-                                  fontWeight: FontWeight.w500,
-                                  color: Color(0xFF5B618A),
+                            BlocBuilder<LoginCubit, LoginState>(
+                              builder: (context, state) => InputField(
+                                label: 'Password',
+                                sizeoflabel: 18,
+                                obscureText:
+                                    context.read<LoginCubit>().ObscureText,
+                                valdator: customValidtePasswrod,
+                                controller: passwordController,
+                                widget: InkWell(
+                                  onTap: () {
+                                    context
+                                        .read<LoginCubit>()
+                                        .ChangeObscureText();
+                                  },
+                                  child: const AutoSizeText(
+                                    'Show',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontFamily: 'DavidLibre',
+                                      fontWeight: FontWeight.w500,
+                                      color: Color(0xFF5B618A),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),

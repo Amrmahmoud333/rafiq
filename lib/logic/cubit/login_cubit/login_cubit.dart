@@ -25,4 +25,12 @@ class LoginCubit extends Cubit<LoginState> {
       emit(LoginErrorState());
     }
   }
+
+  // working with UI
+
+  bool ObscureText = true;
+  void ChangeObscureText() {
+    ObscureText = !ObscureText;
+    emit(ChangeObscureTextState());
+  }
 }
