@@ -42,6 +42,18 @@ class RegisterCubit extends Cubit<RegisterState> {
     this.email = email;
   }
 
+  bool firstObscureText = true;
+  void changeFirstObscureText() {
+    firstObscureText = !firstObscureText;
+    emit(ChangeObscureTextState());
+  }
+
+  bool secondObscureText = true;
+  void changeSecondObscureText() {
+    secondObscureText = !secondObscureText;
+    emit(ChangeSecondObscureTextState());
+  }
+
   String? countryValue;
 
   void changeCountryValue(String newCountryValue) {

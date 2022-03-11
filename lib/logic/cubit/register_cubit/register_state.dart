@@ -9,6 +9,10 @@ class RegisterSuccessState extends RegisterState {}
 
 class RegisterErrorState extends RegisterState {}
 
+class ChangeObscureTextState extends RegisterState {}
+
+class ChangeSecondObscureTextState extends RegisterState {}
+
 class ChangeCountryValueState extends RegisterState {}
 
 class ChangeGenderValueState extends RegisterState {}

@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -89,39 +87,55 @@ class SecondSignUp extends StatelessWidget {
                           SizedBox(
                             height: height(22),
                           ),
-                          InputField(
-                            label: 'Password',
-                            sizeoflabel: 18,
-                            obscureText: true,
-                            valdator: customValidtePassword,
-                            controller: passwordController,
-                            widget: InkWell(
-                                onTap: () {},
-                                child: const AutoSizeText(
-                                  'Show',
-                                  style: TextStyle(
-                                      fontSize: 16, color: Color(0xff5B618A)),
-                                )),
-                          ),
+                          BlocBuilder<RegisterCubit, RegisterState>(
+                              builder: (context, state) {
+                            return InputField(
+                              label: 'Password',
+                              sizeoflabel: 18,
+                              obscureText: context
+                                  .read<RegisterCubit>()
+                                  .firstObscureText,
+                              valdator: customValidtePassword,
+                              controller: passwordController,
+                              widget: InkWell(
+                                  onTap: () {
+                                    context
+                                        .read<RegisterCubit>()
+                                        .changeFirstObscureText();
+                                  },
+                                  child: const AutoSizeText(
+                                    'Show',
+                                    style: TextStyle(
+                                        fontSize: 16, color: Color(0xff5B618A)),
+                                  )),
+                            );
+                          }),
                           SizedBox(
                             height: height(29),
                           ),
-                          InputField(
-                            label: 'Confirm Password',
-                            sizeoflabel: 18,
-                            obscureText: true,
-                            valdator: customValidtePassword,
-                            controller: confirmPasswordController,
-                            widget: InkWell(
-                                onTap: () {
-                                  // TODO change obscureText
-                                },
-                                child: const AutoSizeText(
-                                  'Show',
-                                  style: TextStyle(
-                                      fontSize: 16, color: Color(0xff5B618A)),
-                                )),
-                          ),
+                          BlocBuilder<RegisterCubit, RegisterState>(
+                              builder: (context, state) {
+                            return InputField(
+                              label: 'Confirm Password',
+                              sizeoflabel: 18,
+                              obscureText: context
+                                  .read<RegisterCubit>()
+                                  .secondObscureText,
+                              valdator: customValidtePassword,
+                              controller: confirmPasswordController,
+                              widget: InkWell(
+                                  onTap: () {
+                                    context
+                                        .read<RegisterCubit>()
+                                        .changeSecondObscureText();
+                                  },
+                                  child: const AutoSizeText(
+                                    'Show',
+                                    style: TextStyle(
+                                        fontSize: 16, color: Color(0xff5B618A)),
+                                  )),
+                            );
+                          }),
                           SizedBox(
                             height: height(61),
                           ),

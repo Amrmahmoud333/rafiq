@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/data/models/login_model.dart';
-import 'package:rafiq/logic/cubit/login_cubit/cubit/login_cubit.dart';
+import 'package:rafiq/logic/cubit/login_cubit/login_cubit.dart';
 import 'package:rafiq/views/Forget%20password/screens/first_forget_password.dart';
 import 'package:rafiq/views/login/screens/widgets/custom_check_box.dart';
 import 'package:rafiq/views/painter/bottom_cloud.dart';
@@ -18,8 +18,7 @@ class LoginScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-
- // validate functions
+  // validate functions
   String? customValidteEmail(String? email) {
     if (email!.isEmpty || email.length < 2 || email.length >= 35) {
       return 'Enter a Correct Email or User Name';
@@ -35,7 +34,6 @@ class LoginScreen extends StatelessWidget {
       return null;
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
