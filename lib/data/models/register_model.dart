@@ -2,66 +2,59 @@ import 'package:flutter/widgets.dart';
 
 class RegisterModel {
   bool? success;
-  RegistError? registError;
-  Registsuccess? registsuccess;
-  RegisterModel({this.success, this.registError, this.registsuccess});
+  Results? results;
+  Error? error;
 
-  // because there is different in second parameter in response
-  // can be 'error' that contan 4 arument
-  // or results that contan onlu massege
+  RegisterModel({this.success, this.results, this.error});
+
   RegisterModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
-
-    if (success = json['success'] == true) {
-      if (json['results'] != null) {
-        Registsuccess.fromJson(json['results']);
-      } else {
-        json['results'] == null;
-      }
-    } else {
-      if (json['error'] != null) {
-        RegistError.fromJson(json['error']);
-      } else {
-        json['error'] == null;
-      }
+    if (json['success'] == false) {
+      print('register model');
     }
+    results =
+        json['results'] != null ? new Results.fromJson(json['results']) : null;
+    error = json['error'] != null ? new Error.fromJson(json['error']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['success'] = success;
-    if (registError != null) {
-      data['error'] = registError!.toJson();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['success'] = this.success;
+    if (this.results != null) {
+      data['results'] = this.results!.toJson();
+    }
+    if (this.error != null) {
+      data['error'] = this.error!.toJson();
     }
     return data;
   }
 }
 
-class Registsuccess {
+class Results {
   String? message;
 
-  Registsuccess({this.message});
+  Results({this.message});
 
-  Registsuccess.fromJson(Map<String, dynamic> json) {
+  Results.fromJson(Map<String, dynamic> json) {
     message = json['message'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['message'] = message;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['message'] = this.message;
     return data;
   }
 }
 
-class RegistError {
+class Error {
   int? statusCode;
   String? name;
   String? message;
   String? stack;
 
-  RegistError({this.statusCode, this.name, this.message, this.stack});
+  Error({this.statusCode, this.name, this.message, this.stack});
 
-  RegistError.fromJson(Map<String, dynamic> json) {
+  Error.fromJson(Map<String, dynamic> json) {
     statusCode = json['statusCode'];
     name = json['name'];
     message = json['message'];
@@ -69,29 +62,39 @@ class RegistError {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['statusCode'] = statusCode;
-    data['name'] = name;
-    data['message'] = message;
-    data['stack'] = stack;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['statusCode'] = this.statusCode;
+    data['name'] = this.name;
+    data['message'] = this.message;
+    data['stack'] = this.stack;
     return data;
   }
 }
 
-class AuthRequsetModel {
-  String firstName = "amr";
-  String lastName = "amr";
-  String userName = 'SAmdsaldksad';
-  String email = "AmrMahmoudfdsf@gmail.com";
-  String password = "password";
-  String confirmPassword = "password";
-  String country = "Egypt";
-  String gender = 'male';
-  String dateOfBirth = "2002-12-09";
+class RequsetRegisterModel {
+  String? firstName;
+  String? lastName;
+  String? userName;
+  String? email;
+  String? password;
+  String? confirmPassword;
+  String? country;
+  String? gender;
+  String? dateOfBirth;
 
-  AuthRequsetModel();
+  RequsetRegisterModel({
+    @required this.firstName,
+    @required this.lastName,
+    @required this.userName,
+    @required this.email,
+    @required this.password,
+    @required this.confirmPassword,
+    @required this.country,
+    @required this.gender,
+    @required this.dateOfBirth,
+  });
 
-  AuthRequsetModel.fromJson(Map<String, dynamic> json) {
+  RequsetRegisterModel.fromJson(Map<String, dynamic> json) {
     firstName = json['firstName'];
     lastName = json['lastName'];
     userName = json['userName'];

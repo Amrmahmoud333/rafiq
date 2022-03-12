@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rafiq/logic/cubit/register_cubit/register_cubit.dart';
 import 'package:rafiq/views/painter/bottom_cloud.dart';
 import 'package:rafiq/views/painter/top_cloud.dart';
 import 'package:rafiq/views/shared/input_field.dart';
 import 'package:rafiq/views/shared/log_sign_button.dart';
 import 'package:rafiq/views/sign_up/screens/second_sign_up.dart';
-import 'package:rafiq/views/sign_up/widgets/horizontal_line.dart';
+import 'package:rafiq/views/sign_up/widget/horizontal_line.dart';
 
 class SignUp extends StatelessWidget {
   SignUp({Key? key}) : super(key: key);
   static const routeName = '/sign_up';
   final _fromKey = GlobalKey<FormState>();
+  final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController lastNameController = TextEditingController();
+  final TextEditingController userNameController = TextEditingController();
 
   String? customValidteFirstName(String? firstName) {
     if (!(RegExp(r'^[a-zA-Z]{2,35}$').hasMatch(firstName!))) {
@@ -100,6 +105,7 @@ class SignUp extends StatelessWidget {
                             label: 'First Name',
                             sizeoflabel: 18,
                             obscureText: false,
+                            controller: firstNameController,
                             valdator: customValidteFirstName,
                           ),
                           SizedBox(
@@ -109,6 +115,7 @@ class SignUp extends StatelessWidget {
                             label: 'Last Name',
                             sizeoflabel: 18,
                             obscureText: false,
+                            controller: lastNameController,
                             valdator: customValidteLastName,
                           ),
                           SizedBox(
@@ -118,6 +125,7 @@ class SignUp extends StatelessWidget {
                             label: 'Username',
                             sizeoflabel: 18,
                             obscureText: false,
+                            controller: userNameController,
                             valdator: customValidteUserName,
                           ),
                           SizedBox(
@@ -127,7 +135,11 @@ class SignUp extends StatelessWidget {
                             label: 'Next',
                             ontap: () {
                               if (_fromKey.currentState!.validate()) {
-                                print('first sign up  ');
+                                BlocProvider.of<RegisterCubit>(context)
+                                    .setFirstSignUp(
+                                        firstNameController.text,
+                                        lastNameController.text,
+                                        userNameController.text);
                                 Navigator.pushNamed(
                                   context,
                                   SecondSignUp.routeName,

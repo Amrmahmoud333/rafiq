@@ -1,17 +1,22 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rafiq/logic/cubit/register_cubit/register_cubit.dart';
 import 'package:rafiq/views/painter/bottom_cloud.dart';
 import 'package:rafiq/views/painter/top_cloud.dart';
 import 'package:rafiq/views/shared/input_field.dart';
 import 'package:rafiq/views/shared/log_sign_button.dart';
 import 'package:rafiq/views/sign_up/screens/third_sign_up.dart';
-import 'package:rafiq/views/sign_up/widgets/horizontal_line.dart';
+import 'package:rafiq/views/sign_up/widget/horizontal_line.dart';
 
 class SecondSignUp extends StatelessWidget {
   SecondSignUp({Key? key}) : super(key: key);
   static const routeName = '/second_sign_up';
   final _formKey = GlobalKey<FormState>();
-
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+  final TextEditingController emailController = TextEditingController();
   String? customValidteEmail(String? email) {
     if (!(RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
@@ -76,43 +81,61 @@ class SecondSignUp extends StatelessWidget {
                             label: 'Email',
                             sizeoflabel: 18,
                             obscureText: false,
+                            controller: emailController,
                             valdator: customValidteEmail,
                           ),
                           SizedBox(
                             height: height(22),
                           ),
-                          InputField(
-                            label: 'Password',
-                            sizeoflabel: 18,
-                            obscureText: true,
-                            valdator: customValidtePassword,
-                            maxLength: 65,
-                            widget: InkWell(
-                                onTap: () {},
-                                child: const AutoSizeText(
-                                  'Show',
-                                  style: TextStyle(
-                                      fontSize: 16, color: Color(0xff5B618A)),
-                                )),
-                          ),
+                          BlocBuilder<RegisterCubit, RegisterState>(
+                              builder: (context, state) {
+                            return InputField(
+                              label: 'Password',
+                              sizeoflabel: 18,
+                              obscureText: context
+                                  .read<RegisterCubit>()
+                                  .firstObscureText,
+                              valdator: customValidtePassword,
+                              controller: passwordController,
+                              widget: InkWell(
+                                  onTap: () {
+                                    context
+                                        .read<RegisterCubit>()
+                                        .changeFirstObscureText();
+                                  },
+                                  child: const AutoSizeText(
+                                    'Show',
+                                    style: TextStyle(
+                                        fontSize: 16, color: Color(0xff5B618A)),
+                                  )),
+                            );
+                          }),
                           SizedBox(
                             height: height(29),
                           ),
-                          InputField(
-                            label: 'Confirm Password',
-                            sizeoflabel: 18,
-                            obscureText: true,
-                            valdator: customValidtePassword,
-                            widget: InkWell(
-                                onTap: () {
-                                  // TODO change obscureText
-                                },
-                                child: const AutoSizeText(
-                                  'Show',
-                                  style: TextStyle(
-                                      fontSize: 16, color: Color(0xff5B618A)),
-                                )),
-                          ),
+                          BlocBuilder<RegisterCubit, RegisterState>(
+                              builder: (context, state) {
+                            return InputField(
+                              label: 'Confirm Password',
+                              sizeoflabel: 18,
+                              obscureText: context
+                                  .read<RegisterCubit>()
+                                  .secondObscureText,
+                              valdator: customValidtePassword,
+                              controller: confirmPasswordController,
+                              widget: InkWell(
+                                  onTap: () {
+                                    context
+                                        .read<RegisterCubit>()
+                                        .changeSecondObscureText();
+                                  },
+                                  child: const AutoSizeText(
+                                    'Show',
+                                    style: TextStyle(
+                                        fontSize: 16, color: Color(0xff5B618A)),
+                                  )),
+                            );
+                          }),
                           SizedBox(
                             height: height(61),
                           ),
@@ -120,6 +143,11 @@ class SecondSignUp extends StatelessWidget {
                             label: 'Next',
                             ontap: () {
                               if (_formKey.currentState!.validate()) {
+                                BlocProvider.of<RegisterCubit>(context)
+                                    .setSecondSignUp(
+                                        emailController.text,
+                                        passwordController.text,
+                                        confirmPasswordController.text);
                                 Navigator.pushNamed(
                                     context, ThirdSignUp.routeName);
                               }

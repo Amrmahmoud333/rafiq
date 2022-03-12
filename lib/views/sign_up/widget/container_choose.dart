@@ -2,11 +2,11 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class ContainerChoose extends StatelessWidget {
-  final text;
+  final String text;
   final width, height;
-  bool _isChoosen;
+  final bool _isChoosen;
 
-  ContainerChoose(this.text, this.width, this.height, this._isChoosen,
+  const ContainerChoose(this.text, this.width, this.height, this._isChoosen,
       {Key? key})
       : super(key: key);
 

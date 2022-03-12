@@ -17,7 +17,7 @@ class BottomCLoud extends StatelessWidget {
     return Material(
       child: Stack(
         children: [
-          Container(
+          SizedBox(
             width: double.infinity,
             height: height(209),
             child: SvgPicture.asset(
