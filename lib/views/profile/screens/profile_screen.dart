@@ -1,6 +1,8 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq/views/profile/widgets/cover.dart';
+import 'package:rafiq/views/profile/widgets/profile_photo.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -28,27 +30,53 @@ class ProfileScreen extends StatelessWidget {
             child: Stack(
               children: [
                 const Cover(),
+                const ProfilePhoto(),
                 Positioned(
-                  top: h(145),
-                  left: w(9),
-                  child: Container(
-                    width: w(142),
-                    height: h(142),
-                    decoration: BoxDecoration(
-                      color: const Color(0xff5B618A),
-                      borderRadius: BorderRadius.circular(15),
-                      border:
-                          Border.all(color: const Color(0xffE8DEEB), width: 2),
-                      image: const DecorationImage(
-                        fit: BoxFit.fill,
-                        image: AssetImage('assets/images/amr.jpg'),
+                  top: h(225),
+                  left: w(160),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      AutoSizeText(
+                        'Amr Mahmoud',
+                        style: TextStyle(
+                          color: Color(0xff5B618A),
+                          fontSize: 24,
+                          fontFamily: 'DavidLibre',
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
+                      AutoSizeText(
+                        '  @AmrMa',
+                        style: TextStyle(
+                          color: Color(0xff5B618A),
+                          fontSize: 18,
+                          fontFamily: 'DavidLibre',
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Positioned(
+                  top: h(190),
+                  left: w(352),
+                  child: Container(
+                    width: w(27),
+                    height: h(35),
+                    decoration: BoxDecoration(
+                      color: const Color(0xffE8DEEB),
+                      borderRadius: BorderRadius.circular(8),
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color(0xff5B618A).withOpacity(0.5),
+                          spreadRadius: 5,
+                          blurRadius: 6,
+                          offset:
+                              const Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
                     ),
-                    //   child: SvgPicture.asset(
-                    //     'assets/images/profile.svg',
-                    //     width: w(70),
-                    //     height: h(70),
-                    //   ),
                   ),
                 ),
               ],
