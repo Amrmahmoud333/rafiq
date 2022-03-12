@@ -37,12 +37,18 @@ class ProfileScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: const Color(0xff5B618A),
                       borderRadius: BorderRadius.circular(15),
+                      border:
+                          Border.all(color: const Color(0xffE8DEEB), width: 2),
+                      image: const DecorationImage(
+                        fit: BoxFit.fill,
+                        image: AssetImage('assets/images/amr.jpg'),
+                      ),
                     ),
-                    child: SvgPicture.asset(
-                      'assets/images/profile.svg',
-                      width: w(70),
-                      height: h(70),
-                    ),
+                    //   child: SvgPicture.asset(
+                    //     'assets/images/profile.svg',
+                    //     width: w(70),
+                    //     height: h(70),
+                    //   ),
                   ),
                 ),
               ],
