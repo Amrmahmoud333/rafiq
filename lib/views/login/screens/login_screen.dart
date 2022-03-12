@@ -104,14 +104,14 @@ class LoginScreen extends StatelessWidget {
                                 label: 'Password',
                                 sizeoflabel: 18,
                                 obscureText:
-                                    context.read<LoginCubit>().ObscureText,
+                                    context.read<LoginCubit>().obscureText,
                                 valdator: customValidtePasswrod,
                                 controller: passwordController,
                                 widget: InkWell(
                                   onTap: () {
                                     context
                                         .read<LoginCubit>()
-                                        .ChangeObscureText();
+                                        .changeObscureText();
                                   },
                                   child: const AutoSizeText(
                                     'Show',
@@ -130,10 +130,18 @@ class LoginScreen extends StatelessWidget {
                             ),
                             Row(
                               children: [
-                                InkWell(
-                                  onTap: () {},
-                                  child: CustomCheckBox(true),
-                                ),
+                                BlocBuilder<LoginCubit, LoginState>(
+                                    builder: (context, state) {
+                                  return InkWell(
+                                    onTap: () {
+                                      context
+                                          .read<LoginCubit>()
+                                          .changeCheckBox();
+                                    },
+                                    child: CustomCheckBox(
+                                        context.read<LoginCubit>().checkedBox),
+                                  );
+                                }),
                                 SizedBox(
                                   width: w(8),
                                 ),

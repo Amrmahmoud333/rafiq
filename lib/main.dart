@@ -43,3 +43,15 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+// TODO Mustafa 
+// TODO Make style file
+// TODO work with InputFeild
+// TODO Make forget password API
+
+
+// TODO Validate Third sgin up inputs
+// TODO remember me (Shared pref) 
+// TODO sign in && login with google or facebook 
+// TODO Profile UI

@@ -28,9 +28,15 @@ class LoginCubit extends Cubit<LoginState> {
 
   // working with UI
 
-  bool ObscureText = true;
-  void ChangeObscureText() {
-    ObscureText = !ObscureText;
+  bool obscureText = true;
+  void changeObscureText() {
+    obscureText = !obscureText;
     emit(ChangeObscureTextState());
+  }
+
+  bool checkedBox = false;
+  void changeCheckBox() {
+    checkedBox = !checkedBox;
+    emit(ChangeCheckBoxState());
   }
 }
