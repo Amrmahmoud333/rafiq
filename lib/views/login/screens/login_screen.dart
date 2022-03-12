@@ -133,11 +133,10 @@ class LoginScreen extends StatelessWidget {
                                 BlocBuilder<LoginCubit, LoginState>(
                                     builder: (context, state) {
                                   return InkWell(
-                                    onTap: () {
-                                      context
-                                          .read<LoginCubit>()
-                                          .changeCheckBox();
-                                    },
+                                    // TODO shared pref
+                                    onTap: () => context
+                                        .read<LoginCubit>()
+                                        .changeCheckBox(),
                                     child: CustomCheckBox(
                                         context.read<LoginCubit>().checkedBox),
                                   );

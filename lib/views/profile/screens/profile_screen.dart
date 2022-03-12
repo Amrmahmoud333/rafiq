@@ -1,0 +1,38 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rafiq/views/profile/widgets/cover.dart';
+
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({Key? key}) : super(key: key);
+  static const routeName = '/profile_screen';
+
+  @override
+  Widget build(BuildContext context) {
+    double h(double n) {
+      return MediaQuery.of(context).size.height * (n / 851);
+    }
+
+    double w(double n) {
+      return MediaQuery.of(context).size.width * (n / 393);
+    }
+
+    return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 55,
+        backgroundColor: const Color(0xffE8DEEB),
+      ),
+      body: Column(
+        children: [
+          SizedBox(
+            height: h(288),
+            child: Stack(
+              children: [
+                const Cover(),
+              ],
+            ),
+          ), // send image
+        ],
+      ),
+    );
+  }
+}
