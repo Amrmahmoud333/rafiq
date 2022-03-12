@@ -28,6 +28,23 @@ class ProfileScreen extends StatelessWidget {
             child: Stack(
               children: [
                 const Cover(),
+                Positioned(
+                  top: h(145),
+                  left: w(9),
+                  child: Container(
+                    width: w(142),
+                    height: h(142),
+                    decoration: BoxDecoration(
+                      color: const Color(0xff5B618A),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: SvgPicture.asset(
+                      'assets/images/profile.svg',
+                      width: w(70),
+                      height: h(70),
+                    ),
+                  ),
+                ),
               ],
             ),
           ), // send image
