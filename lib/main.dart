@@ -52,6 +52,7 @@ class MyApp extends StatelessWidget {
 
 
 // TODO Validate Third sgin up inputs
-// TODO remember me (Shared pref) 
-// TODO sign in && login with google or facebook 
+// TODO Remember me (Shared pref) 
+// TODO Working with states 
+// TODO Sign in && login with google or facebook (We or backEnd)
 // TODO Profile UI

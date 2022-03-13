@@ -163,10 +163,11 @@ class LoginScreen extends StatelessWidget {
                                   ontap: () async {
                                     if (fromKey.currentState!.validate()) {
                                       await BlocProvider.of<LoginCubit>(context)
-                                          .login(RequestLoginModel(
-                                              userName: emailController.text,
-                                              password:
-                                                  passwordController.text));
+                                          .login(
+                                        RequestLoginModel(
+                                            userName: emailController.text,
+                                            password: passwordController.text),
+                                      );
                                       print(emailController.text);
                                       print(ACCESSTOKEN);
                                     }
