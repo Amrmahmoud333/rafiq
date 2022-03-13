@@ -61,27 +61,30 @@ class ProfileScreen extends StatelessWidget {
                 Positioned(
                   top: h(190),
                   left: w(352),
-                  child: Container(
-                    width: w(27),
-                    height: h(35),
-                    decoration: BoxDecoration(
-                      color: const Color(0xffE8DEEB),
-                      borderRadius: BorderRadius.circular(8),
-                      boxShadow: [
-                        BoxShadow(
-                          color: const Color(0xff5B618A).withOpacity(0.5),
-                          spreadRadius: 5,
-                          blurRadius: 6,
-                          offset:
-                              const Offset(0, 3), // changes position of shadow
-                        ),
-                      ],
+                  child: InkWell(
+                    onTap: () {},
+                    child: Container(
+                      width: w(27),
+                      height: h(35),
+                      decoration: BoxDecoration(
+                        color: const Color(0xffE8DEEB),
+                        borderRadius: BorderRadius.circular(8),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color(0xff5B618A).withOpacity(0.5),
+                            spreadRadius: 5,
+                            blurRadius: 6,
+                            offset: const Offset(
+                                0, 3), // changes position of shadow
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ],
             ),
-          ), // send image
+          ),
         ],
       ),
     );

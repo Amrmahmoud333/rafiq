@@ -16,8 +16,10 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> login(RequestLoginModel requestLoginModel) async {
     try {
       _loginModel = await loginRepo.loginRepo(requestLoginModel);
+
       ACCESSTOKEN = _loginModel.results!.accessToken;
       REFRESHTOKEN = _loginModel.results!.refreshToken;
+
       print(_loginModel.results!.message.toString());
       emit(LoginSuccessState());
     } on DioError catch (error) {

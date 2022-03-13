@@ -8,6 +8,7 @@ class LoginAPI extends LoginRepo {
   Future<LoginModel> loginRepo(RequestLoginModel requestLoginModel) async {
     final response = await DioHelper.postData(
         url: '$URL/$LOGIN', data: requestLoginModel.toJson());
+
     return LoginModel.fromJson(response.data);
   }
 }
