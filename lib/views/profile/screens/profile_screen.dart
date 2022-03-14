@@ -1,6 +1,7 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rafiq/theme.dart';
 import 'package:rafiq/views/profile/widgets/cover.dart';
 import 'package:rafiq/views/profile/widgets/edit_button.dart';
 import 'package:rafiq/views/profile/widgets/profile_name.dart';
@@ -21,141 +22,157 @@ class ProfileScreen extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
-    return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 55,
-        backgroundColor: const Color(0xffE8DEEB),
-      ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: h(288),
-            child: Stack(
-<<<<<<< HEAD
+    return DefaultTabController(
+      length: 4,
+      initialIndex: 0,
+      child: Scaffold(
+        appBar: AppBar(
+          toolbarHeight: 55,
+          backgroundColor: const Color(0xffE8DEEB),
+        ),
+        body: Column(
+          children: [
+            SizedBox(
+              height: h(288),
+              child: Stack(
+                children: const [
+                  Cover(),
+                  ProfilePhoto(),
+                  ProfileName(),
+                  EditButton(),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: h(31),
+            ),
+            Column(
               children: [
-                const Cover(),
-                const ProfilePhoto(),
-                Positioned(
-                  top: h(225),
-                  left: w(160),
-                  child: Column(
+                const RowData(
+                  imagePath: 'assets/images/posts_icon.svg',
+                  text: '0 Posts',
+                  sizedWidth: 12.25,
+                ),
+                SizedBox(height: h(12)),
+                const RowData(
+                  imagePath: 'assets/images/followers_icon.svg',
+                  text: '0 Followers',
+                  sizedWidth: 6.66,
+                ),
+                SizedBox(height: h(12)),
+                const RowData(
+                  imagePath: 'assets/images/location_icon.svg',
+                  text: 'From Egypt',
+                  sizedWidth: 5,
+                ),
+                SizedBox(height: h(12)),
+
+                // TODO make it optional
+                SizedBox(
+                  height: h(36),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      AutoSizeText(
-                        'Amr Mahmoud',
-                        style: TextStyle(
-                          color: Color(0xff5B618A),
-                          fontSize: 24,
-                          //fontFamily: 'DavidLibre',
-                          fontWeight: FontWeight.bold,
-                        ),
+                    children: [
+                      const RowData(
+                        imagePath: 'assets/images/lives_in_icon.svg',
+                        text: 'Lives in Ismailia',
+                        sizedWidth: 4.71,
                       ),
-                      AutoSizeText(
-                        '  @AmrMa',
-                        style: TextStyle(
-                          color: Color(0xff5B618A),
-                          fontSize: 18,
-                          fontFamily: 'DavidLibre',
-                          fontWeight: FontWeight.w500,
+                      Padding(
+                        padding: EdgeInsets.only(right: w(5)),
+                        child: Row(
+                          children: [
+                            Align(
+                              alignment: Alignment.bottomRight,
+                              child: InkWell(
+                                onTap: () {},
+                                child: SvgPicture.asset(
+                                  'assets/images/insta_icon.svg',
+                                  width: w(31),
+                                  height: h(31),
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: w(9)),
+                            Align(
+                              alignment: Alignment.bottomRight,
+                              child: InkWell(
+                                onTap: () {},
+                                child: SvgPicture.asset(
+                                  'assets/images/facebook_icon.svg',
+                                  width: w(31),
+                                  height: h(31),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
                   ),
                 ),
-                Positioned(
-                  top: h(190),
-                  left: w(352),
-                  child: InkWell(
-                    onTap: () {},
-                    child: Container(
-                      width: w(27),
-                      height: h(35),
-                      decoration: BoxDecoration(
-                        color: const Color(0xffE8DEEB),
-                        borderRadius: BorderRadius.circular(8),
-                        boxShadow: [
-                          BoxShadow(
-                            color: const Color(0xff5B618A).withOpacity(0.5),
-                            spreadRadius: 5,
-                            blurRadius: 6,
-                            offset: const Offset(
-                                0, 3), // changes position of shadow
+              ],
+            ),
+            SizedBox(
+              height: h(25),
+            ),
+            SizedBox(
+              height: 25,
+              child: AppBar(
+                backgroundColor: Colors.grey[500],
+                bottom: const TabBar(
+                  labelColor: Color(0xff5B618A),
+                  tabs: [
+                    AutoSizeText('Posts'),
+                    AutoSizeText('Images'),
+                    AutoSizeText('Videos'),
+                    AutoSizeText('Map'),
+                  ],
+                ),
+              ),
+            ),
+            Expanded(
+              child: Container(
+                color: Colors.grey[400],
+                child: TabBarView(
+                  children: [
+                    SingleChildScrollView(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          AutoSizeText(
+                            'Posts',
+                            style:
+                                ThemeOfProject.ligthTheme.textTheme.headline4,
                           ),
                         ],
                       ),
                     ),
-                  ),
-                ),
-=======
-              children: const [
-                Cover(),
-                ProfilePhoto(),
-                ProfileName(),
-                EditButton(),
->>>>>>> de96edb9ed0668087e416f1878708f2edcbb2e2d
-              ],
-            ),
-          ),
-          SizedBox(
-            height: h(31),
-          ),
-          Column(
-            children: [
-              const RowData(
-                imagePath: 'assets/images/posts_icon.svg',
-                text: '0 Posts',
-                sizedWidth: 12.25,
-              ),
-              SizedBox(height: h(12)),
-              const RowData(
-                imagePath: 'assets/images/followers_icon.svg',
-                text: '0 Followers',
-                sizedWidth: 6.66,
-              ),
-              SizedBox(height: h(12)),
-              const RowData(
-                imagePath: 'assets/images/location_icon.svg',
-                text: 'From Egypt',
-                sizedWidth: 5,
-              ),
-
-              // TODO make it optional
-              SizedBox(height: h(12)),
-              Container(
-                height: h(36),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const RowData(
-                      imagePath: 'assets/images/lives_in_icon.svg',
-                      text: 'Lives in Ismailia',
-                      sizedWidth: 4.71,
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text('Images'),
+                      ],
                     ),
-                    SizedBox(width: w(120)),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: SvgPicture.asset(
-                        'assets/images/insta_icon.svg',
-                        width: w(31),
-                        height: h(31),
-                      ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text('Videos'),
+                      ],
                     ),
-                    SizedBox(width: w(9)),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: SvgPicture.asset(
-                        'assets/images/facebook_icon.svg',
-                        width: w(31),
-                        height: h(31),
-                      ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text('Map'),
+                      ],
                     ),
                   ],
                 ),
               ),
-            ],
-          ),
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
