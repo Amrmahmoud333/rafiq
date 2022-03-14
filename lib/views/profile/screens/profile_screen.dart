@@ -5,6 +5,7 @@ import 'package:rafiq/views/profile/widgets/cover.dart';
 import 'package:rafiq/views/profile/widgets/edit_button.dart';
 import 'package:rafiq/views/profile/widgets/profile_name.dart';
 import 'package:rafiq/views/profile/widgets/profile_photo.dart';
+import 'package:rafiq/views/profile/widgets/row_data.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -42,28 +43,21 @@ class ProfileScreen extends StatelessWidget {
             height: h(31),
           ),
           Column(
-            children: [
-              Row(
-                children: [
-                  SvgPicture.asset(
-                    'assets/images/followers_icon.svg',
-                    width: w(17.82),
-                    height: h(17.82),
-                    fit: BoxFit.none,
-                  ),
-                  SizedBox(
-                    width: w(12.25),
-                  ),
-
-                  //TODO get number of posts
-                  const AutoSizeText(
-                    '0 Posts',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 20,
-                    ),
-                  ),
-                ],
+            children: const [
+              RowData(
+                imagePath: 'assets/images/posts_icon.svg',
+                text: '0 Posts',
+                sizedWidth: 12.25,
+              ),
+              RowData(
+                imagePath: 'assets/images/followers_icon.svg',
+                text: '0 Followers',
+                sizedWidth: 6.66,
+              ),
+              RowData(
+                imagePath: 'assets/images/location_icon.svg',
+                text: 'From Egypt',
+                sizedWidth: 5,
               ),
             ],
           ),
