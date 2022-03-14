@@ -79,6 +79,12 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         ],
                       ),
+                      child: SvgPicture.asset(
+                        'assets/images/edit_icon.svg',
+                        width: w(17.82),
+                        height: h(17.82),
+                        fit: BoxFit.none,
+                      ),
                     ),
                   ),
                 ),
