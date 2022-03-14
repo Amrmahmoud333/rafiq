@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:rafiq/theme.dart';
 
 class HorizontalLinee extends StatelessWidget {
   HorizontalLinee({
@@ -41,6 +42,9 @@ class HorizontalLinee extends StatelessWidget {
                   color: Color(0xff5B618A),
                 ),
               ),
+            ),
+            SizedBox(
+              height: height(2),
             ),
             Container(
               width: width(313),

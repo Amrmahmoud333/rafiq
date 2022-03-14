@@ -42,7 +42,7 @@ class ProfileScreen extends StatelessWidget {
                         style: TextStyle(
                           color: Color(0xff5B618A),
                           fontSize: 24,
-                          fontFamily: 'DavidLibre',
+                          //fontFamily: 'DavidLibre',
                           fontWeight: FontWeight.bold,
                         ),
                       ),
