@@ -46,9 +46,6 @@ class RowData extends StatelessWidget {
             color: Color(0xff5B618A),
           ),
         ),
-        SizedBox(
-          height: h(20),
-        ),
       ],
     );
   }

@@ -1,0 +1,20 @@
+<svg id="Insta" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="31" height="31" viewBox="0 0 31 31">
+  <defs>
+    <radialGradient id="radial-gradient" cx="0.066" cy="0.964" r="1.219" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffd35a"/>
+      <stop offset="0.255" stop-color="#f7964c"/>
+      <stop offset="0.6" stop-color="#f05b70"/>
+      <stop offset="0.717" stop-color="#bd6186"/>
+      <stop offset="0.853" stop-color="#85659b"/>
+      <stop offset="0.951" stop-color="#5c66a9"/>
+      <stop offset="1" stop-color="#4766b0"/>
+    </radialGradient>
+    <linearGradient id="linear-gradient" x1="-0.021" y1="0.257" x2="1.021" y2="0.743" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path id="Path_2920" data-name="Path 2920" d="M23.136,30.182H9.045A7.045,7.045,0,0,1,2,23.136V9.045A7.045,7.045,0,0,1,9.045,2H23.136a7.045,7.045,0,0,1,7.045,7.045V23.136A7.045,7.045,0,0,1,23.136,30.182Z" transform="translate(-0.591 -0.591)" fill="#fff"/>
+  <path id="Path_2921" data-name="Path 2921" d="M23.576,1H9.424A8.433,8.433,0,0,0,1,9.424V23.576A8.433,8.433,0,0,0,9.424,32H23.576A8.433,8.433,0,0,0,32,23.576V9.424A8.433,8.433,0,0,0,23.576,1Zm5.605,22.576a5.612,5.612,0,0,1-5.605,5.605H9.424a5.612,5.612,0,0,1-5.605-5.605V9.424A5.612,5.612,0,0,1,9.424,3.818H23.576a5.612,5.612,0,0,1,5.605,5.605ZM16.5,8.045A8.455,8.455,0,1,0,24.955,16.5,8.464,8.464,0,0,0,16.5,8.045Zm0,14.091A5.636,5.636,0,1,1,22.136,16.5,5.643,5.643,0,0,1,16.5,22.136Zm8.455-15.5a1.409,1.409,0,1,0,1.409,1.409A1.411,1.411,0,0,0,24.955,6.636Z" transform="translate(-1 -1)" fill="url(#radial-gradient)"/>
+  <path id="Path_2922" data-name="Path 2922" d="M23.576,1H9.424A8.433,8.433,0,0,0,1,9.424V23.576A8.433,8.433,0,0,0,9.424,32H23.576A8.433,8.433,0,0,0,32,23.576V9.424A8.433,8.433,0,0,0,23.576,1Z" transform="translate(-1 -1)" fill="url(#linear-gradient)"/>
+</svg>
