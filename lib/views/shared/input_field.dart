@@ -9,20 +9,21 @@ class InputField extends StatelessWidget {
     required this.label,
     this.widget,
     this.controller,
-    required this.sizeoflabel,
+    this.sizeoflabel,
     this.keyboardType,
-    this.valdator,
+    this.validator,
+    this.maxLength,
     required this.obscureText,
   }) : super(key: key);
 
   final String label;
   final Widget? widget;
   final TextEditingController? controller;
-  final double sizeoflabel;
+  final double? sizeoflabel;
   final TextInputType? keyboardType;
   final bool obscureText;
-  final FormFieldValidator<String>? valdator;
-
+  final FormFieldValidator<String>? validator;
+  final int? maxLength;
   @override
   Widget build(BuildContext context) {
     double height(double n) {
@@ -38,7 +39,7 @@ class InputField extends StatelessWidget {
       children: [
         AutoSizeText(
           label,
-          style: lableInputField(sizeoflabel),
+          style: lableInputField(sizeoflabel!),
         ),
         Container(
           margin: EdgeInsets.only(
@@ -49,7 +50,7 @@ class InputField extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border(
               bottom: BorderSide(
-                width: width(1),
+                width: width(2),
                 color: const Color(0xFF5B618A),
               ),
             ),
@@ -62,14 +63,18 @@ class InputField extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 20,
                     color: Color(0xFF6E75A0),
-                    fontFamily: 'DavidLibre',
+                    //TODO fontFamily
+
+                    // fontFamily: 'DavidLibre',
                     fontWeight: FontWeight.w500,
                   ),
                   obscureText: obscureText,
                   keyboardType: keyboardType,
                   controller: controller,
-                  validator: valdator,
+                  validator: validator,
+                  maxLength: maxLength,
                   decoration: const InputDecoration(
+                    border: InputBorder.none,
                     enabledBorder: InputBorder.none,
                   ),
                 ),

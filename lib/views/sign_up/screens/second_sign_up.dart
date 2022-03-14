@@ -82,7 +82,7 @@ class SecondSignUp extends StatelessWidget {
                             sizeoflabel: 18,
                             obscureText: false,
                             controller: emailController,
-                            valdator: customValidteEmail,
+                            validator: customValidteEmail,
                           ),
                           SizedBox(
                             height: height(22),
@@ -95,19 +95,20 @@ class SecondSignUp extends StatelessWidget {
                               obscureText: context
                                   .read<RegisterCubit>()
                                   .firstObscureText,
-                              valdator: customValidtePassword,
+                              validator: customValidtePassword,
                               controller: passwordController,
                               widget: InkWell(
-                                  onTap: () {
-                                    context
-                                        .read<RegisterCubit>()
-                                        .changeFirstObscureText();
-                                  },
-                                  child: const AutoSizeText(
-                                    'Show',
-                                    style: TextStyle(
-                                        fontSize: 16, color: Color(0xff5B618A)),
-                                  )),
+                                onTap: () {
+                                  context
+                                      .read<RegisterCubit>()
+                                      .changeFirstObscureText();
+                                },
+                                child: const AutoSizeText(
+                                  'Show',
+                                  style: TextStyle(
+                                      fontSize: 16, color: Color(0xff5B618A)),
+                                ),
+                              ),
                             );
                           }),
                           SizedBox(
@@ -121,19 +122,20 @@ class SecondSignUp extends StatelessWidget {
                               obscureText: context
                                   .read<RegisterCubit>()
                                   .secondObscureText,
-                              valdator: customValidtePassword,
+                              validator: customValidtePassword,
                               controller: confirmPasswordController,
                               widget: InkWell(
-                                  onTap: () {
-                                    context
-                                        .read<RegisterCubit>()
-                                        .changeSecondObscureText();
-                                  },
-                                  child: const AutoSizeText(
-                                    'Show',
-                                    style: TextStyle(
-                                        fontSize: 16, color: Color(0xff5B618A)),
-                                  )),
+                                onTap: () {
+                                  context
+                                      .read<RegisterCubit>()
+                                      .changeSecondObscureText();
+                                },
+                                child: const AutoSizeText(
+                                  'Show',
+                                  style: TextStyle(
+                                      fontSize: 16, color: Color(0xff5B618A)),
+                                ),
+                              ),
                             );
                           }),
                           SizedBox(

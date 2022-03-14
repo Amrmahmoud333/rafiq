@@ -29,6 +29,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => LoginScreen());
       case ProfileScreen.routeName:
         return MaterialPageRoute(builder: (_) => ProfileScreen());
+
       default:
         return MaterialPageRoute(builder: (_) => LoginScreen());
     }

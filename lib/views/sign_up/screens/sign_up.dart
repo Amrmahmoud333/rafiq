@@ -8,6 +8,8 @@ import 'package:rafiq/views/shared/log_sign_button.dart';
 import 'package:rafiq/views/sign_up/screens/second_sign_up.dart';
 import 'package:rafiq/views/sign_up/widget/horizontal_line.dart';
 
+import '../../../theme.dart';
+
 class SignUp extends StatelessWidget {
   SignUp({Key? key}) : super(key: key);
   static const routeName = '/sign_up';
@@ -106,7 +108,7 @@ class SignUp extends StatelessWidget {
                             sizeoflabel: 18,
                             obscureText: false,
                             controller: firstNameController,
-                            valdator: customValidteFirstName,
+                            validator: customValidteFirstName,
                           ),
                           SizedBox(
                             height: height(22),
@@ -116,7 +118,7 @@ class SignUp extends StatelessWidget {
                             sizeoflabel: 18,
                             obscureText: false,
                             controller: lastNameController,
-                            valdator: customValidteLastName,
+                            validator: customValidteLastName,
                           ),
                           SizedBox(
                             height: height(29),
@@ -126,7 +128,7 @@ class SignUp extends StatelessWidget {
                             sizeoflabel: 18,
                             obscureText: false,
                             controller: userNameController,
-                            valdator: customValidteUserName,
+                            validator: customValidteUserName,
                           ),
                           SizedBox(
                             height: height(61),

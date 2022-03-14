@@ -44,7 +44,6 @@ class MyApp extends StatelessWidget {
 
 
 // TODO Mustafa 
-// TODO Make style file
 // TODO work with InputFeild
 // TODO Make forget password API
 

@@ -96,7 +96,7 @@ class LoginScreen extends StatelessWidget {
                               sizeoflabel: 18,
                               obscureText: false,
                               controller: emailController,
-                              valdator: customValidteEmail,
+                              validator: customValidteEmail,
                             ),
                             SizedBox(height: h(34)),
                             BlocBuilder<LoginCubit, LoginState>(
@@ -105,7 +105,7 @@ class LoginScreen extends StatelessWidget {
                                 sizeoflabel: 18,
                                 obscureText:
                                     context.read<LoginCubit>().obscureText,
-                                valdator: customValidtePasswrod,
+                                validator: customValidtePasswrod,
                                 controller: passwordController,
                                 widget: InkWell(
                                   onTap: () {

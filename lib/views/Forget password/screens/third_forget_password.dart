@@ -1,6 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:rafiq/views/Forget%20password/widgets/resend_button.dart';
 
 class ThirdForgetPassword extends StatefulWidget {
   const ThirdForgetPassword({Key? key}) : super(key: key);
@@ -50,27 +52,30 @@ class _ThirdForgetPasswordState extends State<ThirdForgetPassword> {
             SizedBox(
               height: height(29),
             ),
-            Wrap(
-              children: const [
-                Center(
-                  child: AutoSizeText(
-                    'We sent a link to your email address .Check your email to reset your password. If you want to send a new link , ',
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Color(0xFF5B618A),
-                    ),
-                  ),
+            RichText(
+              text: TextSpan(
+                text:
+                    'We sent a link to your email address .Check your email to reset your password. If you want to send a new link ,click ',
+                style: const TextStyle(
+                  fontSize: 20,
+                  color: Color(0xFF5B618A),
                 ),
-                AutoSizeText(
-                  'click ',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Color(0xFF5B618A),
-                  ),
-                ),
-                ResendButton(),
-              ],
-            )
+                children: [
+                  TextSpan(
+                      text: 'Resend',
+                      style: const TextStyle(
+                        decoration: TextDecoration.underline,
+                        decorationThickness: 2,
+                        fontSize: 17,
+                        color: Color(0xFF5B618A),
+                        fontWeight: FontWeight.bold,
+                      ),
+                      recognizer: TapGestureRecognizer()
+                        //TODO Routed to Resend screen
+                        ..onTap = () {})
+                ],
+              ),
+            ),
           ],
         ),
       ),

@@ -31,7 +31,6 @@ class ProfileScreen extends StatelessWidget {
           SizedBox(
             height: h(288),
             child: Stack(
-<<<<<<< HEAD
               children: [
                 const Cover(),
                 const ProfilePhoto(),
@@ -86,13 +85,6 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-=======
-              children: const [
-                Cover(),
-                ProfilePhoto(),
-                ProfileName(),
-                EditButton(),
->>>>>>> de96edb9ed0668087e416f1878708f2edcbb2e2d
               ],
             ),
           ),
