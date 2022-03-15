@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq/views/profile/widgets/cover.dart';
@@ -7,12 +8,31 @@ import 'package:rafiq/views/profile/widgets/profile_home.dart';
 import 'package:rafiq/views/profile/widgets/profile_name.dart';
 import 'package:rafiq/views/profile/widgets/profile_photo.dart';
 import 'package:rafiq/views/profile/widgets/row_data.dart';
+import 'package:rafiq/views/shared/bottom/animated_bottom_navigation_bar.dart';
 import 'package:rafiq/views/shared/custom_bottom_nav_bar.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+  ProfileScreen({Key? key}) : super(key: key);
   static const routeName = '/profile_screen';
+  final autoSizeGroup = AutoSizeGroup();
+  var _bottomNavIndex = 0; //default index of a first screen
 
+  late AnimationController _animationController;
+  late Animation<double> animation;
+  late CurvedAnimation curve;
+  //  final iconList = <IconData>[
+  //    Icons.brightness_5,
+  //    Icons.brightness_4,
+  //    Icons.brightness_6,
+  //    Icons.brightness_7,
+  //  ];
+
+  final iconList = <SvgPicture>[
+    SvgPicture.asset('assets/images/home_icon.svg'),
+    SvgPicture.asset('assets/images/home_icon.svg'),
+    SvgPicture.asset('assets/images/home_icon.svg'),
+    SvgPicture.asset('assets/images/home_icon.svg'),
+  ];
   @override
   Widget build(BuildContext context) {
     double h(double n) {
@@ -52,10 +72,10 @@ class ProfileScreen extends StatelessWidget {
               height: h(25),
             ),
             const ProfileHome(),
-            CutsomBottomNavigationBar(),
+            // CutsomBottomNavigationBar(),
           ],
         ),
-        /*     floatingActionButton: FloatingActionButton(
+        floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.white,
           child: Container(
             width: w(65),
@@ -68,7 +88,17 @@ class ProfileScreen extends StatelessWidget {
           ),
           onPressed: () {},
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,*/
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: AnimatedBottomNavigationBar(
+          icons: iconList,
+          backgroundColor: const Color(0xffE8DEEB),
+          activeIndex: _bottomNavIndex,
+          gapLocation: GapLocation.center,
+          notchSmoothness: NotchSmoothness.defaultEdge,
+          onTap: (index) => {
+            //setState(() => _bottomNavIndex = index)
+          },
+        ),
       ),
     );
   }
