@@ -43,7 +43,6 @@ dependencies:
   flutter_bloc: ^8.0.1
   bloc: ^8.0.3
   font_awesome_flutter: ^9.2.0
-  animated_bottom_navigation_bar: ^0.3.2
 
 dev_dependencies:
   flutter_test:

@@ -1,15 +1,12 @@
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:rafiq/theme.dart';
 import 'package:rafiq/views/profile/widgets/cover.dart';
 import 'package:rafiq/views/profile/widgets/edit_button.dart';
 import 'package:rafiq/views/profile/widgets/profile_home.dart';
 import 'package:rafiq/views/profile/widgets/profile_name.dart';
 import 'package:rafiq/views/profile/widgets/profile_photo.dart';
 import 'package:rafiq/views/profile/widgets/row_data.dart';
+import 'package:rafiq/views/shared/custom_bottom_nav_bar.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -17,45 +14,6 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final autoSizeGroup = AutoSizeGroup();
-    var _bottomNavIndex = 0; //default index of a first screen
-
-    late AnimationController _animationController;
-    late Animation<double> animation;
-    late CurvedAnimation curve;
-    final iconList = <IconData>[
-      Icons.brightness_5,
-      Icons.brightness_4,
-      Icons.brightness_6,
-      Icons.brightness_7,
-    ];
-
-    // final iconList = <SvgPicture>[
-    //   SvgPicture.asset('assets/images/icons/home_icon.svg'),
-    //   SvgPicture.asset('assets/images/icons/home_icon.svg'),
-    //   SvgPicture.asset('assets/images/icons/home_icon.svg'),
-    //   SvgPicture.asset('assets/images/icons/home_icon.svg'),
-    // ];
-
-//    final iconList = <ImageIcon>[
-//     const ImageIcon(
-//        AssetImage('assets/images/icons/home_icon.png'),
-//        color: Color(0xFF3A5A98),
-//      ),
-//    const  ImageIcon(
-//        AssetImage('assets/images/icons/notifications_icon.png'),
-//        color: Color(0xFF3A5A98),
-//      ),
-//   const   ImageIcon(
-//        AssetImage('images/trip_more.png'),
-//        color: Color(0xFF3A5A98),
-//      ),
-//    const  ImageIcon(
-//        AssetImage('images/user_more.png'),
-//        color: Color(0xFF3A5A98),
-//      ),
-//    ];
-
     double h(double n) {
       return MediaQuery.of(context).size.height * (n / 851);
     }
@@ -161,9 +119,10 @@ class ProfileScreen extends StatelessWidget {
               height: h(25),
             ),
             const ProfileHome(),
+            CutsomBottomNavigationBar(),
           ],
         ),
-        floatingActionButton: FloatingActionButton(
+        /*     floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.white,
           child: Container(
             width: w(65),
@@ -176,18 +135,7 @@ class ProfileScreen extends StatelessWidget {
           ),
           onPressed: () {},
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        bottomNavigationBar: AnimatedBottomNavigationBar(
-          icons: iconList,
-          backgroundColor: const Color(0xffE8DEEB),
-          activeIndex: _bottomNavIndex,
-          gapLocation: GapLocation.center,
-          notchSmoothness: NotchSmoothness.defaultEdge,
-          onTap: (index) => {
-            //setState(() => _bottomNavIndex = index)
-          },
-          //other params
-        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,*/
       ),
     );
   }
