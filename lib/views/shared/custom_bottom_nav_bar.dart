@@ -23,56 +23,60 @@ class CutsomBottomNavigationBar extends StatelessWidget {
     }
 
     final Size size = MediaQuery.of(context).size;
-    return SizedBox(
-      height: h(75),
-      width: double.infinity,
-      child: Stack(
-        children: [
-          CustomPaint(
-            size: Size(double.infinity, h(75)),
-            painter: BNBCustomPainter(),
-          ),
-          Center(
-            heightFactor: 0.6,
-            child: FloatingActionButton(
-              onPressed: () {},
-              child: Container(
-                width: w(65),
-                height: h(65),
-                child: const Icon(Icons.add),
-                decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    gradient: LinearGradient(
-                        colors: [Color(0xffB99AC2), Color(0xff906F9ABD)])),
+    return Stack(
+      children: [
+        SizedBox(
+          height: h(75),
+          width: double.infinity,
+          child: Stack(
+            children: [
+              CustomPaint(
+                size: Size(double.infinity, h(75)),
+                painter: BNBCustomPainter(),
               ),
-            ),
+              Center(
+                heightFactor: 0.6,
+                child: FloatingActionButton(
+                  onPressed: () {},
+                  child: Container(
+                    width: w(65),
+                    height: h(65),
+                    child: const Icon(Icons.add),
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        gradient: LinearGradient(
+                            colors: [Color(0xffB99AC2), Color(0xff906F9ABD)])),
+                  ),
+                ),
+              ),
+              Container(
+                height: h(80),
+                width: double.infinity,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      child: SvgPicture.asset('assets/images/home_icon.svg'),
+                    ),
+                    Container(
+                      child: SvgPicture.asset('assets/images/home_icon.svg'),
+                    ),
+                    Container(
+                      width: size.width * 0.20,
+                    ),
+                    Container(
+                      child: SvgPicture.asset('assets/images/home_icon.svg'),
+                    ),
+                    Container(
+                      child: SvgPicture.asset('assets/images/home_icon.svg'),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-          Container(
-            height: h(80),
-            width: double.infinity,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  child: SvgPicture.asset('assets/images/home_icon.svg'),
-                ),
-                Container(
-                  child: SvgPicture.asset('assets/images/home_icon.svg'),
-                ),
-                Container(
-                  width: size.width * 0.20,
-                ),
-                Container(
-                  child: SvgPicture.asset('assets/images/home_icon.svg'),
-                ),
-                Container(
-                  child: SvgPicture.asset('assets/images/home_icon.svg'),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
