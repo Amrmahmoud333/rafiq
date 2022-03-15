@@ -1,9 +1,12 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rafiq/theme.dart';
 import 'package:rafiq/views/profile/widgets/cover.dart';
 import 'package:rafiq/views/profile/widgets/edit_button.dart';
+import 'package:rafiq/views/profile/widgets/profile_home.dart';
 import 'package:rafiq/views/profile/widgets/profile_name.dart';
 import 'package:rafiq/views/profile/widgets/profile_photo.dart';
 import 'package:rafiq/views/profile/widgets/row_data.dart';
@@ -14,6 +17,45 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final autoSizeGroup = AutoSizeGroup();
+    var _bottomNavIndex = 0; //default index of a first screen
+
+    late AnimationController _animationController;
+    late Animation<double> animation;
+    late CurvedAnimation curve;
+    final iconList = <IconData>[
+      Icons.brightness_5,
+      Icons.brightness_4,
+      Icons.brightness_6,
+      Icons.brightness_7,
+    ];
+
+    // final iconList = <SvgPicture>[
+    //   SvgPicture.asset('assets/images/icons/home_icon.svg'),
+    //   SvgPicture.asset('assets/images/icons/home_icon.svg'),
+    //   SvgPicture.asset('assets/images/icons/home_icon.svg'),
+    //   SvgPicture.asset('assets/images/icons/home_icon.svg'),
+    // ];
+
+//    final iconList = <ImageIcon>[
+//     const ImageIcon(
+//        AssetImage('assets/images/icons/home_icon.png'),
+//        color: Color(0xFF3A5A98),
+//      ),
+//    const  ImageIcon(
+//        AssetImage('assets/images/icons/notifications_icon.png'),
+//        color: Color(0xFF3A5A98),
+//      ),
+//   const   ImageIcon(
+//        AssetImage('images/trip_more.png'),
+//        color: Color(0xFF3A5A98),
+//      ),
+//    const  ImageIcon(
+//        AssetImage('images/user_more.png'),
+//        color: Color(0xFF3A5A98),
+//      ),
+//    ];
+
     double h(double n) {
       return MediaQuery.of(context).size.height * (n / 851);
     }
@@ -47,6 +89,7 @@ class ProfileScreen extends StatelessWidget {
               height: h(31),
             ),
             Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const RowData(
                   imagePath: 'assets/images/posts_icon.svg',
@@ -117,61 +160,33 @@ class ProfileScreen extends StatelessWidget {
             SizedBox(
               height: h(25),
             ),
-            SizedBox(
-              height: 25,
-              child: AppBar(
-                backgroundColor: Colors.grey[500],
-                bottom: const TabBar(
-                  labelColor: Color(0xff5B618A),
-                  tabs: [
-                    AutoSizeText('Posts'),
-                    AutoSizeText('Images'),
-                    AutoSizeText('Videos'),
-                    AutoSizeText('Map'),
-                  ],
-                ),
-              ),
-            ),
-            Expanded(
-              child: Container(
-                color: Colors.grey[400],
-                child: TabBarView(
-                  children: [
-                    SingleChildScrollView(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          AutoSizeText(
-                            'Posts',
-                            style:
-                                ThemeOfProject.ligthTheme.textTheme.headline4,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text('Images'),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text('Videos'),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text('Map'),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            )
+            const ProfileHome(),
           ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.white,
+          child: Container(
+            width: w(65),
+            height: h(65),
+            child: const Icon(Icons.add),
+            decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: LinearGradient(
+                    colors: [Color(0xffB99AC2), Color(0xff906F9ABD)])),
+          ),
+          onPressed: () {},
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: AnimatedBottomNavigationBar(
+          icons: iconList,
+          backgroundColor: const Color(0xffE8DEEB),
+          activeIndex: _bottomNavIndex,
+          gapLocation: GapLocation.center,
+          notchSmoothness: NotchSmoothness.defaultEdge,
+          onTap: (index) => {
+            //setState(() => _bottomNavIndex = index)
+          },
+          //other params
         ),
       ),
     );
