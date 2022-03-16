@@ -1,18 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="33.308" height="38.328" viewBox="0 0 33.308 38.328">
-  <defs>
-    <filter id="notifications">
-      <feOffset dy="1" input="SourceAlpha"/>
-      <feGaussianBlur stdDeviation="2" result="blur"/>
-      <feFlood flood-color="#5b618a" result="color"/>
-      <feComposite operator="out" in="SourceGraphic" in2="blur"/>
-      <feComposite operator="in" in="color"/>
-      <feComposite operator="in" in2="SourceGraphic"/>
-    </filter>
-  </defs>
-  <g data-type="innerShadowGroup">
-    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#notifications)">
-      <path id="notifications-2" data-name="notifications" d="M22.039,40.636a3.888,3.888,0,0,0,3.971-3.773H18.068A3.875,3.875,0,0,0,22.039,40.636Zm11.914-11.32V19.883c0-5.792-3.256-10.641-8.935-11.924V6.676a2.982,2.982,0,0,0-5.957,0V7.959c-5.7,1.283-8.935,6.113-8.935,11.924v9.433L6.154,33.089v1.887h31.77V33.089Z" transform="translate(-5.38 -3.08)" fill="#fff"/>
-    </g>
-    <path id="notifications-3" data-name="notifications" d="M22.039,40.636a3.888,3.888,0,0,0,3.971-3.773H18.068A3.875,3.875,0,0,0,22.039,40.636Zm11.914-11.32V19.883c0-5.792-3.256-10.641-8.935-11.924V6.676a2.982,2.982,0,0,0-5.957,0V7.959c-5.7,1.283-8.935,6.113-8.935,11.924v9.433L6.154,33.089v1.887h31.77V33.089Z" transform="translate(-5.385 -3.077)" fill="none" stroke="#5b618a" stroke-width="1.538"/>
-  </g>
+<svg id="notification-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" fill="#E8DEEB" stroke="#5b618a" stroke-width="1.2" />
 </svg>

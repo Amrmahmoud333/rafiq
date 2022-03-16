@@ -28,10 +28,12 @@ class ProfileScreen extends StatelessWidget {
   //  ];
 
   final iconList = <SvgPicture>[
-    SvgPicture.asset('assets/images/home_icon.svg'),
-    SvgPicture.asset('assets/images/home_icon.svg'),
-    SvgPicture.asset('assets/images/home_icon.svg'),
-    SvgPicture.asset('assets/images/home_icon.svg'),
+    SvgPicture.asset(
+      'assets/images/home_icon.svg',
+    ),
+    SvgPicture.asset('assets/images/trip_icon.svg'),
+    SvgPicture.asset('assets/images/notifications_icon.svg'),
+    SvgPicture.asset('assets/images/user_icon.svg'),
   ];
   @override
   Widget build(BuildContext context) {
@@ -72,10 +74,10 @@ class ProfileScreen extends StatelessWidget {
               height: h(25),
             ),
             const ProfileHome(),
-            CutsomBottomNavigationBar(),
+            // CutsomBottomNavigationBar(),
           ],
         ),
-        /*  floatingActionButton: FloatingActionButton(
+        floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.white,
           child: Container(
             width: w(65),
@@ -98,7 +100,7 @@ class ProfileScreen extends StatelessWidget {
           onTap: (index) => {
             //setState(() => _bottomNavIndex = index)
           },
-        ),*/
+        ),
       ),
     );
   }

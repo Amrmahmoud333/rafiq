@@ -34,8 +34,9 @@ class NavigationBarItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        height: double.infinity,
-        width: double.infinity,
+        color: Color(0xffE8DEEB),
+        width: MediaQuery.of(context).size.height * (31 / 851),
+        height: MediaQuery.of(context).size.width * (35 / 393),
         child: CustomPaint(
           painter: BubblePainter(
             bubbleRadius: isActive ? bubbleRadius : 0,

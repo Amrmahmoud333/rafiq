@@ -19,13 +19,14 @@ class TabItem extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => child ?? _buildDefaultTab();
-
-  Widget _buildDefaultTab() {
-    return Container(
-      child: iconData,
-      color: isActive ? activeColor : inactiveColor,
-      //size: iconSize,
-    );
+  Widget build(BuildContext context) {
+    return child ??
+        Container(
+          width: MediaQuery.of(context).size.height * (41 / 851),
+          height: MediaQuery.of(context).size.width * (37 / 393),
+          child: iconData,
+          color: isActive ? activeColor : inactiveColor,
+          //size: iconSize,
+        );
   }
 }
