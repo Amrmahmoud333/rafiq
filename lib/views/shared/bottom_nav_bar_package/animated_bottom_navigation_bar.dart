@@ -2,7 +2,7 @@ library animated_bottom_navigation_bar;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:rafiq/views/shared/bottom/src/navigation_bar_item.dart';
+import 'package:rafiq/views/shared/bottom_nav_bar_package/src/navigation_bar_item.dart';
 
 import 'src/circular_notch_and_corner_clipper.dart';
 import 'src/circular_notched_and_cornered_shape.dart';
@@ -125,7 +125,7 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
 
   AnimatedBottomNavigationBar({
     Key? key,
-    required List<Widget> icons,
+    List<Widget>? icons,
     List<String>? path,
     required int activeIndex,
     required Function(int) onTap,

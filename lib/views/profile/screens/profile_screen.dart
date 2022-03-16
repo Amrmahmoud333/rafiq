@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq/views/profile/widgets/cover.dart';
@@ -7,30 +6,14 @@ import 'package:rafiq/views/profile/widgets/profile_Information.dart';
 import 'package:rafiq/views/profile/widgets/profile_home.dart';
 import 'package:rafiq/views/profile/widgets/profile_name.dart';
 import 'package:rafiq/views/profile/widgets/profile_photo.dart';
-import 'package:rafiq/views/profile/widgets/row_data.dart';
-import 'package:rafiq/views/shared/bottom/animated_bottom_navigation_bar.dart';
-import 'package:rafiq/views/shared/custom_bottom_nav_bar.dart';
+import 'package:rafiq/views/shared/bottom_nav_bar.dart';
+import 'package:rafiq/views/shared/bottom_nav_bar_package/animated_bottom_navigation_bar.dart';
+import 'package:rafiq/views/shared/floation_action_button.dart';
 
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({Key? key}) : super(key: key);
   static const routeName = '/profile_screen';
-  var _bottomNavIndex = 0; //default index of a first screen
 
-  final iconList = <SvgPicture>[
-    SvgPicture.asset(
-      'assets/images/home_icon.svg',
-      color: Colors.amber,
-    ),
-    SvgPicture.asset('assets/images/trip_icon.svg'),
-    SvgPicture.asset('assets/images/notifications_icon.svg'),
-    SvgPicture.asset('assets/images/user_icon.svg'),
-  ];
-  final pathList = <String>[
-    'assets/images/home_icon.svg',
-    'assets/images/trip_icon.svg',
-    'assets/images/notifications_icon.svg',
-    'assets/images/user_icon.svg',
-  ];
   @override
   Widget build(BuildContext context) {
     double h(double n) {
@@ -46,7 +29,7 @@ class ProfileScreen extends StatelessWidget {
       initialIndex: 0,
       child: Scaffold(
         appBar: AppBar(
-          toolbarHeight: 55,
+          toolbarHeight: h(55),
           backgroundColor: const Color(0xffE8DEEB),
         ),
         body: Column(
@@ -73,32 +56,9 @@ class ProfileScreen extends StatelessWidget {
             // CutsomBottomNavigationBar(),
           ],
         ),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: const Color(0xff5B618A),
-          child: Container(
-            width: w(65),
-            height: h(65),
-            child: const Icon(Icons.add),
-            decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: LinearGradient(
-                    colors: [Color(0xffB99AC2), Color(0xff906F9ABD)])),
-          ),
-          onPressed: () {},
-        ),
+        floatingActionButton: const CustomFloationActionButton(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        bottomNavigationBar: AnimatedBottomNavigationBar(
-          icons: iconList,
-          backgroundColor: const Color(0xffE8DEEB),
-          activeIndex: _bottomNavIndex,
-          activeColor: const Color(0xffB99AC2),
-          gapLocation: GapLocation.center,
-          path: pathList,
-          notchSmoothness: NotchSmoothness.defaultEdge,
-          onTap: (index) => {
-            //setState(() => _bottomNavIndex = index)
-          },
-        ),
+        bottomNavigationBar: CustomBottomNavgiationBar(),
       ),
     );
   }

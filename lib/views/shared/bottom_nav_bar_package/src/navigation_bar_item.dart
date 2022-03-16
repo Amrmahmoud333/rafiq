@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq/views/shared/bottom/src/bubble_selection_painter.dart';
+import 'package:rafiq/views/shared/bottom_nav_bar_package/src/bubble_selection_painter.dart';
 
 import 'tab_item.dart';
 

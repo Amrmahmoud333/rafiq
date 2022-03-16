@@ -37,17 +37,4 @@ class TabItem extends StatelessWidget {
           height: h(35),
         );
   }
-
-  Widget _buildDefaultTab() {
-    return SvgPicture.asset(
-      path.toString(),
-      color: isActive ? activeColor : inactiveColor,
-      height: 20,
-    );
-    /*  Container(
-      child: iconData,
-      color: isActive ? activeColor : inactiveColor,
-      //size: iconSize,
-    );*/
-  }
 }
