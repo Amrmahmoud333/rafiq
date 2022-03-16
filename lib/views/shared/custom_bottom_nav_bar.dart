@@ -56,19 +56,21 @@ class CutsomBottomNavigationBar extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
+                      color: Color(0XFFE8DEEB),
                       child: SvgPicture.asset('assets/images/home_icon.svg'),
                     ),
                     Container(
-                      child: SvgPicture.asset('assets/images/home_icon.svg'),
+                      child: SvgPicture.asset('assets/images/trip_icon.svg'),
                     ),
                     Container(
                       width: size.width * 0.20,
                     ),
                     Container(
-                      child: SvgPicture.asset('assets/images/home_icon.svg'),
+                      child: SvgPicture.asset(
+                          'assets/images/notifications_icon.svg'),
                     ),
                     Container(
-                      child: SvgPicture.asset('assets/images/home_icon.svg'),
+                      child: SvgPicture.asset('assets/images/user_icon.svg'),
                     ),
                   ],
                 ),
