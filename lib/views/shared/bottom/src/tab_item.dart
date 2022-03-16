@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class TabItem extends StatelessWidget {
   final Widget? iconData;
@@ -7,10 +8,11 @@ class TabItem extends StatelessWidget {
   final Color? activeColor;
   final Color? inactiveColor;
   final Widget? child;
-
+  final String? path;
   const TabItem({
     Key? key,
     required this.isActive,
+    required this.path,
     this.iconData,
     this.iconSize = 24,
     this.activeColor = Colors.deepPurpleAccent,
@@ -20,13 +22,32 @@ class TabItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double h(double n) {
+      return MediaQuery.of(context).size.height * (n / 851);
+    }
+
+    double w(double n) {
+      return MediaQuery.of(context).size.width * (n / 393);
+    }
+
     return child ??
-        Container(
-          width: MediaQuery.of(context).size.height * (41 / 851),
-          height: MediaQuery.of(context).size.width * (37 / 393),
-          child: iconData,
+        SvgPicture.asset(
+          path.toString(),
           color: isActive ? activeColor : inactiveColor,
-          //size: iconSize,
+          height: h(35),
         );
+  }
+
+  Widget _buildDefaultTab() {
+    return SvgPicture.asset(
+      path.toString(),
+      color: isActive ? activeColor : inactiveColor,
+      height: 20,
+    );
+    /*  Container(
+      child: iconData,
+      color: isActive ? activeColor : inactiveColor,
+      //size: iconSize,
+    );*/
   }
 }

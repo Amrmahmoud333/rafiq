@@ -14,26 +14,22 @@ import 'package:rafiq/views/shared/custom_bottom_nav_bar.dart';
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({Key? key}) : super(key: key);
   static const routeName = '/profile_screen';
-  final autoSizeGroup = AutoSizeGroup();
   var _bottomNavIndex = 0; //default index of a first screen
-
-  late AnimationController _animationController;
-  late Animation<double> animation;
-  late CurvedAnimation curve;
-  //  final iconList = <IconData>[
-  //    Icons.brightness_5,
-  //    Icons.brightness_4,
-  //    Icons.brightness_6,
-  //    Icons.brightness_7,
-  //  ];
 
   final iconList = <SvgPicture>[
     SvgPicture.asset(
       'assets/images/home_icon.svg',
+      color: Colors.amber,
     ),
     SvgPicture.asset('assets/images/trip_icon.svg'),
     SvgPicture.asset('assets/images/notifications_icon.svg'),
     SvgPicture.asset('assets/images/user_icon.svg'),
+  ];
+  final pathList = <String>[
+    'assets/images/home_icon.svg',
+    'assets/images/trip_icon.svg',
+    'assets/images/notifications_icon.svg',
+    'assets/images/user_icon.svg',
   ];
   @override
   Widget build(BuildContext context) {
@@ -78,7 +74,7 @@ class ProfileScreen extends StatelessWidget {
           ],
         ),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.white,
+          backgroundColor: const Color(0xff5B618A),
           child: Container(
             width: w(65),
             height: h(65),
@@ -95,7 +91,9 @@ class ProfileScreen extends StatelessWidget {
           icons: iconList,
           backgroundColor: const Color(0xffE8DEEB),
           activeIndex: _bottomNavIndex,
+          activeColor: const Color(0xffB99AC2),
           gapLocation: GapLocation.center,
+          path: pathList,
           notchSmoothness: NotchSmoothness.defaultEdge,
           onTap: (index) => {
             //setState(() => _bottomNavIndex = index)

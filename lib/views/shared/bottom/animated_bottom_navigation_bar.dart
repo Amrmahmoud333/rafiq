@@ -22,6 +22,7 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
 
   /// Icon data to render in the tab bar.
   final List<Widget>? icons;
+  final List<String>? path;
 
   /// Handler which is passed every updated active index.
   final Function(int) onTap;
@@ -84,6 +85,7 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
     Key? key,
     required this.activeIndex,
     required this.onTap,
+    this.path,
     this.tabBuilder,
     this.itemCount,
     this.icons,
@@ -124,6 +126,7 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
   AnimatedBottomNavigationBar({
     Key? key,
     required List<Widget> icons,
+    List<String>? path,
     required int activeIndex,
     required Function(int) onTap,
     double? height,
@@ -144,6 +147,7 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
     double? gapWidth,
   }) : this._internal(
           key: key,
+          path: path,
           icons: icons,
           activeIndex: activeIndex,
           onTap: onTap,
@@ -184,8 +188,10 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
     NotchSmoothness? notchSmoothness,
     GapLocation? gapLocation,
     double? gapWidth,
+    //  String? path,
   }) : this._internal(
           key: key,
+          //   path: path,
           tabBuilder: tabBuilder,
           itemCount: itemCount,
           activeIndex: activeIndex,
@@ -321,6 +327,7 @@ class _AnimatedBottomNavigationBarState
 
       items.add(
         NavigationBarItem(
+          path: widget.path?.elementAt(i),
           isActive: isActive,
           bubbleRadius: _bubbleRadius,
           maxBubbleRadius: widget.splashRadius,
