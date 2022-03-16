@@ -23,11 +23,11 @@ class ProfileHome extends StatelessWidget {
             height: h(33),
             width: w(373),
             child: AppBar(
-              elevation: 2,
+              elevation: 0,
               backgroundColor: const Color(0xffF7F4F8),
               bottom: TabBar(
-                indicator: CircleTabIndicator(
-                    color: const Color(0xff5B618A), radius: 3),
+                labelPadding: EdgeInsets.only(bottom: h(5)),
+                indicator: Dot(color: const Color(0xff5B618A), radius: 3),
                 labelColor: const Color(0xff5B618A),
                 unselectedLabelColor: const Color(0xff5B618A).withOpacity(0.35),
                 labelStyle: Theme.of(context).textTheme.headline6,
@@ -85,9 +85,9 @@ class ProfileHome extends StatelessWidget {
   }
 }
 
-class CircleTabIndicator extends Decoration {
+class Dot extends Decoration {
   final BoxPainter _painter;
-  CircleTabIndicator({@required Color? color, @required double? radius})
+  Dot({@required Color? color, @required double? radius})
       : _painter = _CirclePainter(color!, radius!);
   @override
   BoxPainter createBoxPainter([VoidCallback? onChanged]) => _painter;
