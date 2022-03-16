@@ -11,7 +11,7 @@ import 'package:rafiq/views/shared/bottom_nav_bar_package/animated_bottom_naviga
 import 'package:rafiq/views/shared/floation_action_button.dart';
 
 class ProfileScreen extends StatelessWidget {
-  ProfileScreen({Key? key}) : super(key: key);
+  const ProfileScreen({Key? key}) : super(key: key);
   static const routeName = '/profile_screen';
 
   @override
@@ -58,7 +58,9 @@ class ProfileScreen extends StatelessWidget {
         ),
         floatingActionButton: const CustomFloationActionButton(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        bottomNavigationBar: CustomBottomNavgiationBar(),
+        bottomNavigationBar: CustomBottomNavgiationBar(
+          bottomNavIndex: 3,
+        ),
       ),
     );
   }
