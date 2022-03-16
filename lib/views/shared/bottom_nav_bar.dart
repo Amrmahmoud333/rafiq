@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rafiq/views/home/screens/home_screen.dart';
+import 'package:rafiq/views/profile/screens/profile_screen.dart';
 import 'package:rafiq/views/shared/bottom_nav_bar_package/animated_bottom_navigation_bar.dart';
 
 class CustomBottomNavgiationBar extends StatefulWidget {
@@ -42,7 +44,17 @@ class _CustomBottomNavgiationBarState extends State<CustomBottomNavgiationBar> {
       gapLocation: GapLocation.center,
       path: pathList,
       notchSmoothness: NotchSmoothness.defaultEdge,
-      onTap: (index) => {setState(() => widget.bottomNavIndex = index)},
+      onTap: (index) {
+        setState(() {
+          widget.bottomNavIndex = index;
+          if (index == 0) {
+            Navigator.pushNamed(context, HomeScreen.routeName);
+          }
+          if (index == 3) {
+            Navigator.pushNamed(context, ProfileScreen.routeName);
+          }
+        });
+      },
     );
   }
 }
