@@ -40,6 +40,7 @@ class CustomBottomNavgiationBar extends StatelessWidget {
       notchSmoothness: NotchSmoothness.defaultEdge,
       onTap: (index) {
         BlocProvider.of<BottomNavCubit>(context).changeIndexForNavScreen(index);
+        //Amr Mahmoud
       },
     );
   }
