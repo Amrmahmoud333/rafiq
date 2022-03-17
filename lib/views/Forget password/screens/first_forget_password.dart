@@ -5,8 +5,19 @@ import 'package:rafiq/views/shared/input_field.dart';
 import 'package:rafiq/views/shared/log_sign_button.dart';
 
 class FirstForgetPassword extends StatelessWidget {
-  const FirstForgetPassword({Key? key}) : super(key: key);
+  FirstForgetPassword({Key? key}) : super(key: key);
   static const routeName = '/first_forget_password';
+
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController emailcontroller = TextEditingController();
+  String? customValidteEmail(String? email) {
+    if (email!.isEmpty || email.length < 2 || email.length >= 35) {
+      return 'Enter a Correct Email or User Name';
+    } else {
+      return null;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double height(double n) {
@@ -39,6 +50,7 @@ class FirstForgetPassword extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     InkWell(
+                      //TODO arrow go to ??
                       onTap: () {},
                       child: const Icon(
                         Icons.arrow_back,
@@ -95,33 +107,36 @@ class FirstForgetPassword extends StatelessWidget {
                     left: width(32),
                     right: width(32),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(top: height(35)),
-                        child: const InputField(
-                          label: 'Username or Email',
-                          sizeoflabel: 20,
-                          obscureText: false,
-                          keyboardType: TextInputType.emailAddress,
-                        ),
-                      ),
-                      Container(
-                        alignment: Alignment.center,
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                            top: height(34),
-                          ),
-                          child: LogSignButton(
-                            label: 'Send',
-                            ontap: () {
-                              print('object');
-                            },
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(top: height(35)),
+                          child: InputField(
+                            label: 'Username or Email',
+                            sizeoflabel: 20,
+                            obscureText: false,
+                            keyboardType: TextInputType.emailAddress,
+                            controller: emailcontroller,
+                            validator: customValidteEmail,
                           ),
                         ),
-                      )
-                    ],
+                        Container(
+                          alignment: Alignment.center,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              top: height(34),
+                            ),
+                            child: LogSignButton(
+                              label: 'Send',
+                              ontap: () {},
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),

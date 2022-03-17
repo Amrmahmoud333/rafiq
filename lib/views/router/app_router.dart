@@ -20,7 +20,7 @@ class AppRouter {
       case ThirdSignUp.routeName:
         return MaterialPageRoute(builder: (_) => ThirdSignUp());
       case FirstForgetPassword.routeName:
-        return MaterialPageRoute(builder: (_) => const FirstForgetPassword());
+        return MaterialPageRoute(builder: (_) => FirstForgetPassword());
       case SecondForgetPassword.routeName:
         return MaterialPageRoute(builder: (_) => const SecondForgetPassword());
       case ThirdForgetPassword.routeName:
