@@ -5,13 +5,14 @@ import 'package:rafiq/data/data_API/authentication/login_API.dart';
 import 'package:rafiq/data/data_API/dio_helper.dart';
 import 'package:rafiq/data/data_API/authentication/register_api.dart';
 import 'package:rafiq/logic/cubit/login_cubit/login_cubit.dart';
+import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 import 'package:rafiq/logic/cubit/register_cubit/register_cubit.dart';
 import 'package:rafiq/theme.dart';
 import 'package:rafiq/views/router/app_router.dart';
 
 void main() {
   DioHelper.init();
-  runApp(DevicePreview(enabled: true, builder: (context) => MyApp()));
+  runApp(DevicePreview(enabled: false, builder: (context) => MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -27,6 +28,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<LoginCubit>(
           create: (context) => LoginCubit(loginRepo: LoginAPI()),
+        ),
+        BlocProvider<ProfileCubit>(
+          create: (context) => ProfileCubit(),
         ),
       ],
       child: MaterialApp(

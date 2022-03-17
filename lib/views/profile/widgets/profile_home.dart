@@ -1,12 +1,18 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
+import 'package:rafiq/logic/cubit/profile_cubit/profile_states.dart';
 import 'package:rafiq/theme.dart';
+
+import 'package:rafiq/views/profile/widgets/row_tap_data.dart';
 
 class ProfileHome extends StatelessWidget {
   const ProfileHome({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    ProfileCubit cubit = BlocProvider.of<ProfileCubit>(context);
     double h(double n) {
       return MediaQuery.of(context).size.height * (n / 851);
     }
@@ -16,70 +22,104 @@ class ProfileHome extends StatelessWidget {
     }
 
     return Expanded(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: h(33),
-            width: w(373),
-            child: AppBar(
-              elevation: 0,
-              backgroundColor: const Color(0xffF7F4F8),
-              bottom: TabBar(
-                labelPadding: EdgeInsets.only(bottom: h(5)),
-                indicator: Dot(color: const Color(0xff5B618A), radius: 3),
-                labelColor: const Color(0xff5B618A),
-                unselectedLabelColor: const Color(0xff5B618A).withOpacity(0.35),
-                labelStyle: Theme.of(context).textTheme.headline6,
-                tabs: const [
-                  AutoSizeText('Posts'),
-                  AutoSizeText('Image'),
-                  AutoSizeText('Videos'),
-                  AutoSizeText('Map'),
-                ],
-              ),
-            ),
-          ),
-          Expanded(
-            child: Container(
-              color: const Color(0xffF7F4F8),
+      child: BlocBuilder<ProfileCubit, ProfileStates>(
+        builder: (context, state) => Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: h(33),
               width: w(373),
-              child: TabBarView(
-                children: [
-                  SingleChildScrollView(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+              child: AppBar(
+                elevation: 0,
+                backgroundColor: const Color(0xffF7F4F8),
+                bottom: TabBar(
+                  labelPadding: EdgeInsets.only(bottom: h(5)),
+                  indicator: Dot(color: const Color(0xff5B618A), radius: 3),
+                  labelColor: const Color(0xff5B618A),
+                  unselectedLabelColor:
+                      const Color(0xff5B618A).withOpacity(0.35),
+                  labelStyle: Theme.of(context).textTheme.headline6,
+                  onTap: (index) {
+                    cubit.ChangeIndex(index);
+                  },
+                  tabs: [
+                    TapRowData(
+                      widget: cubit.selectTap[cubit.currenindex] == 'Posts'
+                          ? cubit.selectTapIcon[cubit.currenindex]
+                          : Container(),
+                      lable: 'Posts',
+                    ),
+                    TapRowData(
+                      widget: cubit.selectTap[cubit.currenindex] == 'Image'
+                          ? cubit.selectTapIcon[cubit.currenindex]
+                          : Container(),
+                      lable: 'Image',
+                    ),
+                    TapRowData(
+                      widget: cubit.selectTap[cubit.currenindex] == 'Videos'
+                          ? cubit.selectTapIcon[cubit.currenindex]
+                          : Container(),
+                      lable: 'Videos',
+                    ),
+                    Row(
                       children: [
-                        AutoSizeText(
-                          'No posts yet',
-                          style: ThemeOfProject.ligthTheme.textTheme.headline4,
+                        SizedBox(
+                          width: w(9),
+                        ),
+                        TapRowData(
+                          widget: cubit.selectTap[cubit.currenindex] == 'Map'
+                              ? cubit.selectTapIcon[cubit.currenindex]
+                              : Container(),
+                          lable: 'Map',
                         ),
                       ],
                     ),
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text('Images'),
-                    ],
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text('Videos'),
-                    ],
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text('Map'),
-                    ],
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+            Expanded(
+              child: Container(
+                color: const Color(0xffF7F4F8),
+                width: w(373),
+                child: TabBarView(
+                  children: [
+                    SingleChildScrollView(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          AutoSizeText(
+                            'No posts yet',
+                            style:
+                                ThemeOfProject.ligthTheme.textTheme.headline4,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text('Images.......'),
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text('Videos'),
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text('Map'),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
