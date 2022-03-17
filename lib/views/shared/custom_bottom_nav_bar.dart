@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:rafiq/views/profile/widgets/profile_home.dart';
 
 class CutsomBottomNavigationBar extends StatelessWidget {
   CutsomBottomNavigationBar({Key? key}) : super(key: key);

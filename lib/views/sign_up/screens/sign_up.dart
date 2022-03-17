@@ -8,8 +8,6 @@ import 'package:rafiq/views/shared/log_sign_button.dart';
 import 'package:rafiq/views/sign_up/screens/second_sign_up.dart';
 import 'package:rafiq/views/sign_up/widget/horizontal_line.dart';
 
-import '../../../theme.dart';
-
 class SignUp extends StatelessWidget {
   SignUp({Key? key}) : super(key: key);
   static const routeName = '/sign_up';
