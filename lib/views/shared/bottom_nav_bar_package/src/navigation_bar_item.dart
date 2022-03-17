@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq/views/shared/bottom/src/bubble_selection_painter.dart';
+import 'package:rafiq/views/shared/bottom_nav_bar_package/src/bubble_selection_painter.dart';
 
 import 'tab_item.dart';
 
@@ -15,6 +15,7 @@ class NavigationBarItem extends StatelessWidget {
   final double? iconSize;
   final VoidCallback onTap;
   final Widget? child;
+  final String? path;
 
   NavigationBarItem({
     required this.isActive,
@@ -28,14 +29,14 @@ class NavigationBarItem extends StatelessWidget {
     required this.iconSize,
     required this.onTap,
     this.child,
+    this.path,
   });
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        height: double.infinity,
-        width: double.infinity,
+        color: Color(0xffE8DEEB),
         child: CustomPaint(
           painter: BubblePainter(
             bubbleRadius: isActive ? bubbleRadius : 0,
@@ -43,16 +44,14 @@ class NavigationBarItem extends StatelessWidget {
             maxBubbleRadius: maxBubbleRadius,
           ),
           child: InkWell(
-            child: Transform.scale(
-              scale: isActive ? iconScale : 1,
-              child: TabItem(
-                isActive: isActive,
-                iconData: iconData,
-                iconSize: iconSize,
-                activeColor: activeColor,
-                inactiveColor: inactiveColor,
-                child: child,
-              ),
+            child: TabItem(
+              path: path!,
+              isActive: isActive,
+              iconData: iconData,
+              iconSize: iconSize,
+              activeColor: activeColor,
+              inactiveColor: inactiveColor,
+              child: child,
             ),
             splashColor: Colors.transparent,
             focusColor: Colors.transparent,

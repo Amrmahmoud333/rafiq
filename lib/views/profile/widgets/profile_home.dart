@@ -17,7 +17,7 @@ class ProfileHome extends StatelessWidget {
 
     return Expanded(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
             height: h(33),
@@ -26,6 +26,8 @@ class ProfileHome extends StatelessWidget {
               elevation: 0,
               backgroundColor: const Color(0xffF7F4F8),
               bottom: TabBar(
+                labelPadding: EdgeInsets.only(bottom: h(5)),
+                indicator: Dot(color: const Color(0xff5B618A), radius: 3),
                 labelColor: const Color(0xff5B618A),
                 unselectedLabelColor: const Color(0xff5B618A).withOpacity(0.35),
                 labelStyle: Theme.of(context).textTheme.headline6,
@@ -80,5 +82,28 @@ class ProfileHome extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class Dot extends Decoration {
+  final BoxPainter _painter;
+  Dot({@required Color? color, @required double? radius})
+      : _painter = _CirclePainter(color!, radius!);
+  @override
+  BoxPainter createBoxPainter([VoidCallback? onChanged]) => _painter;
+}
+
+class _CirclePainter extends BoxPainter {
+  final Paint _paint;
+  final double radius;
+  _CirclePainter(Color color, this.radius)
+      : _paint = Paint()
+          ..color = color
+          ..isAntiAlias = true;
+  @override
+  void paint(Canvas canvas, Offset offset, ImageConfiguration cfg) {
+    final Offset circleOffset =
+        offset + Offset(cfg.size!.width / 2, cfg.size!.height - radius);
+    canvas.drawCircle(circleOffset, radius, _paint);
   }
 }
