@@ -27,9 +27,14 @@ class ProfileHome extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(
-              height: h(33),
+              height: h(37),
               width: w(373),
               child: AppBar(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(15),
+                  ),
+                ),
                 elevation: 0,
                 backgroundColor: const Color(0xffF7F4F8),
                 bottom: TabBar(

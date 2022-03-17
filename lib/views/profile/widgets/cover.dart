@@ -32,7 +32,7 @@ class Cover extends StatelessWidget {
               color: Color(0xffE8DEEB),
             ),
             child: const Image(
-              image: AssetImage('assets/images/coverr.jpg'),
+              image: AssetImage('assets/images/c3.jpg'),
               fit: BoxFit.cover,
             ),
           ),

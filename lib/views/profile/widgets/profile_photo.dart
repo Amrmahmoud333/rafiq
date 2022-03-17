@@ -23,11 +23,11 @@ class ProfilePhoto extends StatelessWidget {
         height: h(142),
         decoration: BoxDecoration(
           color: const Color(0xff5B618A),
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(30),
           border: Border.all(color: const Color(0xffE8DEEB), width: 2),
           image: const DecorationImage(
-            fit: BoxFit.fill,
-            image: AssetImage('assets/images/amr.jpg'),
+            fit: BoxFit.cover,
+            image: AssetImage('assets/images/mustafa.png'),
           ),
         ),
         //   child: SvgPicture.asset(

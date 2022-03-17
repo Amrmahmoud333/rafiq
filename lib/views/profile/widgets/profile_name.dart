@@ -23,7 +23,7 @@ class ProfileName extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: const [
           AutoSizeText(
-            'Amr Mahmoud',
+            'Mustafa Mahmoud',
             style: TextStyle(
               color: Color(0xff5B618A),
               fontSize: 24,
@@ -32,7 +32,7 @@ class ProfileName extends StatelessWidget {
             ),
           ),
           AutoSizeText(
-            '  @AmrMa',
+            '  @Mustafa ',
             style: TextStyle(
               color: Color(0xff5B618A),
               fontSize: 18,

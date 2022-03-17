@@ -10,19 +10,19 @@ class ProfileCubit extends Cubit<ProfileStates> {
   List<Icon> selectTapIcon = [
     const Icon(
       Icons.post_add_outlined,
-      size: 23,
+      size: 21,
     ),
     const Icon(
       Icons.image,
-      size: 23,
+      size: 21,
     ),
     const Icon(
       Icons.videocam_outlined,
-      size: 23,
+      size: 21,
     ),
     const Icon(
       Icons.map,
-      size: 23,
+      size: 21,
     ),
   ];
 
