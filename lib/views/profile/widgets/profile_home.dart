@@ -44,20 +44,20 @@ class ProfileHome extends StatelessWidget {
                   },
                   tabs: [
                     TapRowData(
-                      widget: cubit.selectTap[cubit.currenindex] == 'Posts'
-                          ? cubit.selectTapIcon[cubit.currenindex]
+                      widget: cubit.selectTap[cubit.currentIndex] == 'Posts'
+                          ? cubit.selectTapIcon[cubit.currentIndex]
                           : Container(),
                       lable: 'Posts',
                     ),
                     TapRowData(
-                      widget: cubit.selectTap[cubit.currenindex] == 'Image'
-                          ? cubit.selectTapIcon[cubit.currenindex]
+                      widget: cubit.selectTap[cubit.currentIndex] == 'Image'
+                          ? cubit.selectTapIcon[cubit.currentIndex]
                           : Container(),
                       lable: 'Image',
                     ),
                     TapRowData(
-                      widget: cubit.selectTap[cubit.currenindex] == 'Videos'
-                          ? cubit.selectTapIcon[cubit.currenindex]
+                      widget: cubit.selectTap[cubit.currentIndex] == 'Videos'
+                          ? cubit.selectTapIcon[cubit.currentIndex]
                           : Container(),
                       lable: 'Videos',
                     ),
@@ -67,8 +67,8 @@ class ProfileHome extends StatelessWidget {
                           width: w(9),
                         ),
                         TapRowData(
-                          widget: cubit.selectTap[cubit.currenindex] == 'Map'
-                              ? cubit.selectTapIcon[cubit.currenindex]
+                          widget: cubit.selectTap[cubit.currentIndex] == 'Map'
+                              ? cubit.selectTapIcon[cubit.currentIndex]
                               : Container(),
                           lable: 'Map',
                         ),

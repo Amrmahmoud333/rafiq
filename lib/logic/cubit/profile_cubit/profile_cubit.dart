@@ -5,7 +5,7 @@ import 'package:rafiq/logic/cubit/profile_cubit/profile_states.dart';
 class ProfileCubit extends Cubit<ProfileStates> {
   ProfileCubit() : super(ProfileIntialState());
 
-  int currenindex = 0;
+  int currentIndex = 0;
   List<String> selectTap = ['Posts', 'Image', 'Videos', 'Map'];
   List<Icon> selectTapIcon = [
     const Icon(
@@ -27,7 +27,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
   ];
 
   void ChangeIndex(index) {
-    currenindex = index;
+    currentIndex = index;
     emit(ProfileChangeIndexlState());
   }
 }

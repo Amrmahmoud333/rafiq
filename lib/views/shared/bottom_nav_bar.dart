@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rafiq/logic/cubit/bottom_nav_state_cubit/cubit/bottom_nav_cubit.dart';
 import 'package:rafiq/views/home/screens/home_screen.dart';
 import 'package:rafiq/views/profile/screens/profile_screen.dart';
 import 'package:rafiq/views/shared/bottom_nav_bar_package/animated_bottom_navigation_bar.dart';
 
 class CustomBottomNavgiationBar extends StatelessWidget {
-  int? bottomNavIndex;
   CustomBottomNavgiationBar({
     Key? key,
-    required this.bottomNavIndex,
   }) : super(key: key);
 
   final iconList = <SvgPicture>[
@@ -33,21 +33,13 @@ class CustomBottomNavgiationBar extends StatelessWidget {
     return AnimatedBottomNavigationBar(
       icons: iconList,
       backgroundColor: const Color(0xffE8DEEB),
-      activeIndex: bottomNavIndex!,
+      activeIndex: BlocProvider.of<BottomNavCubit>(context).currentIndex,
       activeColor: const Color(0xffB99AC2),
       gapLocation: GapLocation.center,
       path: pathList,
       notchSmoothness: NotchSmoothness.defaultEdge,
       onTap: (index) {
-        /*  setState(() {
-          widget.bottomNavIndex = index;
-          if (index == 0) {
-            Navigator.pushNamed(context, HomeScreen.routeName);
-          }
-          if (index == 3) {
-            Navigator.pushNamed(context, ProfileScreen.routeName);
-          }
-        });*/
+        BlocProvider.of<BottomNavCubit>(context).changeIndexForNavScreen(index);
       },
     );
   }

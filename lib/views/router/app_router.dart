@@ -9,11 +9,16 @@ import 'package:rafiq/views/sign_up/screens/second_sign_up.dart';
 import 'package:rafiq/views/sign_up/screens/sign_up.dart';
 import 'package:rafiq/views/sign_up/screens/third_sign_up.dart';
 
+import '../bottom_navigation/bottom_nav_screen.dart';
+import '../notification/screens/notification_screen.dart';
+import '../trip/screens/trip_screen.dart';
+
 class AppRouter {
   Route onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case '/':
-        return MaterialPageRoute(builder: (_) => const ProfileScreen());
+        return MaterialPageRoute(
+            builder: (_) => const BottomNavigationScreen());
       case SignUp.routeName:
         return MaterialPageRoute(builder: (_) => SignUp());
       case SecondSignUp.routeName:
@@ -32,6 +37,13 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const ProfileScreen());
       case HomeScreen.routeName:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
+      case TripScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const TripScreen());
+      case NotificationScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const NotificationScreen());
+      case BottomNavigationScreen.routeName:
+        return MaterialPageRoute(
+            builder: (_) => const BottomNavigationScreen());
       default:
         return MaterialPageRoute(builder: (_) => LoginScreen());
     }

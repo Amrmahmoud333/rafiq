@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq/views/profile/widgets/cover.dart';
 import 'package:rafiq/views/profile/widgets/edit_button.dart';
 import 'package:rafiq/views/profile/widgets/profile_Information.dart';
 import 'package:rafiq/views/profile/widgets/profile_home.dart';
 import 'package:rafiq/views/profile/widgets/profile_name.dart';
 import 'package:rafiq/views/profile/widgets/profile_photo.dart';
-import 'package:rafiq/views/shared/bottom_nav_bar.dart';
-import 'package:rafiq/views/shared/bottom_nav_bar_package/animated_bottom_navigation_bar.dart';
-import 'package:rafiq/views/shared/floation_action_button.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -55,11 +51,6 @@ class ProfileScreen extends StatelessWidget {
             const ProfileHome(),
             // CutsomBottomNavigationBar(),
           ],
-        ),
-        floatingActionButton: const CustomFloationActionButton(),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        bottomNavigationBar: CustomBottomNavgiationBar(
-          bottomNavIndex: 3,
         ),
       ),
     );
