@@ -17,7 +17,7 @@ class EditButton extends StatelessWidget {
     }
 
     return Positioned(
-      top: h(190),
+      top: h(180),
       left: w(352),
       child: InkWell(
         onTap: () {},
