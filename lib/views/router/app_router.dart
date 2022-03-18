@@ -34,7 +34,7 @@ class AppRouter {
       case LoginScreen.routeName:
         return MaterialPageRoute(builder: (_) => LoginScreen());
       case ProfileScreen.routeName:
-        return MaterialPageRoute(builder: (_) => const ProfileScreen());
+        return MaterialPageRoute(builder: (_) => ProfileScreen());
       case HomeScreen.routeName:
         return MaterialPageRoute(builder: (_) => HomeScreen());
       case TripScreen.routeName:

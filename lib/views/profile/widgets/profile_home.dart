@@ -8,8 +8,8 @@ import 'package:rafiq/theme.dart';
 import 'package:rafiq/views/profile/widgets/row_tap_data.dart';
 
 class ProfileHome extends StatelessWidget {
-  const ProfileHome({Key? key}) : super(key: key);
-
+  const ProfileHome({Key? key, required this.tabController}) : super(key: key);
+  final TabController tabController;
   @override
   Widget build(BuildContext context) {
     ProfileCubit cubit = BlocProvider.of<ProfileCubit>(context);
@@ -38,15 +38,13 @@ class ProfileHome extends StatelessWidget {
                 elevation: 0,
                 backgroundColor: const Color(0xffF7F4F8),
                 bottom: TabBar(
+                  controller: tabController,
                   labelPadding: EdgeInsets.only(bottom: h(5)),
                   indicator: Dot(color: const Color(0xff5B618A), radius: 3),
                   labelColor: const Color(0xff5B618A),
                   unselectedLabelColor:
                       const Color(0xff5B618A).withOpacity(0.35),
                   labelStyle: Theme.of(context).textTheme.headline6,
-                  onTap: (index) {
-                    cubit.ChangeIndex(index);
-                  },
                   tabs: [
                     TapRowData(
                       widget: cubit.selectTap[cubit.currentIndex] == 'Posts'
@@ -88,6 +86,7 @@ class ProfileHome extends StatelessWidget {
                 color: const Color(0xffF7F4F8),
                 width: w(373),
                 child: TabBarView(
+                  controller: tabController,
                   children: [
                     SingleChildScrollView(
                       child: Column(
