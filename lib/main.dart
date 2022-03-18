@@ -12,7 +12,7 @@ import 'package:rafiq/views/router/app_router.dart';
 
 void main() {
   DioHelper.init();
-  runApp(DevicePreview(enabled: false, builder: (context) => MyApp()));
+  runApp(DevicePreview(enabled: true, builder: (context) => MyApp()));
 }
 
 class MyApp extends StatelessWidget {

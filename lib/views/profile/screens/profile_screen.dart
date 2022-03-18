@@ -25,36 +25,6 @@ class ProfileScreen extends StatelessWidget {
       initialIndex: 0,
       child: SafeArea(
         child: Scaffold(
-          drawer: Drawer(),
-          appBar: AppBar(
-            toolbarHeight: h(55),
-            backgroundColor: const Color(0xffE8DEEB),
-            title: InkWell(
-              onTap: () {
-                //    showSearch(context: context, delegate: MySearchDelegate());
-              },
-              child: Container(
-                width: w(208),
-                height: h(29),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(5),
-                  border: Border.all(
-                    color: Color(0xff5B618A),
-                  ),
-                ),
-                child: Row(children: [
-                  SizedBox(
-                    width: w(3),
-                  ),
-                  Icon(
-                    Icons.search,
-                    size: 25,
-                  ),
-                ]),
-              ),
-            ),
-          ),
           body: Column(
             children: [
               SizedBox(
@@ -84,29 +54,3 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 }
-/*
-class MySearchDelegate extends SearchDelegate {
-  @override
-  List<Widget>? buildActions(BuildContext context) {
-    
-  }
-
-  @override
-  Widget? buildLeading(BuildContext context) {
-    // TODO: implement buildLeading
-    throw UnimplementedError();
-  }
-
-  @override
-  Widget buildResults(BuildContext context) {
-    // TODO: implement buildResults
-    throw UnimplementedError();
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    // TODO: implement buildSuggestions
-    throw UnimplementedError();
-  }
-}
-*/
