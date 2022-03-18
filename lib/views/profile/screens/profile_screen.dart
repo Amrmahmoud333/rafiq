@@ -35,36 +35,6 @@ class ProfileScreen extends StatelessWidget {
                 .ChangeIndex(_tabController.index),
           );
           return Scaffold(
-            drawer: Drawer(),
-            appBar: AppBar(
-              toolbarHeight: h(55),
-              backgroundColor: const Color(0xffE8DEEB),
-              title: InkWell(
-                onTap: () {
-                  //    showSearch(context: context, delegate: MySearchDelegate());
-                },
-                child: Container(
-                  width: w(208),
-                  height: h(29),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                      color: Color(0xff5B618A),
-                    ),
-                  ),
-                  child: Row(children: [
-                    SizedBox(
-                      width: w(3),
-                    ),
-                    Icon(
-                      Icons.search,
-                      size: 25,
-                    ),
-                  ]),
-                ),
-              ),
-            ),
             body: Column(
               children: [
                 SizedBox(
