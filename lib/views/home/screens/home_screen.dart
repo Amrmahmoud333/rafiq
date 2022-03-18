@@ -1,13 +1,49 @@
 import 'package:flutter/material.dart';
+import 'package:rafiq/views/shared/input_field2.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
   static const routeName = '/home_screen';
+  final fromKey = GlobalKey<FormState>();
+  String? customValidteEmail(String? email) {
+    if (email!.isEmpty || email.length < 2 || email.length >= 35) {
+      return 'Enter a Correct Email or User Name';
+    } else {
+      return null;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const Center(
-        child: Text('Home'),
+      backgroundColor: Color(0XFFFFFFFF),
+      body: Padding(
+        padding: const EdgeInsets.all(40.0),
+        child: Form(
+          key: fromKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InputField2(
+                validator: customValidteEmail,
+                label: 'label',
+                obscureText: false,
+                sizeoflabel: 18,
+                widget: InkWell(
+                  onTap: () {
+                    if (fromKey.currentState!.validate()) {
+                      print('mustafa');
+                    }
+                  },
+                  child: Icon(
+                    Icons.search,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
