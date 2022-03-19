@@ -2,12 +2,17 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/core/constants/authentication_const.dart';
+import 'package:rafiq/core/constants/url.dart';
 import 'package:rafiq/data/models/login_model.dart';
 import 'package:rafiq/logic/cubit/login_cubit/login_cubit.dart';
+import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 import 'package:rafiq/views/Forget%20password/screens/first_forget_password.dart';
+import 'package:rafiq/views/home/screens/home_screen.dart';
 import 'package:rafiq/views/login/screens/widgets/custom_check_box.dart';
+import 'package:rafiq/views/main_pages/main_home/screens/main_home.dart';
 import 'package:rafiq/views/painter/bottom_cloud.dart';
 import 'package:rafiq/views/painter/top_cloud.dart';
+import 'package:rafiq/views/profile/screens/profile_screen.dart';
 import 'package:rafiq/views/shared/input_field.dart';
 import 'package:rafiq/views/shared/log_sign_button.dart';
 
@@ -168,8 +173,14 @@ class LoginScreen extends StatelessWidget {
                                             userName: emailController.text,
                                             password: passwordController.text),
                                       );
+                                      await BlocProvider.of<ProfileCubit>(
+                                              context)
+                                          .getCover();
+
                                       print(emailController.text);
                                       print(ACCESSTOKEN);
+                                      Navigator.pushNamed(
+                                          context, ProfileScreen.routeName);
                                     }
                                   }),
                             ),

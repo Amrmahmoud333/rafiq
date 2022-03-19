@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rafiq/core/constants/url.dart';
 
 class Cover extends StatelessWidget {
   const Cover({Key? key}) : super(key: key);
@@ -31,9 +32,9 @@ class Cover extends StatelessWidget {
             decoration: const BoxDecoration(
               color: Color(0xffE8DEEB),
             ),
-            child: const Image(
-              image: AssetImage('assets/images/c3.jpg'),
-              fit: BoxFit.cover,
+            child: Image.network(
+              coverLink!,
+              fit: BoxFit.fill,
             ),
           ),
         ),

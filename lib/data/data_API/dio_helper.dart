@@ -32,4 +32,14 @@ class DioHelper {
       data: data,
     );
   }
+
+  static Future<Response> getcover({
+    @required String? url,
+    @required Map<String, dynamic>? header,
+  }) async {
+    return await dio.get(
+      url!,
+      options: Options(headers: header),
+    );
+  }
 }

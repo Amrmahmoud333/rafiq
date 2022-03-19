@@ -19,11 +19,11 @@ class LoginCubit extends Cubit<LoginState> {
 
       ACCESSTOKEN = _loginModel.results!.accessToken;
       REFRESHTOKEN = _loginModel.results!.refreshToken;
-
+      USERNAME = _loginModel.results!.user!.userName;
       print(_loginModel.results!.message.toString());
       emit(LoginSuccessState());
     } on DioError catch (error) {
-      print(error.response!.data['error']['message']);
+      //print(error.response!.data['error']['message']);
       emit(LoginErrorState());
     }
   }
