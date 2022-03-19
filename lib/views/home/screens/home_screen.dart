@@ -23,6 +23,7 @@ class HomeScreen extends StatelessWidget {
           key: fromKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               InputField2(
                 validator: customValidteEmail,
@@ -32,7 +33,7 @@ class HomeScreen extends StatelessWidget {
                 widget: InkWell(
                   onTap: () {
                     if (fromKey.currentState!.validate()) {
-                      print('mustafa');
+                      //print('mustafa');
                     }
                   },
                   child: Icon(

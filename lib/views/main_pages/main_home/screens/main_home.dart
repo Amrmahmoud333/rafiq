@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rafiq/logic/cubit/bottom_nav_state_cubit/cubit/bottom_nav_cubit.dart';
-import 'package:rafiq/views/bottom_navigation/widgets/app_bar.dart';
+import 'package:rafiq/logic/cubit/main_home/main_home_cubit.dart';
 import 'package:rafiq/views/shared/bottom_nav_bar.dart';
 import 'package:rafiq/views/shared/floation_action_button.dart';
+import '../widgets/app_bar.dart';
 
-class LayoutHomeScreen extends StatelessWidget {
-  const LayoutHomeScreen({Key? key}) : super(key: key);
+class MainHomeScreen extends StatelessWidget {
+  const MainHomeScreen({Key? key}) : super(key: key);
   static const routeName = '/home_screen';
   @override
   Widget build(BuildContext context) {
@@ -19,11 +19,11 @@ class LayoutHomeScreen extends StatelessWidget {
     }
 
     return BlocProvider(
-      create: (context) => BottomNavCubit(),
-      child: BlocConsumer<BottomNavCubit, BottomNavState>(
+      create: (context) => MainHomeCubit(),
+      child: BlocConsumer<MainHomeCubit, MainHomeState>(
         listener: (context, state) {},
         builder: (context, state) {
-          var cubit = BlocProvider.of<BottomNavCubit>(context);
+          var cubit = BlocProvider.of<MainHomeCubit>(context);
           return Scaffold(
             drawer: Drawer(),
             appBar: MyAppBar(newContext: context),

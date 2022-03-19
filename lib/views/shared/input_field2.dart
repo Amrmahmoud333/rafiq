@@ -44,28 +44,34 @@ class InputField2 extends StatelessWidget {
         SizedBox(
           height: height(4),
         ),
-        TextFormField(
-          style: Theme.of(context).textTheme.headline6,
-          obscureText: obscureText,
-          keyboardType: keyboardType,
-          controller: controller,
-          validator: validator,
-          maxLength: maxLength,
-          decoration: InputDecoration(
-            contentPadding: EdgeInsets.all(5),
-            suffixIcon: widget,
-            filled: true,
-            fillColor: Color(0xFFEBEBEB),
-            enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(
-                width: 2,
-                color: const Color(0xFF5B618A),
+        SizedBox(
+          width: width(313),
+          // height: height(60),
+          child: TextFormField(
+            style: Theme.of(context).textTheme.headline6,
+            obscureText: obscureText,
+            keyboardType: keyboardType,
+            controller: controller,
+            validator: validator,
+            maxLength: maxLength,
+            decoration: InputDecoration(
+              // isDense: true,
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+              suffixIcon: widget,
+              filled: true,
+              fillColor: Color(0xFFEBEBEB),
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  width: 2,
+                  color: const Color(0xFF5B618A),
+                ),
               ),
-            ),
-            focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(
-                width: 2,
-                color: Colors.black,
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  width: 2,
+                  color: Colors.black,
+                ),
               ),
             ),
           ),

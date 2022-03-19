@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
 // TODO work with InputFeild
 // TODO Make forget password API
 
-
+//TODO The delay in the appearance of the icon in tapbar
 // TODO Validate Third sgin up inputs
 // TODO Remember me (Shared pref) 
 // TODO Working with states 
