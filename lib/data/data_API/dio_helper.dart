@@ -8,8 +8,6 @@ class DioHelper {
     dio = Dio(BaseOptions(
       baseUrl: '',
       receiveDataWhenStatusError: true,
-      connectTimeout: 5000,
-      receiveTimeout: 3000,
     ));
   }
 

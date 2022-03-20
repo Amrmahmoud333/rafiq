@@ -12,13 +12,15 @@ class ProfileCubit extends Cubit<ProfileStates> {
 
   late UpdateCoverModel _updateCoverModel;
   Future<void> getCover() async {
+    emit(ProfileGetCoverLoadingState());
     try {
       _updateCoverModel = await updateCoverRepo.updateCover();
       coverLink = _updateCoverModel.results!.cover;
-      print(coverLink! + ' coverLink');
+
       emit(ProfileGetCoverSuccessState());
+      print(coverLink! + ' coverLink');
     } on DioError catch (error) {
-      print(error);
+      // print(error);
       emit(ProfileGetCoverSuccessError());
     }
   }

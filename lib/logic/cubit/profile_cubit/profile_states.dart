@@ -7,3 +7,5 @@ class ProfileChangeIndexlState extends ProfileStates {}
 class ProfileGetCoverSuccessState extends ProfileStates {}
 
 class ProfileGetCoverSuccessError extends ProfileStates {}
+
+class ProfileGetCoverLoadingState extends ProfileStates {}

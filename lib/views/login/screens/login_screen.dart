@@ -173,9 +173,6 @@ class LoginScreen extends StatelessWidget {
                                             userName: emailController.text,
                                             password: passwordController.text),
                                       );
-                                      await BlocProvider.of<ProfileCubit>(
-                                              context)
-                                          .getCover();
 
                                       print(emailController.text);
                                       print(ACCESSTOKEN);
