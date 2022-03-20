@@ -92,19 +92,6 @@ class MainSignUpScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              width: 150,
-              height: 35,
-              child: Center(
-                child: BlocBuilder<RegisterCubit, RegisterState>(
-                  builder: (context, state) => Text(
-                    cubit.lable,
-                    style: TextStyle(fontSize: 25),
-                  ),
-                ),
-              ),
-              color: Colors.amber,
-            )
           ],
         ),
       ),
