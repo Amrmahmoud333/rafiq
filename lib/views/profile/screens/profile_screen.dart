@@ -40,7 +40,7 @@ class ProfileScreen extends StatelessWidget {
                 SizedBox(
                   height: h(288),
                   child: Stack(
-                    children: const [
+                    children: [
                       Cover(),
                       ProfilePhoto(),
                       ProfileName(),

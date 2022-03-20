@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:rafiq/core/constants/authentication_const.dart';
 
 class ProfileName extends StatelessWidget {
   const ProfileName({
@@ -21,7 +22,7 @@ class ProfileName extends StatelessWidget {
       left: w(160),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
+        children: [
           AutoSizeText(
             'Mustafa Mahmoud',
             style: TextStyle(
@@ -32,7 +33,7 @@ class ProfileName extends StatelessWidget {
             ),
           ),
           AutoSizeText(
-            '  @Mustafa ',
+            '$USERNAME',
             style: TextStyle(
               color: Color(0xff5B618A),
               fontSize: 18,

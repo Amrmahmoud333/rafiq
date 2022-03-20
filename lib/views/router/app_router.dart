@@ -18,7 +18,7 @@ class AppRouter {
   Route onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case '/':
-        return MaterialPageRoute(builder: (_) => MainSignUpScreen());
+        return MaterialPageRoute(builder: (_) => LoginScreen());
       case SignUp.routeName:
         return MaterialPageRoute(builder: (_) => SignUp());
       case SecondSignUp.routeName:
