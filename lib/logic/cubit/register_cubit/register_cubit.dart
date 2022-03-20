@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/material.dart';
 import 'package:rafiq/data/models/register_model.dart';
 import 'package:rafiq/data/repositories/authentication/register_repo.dart';
 
@@ -22,11 +22,26 @@ class RegisterCubit extends Cubit<RegisterState> {
         emit(RegisterSuccessState());
       }
     } on DioError catch (error) {
-      print(error.response!.data['error']['message']);
+      // print(error.response!.data['error']['message']);
       emit(RegisterErrorState());
     }
   }
 
+  //controllers of first Sign up
+  final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController lastNameController = TextEditingController();
+  final TextEditingController userNameController = TextEditingController();
+  final formKey1 = GlobalKey<FormState>();
+
+  //controllers of Second Sign up
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final formKey2 = GlobalKey<FormState>();
+
+  //controller of Page View
+  final PageController controllerpage = PageController();
   // manage register screens
   String? firstName, lastName, userName, email, password, confirmPassword;
 

@@ -1,11 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rafiq/data/models/register_model.dart';
 import 'package:rafiq/logic/cubit/register_cubit/register_cubit.dart';
-import 'package:rafiq/views/painter/bottom_cloud.dart';
-import 'package:rafiq/views/painter/top_cloud.dart';
-import 'package:rafiq/views/shared/log_sign_button.dart';
 import 'package:rafiq/views/sign_up/widget/container_choose.dart';
 import 'package:rafiq/views/sign_up/const/country_list.dart';
 import 'package:rafiq/views/sign_up/widget/horizontal_line.dart';

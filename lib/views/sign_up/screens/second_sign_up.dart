@@ -2,21 +2,13 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/logic/cubit/register_cubit/register_cubit.dart';
-import 'package:rafiq/views/painter/bottom_cloud.dart';
-import 'package:rafiq/views/painter/top_cloud.dart';
 import 'package:rafiq/views/shared/input_field.dart';
-import 'package:rafiq/views/shared/log_sign_button.dart';
-import 'package:rafiq/views/sign_up/screens/third_sign_up.dart';
 import 'package:rafiq/views/sign_up/widget/horizontal_line.dart';
 
 class SecondSignUp extends StatelessWidget {
   SecondSignUp({Key? key}) : super(key: key);
   static const routeName = '/second_sign_up';
-  final _formKey = GlobalKey<FormState>();
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController =
-      TextEditingController();
-  final TextEditingController emailController = TextEditingController();
+
   String? customValidteEmail(String? email) {
     if (!(RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
@@ -45,9 +37,10 @@ class SecondSignUp extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
+    var cubit = context.read<RegisterCubit>();
     return SingleChildScrollView(
       child: Form(
-        //  key: _formKey,
+        key: cubit.formKey2,
         child: Column(
           children: [
             SizedBox(
@@ -63,7 +56,7 @@ class SecondSignUp extends StatelessWidget {
               label: 'Email',
               sizeoflabel: 18,
               obscureText: false,
-              controller: emailController,
+              controller: cubit.emailController,
               validator: customValidteEmail,
             ),
             SizedBox(
@@ -76,7 +69,7 @@ class SecondSignUp extends StatelessWidget {
                 sizeoflabel: 18,
                 obscureText: context.read<RegisterCubit>().firstObscureText,
                 validator: customValidtePassword,
-                controller: passwordController,
+                controller: cubit.passwordController,
                 widget: InkWell(
                   onTap: () {
                     context.read<RegisterCubit>().changeFirstObscureText();
@@ -100,7 +93,7 @@ class SecondSignUp extends StatelessWidget {
                 sizeoflabel: 18,
                 obscureText: context.read<RegisterCubit>().secondObscureText,
                 validator: customValidtePassword,
-                controller: confirmPasswordController,
+                controller: cubit.confirmPasswordController,
                 widget: InkWell(
                   onTap: () {
                     context.read<RegisterCubit>().changeSecondObscureText();
