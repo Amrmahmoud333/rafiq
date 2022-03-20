@@ -41,13 +41,11 @@ class Cover extends StatelessWidget {
                 builder: (context, states) {
               if (states is ProfileGetCoverLoadingState) {
                 return Image.asset('assets/images/amr.jpg');
-              } else if (states is ProfileGetCoverSuccessState) {
+              } else {
                 return Image.network(
                   coverLink!,
                   fit: BoxFit.fill,
                 );
-              } else {
-                return Image.asset('assets/images/mustafa.png');
               }
             }),
           ),
