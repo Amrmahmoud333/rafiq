@@ -35,7 +35,7 @@ class MainSignUpScreen extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: height(800),
+              height: height(851),
               child: Stack(
                 // fit: StackFit.expand,
                 children: [
@@ -58,7 +58,7 @@ class MainSignUpScreen extends StatelessWidget {
                                 cubit.NotIsLastPageInPageView(index);
 
                               print(cubit.lable);
-                              print(cubit.indexOfPageview);
+                              print(cubit);
                             },
                             //physics: NeverScrollableScrollPhysics(),
                             controller: _controllerpage,
@@ -72,24 +72,23 @@ class MainSignUpScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  /*  Positioned(
+                  Positioned(
                     bottom: height(210),
                     left: width(89),
-                    child: LogSignButton(
-                      ontap: () {
-                        _controllerpage.nextPage(
-                          duration: Duration(
-                            milliseconds: 750,
-                          ),
-                          curve: Curves.fastLinearToSlowEaseIn,
-                        );
-                        print(cubit.lable);
-
-                        //   print(cubit.isLastPage);
-                      },
-                      label: cubit.lable,
+                    child: BlocBuilder<RegisterCubit, RegisterState>(
+                      builder: (context, state) => LogSignButton(
+                        label: cubit.lable,
+                        ontap: () {
+                          _controllerpage.nextPage(
+                            duration: Duration(
+                              milliseconds: 750,
+                            ),
+                            curve: Curves.fastLinearToSlowEaseIn,
+                          );
+                        },
+                      ),
                     ),
-                  ),*/
+                  ),
                 ],
               ),
             ),
