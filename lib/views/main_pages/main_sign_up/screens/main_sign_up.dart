@@ -1,7 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rafiq/logic/cubit/register_cubit/register_cubit.dart';
 import 'package:rafiq/views/main_pages/main_sign_up/widgets/bottom_to_navigate.dart';
 import 'package:rafiq/views/main_pages/main_sign_up/widgets/page_view.dart';
 import 'package:rafiq/views/painter/bottom_cloud.dart';
@@ -20,8 +18,6 @@ class MainSignUpScreen extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
-    var cubit = context.read<RegisterCubit>();
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
@@ -38,7 +34,7 @@ class MainSignUpScreen extends StatelessWidget {
                     child: BottomCLoud(),
                   ),
                   Positioned.fill(
-                    top: 190,
+                    top: 160,
                     child: Column(
                       children: [
                         PageViewWidget(),

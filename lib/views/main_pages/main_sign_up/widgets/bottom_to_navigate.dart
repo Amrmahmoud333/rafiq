@@ -34,7 +34,7 @@ class BottomToNavigate extends StatelessWidget {
                 cubit.confirmPasswordController.text);
             cubit.controllerpage.nextPage(
               duration: Duration(
-                milliseconds: 750,
+                milliseconds: 500,
               ),
               curve: Curves.fastLinearToSlowEaseIn,
             );

@@ -13,7 +13,7 @@ import 'package:rafiq/views/router/app_router.dart';
 
 void main() {
   DioHelper.init();
-  runApp(DevicePreview(enabled: false, builder: (context) => MyApp()));
+  runApp(DevicePreview(enabled: true, builder: (context) => MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -52,6 +52,7 @@ class MyApp extends StatelessWidget {
 // TODO work with InputFeild
 // TODO Make forget password API
 
+//TODO  size in page view change with the screen size because the area of top cloud changes
 //TODO The delay in the appearance of the icon in tapbar
 // TODO Validate Third sgin up inputs
 // TODO Remember me (Shared pref) 
