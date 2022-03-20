@@ -7,6 +7,11 @@ import 'package:rafiq/views/painter/top_cloud.dart';
 import 'package:rafiq/views/profile/screens/profile_screen.dart';
 import 'package:rafiq/views/shared/input_field.dart';
 import 'package:rafiq/views/shared/log_sign_button.dart';
+import 'package:rafiq/views/sign_up/const/country_list.dart';
+import 'package:rafiq/views/sign_up/screens/second_sign_up.dart';
+import 'package:rafiq/views/sign_up/screens/sign_up.dart';
+import 'package:rafiq/views/sign_up/screens/third_sign_up.dart';
+import 'package:rafiq/views/sign_up/widget/container_choose.dart';
 import 'package:rafiq/views/sign_up/widget/horizontal_line.dart';
 
 class MainSignUpScreen extends StatelessWidget {
@@ -22,64 +27,92 @@ class MainSignUpScreen extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
+    var cubit = context.read<RegisterCubit>();
     PageController _controllerpage = PageController();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
-        child: SizedBox(
-          height: height(851),
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              const Align(
-                  alignment: Alignment.topCenter, child: TopCloud(false)),
-              const Align(
-                alignment: Alignment.bottomCenter,
-                child: BottomCLoud(),
-              ),
-              Positioned(
-                bottom: 170,
-                child: TextButton(
-                  onPressed: () {
-                    print('dds');
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return ProfileScreen();
-                    }));
-                  },
-                  child: Text(
-                    'ds',
-                    style: TextStyle(fontSize: 25),
-                  ),
-                ),
-              ),
-              PageView(
-                //   physics: NeverScrollableScrollPhysics(),
-                controller: _controllerpage,
+        child: Column(
+          children: [
+            SizedBox(
+              height: height(800),
+              child: Stack(
+                // fit: StackFit.expand,
                 children: [
-                  Center(child: Text('data1')),
-                  Center(child: Text('data2')),
-                  Center(child: Text('data3')),
+                  const Align(
+                      alignment: Alignment.topCenter, child: TopCloud(false)),
+                  const Align(
+                    alignment: Alignment.bottomCenter,
+                    child: BottomCLoud(),
+                  ),
+                  Positioned.fill(
+                    top: 190,
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: PageView(
+                            onPageChanged: (index) {
+                              if (index == 2) {
+                                cubit.IsLastPageInPageView(index);
+                              } else
+                                cubit.NotIsLastPageInPageView(index);
+
+                              print(cubit.lable);
+                              print(cubit.indexOfPageview);
+                            },
+                            //physics: NeverScrollableScrollPhysics(),
+                            controller: _controllerpage,
+                            children: [
+                              SignUp(),
+                              SecondSignUp(),
+                              ThirdSignUp(),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  /*  Positioned(
+                    bottom: height(210),
+                    left: width(89),
+                    child: LogSignButton(
+                      ontap: () {
+                        _controllerpage.nextPage(
+                          duration: Duration(
+                            milliseconds: 750,
+                          ),
+                          curve: Curves.fastLinearToSlowEaseIn,
+                        );
+                        print(cubit.lable);
+
+                        //   print(cubit.isLastPage);
+                      },
+                      label: cubit.lable,
+                    ),
+                  ),*/
                 ],
               ),
-              Positioned(
-                  bottom: height(210),
-                  left: width(89),
-                  child: LogSignButton(
-                    label: 'sss',
-                    ontap: () {
-                      _controllerpage.nextPage(
-                        duration: Duration(
-                          milliseconds: 750,
-                        ),
-                        curve: Curves.fastLinearToSlowEaseIn,
-                      );
-                    },
-                  )),
-            ],
-          ),
+            ),
+            Container(
+              width: 150,
+              height: 35,
+              child: Center(
+                  child: Text(
+                cubit.lable,
+                style: TextStyle(fontSize: 25),
+              )),
+              color: Colors.amber,
+            )
+          ],
         ),
       ),
     );
   }
+
+  DropdownMenuItem<String> buildMenuItem(String country) => DropdownMenuItem(
+        value: country,
+        child: AutoSizeText(
+          country,
+        ),
+      );
 }

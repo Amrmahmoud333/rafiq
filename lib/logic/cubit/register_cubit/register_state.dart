@@ -18,3 +18,7 @@ class ChangeCountryValueState extends RegisterState {}
 class ChangeGenderValueState extends RegisterState {}
 
 class ChandeDateTimeState extends RegisterState {}
+
+class IsLastPageInPageViewState extends RegisterState {}
+
+class NotIsLastPageInPageViewState extends RegisterState {}

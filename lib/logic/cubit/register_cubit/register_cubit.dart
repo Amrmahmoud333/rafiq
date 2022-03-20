@@ -84,4 +84,21 @@ class RegisterCubit extends Cubit<RegisterState> {
 
     emit(ChandeDateTimeState());
   }
+
+  int indexOfPageview = 0;
+  bool isLastPage = false;
+  String lable = 'Next';
+  void IsLastPageInPageView(index) {
+    indexOfPageview = index;
+    isLastPage = true;
+    lable = 'Sign up';
+    emit(IsLastPageInPageViewState());
+  }
+
+  void NotIsLastPageInPageView(index) {
+    indexOfPageview = index;
+    isLastPage = false;
+    lable = 'Next';
+    emit(NotIsLastPageInPageViewState());
+  }
 }

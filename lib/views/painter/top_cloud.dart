@@ -1,6 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rafiq/views/login/screens/login_screen.dart';
+import 'package:rafiq/views/sign_up/screens/sign_up.dart';
 
 import '../main_pages/main_sign_up/screens/main_sign_up.dart';
 
@@ -37,7 +39,10 @@ class TopCloud extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 InkWell(
-                  onTap: () => print('object'),
+                  onTap: () {
+                    Navigator.pushReplacementNamed(
+                        context, LoginScreen.routeName);
+                  },
                   child: _isLogin
                       ? const AutoSizeText(
                           'Log in',
@@ -66,7 +71,6 @@ class TopCloud extends StatelessWidget {
                   onTap: () {
                     Navigator.pushReplacementNamed(
                         context, MainSignUpScreen.routeName);
-                    print('sss');
                   },
                   child: _isLogin == false
                       ? const AutoSizeText(

@@ -45,126 +45,90 @@ class SecondSignUp extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: SingleChildScrollView(
+    return SingleChildScrollView(
+      child: Form(
+        //  key: _formKey,
         child: Column(
           children: [
             SizedBox(
-              height: height(851),
-              child: Stack(
-                children: [
-                  const Align(
-                    alignment: Alignment.topCenter,
-                    child: TopCloud(false),
-                  ),
-                  const Align(
-                    alignment: Alignment.bottomCenter,
-                    child: BottomCLoud(),
-                  ),
-                  Positioned(
-                    top: height(190),
-                    child: Form(
-                      key: _formKey,
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: height(20),
-                          ),
-                          HorizontalLinee(
-                            precent: 35,
-                          ),
-                          SizedBox(
-                            height: height(52),
-                          ),
-                          InputField(
-                            label: 'Email',
-                            sizeoflabel: 18,
-                            obscureText: false,
-                            controller: emailController,
-                            validator: customValidteEmail,
-                          ),
-                          SizedBox(
-                            height: height(22),
-                          ),
-                          BlocBuilder<RegisterCubit, RegisterState>(
-                              builder: (context, state) {
-                            return InputField(
-                              label: 'Password',
-                              sizeoflabel: 18,
-                              obscureText: context
-                                  .read<RegisterCubit>()
-                                  .firstObscureText,
-                              validator: customValidtePassword,
-                              controller: passwordController,
-                              widget: InkWell(
-                                onTap: () {
-                                  context
-                                      .read<RegisterCubit>()
-                                      .changeFirstObscureText();
-                                },
-                                child: const AutoSizeText(
-                                  'Show',
-                                  style: TextStyle(
-                                      fontSize: 16, color: Color(0xff5B618A)),
-                                ),
-                              ),
-                            );
-                          }),
-                          SizedBox(
-                            height: height(29),
-                          ),
-                          BlocBuilder<RegisterCubit, RegisterState>(
-                              builder: (context, state) {
-                            return InputField(
-                              label: 'Confirm Password',
-                              sizeoflabel: 18,
-                              obscureText: context
-                                  .read<RegisterCubit>()
-                                  .secondObscureText,
-                              validator: customValidtePassword,
-                              controller: confirmPasswordController,
-                              widget: InkWell(
-                                onTap: () {
-                                  context
-                                      .read<RegisterCubit>()
-                                      .changeSecondObscureText();
-                                },
-                                child: const AutoSizeText(
-                                  'Show',
-                                  style: TextStyle(
-                                      fontSize: 16, color: Color(0xff5B618A)),
-                                ),
-                              ),
-                            );
-                          }),
-                          SizedBox(
-                            height: height(61),
-                          ),
-                          LogSignButton(
-                            label: 'Next',
-                            ontap: () {
-                              if (_formKey.currentState!.validate()) {
-                                BlocProvider.of<RegisterCubit>(context)
-                                    .setSecondSignUp(
-                                        emailController.text,
-                                        passwordController.text,
-                                        confirmPasswordController.text);
-                                Navigator.pushNamed(
-                                    context, ThirdSignUp.routeName);
-                              }
-                            },
-                          ),
-                          SizedBox(
-                            height: height(1),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              height: height(20),
             ),
+            HorizontalLinee(
+              precent: 35,
+            ),
+            SizedBox(
+              height: height(52),
+            ),
+            InputField(
+              label: 'Email',
+              sizeoflabel: 18,
+              obscureText: false,
+              controller: emailController,
+              validator: customValidteEmail,
+            ),
+            SizedBox(
+              height: height(22),
+            ),
+            BlocBuilder<RegisterCubit, RegisterState>(
+                builder: (context, state) {
+              return InputField(
+                label: 'Password',
+                sizeoflabel: 18,
+                obscureText: context.read<RegisterCubit>().firstObscureText,
+                validator: customValidtePassword,
+                controller: passwordController,
+                widget: InkWell(
+                  onTap: () {
+                    context.read<RegisterCubit>().changeFirstObscureText();
+                  },
+                  child: AutoSizeText(
+                    context.read<RegisterCubit>().firstObscureText
+                        ? 'Show'
+                        : 'Hide',
+                    style: TextStyle(fontSize: 16, color: Color(0xff5B618A)),
+                  ),
+                ),
+              );
+            }),
+            SizedBox(
+              height: height(29),
+            ),
+            BlocBuilder<RegisterCubit, RegisterState>(
+                builder: (context, state) {
+              return InputField(
+                label: 'Confirm Password',
+                sizeoflabel: 18,
+                obscureText: context.read<RegisterCubit>().secondObscureText,
+                validator: customValidtePassword,
+                controller: confirmPasswordController,
+                widget: InkWell(
+                  onTap: () {
+                    context.read<RegisterCubit>().changeSecondObscureText();
+                  },
+                  child: AutoSizeText(
+                    context.read<RegisterCubit>().secondObscureText
+                        ? 'Show'
+                        : 'Hide',
+                    style: TextStyle(fontSize: 16, color: Color(0xff5B618A)),
+                  ),
+                ),
+              );
+            }),
+            SizedBox(
+              height: height(61),
+            ),
+            /* LogSignButton(
+                label: 'Next',
+                ontap: () {
+                  if (_formKey.currentState!.validate()) {
+                    BlocProvider.of<RegisterCubit>(context).setSecondSignUp(
+                        emailController.text,
+                        passwordController.text,
+                        confirmPasswordController.text);
+                    Navigator.pushNamed(context, ThirdSignUp.routeName);
+                  }
+                },
+              ),*/
           ],
         ),
       ),

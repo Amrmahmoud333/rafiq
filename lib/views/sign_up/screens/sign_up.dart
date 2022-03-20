@@ -71,92 +71,62 @@ class SignUp extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: SingleChildScrollView(
+    return SingleChildScrollView(
+      child: Form(
         child: Column(
           children: [
             SizedBox(
-              height: height(851),
-              child: Stack(
-                children: [
-                  const Align(
-                      alignment: Alignment.topCenter, child: TopCloud(false)),
-                  const Align(
-                    alignment: Alignment.bottomCenter,
-                    child: BottomCLoud(),
-                  ),
-                  Positioned(
-                    top: height(190),
-                    child: Form(
-                      key: _fromKey,
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: height(20),
-                          ),
-                          HorizontalLinee(
-                            precent: 0,
-                          ),
-                          SizedBox(
-                            height: height(52),
-                          ),
-                          InputField(
-                            label: 'First Name',
-                            sizeoflabel: 18,
-                            obscureText: false,
-                            controller: firstNameController,
-                            validator: customValidteFirstName,
-                          ),
-                          SizedBox(
-                            height: height(22),
-                          ),
-                          InputField(
-                            label: 'Last Name',
-                            sizeoflabel: 18,
-                            obscureText: false,
-                            controller: lastNameController,
-                            validator: customValidteLastName,
-                          ),
-                          SizedBox(
-                            height: height(29),
-                          ),
-                          InputField(
-                            label: 'Username',
-                            sizeoflabel: 18,
-                            obscureText: false,
-                            controller: userNameController,
-                            validator: customValidteUserName,
-                          ),
-                          SizedBox(
-                            height: height(61),
-                          ),
-                          LogSignButton(
-                            label: 'Next',
-                            ontap: () {
-                              if (_fromKey.currentState!.validate()) {
-                                BlocProvider.of<RegisterCubit>(context)
-                                    .setFirstSignUp(
-                                        firstNameController.text,
-                                        lastNameController.text,
-                                        userNameController.text);
-                                Navigator.pushNamed(
-                                  context,
-                                  SecondSignUp.routeName,
-                                );
-                              }
-                            },
-                          ),
-                          SizedBox(
-                            height: height(1),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              height: height(20),
             ),
+            HorizontalLinee(
+              precent: 0,
+            ),
+            SizedBox(
+              height: height(52),
+            ),
+            InputField(
+              label: 'First Name',
+              sizeoflabel: 18,
+              obscureText: false,
+              controller: firstNameController,
+              validator: customValidteFirstName,
+            ),
+            SizedBox(
+              height: height(22),
+            ),
+            InputField(
+              label: 'Last Name',
+              sizeoflabel: 18,
+              obscureText: false,
+              controller: lastNameController,
+              validator: customValidteLastName,
+            ),
+            SizedBox(
+              height: height(29),
+            ),
+            InputField(
+              label: 'Username',
+              sizeoflabel: 18,
+              obscureText: false,
+              controller: userNameController,
+              validator: customValidteUserName,
+            ),
+
+            /*   LogSignButton(
+                label: 'Next',
+                ontap: () {
+                  if (_fromKey.currentState!.validate()) {
+                    BlocProvider.of<RegisterCubit>(context).setFirstSignUp(
+                        firstNameController.text,
+                        lastNameController.text,
+                        userNameController.text);
+                    Navigator.pushNamed(
+                      context,
+                      SecondSignUp.routeName,
+                    );
+                  }
+                },
+              ),*/
           ],
         ),
       ),
