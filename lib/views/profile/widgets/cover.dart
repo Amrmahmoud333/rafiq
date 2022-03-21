@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 
 class Cover extends StatelessWidget {
@@ -36,7 +37,7 @@ class Cover extends StatelessWidget {
             child: BlocBuilder<UserDataCubit, UserDataState>(
                 builder: (context, states) {
               if (states is UserGetDataLoadingState) {
-                return Image.asset('assets/images/amr.jpg');
+                return SvgPicture.asset('assets/images/default_cover.svg');
               } else {
                 return Image.network(
                   context.read<UserDataCubit>().cover!,
