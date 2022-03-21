@@ -6,8 +6,8 @@ import 'package:rafiq/data/repositories/update_cover_repo.dart';
 
 class UpdateCoverAPI extends UpdateCoverRepo {
   @override
-  Future<UpdateCoverModel> updateCover() async {
-    final response = await DioHelper.getcover(
+  Future<UpdateCoverModel> updateCoverRepo() async {
+    final response = await DioHelper.getWithHeader(
         url: '$URL/api/v1/users/$USERNAME/cover',
         header: {'access-token': ACCESSTOKEN});
 

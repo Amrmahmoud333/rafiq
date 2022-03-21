@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rafiq/core/constants/url.dart';
+import 'package:rafiq/core/constants/user_data.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_states.dart';
 
@@ -43,7 +44,7 @@ class Cover extends StatelessWidget {
                 return Image.asset('assets/images/amr.jpg');
               } else {
                 return Image.network(
-                  coverLink!,
+                  cover!,
                   fit: BoxFit.fill,
                 );
               }

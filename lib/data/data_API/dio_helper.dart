@@ -31,7 +31,7 @@ class DioHelper {
     );
   }
 
-  static Future<Response> getcover({
+  static Future<Response> getWithHeader({
     @required String? url,
     @required Map<String, dynamic>? header,
   }) async {
