@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/data/data_API/authentication/login_API.dart';
 import 'package:rafiq/data/data_API/dio_helper.dart';
 import 'package:rafiq/data/data_API/authentication/register_api.dart';
-import 'package:rafiq/data/data_API/update_cover_API.dart';
 import 'package:rafiq/data/data_API/user_data_API.dart';
 import 'package:rafiq/logic/cubit/login_cubit/login_cubit.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
@@ -31,9 +30,6 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<LoginCubit>(
           create: (context) => LoginCubit(loginRepo: LoginAPI()),
-        ),
-        BlocProvider<ProfileCubit>(
-          create: (context) => ProfileCubit(updateCoverRepo: UpdateCoverAPI()),
         ),
         BlocProvider<UserDataCubit>(
           create: (context) =>

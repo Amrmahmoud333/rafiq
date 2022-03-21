@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
-import 'package:rafiq/core/constants/user_data.dart';
 import 'package:rafiq/data/models/user_data_model.dart';
 import 'package:rafiq/data/repositories/user_data_repo.dart';
 
@@ -12,7 +11,18 @@ class UserDataCubit extends Cubit<UserDataState> {
   UserDataCubit({required this.userDataRepo}) : super(UserDataInitial());
 
   late UserDataModel _userDataModel;
-  String? covver;
+  String? cover;
+  String? firstName;
+  String? lastName;
+
+  String? country;
+  String? dateOfBirth;
+  String? gender;
+  String? avatar;
+
+  int? numberOfFollowers;
+  int? numberOfFollowings;
+
   Future<void> getUserData() async {
     emit(UserGetDataLoadingState());
     try {
@@ -21,9 +31,10 @@ class UserDataCubit extends Cubit<UserDataState> {
       firstName = _userDataModel.results!.firstName;
       lastName = _userDataModel.results!.lastName;
       gender = _userDataModel.results!.gender;
+      country = _userDataModel.results!.country;
 
       avatar = _userDataModel.results!.avatar;
-      covver = _userDataModel.results!.cover;
+      cover = _userDataModel.results!.cover;
       dateOfBirth = _userDataModel.results!.dateOfBirth;
 
       numberOfFollowers = _userDataModel.results!.numberOfFollowers;

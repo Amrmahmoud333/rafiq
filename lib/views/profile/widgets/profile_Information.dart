@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 import 'package:rafiq/views/profile/widgets/row_data.dart';
 
 class ProfileInformation extends StatelessWidget {
@@ -17,6 +19,7 @@ class ProfileInformation extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
+    var cubit = context.read<UserDataCubit>();
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -26,16 +29,40 @@ class ProfileInformation extends StatelessWidget {
           sizedWidth: 12.25,
         ),
         SizedBox(height: h(12)),
-        const RowData(
-          imagePath: 'assets/images/followers_icon.svg',
-          text: '0 Followers',
-          sizedWidth: 6.66,
+        BlocBuilder<UserDataCubit, UserDataState>(
+          builder: (context, state) {
+            if (state is UserGetDataLoadingState) {
+              return RowData(
+                imagePath: 'assets/images/followers_icon.svg',
+                text: '0 Followers',
+                sizedWidth: 6.66,
+              );
+            } else {
+              return RowData(
+                imagePath: 'assets/images/followers_icon.svg',
+                text: '${cubit.numberOfFollowers} Followers',
+                sizedWidth: 6.66,
+              );
+            }
+          },
         ),
         SizedBox(height: h(12)),
-        const RowData(
-          imagePath: 'assets/images/location_icon.svg',
-          text: 'From Egypt',
-          sizedWidth: 5,
+        BlocBuilder<UserDataCubit, UserDataState>(
+          builder: (context, state) {
+            if (state is UserGetDataLoadingState) {
+              return RowData(
+                imagePath: 'assets/images/location_icon.svg',
+                text: 'From ',
+                sizedWidth: 5,
+              );
+            } else {
+              return RowData(
+                imagePath: 'assets/images/location_icon.svg',
+                text: 'From ${cubit.country}',
+                sizedWidth: 5,
+              );
+            }
+          },
         ),
         SizedBox(height: h(12)),
 

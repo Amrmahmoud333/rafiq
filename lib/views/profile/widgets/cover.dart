@@ -39,7 +39,7 @@ class Cover extends StatelessWidget {
                 return Image.asset('assets/images/amr.jpg');
               } else {
                 return Image.network(
-                  context.read<UserDataCubit>().covver!,
+                  context.read<UserDataCubit>().cover!,
                   fit: BoxFit.fill,
                 );
               }

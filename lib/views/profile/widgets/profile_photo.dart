@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rafiq/core/constants/user_data.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 
 class ProfilePhoto extends StatelessWidget {
@@ -47,7 +46,7 @@ class ProfilePhoto extends StatelessWidget {
                 border: Border.all(color: const Color(0xffE8DEEB), width: 2),
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: NetworkImage(avatar!),
+                  image: NetworkImage(context.read<UserDataCubit>().avatar!),
                 ),
               ),
             );
