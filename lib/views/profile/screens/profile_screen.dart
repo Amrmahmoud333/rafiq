@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rafiq/data/data_API/update_cover_API.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
+import 'package:rafiq/logic/cubit/profile_cubit/profile_states.dart';
 import 'package:rafiq/views/profile/widgets/cover.dart';
 import 'package:rafiq/views/profile/widgets/edit_button.dart';
 import 'package:rafiq/views/profile/widgets/profile_Information.dart';
@@ -23,46 +25,49 @@ class ProfileScreen extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
-    return DefaultTabController(
-      length: 4,
-      initialIndex: 0,
-      child: SafeArea(
-        child: Builder(builder: (context) {
-          _tabController = DefaultTabController.of(context)!;
+    return BlocProvider(
+      create: (context) => ProfileCubit(updateCoverRepo: UpdateCoverAPI()),
+      child: DefaultTabController(
+        length: 4,
+        initialIndex: 0,
+        child: SafeArea(
+          child: Builder(builder: (context) {
+            _tabController = DefaultTabController.of(context)!;
 
-          _tabController.addListener(
-            () => BlocProvider.of<ProfileCubit>(context)
-                .ChangeIndex(_tabController.index),
-          );
-          return Scaffold(
-            body: Column(
-              children: [
-                SizedBox(
-                  height: h(288),
-                  child: Stack(
-                    children: const [
-                      Cover(),
-                      ProfilePhoto(),
-                      ProfileName(),
-                      EditButton(),
-                    ],
+            _tabController.addListener(
+              () => BlocProvider.of<ProfileCubit>(context)
+                  .ChangeIndex(_tabController.index),
+            );
+            return Scaffold(
+              body: Column(
+                children: [
+                  SizedBox(
+                    height: h(288),
+                    child: Stack(
+                      children: const [
+                        Cover(),
+                        ProfilePhoto(),
+                        ProfileName(),
+                        EditButton(),
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: h(31),
-                ),
-                const ProfileInformation(),
-                SizedBox(
-                  height: h(25),
-                ),
-                ProfileHome(
-                  tabController: _tabController,
-                ),
-                // CutsomBottomNavigationBar(),
-              ],
-            ),
-          );
-        }),
+                  SizedBox(
+                    height: h(31),
+                  ),
+                  const ProfileInformation(),
+                  SizedBox(
+                    height: h(25),
+                  ),
+                  ProfileHome(
+                    tabController: _tabController,
+                  ),
+                  // CutsomBottomNavigationBar(),
+                ],
+              ),
+            );
+          }),
+        ),
       ),
     );
   }

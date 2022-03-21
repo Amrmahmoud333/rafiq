@@ -22,7 +22,7 @@ class RegisterCubit extends Cubit<RegisterState> {
         emit(RegisterSuccessState());
       }
     } on DioError catch (error) {
-      // print(error.response!.data['error']['message']);
+      print(error.response!.data['error']['message']);
       emit(RegisterErrorState());
     }
   }
