@@ -12,21 +12,23 @@ class UserDataCubit extends Cubit<UserDataState> {
   UserDataCubit({required this.userDataRepo}) : super(UserDataInitial());
 
   late UserDataModel _userDataModel;
+  String? covver;
   Future<void> getUserData() async {
     emit(UserGetDataLoadingState());
     try {
       _userDataModel = await userDataRepo.getUserDataRepo();
 
       firstName = _userDataModel.results!.firstName;
-      firstName = _userDataModel.results!.lastName;
+      lastName = _userDataModel.results!.lastName;
       gender = _userDataModel.results!.gender;
 
       avatar = _userDataModel.results!.avatar;
-      cover = _userDataModel.results!.cover;
+      covver = _userDataModel.results!.cover;
       dateOfBirth = _userDataModel.results!.dateOfBirth;
 
       numberOfFollowers = _userDataModel.results!.numberOfFollowers;
       numberOfFollowings = _userDataModel.results!.numberOfFollowings;
+      print(_userDataModel.results!.firstName);
       emit(UserGetDataSuccessState());
     } on DioError catch (error) {
       print(error);

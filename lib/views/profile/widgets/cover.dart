@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:rafiq/core/constants/url.dart';
-import 'package:rafiq/core/constants/user_data.dart';
-import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
-import 'package:rafiq/logic/cubit/profile_cubit/profile_states.dart';
+import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 
 class Cover extends StatelessWidget {
   const Cover({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<ProfileCubit>(context).getCover();
     double h(double n) {
       return MediaQuery.of(context).size.height * (n / 851);
     }
@@ -38,13 +33,13 @@ class Cover extends StatelessWidget {
             decoration: const BoxDecoration(
               color: Color(0xffE8DEEB),
             ),
-            child: BlocBuilder<ProfileCubit, ProfileStates>(
+            child: BlocBuilder<UserDataCubit, UserDataState>(
                 builder: (context, states) {
-              if (states is ProfileGetCoverLoadingState) {
+              if (states is UserGetDataLoadingState) {
                 return Image.asset('assets/images/amr.jpg');
               } else {
                 return Image.network(
-                  cover!,
+                  context.read<UserDataCubit>().covver!,
                   fit: BoxFit.fill,
                 );
               }
