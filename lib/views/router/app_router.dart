@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rafiq/views/Forget%20password/screens/first_forget_password.dart';
-import 'package:rafiq/views/Forget%20password/screens/second_forget_password.dart';
 import 'package:rafiq/views/Forget%20password/screens/third_forget_password.dart';
+import 'package:rafiq/views/Forget%20password/screens/second_forget_password.dart';
 import 'package:rafiq/views/home/screens/home_screen.dart';
 import 'package:rafiq/views/login/screens/login_screen.dart';
 import 'package:rafiq/views/profile/screens/profile_screen.dart';
@@ -20,8 +20,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => FirstForgetPassword());
       case SecondForgetPassword.routeName:
         return MaterialPageRoute(builder: (_) => const SecondForgetPassword());
-      case ThirdForgetPassword.routeName:
-        return MaterialPageRoute(builder: (_) => const ThirdForgetPassword());
+      case SecondForgetPassword.routeName:
+        return MaterialPageRoute(builder: (_) => const SecondForgetPassword());
       case LoginScreen.routeName:
         return MaterialPageRoute(builder: (_) => LoginScreen());
       case ProfileScreen.routeName:

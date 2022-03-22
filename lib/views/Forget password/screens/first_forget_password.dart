@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/data/data_API/authentication/forget_API.dart';
 import 'package:rafiq/data/models/forget_model.dart';
 import 'package:rafiq/logic/cubit/forget_cubit/forget_cubit.dart';
+import 'package:rafiq/views/Forget%20password/screens/second_forget_password.dart';
 import 'package:rafiq/views/login/screens/login_screen.dart';
 import 'package:rafiq/views/shared/input_field.dart';
 import 'package:rafiq/views/shared/log_sign_button.dart';
@@ -144,6 +145,8 @@ class FirstForgetPassword extends StatelessWidget {
                                       .forgetPassword(
                                     RequestForgetModel(emailcontroller.text),
                                   );
+                                  Navigator.pushReplacementNamed(
+                                      context, SecondForgetPassword.routeName);
                                 }
                               },
                             ),
