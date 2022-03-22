@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_states.dart';
-import 'package:rafiq/theme.dart';
+import 'package:rafiq/core/themes/theme.dart';
 
 import 'package:rafiq/views/profile/widgets/row_tap_data.dart';
 

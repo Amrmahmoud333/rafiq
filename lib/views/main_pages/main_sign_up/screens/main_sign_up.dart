@@ -34,7 +34,7 @@ class MainSignUpScreen extends StatelessWidget {
                     child: BottomCLoud(),
                   ),
                   Positioned.fill(
-                    top: 160,
+                    top: height(192),
                     child: Column(
                       children: [
                         PageViewWidget(),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/logic/cubit/register_cubit/register_cubit.dart';
+import 'package:rafiq/views/main_pages/main_sign_up/sign_up_classes/widget/horizontal_line.dart';
 import 'package:rafiq/views/shared/input_field.dart';
-import 'package:rafiq/views/sign_up/widget/horizontal_line.dart';
 
 class SignUp extends StatelessWidget {
   SignUp({

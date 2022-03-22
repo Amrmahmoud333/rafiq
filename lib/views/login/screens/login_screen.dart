@@ -82,16 +82,17 @@ class LoginScreen extends StatelessWidget {
                             SizedBox(
                               height: h(48.16),
                             ),
-                            SizedBox(
-                              width: w(217),
-                              height: h(35),
-                              child: const AutoSizeText(
-                                'Welcome back',
-                                style: TextStyle(
-                                  fontFamily: 'DavidLibre',
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 35,
-                                  color: Color(0xff5B618A),
+                            Container(
+                              width: w(313),
+                              child: Center(
+                                child: const AutoSizeText(
+                                  'Welcome back',
+                                  style: TextStyle(
+                                    fontFamily: 'DavidLibre',
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 35,
+                                    color: Color(0xff5B618A),
+                                  ),
                                 ),
                               ),
                             ),
@@ -118,8 +119,11 @@ class LoginScreen extends StatelessWidget {
                                         .read<LoginCubit>()
                                         .changeObscureText();
                                   },
-                                  child: const AutoSizeText(
-                                    'Show',
+                                  child: AutoSizeText(
+                                    BlocProvider.of<LoginCubit>(context)
+                                            .obscureText
+                                        ? 'Show'
+                                        : 'Hide',
                                     style: TextStyle(
                                       fontSize: 16,
                                       fontFamily: 'DavidLibre',
@@ -182,24 +186,25 @@ class LoginScreen extends StatelessWidget {
                                   }),
                             ),
                             SizedBox(height: h(20)),
-                            Padding(
-                              padding:
-                                  EdgeInsets.only(left: w(87), right: w(115)),
-                              child: TextButton(
-                                child: const AutoSizeText(
-                                  'Forget password?',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    decoration: TextDecoration.underline,
-                                    fontFamily: 'DavidLibre',
-                                    fontWeight: FontWeight.w500,
-                                    color: Color(0xFF5B618A),
+                            Container(
+                              width: w(313),
+                              child: Center(
+                                child: TextButton(
+                                  child: const AutoSizeText(
+                                    'Forget password?',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      decoration: TextDecoration.underline,
+                                      fontFamily: 'DavidLibre',
+                                      fontWeight: FontWeight.w500,
+                                      color: Color(0xFF5B618A),
+                                    ),
                                   ),
+                                  onPressed: () {
+                                    Navigator.pushNamed(
+                                        context, FirstForgetPassword.routeName);
+                                  },
                                 ),
-                                onPressed: () {
-                                  Navigator.pushNamed(
-                                      context, FirstForgetPassword.routeName);
-                                },
                               ),
                             ),
                           ],
