@@ -1,6 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rafiq/data/data_API/authentication/forget_API.dart';
+import 'package:rafiq/data/models/forget_model.dart';
+import 'package:rafiq/logic/cubit/forget_cubit/forget_cubit.dart';
 import 'package:rafiq/views/login/screens/login_screen.dart';
 import 'package:rafiq/views/shared/input_field.dart';
 import 'package:rafiq/views/shared/log_sign_button.dart';
@@ -134,7 +138,14 @@ class FirstForgetPassword extends StatelessWidget {
                             ),
                             child: LogSignButton(
                               label: 'Send',
-                              ontap: () {},
+                              ontap: () async {
+                                if (_formKey.currentState!.validate()) {
+                                  await BlocProvider.of<ForgetCubit>(context)
+                                      .forgetPassword(
+                                    RequestForgetModel(emailcontroller.text),
+                                  );
+                                }
+                              },
                             ),
                           ),
                         )

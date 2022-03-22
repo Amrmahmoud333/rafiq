@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/core/themes/theme.dart';
+import 'package:rafiq/data/data_API/authentication/forget_API.dart';
 import 'package:rafiq/data/data_API/authentication/login_API.dart';
 import 'package:rafiq/data/data_API/dio_helper.dart';
 import 'package:rafiq/data/data_API/authentication/register_api.dart';
 import 'package:rafiq/data/data_API/user_data_API.dart';
+import 'package:rafiq/logic/cubit/forget_cubit/forget_cubit.dart';
 import 'package:rafiq/logic/cubit/login_cubit/login_cubit.dart';
 import 'package:rafiq/logic/cubit/register_cubit/register_cubit.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
@@ -33,6 +35,9 @@ class MyApp extends StatelessWidget {
         BlocProvider<UserDataCubit>(
           create: (context) =>
               UserDataCubit(userDataRepo: UserDataAPI())..getUserData(),
+        ),
+        BlocProvider<ForgetCubit>(
+          create: (context) => ForgetCubit(forgetPasswordRepo: ForgetApi()),
         ),
       ],
       child: MaterialApp(
