@@ -55,6 +55,7 @@ class MyApp extends StatelessWidget {
 // TODO Make forget password API
 
 //TODO  size in page view change with the screen size because the area of top cloud changes
+
 //TODO The delay in the appearance of the icon in tapbar
 // TODO Validate Third sgin up inputs
 // TODO Remember me (Shared pref) 

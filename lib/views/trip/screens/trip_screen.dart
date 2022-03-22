@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rafiq/views/main_pages/main_home/screens/main_home.dart';
 
 class TripScreen extends StatelessWidget {
   const TripScreen({Key? key}) : super(key: key);
@@ -6,8 +7,17 @@ class TripScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const Center(
-        child: Text('TripScreen'),
+      body: Center(
+        child: TextButton(
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MainHomeScreen(),
+                ));
+          },
+          child: Text('child'),
+        ),
       ),
     );
   }

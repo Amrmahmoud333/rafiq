@@ -6,7 +6,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
   ProfileCubit() : super(ProfileIntialState());
 
   // working with UI
-  int currentIndex = 0;
+
   List<String> selectTap = ['Posts', 'Image', 'Videos', 'Map'];
   List<Icon> selectTapIcon = [
     const Icon(
@@ -26,7 +26,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
       size: 21,
     ),
   ];
-
+  int currentIndex = 0;
   void ChangeIndex(index) {
     currentIndex = index;
     emit(ProfileChangeIndexlState());

@@ -177,7 +177,7 @@ class LoginScreen extends StatelessWidget {
                                       print(emailController.text);
                                       print(ACCESSTOKEN);
                                       Navigator.pushNamed(
-                                          context, ProfileScreen.routeName);
+                                          context, MainHomeScreen.routeName);
                                     }
                                   }),
                             ),
