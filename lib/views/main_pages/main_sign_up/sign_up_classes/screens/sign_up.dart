@@ -8,7 +8,6 @@ class SignUp extends StatelessWidget {
   SignUp({
     Key? key,
   }) : super(key: key);
-  static const routeName = '/sign_up';
 
   String? customValidteFirstName(String? firstName) {
     if (!(RegExp(r'^[a-zA-Z]{2,35}$').hasMatch(firstName!))) {
@@ -61,10 +60,6 @@ class SignUp extends StatelessWidget {
       return MediaQuery.of(context).size.height * (n / 851);
     }
 
-    double width(double n) {
-      return MediaQuery.of(context).size.width * (n / 393);
-    }
-
     var cubit = BlocProvider.of<RegisterCubit>(context);
     return Form(
       key: cubit.formKey1,
@@ -106,22 +101,6 @@ class SignUp extends StatelessWidget {
             controller: cubit.userNameController,
             validator: customValidteUserName,
           ),
-
-          /*   LogSignButton(
-              label: 'Next',
-              ontap: () {
-                if (_fromKey.currentState!.validate()) {
-                  BlocProvider.of<RegisterCubit>(context).setFirstSignUp(
-                      firstNameController.text,
-                      lastNameController.text,
-                      userNameController.text);
-                  Navigator.pushNamed(
-                    context,
-                    SecondSignUp.routeName,
-                  );
-                }
-              },
-            ),*/
         ],
       ),
     );

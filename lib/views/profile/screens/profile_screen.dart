@@ -12,15 +12,10 @@ class ProfileScreen extends StatelessWidget {
   ProfileScreen({Key? key}) : super(key: key);
   static const routeName = '/profile_screen';
 
-  late TabController _tabController;
   @override
   Widget build(BuildContext context) {
     double h(double n) {
       return MediaQuery.of(context).size.height * (n / 851);
-    }
-
-    double w(double n) {
-      return MediaQuery.of(context).size.width * (n / 393);
     }
 
     return BlocProvider(
@@ -30,7 +25,7 @@ class ProfileScreen extends StatelessWidget {
         initialIndex: 0,
         child: SafeArea(
           child: Builder(builder: (context) {
-            _tabController = DefaultTabController.of(context)!;
+            TabController _tabController = DefaultTabController.of(context)!;
 
             _tabController.addListener(
               () => BlocProvider.of<ProfileCubit>(context)

@@ -8,11 +8,19 @@ import 'package:rafiq/views/main_pages/main_sign_up/sign_up_classes/widget/horiz
 
 class ThirdSignUp extends StatelessWidget {
   const ThirdSignUp({Key? key}) : super(key: key);
-  static const routeName = '/third_sign_up';
 
   @override
   Widget build(BuildContext context) {
     var cubit = context.read<RegisterCubit>();
+
+    bool validateCountryValue() {
+      if (cubit.countryValue == null) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+
     double height(double n) {
       return MediaQuery.of(context).size.height * (n / 851);
     }
@@ -174,24 +182,6 @@ class ThirdSignUp extends StatelessWidget {
         SizedBox(
           height: height(61),
         ),
-        /*  LogSignButton(
-          label: 'Sign up',
-          ontap: () {
-            BlocProvider.of<RegisterCubit>(context)
-                .userRegister(RequsetRegisterModel(
-              firstName: cubit.firstName,
-              lastName: cubit.lastName,
-              userName: cubit.userName,
-              email: cubit.email,
-              password: cubit.password,
-              confirmPassword: cubit.confirmPassword,
-              country: cubit.countryValue,
-              gender: cubit.genderChoose,
-              dateOfBirth:
-                  '${cubit.dateTime.day}/${cubit.dateTime.month}/${cubit.dateTime.year}',
-            ));
-          },
-        ),*/
       ],
     );
   }

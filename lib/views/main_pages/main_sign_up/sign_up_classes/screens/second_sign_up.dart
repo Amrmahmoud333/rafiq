@@ -7,7 +7,6 @@ import 'package:rafiq/views/shared/input_field.dart';
 
 class SecondSignUp extends StatelessWidget {
   SecondSignUp({Key? key}) : super(key: key);
-  static const routeName = '/second_sign_up';
 
   String? customValidteEmail(String? email) {
     if (!(RegExp(
@@ -31,10 +30,6 @@ class SecondSignUp extends StatelessWidget {
   Widget build(BuildContext context) {
     double height(double n) {
       return MediaQuery.of(context).size.height * (n / 851);
-    }
-
-    double width(double n) {
-      return MediaQuery.of(context).size.width * (n / 393);
     }
 
     var cubit = context.read<RegisterCubit>();
@@ -110,18 +105,6 @@ class SecondSignUp extends StatelessWidget {
             SizedBox(
               height: height(61),
             ),
-            /* LogSignButton(
-                label: 'Next',
-                ontap: () {
-                  if (_formKey.currentState!.validate()) {
-                    BlocProvider.of<RegisterCubit>(context).setSecondSignUp(
-                        emailController.text,
-                        passwordController.text,
-                        confirmPasswordController.text);
-                    Navigator.pushNamed(context, ThirdSignUp.routeName);
-                  }
-                },
-              ),*/
           ],
         ),
       ),

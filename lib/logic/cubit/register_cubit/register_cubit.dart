@@ -13,10 +13,8 @@ class RegisterCubit extends Cubit<RegisterState> {
   late RegisterModel _registerModel;
 
   Future<void> userRegister(RequsetRegisterModel authRequsetModel) async {
-    late String message;
     try {
       _registerModel = await authRepo.registerRepo(authRequsetModel);
-      message = _registerModel.success!.toString();
       if (_registerModel.success!) {
         print(_registerModel.results!.message.toString());
         emit(RegisterSuccessState());

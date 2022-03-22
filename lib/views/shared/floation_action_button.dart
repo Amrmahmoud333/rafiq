@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 
 class CustomFloationActionButton extends StatelessWidget {
   const CustomFloationActionButton({
@@ -26,16 +24,14 @@ class CustomFloationActionButton extends StatelessWidget {
           Icons.add,
           size: 45,
           color: Color.fromARGB(255, 223, 223, 223),
-          //TODO errro in shadows
-
-          /* shadows: [
+          shadows: [
             BoxShadow(
               color: Colors.black54,
               spreadRadius: 5,
               blurRadius: 7,
               offset: Offset(0, 3),
             ),
-          ],*/
+          ],
         ),
         decoration: const BoxDecoration(
             shape: BoxShape.circle,

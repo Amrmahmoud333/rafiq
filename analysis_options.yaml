@@ -25,9 +25,7 @@ linter:
 
   rules:
     avoid_print
-    avoid_unnecessary_containers
     prefer_final_in_for_each
-    prefer_final_locals
     sized_box_for_whitespace
      
    

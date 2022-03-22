@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:rafiq/views/main_pages/main_sign_up/widgets/bottom_to_navigate.dart';
 import 'package:rafiq/views/main_pages/main_sign_up/widgets/page_view.dart';
@@ -54,11 +53,4 @@ class MainSignUpScreen extends StatelessWidget {
       ),
     );
   }
-
-  DropdownMenuItem<String> buildMenuItem(String country) => DropdownMenuItem(
-        value: country,
-        child: AutoSizeText(
-          country,
-        ),
-      );
 }

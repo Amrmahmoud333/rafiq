@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/parser.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rafiq/views/login/screens/login_screen.dart';
 
@@ -17,8 +16,8 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 100), () {
-      Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (_) =>  LoginScreen()));
+      Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (_) => LoginScreen()));
     });
   }
 
@@ -48,19 +47,6 @@ class _SplashScreenState extends State<SplashScreen> {
                 fit: BoxFit.fill,
               ),
             ),
-            /*  Align(
-              alignment: Alignment.bottomCenter,
-              child: AnimatedContainer(
-                width: double.infinity,
-                height: h(553),
-                duration: Duration(milliseconds: 500),
-                curve: Curves.easeInBack,
-                child: SvgPicture.asset(
-                  'assets/images/clouds.svg',
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ),*/
           ],
         ),
       ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CustomCheckBox extends StatelessWidget {
-  bool _value;
-  CustomCheckBox(this._value, {Key? key}) : super(key: key);
+  final bool _value;
+  const CustomCheckBox(this._value, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     double h(double n) {

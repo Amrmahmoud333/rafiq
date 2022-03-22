@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
-  MyAppBar({
+  const MyAppBar({
     Key? key,
     required this.newContext,
   }) : super(key: key);
-  BuildContext? newContext;
+  final BuildContext? newContext;
   @override
-  // TODO: implement preferredSize
   Size get preferredSize =>
       Size.fromHeight(MediaQuery.of(newContext!).size.height * (55 / 851));
   @override

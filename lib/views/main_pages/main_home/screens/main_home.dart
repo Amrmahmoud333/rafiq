@@ -10,14 +10,6 @@ class MainHomeScreen extends StatelessWidget {
   static const routeName = '/main_home_screen';
   @override
   Widget build(BuildContext context) {
-    double h(double n) {
-      return MediaQuery.of(context).size.height * (n / 851);
-    }
-
-    double w(double n) {
-      return MediaQuery.of(context).size.width * (n / 393);
-    }
-
     return BlocProvider(
       create: (context) => MainHomeCubit(),
       child: BlocConsumer<MainHomeCubit, MainHomeState>(
