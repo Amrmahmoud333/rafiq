@@ -10,6 +10,7 @@ import 'package:rafiq/views/profile/widgets/row_tap_data.dart';
 class ProfileHome extends StatelessWidget {
   const ProfileHome({Key? key, required this.tabController}) : super(key: key);
   final TabController tabController;
+
   @override
   Widget build(BuildContext context) {
     ProfileCubit cubit = BlocProvider.of<ProfileCubit>(context);
@@ -47,20 +48,29 @@ class ProfileHome extends StatelessWidget {
                   labelStyle: Theme.of(context).textTheme.headline6,
                   tabs: [
                     TapRowData(
-                      widget: cubit.selectTap[cubit.currentIndex] == 'Posts'
-                          ? cubit.selectTapIcon[cubit.currentIndex]
+                      widget: cubit.currentIndex == 0
+                          ? Icon(
+                              Icons.post_add_outlined,
+                              size: 21,
+                            )
                           : Container(),
                       lable: 'Posts',
                     ),
                     TapRowData(
-                      widget: cubit.selectTap[cubit.currentIndex] == 'Image'
-                          ? cubit.selectTapIcon[cubit.currentIndex]
+                      widget: cubit.currentIndex == 1
+                          ? Icon(
+                              Icons.image,
+                              size: 21,
+                            )
                           : Container(),
                       lable: 'Image',
                     ),
                     TapRowData(
-                      widget: cubit.selectTap[cubit.currentIndex] == 'Videos'
-                          ? cubit.selectTapIcon[cubit.currentIndex]
+                      widget: cubit.currentIndex == 2
+                          ? Icon(
+                              Icons.videocam_outlined,
+                              size: 21,
+                            )
                           : Container(),
                       lable: 'Videos',
                     ),
@@ -70,8 +80,11 @@ class ProfileHome extends StatelessWidget {
                           width: w(9),
                         ),
                         TapRowData(
-                          widget: cubit.selectTap[cubit.currentIndex] == 'Map'
-                              ? cubit.selectTapIcon[cubit.currentIndex]
+                          widget: cubit.currentIndex == 3
+                              ? Icon(
+                                  Icons.map,
+                                  size: 21,
+                                )
                               : Container(),
                           lable: 'Map',
                         ),
@@ -86,6 +99,7 @@ class ProfileHome extends StatelessWidget {
                 color: const Color(0xffF7F4F8),
                 width: w(373),
                 child: TabBarView(
+                  physics: NeverScrollableScrollPhysics(),
                   controller: tabController,
                   children: [
                     SingleChildScrollView(
