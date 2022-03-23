@@ -12,19 +12,20 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit({required this.loginRepo}) : super(LoginInitialState());
 
   late LoginModel _loginModel;
-
+  late String messege;
   Future<void> login(RequestLoginModel requestLoginModel) async {
     emit(LoginLoadingrState());
     try {
       _loginModel = await loginRepo.loginRepo(requestLoginModel);
-
+      messege = _loginModel.results!.message!;
       ACCESSTOKEN = _loginModel.results!.accessToken;
       REFRESHTOKEN = _loginModel.results!.refreshToken;
       USERNAME = _loginModel.results!.user!.userName;
       print(_loginModel.results!.message.toString());
       emit(LoginSuccessState());
     } on DioError catch (error) {
-      //print(error.response!.data['error']['message']);
+      messege = error.response!.data['error']['message'];
+      print(error.response!.data['error']['message']);
       emit(LoginErrorState());
     }
   }
