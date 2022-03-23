@@ -14,6 +14,7 @@ class LoginCubit extends Cubit<LoginState> {
   late LoginModel _loginModel;
 
   Future<void> login(RequestLoginModel requestLoginModel) async {
+    emit(LoginLoadingrState());
     try {
       _loginModel = await loginRepo.loginRepo(requestLoginModel);
 
@@ -23,7 +24,7 @@ class LoginCubit extends Cubit<LoginState> {
       print(_loginModel.results!.message.toString());
       emit(LoginSuccessState());
     } on DioError catch (error) {
-      print(error.response!.data['error']['message']);
+      //print(error.response!.data['error']['message']);
       emit(LoginErrorState());
     }
   }

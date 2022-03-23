@@ -37,11 +37,11 @@ class ProfileHome extends StatelessWidget {
                   ),
                 ),
                 elevation: 0,
-                backgroundColor: const Color(0xffF7F4F8),
+                backgroundColor: const Color(0xffC6C5D9),
                 bottom: TabBar(
                   controller: tabController,
-                  labelPadding: EdgeInsets.only(bottom: h(5)),
-                  indicator: Dot(color: const Color(0xff5B618A), radius: 3),
+                  labelPadding: EdgeInsets.only(bottom: h(6)),
+                  indicator: Dot(color: const Color(0xff5B618A), radius: 4),
                   labelColor: const Color(0xff5B618A),
                   unselectedLabelColor:
                       const Color(0xff5B618A).withOpacity(0.35),
@@ -96,7 +96,7 @@ class ProfileHome extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                color: const Color(0xffF7F4F8),
+                color: const Color(0xffC6C5D9),
                 width: w(373),
                 child: TabBarView(
                   physics: NeverScrollableScrollPhysics(),

@@ -8,10 +8,17 @@ class TapRowData extends StatelessWidget {
   final Widget? widget;
   @override
   Widget build(BuildContext context) {
+    double w(double n) {
+      return MediaQuery.of(context).size.width * (n / 393);
+    }
+
     return Row(
       children: [
         SizedBox(
           width: MediaQuery.of(context).size.width * (9 / 393),
+        ),
+        SizedBox(
+          width: w(5),
         ),
         widget ?? Container(),
         AutoSizeText(lable),

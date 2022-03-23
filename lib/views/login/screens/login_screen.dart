@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/core/constants/authentication_const.dart';
@@ -47,173 +48,194 @@ class LoginScreen extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: h(851),
-              child: Stack(
-                children: [
-                  const Align(
-                    alignment: Alignment.topCenter,
-                    child: TopCloud(true),
-                  ),
-                  const Align(
-                    alignment: Alignment.bottomCenter,
-                    child: BottomCLoud(),
-                  ),
-                  Positioned(
-                    top: h(190),
-                    child: Padding(
-                      padding: EdgeInsets.only(left: w(40)),
-                      child: Form(
-                        key: fromKey,
-                        // TODO autovalidateMode: ,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              height: h(48.16),
-                            ),
-                            Container(
-                              width: w(313),
-                              child: Center(
-                                child: const AutoSizeText(
-                                  'Welcome back',
-                                  style: TextStyle(
-                                    fontFamily: 'DavidLibre',
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 35,
-                                    color: Color(0xff5B618A),
-                                  ),
+    return BlocConsumer<LoginCubit, LoginState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return Scaffold(
+          resizeToAvoidBottomInset: false,
+          body: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: h(851),
+                  child: Stack(
+                    children: [
+                      const Align(
+                        alignment: Alignment.topCenter,
+                        child: TopCloud(true),
+                      ),
+                      const Align(
+                        alignment: Alignment.bottomCenter,
+                        child: BottomCLoud(),
+                      ),
+                      Positioned(
+                        top: h(190),
+                        child: Padding(
+                          padding: EdgeInsets.only(left: w(40)),
+                          child: Form(
+                            key: fromKey,
+                            // TODO autovalidateMode: ,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: h(48.16),
                                 ),
-                              ),
-                            ),
-                            SizedBox(height: h(41)),
-                            InputField(
-                              label: 'Username or Email',
-                              sizeoflabel: 18,
-                              obscureText: false,
-                              controller: emailController,
-                              validator: customValidteEmail,
-                            ),
-                            SizedBox(height: h(34)),
-                            BlocBuilder<LoginCubit, LoginState>(
-                              builder: (context, state) => InputField(
-                                label: 'Password',
-                                sizeoflabel: 18,
-                                obscureText:
-                                    context.read<LoginCubit>().obscureText,
-                                validator: customValidtePasswrod,
-                                controller: passwordController,
-                                widget: InkWell(
-                                  onTap: () {
-                                    context
-                                        .read<LoginCubit>()
-                                        .changeObscureText();
-                                  },
-                                  child: AutoSizeText(
-                                    BlocProvider.of<LoginCubit>(context)
-                                            .obscureText
-                                        ? 'Show'
-                                        : 'Hide',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontFamily: 'DavidLibre',
-                                      fontWeight: FontWeight.w500,
-                                      color: Color(0xFF5B618A),
+                                Container(
+                                  width: w(313),
+                                  child: Center(
+                                    child: const AutoSizeText(
+                                      'Welcome back',
+                                      style: TextStyle(
+                                        fontFamily: 'DavidLibre',
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 35,
+                                        color: Color(0xff5B618A),
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: h(8),
-                            ),
-                            Row(
-                              children: [
-                                BlocBuilder<LoginCubit, LoginState>(
-                                    builder: (context, state) {
-                                  return InkWell(
-                                    // TODO shared pref
-                                    onTap: () => context
-                                        .read<LoginCubit>()
-                                        .changeCheckBox(),
-                                    child: CustomCheckBox(
-                                        context.read<LoginCubit>().checkedBox),
-                                  );
-                                }),
-                                SizedBox(
-                                  width: w(8),
+                                SizedBox(height: h(41)),
+                                InputField(
+                                  label: 'Username or Email',
+                                  sizeoflabel: 18,
+                                  obscureText: false,
+                                  controller: emailController,
+                                  validator: customValidteEmail,
                                 ),
-                                const AutoSizeText(
-                                  'Remember me',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontFamily: 'DavidLibre',
-                                    fontWeight: FontWeight.w500,
-                                    color: Color(0xFF5B618A),
+                                SizedBox(height: h(34)),
+                                BlocBuilder<LoginCubit, LoginState>(
+                                  builder: (context, state) => InputField(
+                                    label: 'Password',
+                                    sizeoflabel: 18,
+                                    obscureText:
+                                        context.read<LoginCubit>().obscureText,
+                                    validator: customValidtePasswrod,
+                                    controller: passwordController,
+                                    widget: InkWell(
+                                      onTap: () {
+                                        context
+                                            .read<LoginCubit>()
+                                            .changeObscureText();
+                                      },
+                                      child: AutoSizeText(
+                                        BlocProvider.of<LoginCubit>(context)
+                                                .obscureText
+                                            ? 'Show'
+                                            : 'Hide',
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontFamily: 'DavidLibre',
+                                          fontWeight: FontWeight.w500,
+                                          color: Color(0xFF5B618A),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: h(8),
+                                ),
+                                Row(
+                                  children: [
+                                    BlocBuilder<LoginCubit, LoginState>(
+                                        builder: (context, state) {
+                                      return InkWell(
+                                        // TODO shared pref
+                                        onTap: () => context
+                                            .read<LoginCubit>()
+                                            .changeCheckBox(),
+                                        child: CustomCheckBox(context
+                                            .read<LoginCubit>()
+                                            .checkedBox),
+                                      );
+                                    }),
+                                    SizedBox(
+                                      width: w(8),
+                                    ),
+                                    const AutoSizeText(
+                                      'Remember me',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontFamily: 'DavidLibre',
+                                        fontWeight: FontWeight.w500,
+                                        color: Color(0xFF5B618A),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: h(45)),
+                                Padding(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: w(53)),
+                                  child: ConditionalBuilder(
+                                    condition: (state is! LoginLoadingrState),
+                                    builder: (context) => LogSignButton(
+                                        label: 'Log in',
+                                        ontap: () async {
+                                          if (fromKey.currentState!
+                                              .validate()) {
+                                            await BlocProvider.of<LoginCubit>(
+                                                    context)
+                                                .login(
+                                              RequestLoginModel(
+                                                  userName:
+                                                      emailController.text,
+                                                  password:
+                                                      passwordController.text),
+                                            );
+
+                                            print(emailController.text);
+                                            print(ACCESSTOKEN);
+                                            Navigator.pushNamed(context,
+                                                MainHomeScreen.routeName);
+                                          }
+                                        }),
+                                    fallback: (context) => Container(
+                                      width: w(200),
+                                      child: Center(
+                                          child: CircularProgressIndicator(
+                                        color: Theme.of(context).primaryColor,
+                                      )),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: h(20)),
+                                Container(
+                                  width: w(313),
+                                  child: Center(
+                                    child: TextButton(
+                                      child: const AutoSizeText(
+                                        'Forget password?',
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          decoration: TextDecoration.underline,
+                                          fontFamily: 'DavidLibre',
+                                          fontWeight: FontWeight.w500,
+                                          color: Color(0xFF5B618A),
+                                        ),
+                                      ),
+                                      onPressed: () {
+                                        Navigator.pushNamed(context,
+                                            FirstForgetPassword.routeName);
+                                      },
+                                    ),
                                   ),
                                 ),
                               ],
                             ),
-                            SizedBox(height: h(45)),
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: w(53)),
-                              child: LogSignButton(
-                                  label: 'Log in',
-                                  ontap: () async {
-                                    if (fromKey.currentState!.validate()) {
-                                      await BlocProvider.of<LoginCubit>(context)
-                                          .login(
-                                        RequestLoginModel(
-                                            userName: emailController.text,
-                                            password: passwordController.text),
-                                      );
-
-                                      print(emailController.text);
-                                      print(ACCESSTOKEN);
-                                      Navigator.pushNamed(
-                                          context, MainHomeScreen.routeName);
-                                    }
-                                  }),
-                            ),
-                            SizedBox(height: h(20)),
-                            Container(
-                              width: w(313),
-                              child: Center(
-                                child: TextButton(
-                                  child: const AutoSizeText(
-                                    'Forget password?',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      decoration: TextDecoration.underline,
-                                      fontFamily: 'DavidLibre',
-                                      fontWeight: FontWeight.w500,
-                                      color: Color(0xFF5B618A),
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    Navigator.pushNamed(
-                                        context, FirstForgetPassword.routeName);
-                                  },
-                                ),
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }
