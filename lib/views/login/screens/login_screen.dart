@@ -49,7 +49,11 @@ class LoginScreen extends StatelessWidget {
     }
 
     return BlocConsumer<LoginCubit, LoginState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is LoginSuccessState) {
+          Navigator.pushNamed(context, MainHomeScreen.routeName);
+        }
+      },
       builder: (context, state) {
         return Scaffold(
           resizeToAvoidBottomInset: false,
@@ -188,8 +192,8 @@ class LoginScreen extends StatelessWidget {
 
                                             print(emailController.text);
                                             print(ACCESSTOKEN);
-                                            Navigator.pushNamed(context,
-                                                MainHomeScreen.routeName);
+                                            //Navigator.pushNamed(context,
+                                            //  MainHomeScreen.routeName);
                                           }
                                         }),
                                     fallback: (context) => Container(
