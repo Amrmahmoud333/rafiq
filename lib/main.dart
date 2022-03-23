@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/core/themes/theme.dart';
+import 'package:rafiq/data/chach_helper.dart';
 import 'package:rafiq/data/data_API/authentication/forget_API.dart';
 import 'package:rafiq/data/data_API/authentication/login_API.dart';
 import 'package:rafiq/data/data_API/dio_helper.dart';
@@ -13,8 +14,11 @@ import 'package:rafiq/logic/cubit/register_cubit/register_cubit.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 import 'package:rafiq/views/router/app_router.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await CahchHelper.init();
   DioHelper.init();
+
   runApp(DevicePreview(enabled: false, builder: (context) => MyApp()));
 }
 
@@ -58,6 +62,6 @@ class MyApp extends StatelessWidget {
 // TODO work with InputFeild
 // TODO Validate Third sgin up inputs
 // TODO Remember me (Shared pref) 
-// TODO Working with states 
 // TODO Sign in && login with google or facebook (We or backEnd)
 // TODO Make Map in Profile screen
+

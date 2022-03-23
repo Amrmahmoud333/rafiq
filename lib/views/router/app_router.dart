@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rafiq/data/chach_helper.dart';
 import 'package:rafiq/views/Forget%20password/screens/first_forget_password.dart';
-import 'package:rafiq/views/Forget%20password/screens/third_forget_password.dart';
 import 'package:rafiq/views/Forget%20password/screens/second_forget_password.dart';
 import 'package:rafiq/views/home/screens/home_screen.dart';
 import 'package:rafiq/views/login/screens/login_screen.dart';
@@ -10,11 +10,15 @@ import '../main_pages/main_sign_up/screens/main_sign_up.dart';
 import '../notification/screens/notification_screen.dart';
 import '../trip/screens/trip_screen.dart';
 
+dynamic rememberMe = CahchHelper.getData(key: 'RememberMe');
+
 class AppRouter {
   Route onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case '/':
-        return MaterialPageRoute(builder: (_) => LoginScreen());
+        return MaterialPageRoute(
+            builder: (_) =>
+                rememberMe == true ? MainHomeScreen() : LoginScreen());
 
       case FirstForgetPassword.routeName:
         return MaterialPageRoute(builder: (_) => FirstForgetPassword());

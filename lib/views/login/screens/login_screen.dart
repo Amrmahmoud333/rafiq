@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/core/components/components.dart';
 import 'package:rafiq/core/constants/authentication_const.dart';
+import 'package:rafiq/data/chach_helper.dart';
 import 'package:rafiq/data/models/login_model.dart';
 import 'package:rafiq/logic/cubit/login_cubit/login_cubit.dart';
 import 'package:rafiq/views/Forget%20password/screens/first_forget_password.dart';
@@ -114,31 +115,29 @@ class LoginScreen extends StatelessWidget {
                                   validator: customValidteEmail,
                                 ),
                                 SizedBox(height: h(34)),
-                                BlocBuilder<LoginCubit, LoginState>(
-                                  builder: (context, state) => InputField(
-                                    label: 'Password',
-                                    sizeoflabel: 18,
-                                    obscureText:
-                                        context.read<LoginCubit>().obscureText,
-                                    validator: customValidtePasswrod,
-                                    controller: passwordController,
-                                    widget: InkWell(
-                                      onTap: () {
-                                        context
-                                            .read<LoginCubit>()
-                                            .changeObscureText();
-                                      },
-                                      child: AutoSizeText(
-                                        BlocProvider.of<LoginCubit>(context)
-                                                .obscureText
-                                            ? 'Show'
-                                            : 'Hide',
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontFamily: 'DavidLibre',
-                                          fontWeight: FontWeight.w500,
-                                          color: Color(0xFF5B618A),
-                                        ),
+                                InputField(
+                                  label: 'Password',
+                                  sizeoflabel: 18,
+                                  obscureText:
+                                      context.read<LoginCubit>().obscureText,
+                                  validator: customValidtePasswrod,
+                                  controller: passwordController,
+                                  widget: InkWell(
+                                    onTap: () {
+                                      context
+                                          .read<LoginCubit>()
+                                          .changeObscureText();
+                                    },
+                                    child: AutoSizeText(
+                                      BlocProvider.of<LoginCubit>(context)
+                                              .obscureText
+                                          ? 'Show'
+                                          : 'Hide',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontFamily: 'DavidLibre',
+                                        fontWeight: FontWeight.w500,
+                                        color: Color(0xFF5B618A),
                                       ),
                                     ),
                                   ),
@@ -148,18 +147,22 @@ class LoginScreen extends StatelessWidget {
                                 ),
                                 Row(
                                   children: [
-                                    BlocBuilder<LoginCubit, LoginState>(
-                                        builder: (context, state) {
-                                      return InkWell(
-                                        // TODO shared pref
-                                        onTap: () => context
-                                            .read<LoginCubit>()
-                                            .changeCheckBox(),
-                                        child: CustomCheckBox(context
-                                            .read<LoginCubit>()
-                                            .checkedBox),
-                                      );
-                                    }),
+                                    InkWell(
+                                      // TODO shared pref
+                                      onTap: () {
+                                        CahchHelper.saveData(
+                                          key: 'RememberMe',
+                                          value: true,
+                                        ).then(
+                                          (value) => context
+                                              .read<LoginCubit>()
+                                              .changeCheckBox(),
+                                        );
+                                      },
+                                      child: CustomCheckBox(context
+                                          .read<LoginCubit>()
+                                          .checkedBox),
+                                    ),
                                     SizedBox(
                                       width: w(8),
                                     ),
