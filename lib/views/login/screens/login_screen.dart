@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rafiq/core/components/components.dart';
 import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/data/models/login_model.dart';
 import 'package:rafiq/logic/cubit/login_cubit/login_cubit.dart';
@@ -50,9 +51,13 @@ class LoginScreen extends StatelessWidget {
 
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
+        LoginModel loginModel = LoginModel();
         if (state is LoginSuccessState) {
+          // add msg ind state from LoginModel
+          showTosat(msg: 'Logged in successfully', state: true);
           Navigator.pushNamed(context, MainHomeScreen.routeName);
-        }
+        } else if (state is LoginErrorState)
+          showTosat(msg: 'E-mail or Password is not correct', state: false);
       },
       builder: (context, state) {
         return Scaffold(

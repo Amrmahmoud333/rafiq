@@ -45,6 +45,7 @@ dependencies:
   font_awesome_flutter: ^9.2.0
   conditional_builder_null_safety: ^0.0.6
   shared_preferences: ^2.0.13
+  fluttertoast: ^8.0.9
 
 dev_dependencies:
   flutter_test:
