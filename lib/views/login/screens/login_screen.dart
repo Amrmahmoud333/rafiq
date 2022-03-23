@@ -52,13 +52,11 @@ class LoginScreen extends StatelessWidget {
 
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
-        LoginModel loginModel = LoginModel();
         if (state is LoginSuccessState) {
-          // add msg ind state from LoginModel
-          showTosat(msg: 'Logged in successfully', state: true);
+          showTosat(msg: context.read<LoginCubit>().messege, state: true);
           Navigator.pushNamed(context, MainHomeScreen.routeName);
         } else if (state is LoginErrorState)
-          showTosat(msg: 'E-mail or Password is not correct', state: false);
+          showTosat(msg: context.read<LoginCubit>().messege, state: false);
       },
       builder: (context, state) {
         return Scaffold(

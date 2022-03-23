@@ -38,8 +38,14 @@ class ThemeOfProject {
       ),
       headline2: TextStyle(
         fontSize: 35,
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w500,
         color: Color(0XFF5B618A),
+      ),
+      headline1: TextStyle(
+        fontFamily: 'DavidLibre',
+        fontWeight: FontWeight.bold,
+        fontSize: 35,
+        color: Color(0xff5B618A),
       ),
     ),
   );
