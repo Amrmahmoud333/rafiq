@@ -9,3 +9,5 @@ class ProfileGetCoverSuccessState extends ProfileStates {}
 class ProfileGetCoverSuccessError extends ProfileStates {}
 
 class ProfileGetCoverLoadingState extends ProfileStates {}
+
+class GetImageFromGalleryState extends ProfileStates {}
