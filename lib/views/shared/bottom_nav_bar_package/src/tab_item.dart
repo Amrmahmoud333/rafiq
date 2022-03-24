@@ -30,7 +30,7 @@ class TabItem extends StatelessWidget {
         SvgPicture.asset(
           path.toString(),
           color: isActive ? activeColor : inactiveColor,
-          height: h(35),
+          height: h(40),
         );
   }
 }

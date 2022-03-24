@@ -33,8 +33,9 @@ class CustomBottomNavgiationBar extends StatelessWidget {
       icons: iconList,
       backgroundColor: const Color(0xffE8DEEB),
       activeIndex: BlocProvider.of<MainHomeCubit>(context).currentIndex,
-      activeColor: const Color(0xffB99AC2),
+      activeColor: const Color(0XFF5B618A),
       gapLocation: GapLocation.center,
+      elevation: 5,
       path: pathList,
       notchSmoothness: NotchSmoothness.defaultEdge,
       onTap: (index) {
