@@ -1,5 +1,5 @@
-import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/data/models/login_model.dart';
@@ -11,17 +11,17 @@ class LoginCubit extends Cubit<LoginState> {
   LoginRepo loginRepo;
   LoginCubit({required this.loginRepo}) : super(LoginInitialState());
 
-  late LoginModel _loginModel;
+  late LoginModel loginModel;
   late String messege;
   Future<void> login(RequestLoginModel requestLoginModel) async {
     emit(LoginLoadingrState());
     try {
-      _loginModel = await loginRepo.loginRepo(requestLoginModel);
-      messege = _loginModel.results!.message!;
-      ACCESSTOKEN = _loginModel.results!.accessToken;
-      REFRESHTOKEN = _loginModel.results!.refreshToken;
-      USERNAME = _loginModel.results!.user!.userName;
-      print(_loginModel.results!.message.toString());
+      loginModel = await loginRepo.loginRepo(requestLoginModel);
+      messege = loginModel.results!.message!;
+      ACCESSTOKEN = loginModel.results!.accessToken;
+      REFRESHTOKEN = loginModel.results!.refreshToken;
+      USERNAME = loginModel.results!.user!.userName;
+      print(loginModel.results!.message.toString());
       emit(LoginSuccessState());
     } on DioError catch (error) {
       messege = error.response!.data['error']['message'];

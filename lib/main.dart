@@ -12,6 +12,8 @@ import 'package:rafiq/logic/cubit/forget_cubit/forget_cubit.dart';
 import 'package:rafiq/logic/cubit/login_cubit/login_cubit.dart';
 import 'package:rafiq/logic/cubit/register_cubit/register_cubit.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
+import 'package:rafiq/views/login/screens/login_screen.dart';
+import 'package:rafiq/views/main_pages/main_home/screens/main_home.dart';
 import 'package:rafiq/views/router/app_router.dart';
 
 void main() async {
@@ -22,9 +24,12 @@ void main() async {
   runApp(DevicePreview(enabled: false, builder: (context) => MyApp()));
 }
 
+final AppRouter appRouter = AppRouter();
+
 class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
-  final AppRouter appRouter = AppRouter();
+  MyApp({
+    Key? key,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     // make an instence of RegisterCubit in the root widget

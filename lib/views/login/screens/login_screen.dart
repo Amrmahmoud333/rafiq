@@ -50,16 +50,27 @@ class LoginScreen extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
+    var cubit = BlocProvider.of<LoginCubit>(context);
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginSuccessState) {
-          showTosat(msg: context.read<LoginCubit>().messege, state: true);
-          Navigator.pushNamed(context, MainHomeScreen.routeName);
+          CahchHelper.saveData(
+                  key: 'token', value: cubit.loginModel.results!.accessToken)
+              .then(
+            (value) => Navigator.pushReplacementNamed(
+                context, MainHomeScreen.routeName),
+          );
+          showTosat(msg: cubit.messege, state: true);
         } else if (state is LoginErrorState)
-          showTosat(msg: context.read<LoginCubit>().messege, state: false);
+          showTosat(msg: cubit.messege, state: false);
       },
       builder: (context, state) {
         return Scaffold(
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              print('this ${cubit.checkedBox}');
+            },
+          ),
           resizeToAvoidBottomInset: false,
           body: SingleChildScrollView(
             child: Column(
@@ -116,15 +127,12 @@ class LoginScreen extends StatelessWidget {
                                 InputField(
                                   label: 'Password',
                                   sizeoflabel: 18,
-                                  obscureText:
-                                      context.read<LoginCubit>().obscureText,
+                                  obscureText: cubit.obscureText,
                                   validator: customValidtePasswrod,
                                   controller: passwordController,
                                   widget: InkWell(
                                     onTap: () {
-                                      context
-                                          .read<LoginCubit>()
-                                          .changeObscureText();
+                                      cubit.changeObscureText();
                                     },
                                     child: AutoSizeText(
                                       BlocProvider.of<LoginCubit>(context)
@@ -148,14 +156,7 @@ class LoginScreen extends StatelessWidget {
                                     InkWell(
                                       // TODO shared pref
                                       onTap: () {
-                                        CahchHelper.saveData(
-                                          key: 'RememberMe',
-                                          value: true,
-                                        ).then(
-                                          (value) => context
-                                              .read<LoginCubit>()
-                                              .changeCheckBox(),
-                                        );
+                                        cubit.changeCheckBox();
                                       },
                                       child: CustomCheckBox(context
                                           .read<LoginCubit>()
@@ -186,9 +187,7 @@ class LoginScreen extends StatelessWidget {
                                         ontap: () async {
                                           if (fromKey.currentState!
                                               .validate()) {
-                                            await BlocProvider.of<LoginCubit>(
-                                                    context)
-                                                .login(
+                                            await cubit.login(
                                               RequestLoginModel(
                                                   userName:
                                                       emailController.text,
