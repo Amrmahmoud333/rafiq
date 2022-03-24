@@ -12,8 +12,6 @@ import 'package:rafiq/logic/cubit/forget_cubit/forget_cubit.dart';
 import 'package:rafiq/logic/cubit/login_cubit/login_cubit.dart';
 import 'package:rafiq/logic/cubit/register_cubit/register_cubit.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
-import 'package:rafiq/views/login/screens/login_screen.dart';
-import 'package:rafiq/views/main_pages/main_home/screens/main_home.dart';
 import 'package:rafiq/views/router/app_router.dart';
 
 void main() async {
@@ -66,7 +64,7 @@ class MyApp extends StatelessWidget {
 // TODO Mustafa 
 // TODO work with InputFeild
 // TODO Validate Third sgin up inputs
-// TODO Remember me (Shared pref) 
+
 // TODO Sign in && login with google or facebook (We or backEnd)
 // TODO Make Map in Profile screen
 
