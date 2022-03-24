@@ -6,11 +6,12 @@ class NotificationScreen extends StatelessWidget {
   static const routeName = '/notification_screen';
   @override
   String? token = CahchHelper.getData(key: 'token');
+  bool? rememberMe = CahchHelper.getData(key: 'rememberMe');
 
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(onPressed: () {
-        print(token);
+        print(rememberMe);
       }),
       body: const Center(
         child: Text('notifications'),

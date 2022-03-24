@@ -65,6 +65,7 @@ class LoginScreen extends StatelessWidget {
           showTosat(msg: cubit.messege, state: false);
       },
       builder: (context, state) {
+        bool? rememberMe = CahchHelper.getData(key: 'rememberMe');
         return Scaffold(
           resizeToAvoidBottomInset: false,
           body: SingleChildScrollView(
@@ -149,9 +150,20 @@ class LoginScreen extends StatelessWidget {
                                 Row(
                                   children: [
                                     InkWell(
-                                      // TODO shared pref
                                       onTap: () {
                                         cubit.changeCheckBox();
+                                        if (rememberMe == null) {
+                                          CahchHelper.saveData(
+                                              key: 'rememberMe',
+                                              value: cubit.checkedBox);
+                                        } else {
+                                          CahchHelper.removeData(
+                                            key: 'rememberMe',
+                                          );
+                                          CahchHelper.saveData(
+                                              key: 'rememberMe',
+                                              value: cubit.checkedBox);
+                                        }
                                       },
                                       child: CustomCheckBox(context
                                           .read<LoginCubit>()
