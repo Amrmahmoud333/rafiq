@@ -32,31 +32,36 @@ class ProfileScreen extends StatelessWidget {
                   .ChangeIndex(_tabController.index),
             );
             return Scaffold(
-              body: Column(
-                children: [
-                  SizedBox(
-                    height: h(288),
-                    child: Stack(
-                      children: const [
-                        Cover(),
-                        ProfilePhoto(),
-                        ProfileName(),
-                        EditButton(),
-                      ],
-                    ),
+              body: SingleChildScrollView(
+                child: Container(
+                  height: h(1000),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: h(288),
+                        child: Stack(
+                          children: const [
+                            Cover(),
+                            ProfilePhoto(),
+                            ProfileName(),
+                            EditButton(),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: h(31),
+                      ),
+                      const ProfileInformation(),
+                      SizedBox(
+                        height: h(25),
+                      ),
+                      ProfileHome(
+                        tabController: _tabController,
+                      ),
+                      // CutsomBottomNavigationBar(),
+                    ],
                   ),
-                  SizedBox(
-                    height: h(31),
-                  ),
-                  const ProfileInformation(),
-                  SizedBox(
-                    height: h(25),
-                  ),
-                  ProfileHome(
-                    tabController: _tabController,
-                  ),
-                  // CutsomBottomNavigationBar(),
-                ],
+                ),
               ),
             );
           }),

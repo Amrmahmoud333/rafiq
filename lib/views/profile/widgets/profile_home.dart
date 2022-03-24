@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_states.dart';
 import 'package:rafiq/core/themes/theme.dart';
-
 import 'package:rafiq/views/profile/widgets/row_tap_data.dart';
 
 class ProfileHome extends StatelessWidget {
@@ -37,7 +36,7 @@ class ProfileHome extends StatelessWidget {
                   ),
                 ),
                 elevation: 0,
-                backgroundColor: const Color(0xffC6C5D9),
+                backgroundColor: const Color(0xffF7F4F8),
                 bottom: TabBar(
                   controller: tabController,
                   labelPadding: EdgeInsets.only(bottom: h(6)),
@@ -96,40 +95,46 @@ class ProfileHome extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                color: const Color(0xffC6C5D9),
+                color: const Color(0xffF7F4F8),
                 width: w(373),
                 child: TabBarView(
                   physics: NeverScrollableScrollPhysics(),
                   controller: tabController,
                   children: [
-                    SingleChildScrollView(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          AutoSizeText(
-                            'No posts yet',
-                            style:
-                                ThemeOfProject.ligthTheme.textTheme.headline4,
-                          ),
-                        ],
-                      ),
-                    ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text('Images.......'),
+                      children: [
+                        AutoSizeText(
+                          'No posts yet',
+                          style: ThemeOfProject.ligthTheme.textTheme.headline4,
+                        ),
                       ],
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text('Videos'),
+                      children: [
+                        AutoSizeText(
+                          'No images yet',
+                          style: ThemeOfProject.ligthTheme.textTheme.headline4,
+                        ),
                       ],
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text('Map'),
+                      children: [
+                        AutoSizeText(
+                          'No videos yet',
+                          style: ThemeOfProject.ligthTheme.textTheme.headline4,
+                        ),
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        AutoSizeText(
+                          'No images yet',
+                          style: ThemeOfProject.ligthTheme.textTheme.headline4,
+                        ),
                       ],
                     ),
                   ],
