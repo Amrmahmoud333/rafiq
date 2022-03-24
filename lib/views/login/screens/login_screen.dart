@@ -66,11 +66,6 @@ class LoginScreen extends StatelessWidget {
       },
       builder: (context, state) {
         return Scaffold(
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              print('this ${cubit.checkedBox}');
-            },
-          ),
           resizeToAvoidBottomInset: false,
           body: SingleChildScrollView(
             child: Column(

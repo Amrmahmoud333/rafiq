@@ -46,10 +46,17 @@ class ProfileName extends StatelessWidget {
               }
             },
           ),
-          AutoSizeText(
-            ' @${cubit.userName}',
-            style: Theme.of(context).textTheme.headline6,
-          ),
+          BlocBuilder<UserDataCubit, UserDataState>(builder: (context, state) {
+            if (state is UserGetDataLoadingState) {
+              return AutoSizeText(
+                '',
+              );
+            } else
+              return AutoSizeText(
+                ' @${cubit.userName}',
+                style: Theme.of(context).textTheme.headline6,
+              );
+          })
         ],
       ),
     );
