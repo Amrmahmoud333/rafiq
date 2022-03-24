@@ -14,7 +14,7 @@ class UserDataCubit extends Cubit<UserDataState> {
   String? cover;
   String? firstName;
   String? lastName;
-
+  String? userName;
   String? country;
   String? dateOfBirth;
   String? gender;
@@ -32,7 +32,7 @@ class UserDataCubit extends Cubit<UserDataState> {
       lastName = _userDataModel.results!.lastName;
       gender = _userDataModel.results!.gender;
       country = _userDataModel.results!.country;
-
+      userName = _userDataModel.results!.userName;
       avatar = _userDataModel.results!.avatar;
       cover = _userDataModel.results!.cover;
       dateOfBirth = _userDataModel.results!.dateOfBirth;

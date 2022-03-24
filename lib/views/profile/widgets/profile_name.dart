@@ -47,7 +47,7 @@ class ProfileName extends StatelessWidget {
             },
           ),
           AutoSizeText(
-            ' @$USERNAME',
+            ' @${cubit.userName}',
             style: Theme.of(context).textTheme.headline6,
           ),
         ],
