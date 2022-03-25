@@ -26,8 +26,8 @@ class PageViewWidget extends StatelessWidget {
         controller: cubit.controllerpage,
         children: [
           SignUp(),
-          SecondSignUp(),
-          ThirdSignUp(),
+          const SecondSignUp(),
+          const ThirdSignUp(),
         ],
       ),
     );

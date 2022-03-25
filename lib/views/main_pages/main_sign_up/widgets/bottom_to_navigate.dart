@@ -21,7 +21,7 @@ class BottomToNavigate extends StatelessWidget {
                 cubit.lastNameController.text,
                 cubit.userNameController.text);
             cubit.controllerpage.nextPage(
-              duration: Duration(
+              duration: const Duration(
                 milliseconds: 750,
               ),
               curve: Curves.fastLinearToSlowEaseIn,
@@ -33,7 +33,7 @@ class BottomToNavigate extends StatelessWidget {
                 cubit.passwordController.text,
                 cubit.confirmPasswordController.text);
             cubit.controllerpage.nextPage(
-              duration: Duration(
+              duration: const Duration(
                 milliseconds: 500,
               ),
               curve: Curves.fastLinearToSlowEaseIn,

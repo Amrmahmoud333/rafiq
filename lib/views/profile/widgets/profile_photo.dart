@@ -33,7 +33,7 @@ class ProfilePhoto extends StatelessWidget {
                 color: const Color(0xff5B618A),
                 borderRadius: BorderRadius.circular(30),
                 border: Border.all(color: const Color(0xffE8DEEB), width: 2),
-                image: DecorationImage(
+                image: const DecorationImage(
                   fit: BoxFit.fill,
                   image: AssetImage('assets/images/clouds.png'),
                 ),
@@ -42,55 +42,45 @@ class ProfilePhoto extends StatelessWidget {
           } else {
             return BlocBuilder<ProfileCubit, ProfileStates>(
                 builder: (context, state) {
-              return Stack(
-                // alignment: AlignmentDirectional.bottomStart,
-                children: [
-                  Container(
-                    width: w(142),
-                    height: h(142),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(48),
-                      border:
-                          Border.all(color: const Color(0xffE8DEEB), width: 2),
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(48),
-                      child: BlocProvider.of<ProfileCubit>(context)
-                                  .profileImageFile ==
-                              null
-                          ? Image(
-                              width: w(142),
-                              height: h(142),
-                              fit: BoxFit.fill,
-                              image: NetworkImage(
-                                  context.read<UserDataCubit>().avatar!),
-                            )
-                          : Image.file(
-                              BlocProvider.of<ProfileCubit>(context)
-                                  .profileImageFile!,
-                              fit: BoxFit.fill,
-                              width: w(142),
-                              height: h(142),
-                            ),
-                    ),
+              return InkWell(
+                onTap: () {
+                  showModalBottomSheet(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(h(25)))),
+                      backgroundColor: const Color(0xffEFE7F2),
+                      context: context,
+                      builder: (_) => buildBottomSheet(context));
+                },
+                child: Container(
+                  width: w(142),
+                  height: h(142),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(48),
+                    border:
+                        Border.all(color: const Color(0xffE8DEEB), width: 2),
                   ),
-                  Positioned(
-                    top: 92,
-                    left: -8,
-                    child: IconButton(
-                      onPressed: () {
-                        showSelectionDialog(
-                            context: context,
-                            select_profile_or_cover: 'profile');
-                      },
-                      icon: Icon(
-                        Icons.camera_alt_outlined,
-                        color: Colors.black,
-                        size: 35,
-                      ),
-                    ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(48),
+                    child: BlocProvider.of<ProfileCubit>(context)
+                                .profileImageFile ==
+                            null
+                        ? Image(
+                            width: w(142),
+                            height: h(142),
+                            fit: BoxFit.fill,
+                            image: NetworkImage(
+                                context.read<UserDataCubit>().avatar!),
+                          )
+                        : Image.file(
+                            BlocProvider.of<ProfileCubit>(context)
+                                .profileImageFile!,
+                            fit: BoxFit.fill,
+                            width: w(142),
+                            height: h(142),
+                          ),
                   ),
-                ],
+                ),
               );
             });
           }
@@ -98,4 +88,81 @@ class ProfilePhoto extends StatelessWidget {
       ),
     );
   }
+
+  Widget buildBottomSheet(BuildContext context) => Container(
+        height: 260,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 15.0, top: 12, right: 15),
+          child: Column(children: [
+            Center(
+              child: Container(
+                color: Theme.of(context).primaryColor,
+                width: 50,
+                height: 4,
+              ),
+            ),
+            const SizedBox(height: 20),
+            InkWell(
+              onTap: () async {
+                await showSelectionDialog(
+                    context: context, select_profile_or_cover: 'profile');
+                Navigator.pop(context);
+              },
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: const Color(0xffF7F4F8),
+                    radius: 25,
+                    child: Icon(Icons.photo_library_outlined,
+                        color: Theme.of(context).primaryColor, size: 40),
+                  ),
+                  const SizedBox(width: 15),
+                  Text(
+                    'Select profile picture',
+                    style: Theme.of(context).textTheme.headline4,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 20),
+            InkWell(
+              onTap: () {},
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: const Color(0xffF7F4F8),
+                    radius: 25,
+                    child: Icon(Icons.person,
+                        color: Theme.of(context).primaryColor, size: 40),
+                  ),
+                  const SizedBox(width: 15),
+                  Text(
+                    'View profile picture',
+                    style: Theme.of(context).textTheme.headline4,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 20),
+            InkWell(
+              onTap: () {},
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: const Color(0xffF7F4F8),
+                    radius: 25,
+                    child: Icon(Icons.delete_forever,
+                        color: Theme.of(context).primaryColor, size: 40),
+                  ),
+                  const SizedBox(width: 15),
+                  Text(
+                    'Delet profile picture',
+                    style: Theme.of(context).textTheme.headline4,
+                  ),
+                ],
+              ),
+            )
+          ]),
+        ),
+      );
 }

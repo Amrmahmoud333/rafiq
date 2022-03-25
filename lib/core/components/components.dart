@@ -29,7 +29,7 @@ Future<void> getImageFromGalleryOrCamera(text, context, imageSource) async {
   }
 }
 
-void showSelectionDialog({
+showSelectionDialog({
   required BuildContext context,
   required String select_profile_or_cover,
 }) async {
@@ -37,10 +37,10 @@ void showSelectionDialog({
     useSafeArea: true,
     context: context,
     builder: (_) => SimpleDialog(
-      backgroundColor: Color(0xffEFE7F2),
+      backgroundColor: const Color(0xffEFE7F2),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       titleTextStyle: Theme.of(context).textTheme.headline2,
-      title: Center(child: Text('Select photo')),
+      title: const Center(child: const Text('Select photo')),
       children: [
         SimpleDialogOption(
           child: Center(

@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0XFFFFFFFF),
+      backgroundColor: const Color(0XFFFFFFFF),
       body: Padding(
         padding: const EdgeInsets.all(40.0),
         child: Form(
@@ -36,7 +36,7 @@ class HomeScreen extends StatelessWidget {
                       //print('mustafa');
                     }
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.search,
                     color: Colors.black,
                   ),

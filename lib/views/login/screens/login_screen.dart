@@ -99,8 +99,8 @@ class LoginScreen extends StatelessWidget {
                                 ),
                                 Container(
                                   width: w(313),
-                                  child: Center(
-                                    child: const AutoSizeText(
+                                  child: const Center(
+                                    child: AutoSizeText(
                                       'Welcome back',
                                       style: TextStyle(
                                         fontFamily: 'DavidLibre',
@@ -135,11 +135,11 @@ class LoginScreen extends StatelessWidget {
                                               .obscureText
                                           ? 'Show'
                                           : 'Hide',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 16,
                                         fontFamily: 'DavidLibre',
                                         fontWeight: FontWeight.w500,
-                                        color: Color(0xFF5B618A),
+                                        color: const Color(0xFF5B618A),
                                       ),
                                     ),
                                   ),

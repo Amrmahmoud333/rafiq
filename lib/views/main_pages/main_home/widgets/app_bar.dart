@@ -33,14 +33,14 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
             color: Colors.white,
             borderRadius: BorderRadius.circular(5),
             border: Border.all(
-              color: Color(0xff5B618A),
+              color: const Color(0xff5B618A),
             ),
           ),
           child: Row(children: [
             SizedBox(
               width: w(3),
             ),
-            Icon(
+            const Icon(
               Icons.search,
               size: 25,
             ),

@@ -6,7 +6,7 @@ import 'package:rafiq/views/main_pages/main_sign_up/sign_up_classes/widget/horiz
 import 'package:rafiq/views/shared/input_field.dart';
 
 class SecondSignUp extends StatelessWidget {
-  SecondSignUp({Key? key}) : super(key: key);
+  const SecondSignUp({Key? key}) : super(key: key);
 
   String? customValidteEmail(String? email) {
     if (!(RegExp(
@@ -73,7 +73,8 @@ class SecondSignUp extends StatelessWidget {
                     context.read<RegisterCubit>().firstObscureText
                         ? 'Show'
                         : 'Hide',
-                    style: TextStyle(fontSize: 16, color: Color(0xff5B618A)),
+                    style:
+                        const TextStyle(fontSize: 16, color: Color(0xff5B618A)),
                   ),
                 ),
               );
@@ -97,7 +98,8 @@ class SecondSignUp extends StatelessWidget {
                     context.read<RegisterCubit>().secondObscureText
                         ? 'Show'
                         : 'Hide',
-                    style: TextStyle(fontSize: 16, color: Color(0xff5B618A)),
+                    style:
+                        const TextStyle(fontSize: 16, color: Color(0xff5B618A)),
                   ),
                 ),
               );

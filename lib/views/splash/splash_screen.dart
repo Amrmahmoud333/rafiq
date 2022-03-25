@@ -40,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
             AnimatedContainer(
               width: w(372),
               height: h(255),
-              duration: Duration(milliseconds: 500),
+              duration: const Duration(milliseconds: 500),
               curve: Curves.easeInBack,
               child: SvgPicture.asset(
                 'assets/images/rafiq_logo_new.svg',

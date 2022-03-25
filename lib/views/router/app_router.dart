@@ -19,7 +19,7 @@ class AppRouter {
       case '/':
         return MaterialPageRoute(
             builder: (context) => (token != null && rememberMe == true)
-                ? MainHomeScreen()
+                ? const MainHomeScreen()
                 : LoginScreen());
 
       case FirstForgetPassword.routeName:
@@ -31,7 +31,7 @@ class AppRouter {
       case LoginScreen.routeName:
         return MaterialPageRoute(builder: (_) => LoginScreen());
       case ProfileScreen.routeName:
-        return MaterialPageRoute(builder: (_) => ProfileScreen());
+        return MaterialPageRoute(builder: (_) => const ProfileScreen());
       case HomeScreen.routeName:
         return MaterialPageRoute(builder: (_) => HomeScreen());
       case TripScreen.routeName:

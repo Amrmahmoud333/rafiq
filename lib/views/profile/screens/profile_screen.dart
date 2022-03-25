@@ -9,7 +9,7 @@ import 'package:rafiq/views/profile/widgets/profile_name.dart';
 import 'package:rafiq/views/profile/widgets/profile_photo.dart';
 
 class ProfileScreen extends StatelessWidget {
-  ProfileScreen({Key? key}) : super(key: key);
+  const ProfileScreen({Key? key}) : super(key: key);
   static const routeName = '/profile_screen';
 
   @override

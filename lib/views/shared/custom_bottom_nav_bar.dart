@@ -55,7 +55,7 @@ class CutsomBottomNavigationBar extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
-                      color: Color(0XFFE8DEEB),
+                      color: const Color(0XFFE8DEEB),
                       child: SvgPicture.asset('assets/images/home_icon.svg'),
                     ),
                     Container(
@@ -95,7 +95,7 @@ class BNBCustomPainter extends CustomPainter {
 
     path.quadraticBezierTo(size.width * 0.40, 0, size.width * 0.40, 20);
     path.arcToPoint(Offset(size.width * 0.60, 20),
-        radius: Radius.circular(15.0), clockwise: false);
+        radius: const Radius.circular(15.0), clockwise: false);
 
     path.quadraticBezierTo(size.width * 0.60, 0, size.width * 0.65, 0);
 

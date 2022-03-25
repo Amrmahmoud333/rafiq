@@ -33,42 +33,43 @@ class Cover extends StatelessWidget {
             ),
             ClipPath(
               clipper: CustomCover(),
-              child: Container(
-                width: double.infinity,
-                height: h(215),
-                decoration: const BoxDecoration(
-                  color: Color(0xffE8DEEB),
+              child: InkWell(
+                onTap: () {
+                  showModalBottomSheet(
+                      shape: const RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.vertical(top: Radius.circular(25))),
+                      backgroundColor: const Color(0xffEFE7F2),
+                      context: context,
+                      builder: (_) => buildBottomSheet(context));
+                },
+                child: Container(
+                  width: double.infinity,
+                  height: h(215),
+                  decoration: const BoxDecoration(
+                    color: Color(0xffE8DEEB),
+                  ),
+                  child: BlocBuilder<UserDataCubit, UserDataState>(
+                      builder: (context, states) {
+                    if (states is UserGetDataLoadingState) {
+                      return SvgPicture.asset(
+                          'assets/images/default_cover.svg');
+                    } else {
+                      return BlocProvider.of<ProfileCubit>(context)
+                                  .coverImageFile ==
+                              null
+                          ? Image.network(
+                              context.read<UserDataCubit>().cover!,
+                              fit: BoxFit.fill,
+                            )
+                          : Image.file(
+                              BlocProvider.of<ProfileCubit>(context)
+                                  .coverImageFile!,
+                              fit: BoxFit.fill,
+                            );
+                    }
+                  }),
                 ),
-                child: BlocBuilder<UserDataCubit, UserDataState>(
-                    builder: (context, states) {
-                  if (states is UserGetDataLoadingState) {
-                    return SvgPicture.asset('assets/images/default_cover.svg');
-                  } else {
-                    return BlocProvider.of<ProfileCubit>(context)
-                                .coverImageFile ==
-                            null
-                        ? Image.network(
-                            context.read<UserDataCubit>().cover!,
-                            fit: BoxFit.fill,
-                          )
-                        : Image.file(
-                            BlocProvider.of<ProfileCubit>(context)
-                                .coverImageFile!,
-                            fit: BoxFit.fill,
-                          );
-                  }
-                }),
-              ),
-            ),
-            IconButton(
-              onPressed: () {
-                showSelectionDialog(
-                    context: context, select_profile_or_cover: 'cover');
-              },
-              icon: Icon(
-                Icons.camera_alt_outlined,
-                color: Colors.black,
-                size: 35,
               ),
             ),
           ],
@@ -76,6 +77,83 @@ class Cover extends StatelessWidget {
       },
     );
   }
+
+  Widget buildBottomSheet(BuildContext context) => Container(
+        height: 255,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 15.0, top: 12, right: 15),
+          child: Column(children: [
+            Center(
+              child: Container(
+                color: Theme.of(context).primaryColor,
+                width: 50,
+                height: 4,
+              ),
+            ),
+            const SizedBox(height: 20),
+            InkWell(
+              onTap: () async {
+                await showSelectionDialog(
+                    context: context, select_profile_or_cover: 'cover');
+                Navigator.pop(context);
+              },
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: const Color(0xffF7F4F8),
+                    radius: 25,
+                    child: Icon(Icons.photo_library_outlined,
+                        color: Theme.of(context).primaryColor, size: 40),
+                  ),
+                  const SizedBox(width: 15),
+                  Text(
+                    'Select cover picture',
+                    style: Theme.of(context).textTheme.headline4,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 20),
+            InkWell(
+              onTap: () {},
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: const Color(0xffF7F4F8),
+                    radius: 25,
+                    child: Icon(Icons.person,
+                        color: Theme.of(context).primaryColor, size: 40),
+                  ),
+                  const SizedBox(width: 15),
+                  Text(
+                    'View cover picture',
+                    style: Theme.of(context).textTheme.headline4,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 20),
+            InkWell(
+              onTap: () {},
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: const Color(0xffF7F4F8),
+                    radius: 25,
+                    child: Icon(Icons.delete_forever,
+                        color: Theme.of(context).primaryColor, size: 40),
+                  ),
+                  const SizedBox(width: 15),
+                  Text(
+                    'Delet cover picture',
+                    style: Theme.of(context).textTheme.headline4,
+                  ),
+                ],
+              ),
+            )
+          ]),
+        ),
+      );
 }
 
 class CustomCover extends CustomClipper<Path> {

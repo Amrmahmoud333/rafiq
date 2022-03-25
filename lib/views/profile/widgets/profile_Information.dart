@@ -32,7 +32,7 @@ class ProfileInformation extends StatelessWidget {
         BlocBuilder<UserDataCubit, UserDataState>(
           builder: (context, state) {
             if (state is UserGetDataLoadingState) {
-              return RowData(
+              return const RowData(
                 imagePath: 'assets/images/followers_icon.svg',
                 text: '0 Followers',
                 sizedWidth: 6.66,
@@ -50,7 +50,7 @@ class ProfileInformation extends StatelessWidget {
         BlocBuilder<UserDataCubit, UserDataState>(
           builder: (context, state) {
             if (state is UserGetDataLoadingState) {
-              return RowData(
+              return const RowData(
                 imagePath: 'assets/images/location_icon.svg',
                 text: 'From ',
                 sizedWidth: 5,

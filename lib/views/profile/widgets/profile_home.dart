@@ -30,13 +30,13 @@ class ProfileHome extends StatelessWidget {
               height: h(37),
               width: w(373),
               child: AppBar(
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(
                     top: Radius.circular(15),
                   ),
                 ),
                 elevation: 0,
-                backgroundColor: Color(0xffEFE7F2),
+                backgroundColor: const Color(0xffEFE7F2),
                 bottom: TabBar(
                   controller: tabController,
                   labelPadding: EdgeInsets.only(bottom: h(6)),
@@ -48,7 +48,7 @@ class ProfileHome extends StatelessWidget {
                   tabs: [
                     TapRowData(
                       widget: cubit.currentIndex == 0
-                          ? Icon(
+                          ? const Icon(
                               Icons.post_add_outlined,
                               size: 21,
                             )
@@ -57,7 +57,7 @@ class ProfileHome extends StatelessWidget {
                     ),
                     TapRowData(
                       widget: cubit.currentIndex == 1
-                          ? Icon(
+                          ? const Icon(
                               Icons.image,
                               size: 21,
                             )
@@ -66,7 +66,7 @@ class ProfileHome extends StatelessWidget {
                     ),
                     TapRowData(
                       widget: cubit.currentIndex == 2
-                          ? Icon(
+                          ? const Icon(
                               Icons.videocam_outlined,
                               size: 21,
                             )
@@ -80,7 +80,7 @@ class ProfileHome extends StatelessWidget {
                         ),
                         TapRowData(
                           widget: cubit.currentIndex == 3
-                              ? Icon(
+                              ? const Icon(
                                   Icons.map,
                                   size: 21,
                                 )
@@ -95,10 +95,10 @@ class ProfileHome extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                color: Color(0xffEFE7F2),
+                color: const Color(0xffEFE7F2),
                 width: w(373),
                 child: TabBarView(
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   controller: tabController,
                   children: [
                     Column(

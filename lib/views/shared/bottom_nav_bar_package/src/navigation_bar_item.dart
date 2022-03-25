@@ -36,7 +36,7 @@ class NavigationBarItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        color: Color(0xffE8DEEB),
+        color: const Color(0xffE8DEEB),
         child: CustomPaint(
           painter: BubblePainter(
             bubbleRadius: isActive ? bubbleRadius : 0,

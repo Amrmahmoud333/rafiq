@@ -35,7 +35,7 @@ class ProfileName extends StatelessWidget {
               } else {
                 return AutoSizeText(
                   '${cubit.firstName} ${cubit.lastName}',
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Color(0xff5B618A),
                     fontSize: 24,
                     fontFamily: 'DavidLibre',
@@ -47,7 +47,7 @@ class ProfileName extends StatelessWidget {
           ),
           BlocBuilder<UserDataCubit, UserDataState>(builder: (context, state) {
             if (state is UserGetDataLoadingState) {
-              return AutoSizeText(
+              return const AutoSizeText(
                 '',
               );
             } else

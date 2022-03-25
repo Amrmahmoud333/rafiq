@@ -17,7 +17,7 @@ class MainHomeScreen extends StatelessWidget {
         builder: (context, state) {
           var cubit = BlocProvider.of<MainHomeCubit>(context);
           return Scaffold(
-            drawer: Drawer(),
+            drawer: const Drawer(),
             appBar: MyAppBar(newContext: context),
             // change between list of screens in the same page to navigate between them
             body: cubit.bottumNavScreen[cubit.currentIndex],

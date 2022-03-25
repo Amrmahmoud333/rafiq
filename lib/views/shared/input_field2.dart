@@ -57,17 +57,17 @@ class InputField2 extends StatelessWidget {
             decoration: InputDecoration(
               // isDense: true,
               contentPadding:
-                  EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+                  const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
               suffixIcon: widget,
               filled: true,
-              fillColor: Color(0xFFEBEBEB),
-              enabledBorder: UnderlineInputBorder(
+              fillColor: const Color(0xFFEBEBEB),
+              enabledBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(
                   width: 2,
-                  color: const Color(0xFF5B618A),
+                  color: Color(0xFF5B618A),
                 ),
               ),
-              focusedBorder: UnderlineInputBorder(
+              focusedBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(
                   width: 2,
                   color: Colors.black,

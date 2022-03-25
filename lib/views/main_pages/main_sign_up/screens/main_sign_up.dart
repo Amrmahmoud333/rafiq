@@ -35,7 +35,7 @@ class MainSignUpScreen extends StatelessWidget {
                   Positioned.fill(
                     top: height(192),
                     child: Column(
-                      children: [
+                      children: const [
                         PageViewWidget(),
                       ],
                     ),
@@ -43,7 +43,7 @@ class MainSignUpScreen extends StatelessWidget {
                   Positioned(
                     bottom: height(210),
                     left: width(89),
-                    child: BottomToNavigate(),
+                    child: const BottomToNavigate(),
                   ),
                 ],
               ),
