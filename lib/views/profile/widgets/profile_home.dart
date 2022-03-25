@@ -76,7 +76,7 @@ class ProfileHome extends StatelessWidget {
                     Row(
                       children: [
                         SizedBox(
-                          width: w(9),
+                          width: w(10),
                         ),
                         TapRowData(
                           widget: cubit.currentIndex == 3
