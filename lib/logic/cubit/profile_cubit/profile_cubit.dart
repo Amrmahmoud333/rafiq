@@ -9,16 +9,21 @@ class ProfileCubit extends Cubit<ProfileStates> {
 
   // working with UI
 
-  File? imageFile;
+  File? profileImageFile;
+  void fileProfileImagePath(XFile profileImage) {
+    profileImageFile = File(profileImage.path);
+    emit(ProfileImageFromGalleryOrCameraState());
+  }
 
-  void fileImagePath(XFile image) {
-    imageFile = File(image.path);
-    emit(GetImageFromGalleryState());
+  File? coverImageFile;
+  void fileCoverImagePath(XFile coverImage) {
+    coverImageFile = File(coverImage.path);
+    emit(CoverImageFromGalleryOrCameraState());
   }
 
   int currentIndex = 0;
   void ChangeIndex(index) {
     currentIndex = index;
-    emit(ProfileChangeIndexlState());
+    emit(ProfileChangeIndexState());
   }
 }

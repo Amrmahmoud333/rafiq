@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rafiq/core/components/components.dart';
+import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
+import 'package:rafiq/logic/cubit/profile_cubit/profile_states.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 
 class Cover extends StatelessWidget {
@@ -12,42 +15,65 @@ class Cover extends StatelessWidget {
       return MediaQuery.of(context).size.height * (n / 851);
     }
 
-    return Stack(
-      children: [
-        Opacity(
-          opacity: 0.05,
-          child: ClipPath(
-            clipper: CustomCover(),
-            child: Container(
-              height: h(221),
-              decoration: const BoxDecoration(
-                color: Colors.black,
+    return BlocBuilder<ProfileCubit, ProfileStates>(
+      builder: (context, state) {
+        return Stack(
+          children: [
+            Opacity(
+              opacity: 0.05,
+              child: ClipPath(
+                clipper: CustomCover(),
+                child: Container(
+                  height: h(221),
+                  decoration: const BoxDecoration(
+                    color: Colors.black,
+                  ),
+                ),
               ),
             ),
-          ),
-        ),
-        ClipPath(
-          clipper: CustomCover(),
-          child: Container(
-            width: double.infinity,
-            height: h(215),
-            decoration: const BoxDecoration(
-              color: Color(0xffE8DEEB),
+            ClipPath(
+              clipper: CustomCover(),
+              child: Container(
+                width: double.infinity,
+                height: h(215),
+                decoration: const BoxDecoration(
+                  color: Color(0xffE8DEEB),
+                ),
+                child: BlocBuilder<UserDataCubit, UserDataState>(
+                    builder: (context, states) {
+                  if (states is UserGetDataLoadingState) {
+                    return SvgPicture.asset('assets/images/default_cover.svg');
+                  } else {
+                    return BlocProvider.of<ProfileCubit>(context)
+                                .coverImageFile ==
+                            null
+                        ? Image.network(
+                            context.read<UserDataCubit>().cover!,
+                            fit: BoxFit.fill,
+                          )
+                        : Image.file(
+                            BlocProvider.of<ProfileCubit>(context)
+                                .coverImageFile!,
+                            fit: BoxFit.fill,
+                          );
+                  }
+                }),
+              ),
             ),
-            child: BlocBuilder<UserDataCubit, UserDataState>(
-                builder: (context, states) {
-              if (states is UserGetDataLoadingState) {
-                return SvgPicture.asset('assets/images/default_cover.svg');
-              } else {
-                return Image.network(
-                  context.read<UserDataCubit>().cover!,
-                  fit: BoxFit.fill,
-                );
-              }
-            }),
-          ),
-        ),
-      ],
+            IconButton(
+              onPressed: () {
+                showSelectionDialog(
+                    context: context, select_profile_or_cover: 'cover');
+              },
+              icon: Icon(
+                Icons.camera_alt_outlined,
+                color: Colors.black,
+                size: 35,
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

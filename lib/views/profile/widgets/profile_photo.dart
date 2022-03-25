@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rafiq/core/components/components.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_states.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
-import 'package:image_picker/image_picker.dart';
 
 class ProfilePhoto extends StatelessWidget {
   const ProfilePhoto({
@@ -20,14 +20,6 @@ class ProfilePhoto extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
-    final ImagePicker _picker = ImagePicker();
-    void getImage() async {
-      final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-      if (image == null) return;
-
-      BlocProvider.of<ProfileCubit>(context).fileImagePath(image);
-    }
-
     return Positioned(
       top: h(145),
       left: w(9),
@@ -42,7 +34,7 @@ class ProfilePhoto extends StatelessWidget {
                 borderRadius: BorderRadius.circular(30),
                 border: Border.all(color: const Color(0xffE8DEEB), width: 2),
                 image: DecorationImage(
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                   image: AssetImage('assets/images/clouds.png'),
                 ),
               ),
@@ -63,18 +55,20 @@ class ProfilePhoto extends StatelessWidget {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(48),
-                      child: BlocProvider.of<ProfileCubit>(context).imageFile ==
+                      child: BlocProvider.of<ProfileCubit>(context)
+                                  .profileImageFile ==
                               null
                           ? Image(
                               width: w(142),
                               height: h(142),
-                              fit: BoxFit.cover,
+                              fit: BoxFit.fill,
                               image: NetworkImage(
                                   context.read<UserDataCubit>().avatar!),
                             )
                           : Image.file(
-                              BlocProvider.of<ProfileCubit>(context).imageFile!,
-                              fit: BoxFit.cover,
+                              BlocProvider.of<ProfileCubit>(context)
+                                  .profileImageFile!,
+                              fit: BoxFit.fill,
                               width: w(142),
                               height: h(142),
                             ),
@@ -85,7 +79,9 @@ class ProfilePhoto extends StatelessWidget {
                     left: -8,
                     child: IconButton(
                       onPressed: () {
-                        getImage();
+                        showSelectionDialog(
+                            context: context,
+                            select_profile_or_cover: 'profile');
                       },
                       icon: Icon(
                         Icons.camera_alt_outlined,
