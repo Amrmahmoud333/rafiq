@@ -36,7 +36,7 @@ class ProfileHome extends StatelessWidget {
                   ),
                 ),
                 elevation: 0,
-                backgroundColor: const Color(0xffF7F4F8),
+                backgroundColor: Color(0xffEFE7F2),
                 bottom: TabBar(
                   controller: tabController,
                   labelPadding: EdgeInsets.only(bottom: h(6)),
@@ -95,7 +95,7 @@ class ProfileHome extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                color: const Color(0xffF7F4F8),
+                color: Color(0xffEFE7F2),
                 width: w(373),
                 child: TabBarView(
                   physics: NeverScrollableScrollPhysics(),

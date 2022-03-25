@@ -6,7 +6,7 @@ import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 
 void showTosat({required msg, required state}) => Fluttertoast.showToast(
     msg: msg,
-    toastLength: Toast.LENGTH_LONG,
+    toastLength: Toast.LENGTH_SHORT,
     gravity: ToastGravity.BOTTOM,
     timeInSecForIosWeb: 5,
     backgroundColor: state ? Colors.green : Colors.amber,
@@ -34,12 +34,19 @@ void showSelectionDialog({
   required String select_profile_or_cover,
 }) async {
   await showDialog(
+    useSafeArea: true,
     context: context,
     builder: (_) => SimpleDialog(
-      title: Text('Select photo'),
+      backgroundColor: Color(0xffEFE7F2),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      titleTextStyle: Theme.of(context).textTheme.headline2,
+      title: Center(child: Text('Select photo')),
       children: [
         SimpleDialogOption(
-          child: Text('From gallery'),
+          child: Center(
+            child: Text('From gallery',
+                style: Theme.of(context).textTheme.headline4!),
+          ),
           onPressed: () async {
             await getImageFromGalleryOrCamera(
                 select_profile_or_cover, context, ImageSource.gallery);
@@ -48,7 +55,10 @@ void showSelectionDialog({
           },
         ),
         SimpleDialogOption(
-          child: Text('From camera'),
+          child: Center(
+            child: Text('From camera',
+                style: Theme.of(context).textTheme.headline4!),
+          ),
           onPressed: () async {
             await getImageFromGalleryOrCamera(
                 select_profile_or_cover, context, ImageSource.camera);
