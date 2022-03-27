@@ -99,11 +99,6 @@ class Cover extends StatelessWidget {
               },
               child: Container(
                 height: 50,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                      width: 2, color: Theme.of(context).primaryColor),
-                  borderRadius: BorderRadius.circular(20),
-                ),
                 child: Row(
                   children: [
                     Icon(Icons.photo_library_outlined,
@@ -122,11 +117,6 @@ class Cover extends StatelessWidget {
               onTap: () {},
               child: Container(
                 height: 50,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                      width: 2, color: Theme.of(context).primaryColor),
-                  borderRadius: BorderRadius.circular(20),
-                ),
                 child: Row(
                   children: [
                     Icon(Icons.person,
@@ -145,19 +135,17 @@ class Cover extends StatelessWidget {
               onTap: () {},
               child: Container(
                 height: 50,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                      width: 2, color: Theme.of(context).primaryColor),
-                  borderRadius: BorderRadius.circular(20),
-                ),
                 child: Row(
                   children: [
                     Icon(Icons.delete_forever,
-                        color: Theme.of(context).primaryColor, size: 40),
+                        color: Color(0xffc11717), size: 40),
                     const SizedBox(width: 15),
                     Text(
-                      'Delet cover picture',
-                      style: Theme.of(context).textTheme.headline4,
+                      'Delete cover picture',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline4!
+                          .copyWith(color: Color(0xffc11717)),
                     ),
                   ],
                 ),

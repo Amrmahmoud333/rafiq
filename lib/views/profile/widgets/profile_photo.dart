@@ -90,7 +90,7 @@ class ProfilePhoto extends StatelessWidget {
   }
 
   Widget buildBottomSheet(BuildContext context) => Container(
-        height: 260,
+        height: 255,
         child: Padding(
           padding: const EdgeInsets.only(left: 15.0, top: 12, right: 15),
           child: Column(children: [
@@ -108,58 +108,58 @@ class ProfilePhoto extends StatelessWidget {
                     context: context, select_profile_or_cover: 'profile');
                 Navigator.pop(context);
               },
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    backgroundColor: const Color(0xffF7F4F8),
-                    radius: 25,
-                    child: Icon(Icons.photo_library_outlined,
+              child: Container(
+                height: 50,
+                child: Row(
+                  children: [
+                    Icon(Icons.photo_library_outlined,
                         color: Theme.of(context).primaryColor, size: 40),
-                  ),
-                  const SizedBox(width: 15),
-                  Text(
-                    'Select profile picture',
-                    style: Theme.of(context).textTheme.headline4,
-                  ),
-                ],
+                    const SizedBox(width: 15),
+                    Text(
+                      'Select profile picture',
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: 20),
             InkWell(
               onTap: () {},
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    backgroundColor: const Color(0xffF7F4F8),
-                    radius: 25,
-                    child: Icon(Icons.person,
+              child: Container(
+                height: 50,
+                child: Row(
+                  children: [
+                    Icon(Icons.person,
                         color: Theme.of(context).primaryColor, size: 40),
-                  ),
-                  const SizedBox(width: 15),
-                  Text(
-                    'View profile picture',
-                    style: Theme.of(context).textTheme.headline4,
-                  ),
-                ],
+                    const SizedBox(width: 15),
+                    Text(
+                      'View profile picture',
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: 20),
             InkWell(
               onTap: () {},
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    backgroundColor: const Color(0xffF7F4F8),
-                    radius: 25,
-                    child: Icon(Icons.delete_forever,
-                        color: Theme.of(context).primaryColor, size: 40),
-                  ),
-                  const SizedBox(width: 15),
-                  Text(
-                    'Delet profile picture',
-                    style: Theme.of(context).textTheme.headline4,
-                  ),
-                ],
+              child: Container(
+                height: 50,
+                child: Row(
+                  children: [
+                    Icon(Icons.delete_forever,
+                        color: Color(0xffc11717), size: 40),
+                    const SizedBox(width: 15),
+                    Text(
+                      'Delete profile picture',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline4!
+                          .copyWith(color: Color(0xffc11717)),
+                    ),
+                  ],
+                ),
               ),
             )
           ]),
