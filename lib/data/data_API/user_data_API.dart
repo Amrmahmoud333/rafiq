@@ -12,11 +12,10 @@ class UserDataAPI extends UserDataRepo {
   Future<UserDataModel> getUserDataRepo() async {
     final resonse = await DioHelper.getWithHeader(
         //'$URL$GETUSERPROFILE/$USERNAME/'
-// https://travel-with-rafiq.herokuapp.com/api/v1/users/amrma
+        // https://travel-with-rafiq.herokuapp.com/api/v1/users/amrma
 
         url: '$URL/$GETUSERPROFILE/$USERNAME/',
         header: {'access-token': token});
-    print(USERNAME);
     return UserDataModel.fromJson(resonse.data);
   }
 }
