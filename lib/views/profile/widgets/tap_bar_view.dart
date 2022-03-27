@@ -1,9 +1,11 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rafiq/core/themes/theme.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_states.dart';
+import 'package:rafiq/views/profile/widgets/tap_bar_view_widgets/images.dart';
+import 'package:rafiq/views/profile/widgets/tap_bar_view_widgets/map.dart';
+import 'package:rafiq/views/profile/widgets/tap_bar_view_widgets/posts.dart';
+import 'package:rafiq/views/profile/widgets/tap_bar_view_widgets/videos.dart';
 
 class TabBarViewWidget extends StatelessWidget {
   TabBarViewWidget({Key? key, required this.tabController}) : super(key: key);
@@ -24,42 +26,10 @@ class TabBarViewWidget extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               controller: tabController,
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    AutoSizeText(
-                      'No posts yet',
-                      style: ThemeOfProject.ligthTheme.textTheme.headline4,
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    AutoSizeText(
-                      'No images yet',
-                      style: ThemeOfProject.ligthTheme.textTheme.headline4,
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    AutoSizeText(
-                      'No videos yet',
-                      style: ThemeOfProject.ligthTheme.textTheme.headline4,
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    AutoSizeText(
-                      'No images yet',
-                      style: ThemeOfProject.ligthTheme.textTheme.headline4,
-                    ),
-                  ],
-                ),
+                Posts(),
+                Images(),
+                Videos(),
+                Maps(),
               ],
             ),
           ),
