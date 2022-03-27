@@ -67,8 +67,4 @@ class MyApp extends StatelessWidget {
 
 // TODO Sign in && login with google or facebook (We or backEnd)
 // TODO Make Map in Profile screen
-<<<<<<< HEAD
-//TODO   الجزء العلوي ف السكرول ال تاب بار لما برفعها لاعلي الشاشه
-=======
-// TODO Make home Scrollable
->>>>>>> merge
+// TODO   الجزء العلوي ف السكرول ال تاب بار لما برفعها لاعلي الشاشه

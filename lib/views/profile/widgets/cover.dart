@@ -55,18 +55,25 @@ class Cover extends StatelessWidget {
                       return SvgPicture.asset(
                           'assets/images/default_cover.svg');
                     } else {
-                      return BlocProvider.of<ProfileCubit>(context)
-                                  .coverImageFile ==
-                              null
-                          ? Image.network(
-                              context.read<UserDataCubit>().cover!,
-                              fit: BoxFit.fill,
-                            )
-                          : Image.file(
-                              BlocProvider.of<ProfileCubit>(context)
-                                  .coverImageFile!,
-                              fit: BoxFit.fill,
-                            );
+                      if (BlocProvider.of<ProfileCubit>(context)
+                              .coverImageFile ==
+                          null) {
+                        if (context.read<UserDataCubit>().cover == null) {
+                          return SvgPicture.asset(
+                              'assets/images/default_cover.svg');
+                        } else {
+                          return Image.network(
+                            context.read<UserDataCubit>().cover!,
+                            fit: BoxFit.fill,
+                          );
+                        }
+                      } else {
+                        return Image.file(
+                          BlocProvider.of<ProfileCubit>(context)
+                              .coverImageFile!,
+                          fit: BoxFit.fill,
+                        );
+                      }
                     }
                   }),
                 ),

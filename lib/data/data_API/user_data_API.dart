@@ -11,7 +11,11 @@ class UserDataAPI extends UserDataRepo {
   @override
   Future<UserDataModel> getUserDataRepo() async {
     final resonse = await DioHelper.getWithHeader(
-        url: '$URL$GETUSERPROFILE/$USERNAME/', header: {'access-token': token});
+        //'$URL$GETUSERPROFILE/$USERNAME/'
+
+        url: '$URL/api/v1/users/amrma/',
+        header: {'access-token': token});
+    print(USERNAME);
     return UserDataModel.fromJson(resonse.data);
   }
 }

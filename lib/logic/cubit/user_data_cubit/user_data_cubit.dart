@@ -33,6 +33,7 @@ class UserDataCubit extends Cubit<UserDataState> {
       gender = _userDataModel.results!.gender;
       country = _userDataModel.results!.country;
       userName = _userDataModel.results!.userName;
+
       avatar = _userDataModel.results!.avatar;
       cover = _userDataModel.results!.cover;
       dateOfBirth = _userDataModel.results!.dateOfBirth;

@@ -23,17 +23,18 @@ class Results {
   String? avatar;
   String? cover;
 
-  Results(
-      {this.numberOfFollowers,
-      this.numberOfFollowings,
-      this.firstName,
-      this.lastName,
-      this.userName,
-      this.country,
-      this.dateOfBirth,
-      this.gender,
-      this.avatar,
-      this.cover});
+  Results({
+    this.numberOfFollowers,
+    this.numberOfFollowings,
+    this.firstName,
+    this.lastName,
+    this.userName,
+    this.country,
+    this.dateOfBirth,
+    this.gender,
+    this.avatar,
+    this.cover,
+  });
 
   Results.fromJson(Map<String, dynamic> json) {
     numberOfFollowers = json['numberOfFollowers'];
@@ -44,7 +45,7 @@ class Results {
     country = json['country'];
     dateOfBirth = json['dateOfBirth'];
     gender = json['gender'];
-    avatar = json['avatar'];
-    cover = json['cover'];
+    json['avatar'] == null ? avatar = null : avatar = json['avatar'];
+    json['cover'] == null ? cover = null : cover = json['cover'];
   }
 }
