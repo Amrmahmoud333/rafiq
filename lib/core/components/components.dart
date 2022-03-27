@@ -43,9 +43,17 @@ showSelectionDialog({
       title: const Center(child: const Text('Select photo')),
       children: [
         SimpleDialogOption(
-          child: Center(
-            child: Text('From gallery',
-                style: Theme.of(context).textTheme.headline4!),
+          child: Container(
+            height: 40,
+            decoration: BoxDecoration(
+                border:
+                    Border.all(width: 2, color: Theme.of(context).primaryColor),
+                //color: Colors.amber,
+                borderRadius: BorderRadius.circular(20)),
+            child: Center(
+              child: Text('From gallery',
+                  style: Theme.of(context).textTheme.headline4!),
+            ),
           ),
           onPressed: () async {
             await getImageFromGalleryOrCamera(
@@ -55,9 +63,17 @@ showSelectionDialog({
           },
         ),
         SimpleDialogOption(
-          child: Center(
-            child: Text('From camera',
-                style: Theme.of(context).textTheme.headline4!),
+          child: Container(
+            height: 40,
+            decoration: BoxDecoration(
+                border:
+                    Border.all(width: 2, color: Theme.of(context).primaryColor),
+                //color: Colors.amber,
+                borderRadius: BorderRadius.circular(20)),
+            child: Center(
+              child: Text('From camera',
+                  style: Theme.of(context).textTheme.headline4!),
+            ),
           ),
           onPressed: () async {
             await getImageFromGalleryOrCamera(

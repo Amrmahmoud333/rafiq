@@ -12,17 +12,20 @@ class TapRowData extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
-    return Row(
-      children: [
-        SizedBox(
-          width: MediaQuery.of(context).size.width * (9 / 393),
-        ),
-        SizedBox(
-          width: w(3),
-        ),
-        widget ?? Container(),
-        AutoSizeText(lable),
-      ],
+    return Container(
+      height: 35,
+      child: Row(
+        children: [
+          SizedBox(
+            width: MediaQuery.of(context).size.width * (9 / 393),
+          ),
+          SizedBox(
+            width: w(3),
+          ),
+          widget ?? Container(),
+          AutoSizeText(lable),
+        ],
+      ),
     );
   }
 }

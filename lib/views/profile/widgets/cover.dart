@@ -97,58 +97,70 @@ class Cover extends StatelessWidget {
                     context: context, select_profile_or_cover: 'cover');
                 Navigator.pop(context);
               },
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    backgroundColor: const Color(0xffF7F4F8),
-                    radius: 25,
-                    child: Icon(Icons.photo_library_outlined,
+              child: Container(
+                height: 50,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                      width: 2, color: Theme.of(context).primaryColor),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.photo_library_outlined,
                         color: Theme.of(context).primaryColor, size: 40),
-                  ),
-                  const SizedBox(width: 15),
-                  Text(
-                    'Select cover picture',
-                    style: Theme.of(context).textTheme.headline4,
-                  ),
-                ],
+                    const SizedBox(width: 15),
+                    Text(
+                      'Select cover picture',
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: 20),
             InkWell(
               onTap: () {},
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    backgroundColor: const Color(0xffF7F4F8),
-                    radius: 25,
-                    child: Icon(Icons.person,
+              child: Container(
+                height: 50,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                      width: 2, color: Theme.of(context).primaryColor),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.person,
                         color: Theme.of(context).primaryColor, size: 40),
-                  ),
-                  const SizedBox(width: 15),
-                  Text(
-                    'View cover picture',
-                    style: Theme.of(context).textTheme.headline4,
-                  ),
-                ],
+                    const SizedBox(width: 15),
+                    Text(
+                      'View cover picture',
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: 20),
             InkWell(
               onTap: () {},
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    backgroundColor: const Color(0xffF7F4F8),
-                    radius: 25,
-                    child: Icon(Icons.delete_forever,
+              child: Container(
+                height: 50,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                      width: 2, color: Theme.of(context).primaryColor),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.delete_forever,
                         color: Theme.of(context).primaryColor, size: 40),
-                  ),
-                  const SizedBox(width: 15),
-                  Text(
-                    'Delet cover picture',
-                    style: Theme.of(context).textTheme.headline4,
-                  ),
-                ],
+                    const SizedBox(width: 15),
+                    Text(
+                      'Delet cover picture',
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
+                  ],
+                ),
               ),
             )
           ]),
