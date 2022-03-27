@@ -49,33 +49,25 @@ class Cover extends StatelessWidget {
                   decoration: const BoxDecoration(
                     color: Color(0xffE8DEEB),
                   ),
-                  child: BlocBuilder<UserDataCubit, UserDataState>(
-                      builder: (context, states) {
-                    if (states is UserGetDataLoadingState) {
-                      return SvgPicture.asset(
-                          'assets/images/default_cover.svg');
-                    } else {
-                      if (BlocProvider.of<ProfileCubit>(context)
-                              .coverImageFile ==
-                          null) {
-                        if (context.read<UserDataCubit>().cover == null) {
-                          return SvgPicture.asset(
-                              'assets/images/default_cover.svg');
-                        } else {
-                          return Image.network(
-                            context.read<UserDataCubit>().cover!,
-                            fit: BoxFit.fill,
-                          );
-                        }
-                      } else {
-                        return Image.file(
-                          BlocProvider.of<ProfileCubit>(context)
-                              .coverImageFile!,
-                          fit: BoxFit.fill,
-                        );
-                      }
-                    }
-                  }),
+                  child: (state is UserGetDataLoadingState)
+                      ? SvgPicture.asset('assets/images/default_cover.svg')
+                      : (BlocProvider.of<ProfileCubit>(context)
+                                  .coverImageFile ==
+                              null)
+                          ? (context.read<UserDataCubit>().cover == null)
+                              ? SvgPicture.asset(
+                                  'assets/images/default_cover.svg',
+                                  fit: BoxFit.fill,
+                                )
+                              : Image.network(
+                                  context.read<UserDataCubit>().cover!,
+                                  fit: BoxFit.fill,
+                                )
+                          : Image.file(
+                              BlocProvider.of<ProfileCubit>(context)
+                                  .coverImageFile!,
+                              fit: BoxFit.fill,
+                            ),
                 ),
               ),
             ),

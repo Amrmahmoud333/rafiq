@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:rafiq/core/components/components.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_states.dart';
@@ -40,49 +41,47 @@ class ProfilePhoto extends StatelessWidget {
               ),
             );
           } else {
-            return BlocBuilder<ProfileCubit, ProfileStates>(
-                builder: (context, state) {
-              return InkWell(
-                onTap: () {
-                  showModalBottomSheet(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(
-                              top: Radius.circular(h(25)))),
-                      backgroundColor: const Color(0xffEFE7F2),
-                      context: context,
-                      builder: (_) => buildBottomSheet(context));
-                },
-                child: Container(
-                  width: w(142),
-                  height: h(142),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(48),
-                    border:
-                        Border.all(color: const Color(0xffE8DEEB), width: 2),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(48),
-                    child: BlocProvider.of<ProfileCubit>(context)
-                                .profileImageFile ==
-                            null
-                        ? Image(
-                            width: w(142),
-                            height: h(142),
-                            fit: BoxFit.fill,
-                            image: NetworkImage(
-                                context.read<UserDataCubit>().avatar!),
-                          )
-                        : Image.file(
-                            BlocProvider.of<ProfileCubit>(context)
-                                .profileImageFile!,
-                            fit: BoxFit.fill,
-                            width: w(142),
-                            height: h(142),
-                          ),
-                  ),
+            return InkWell(
+              onTap: () {
+                showModalBottomSheet(
+                    shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.vertical(top: Radius.circular(h(25)))),
+                    backgroundColor: const Color(0xffEFE7F2),
+                    context: context,
+                    builder: (_) => buildBottomSheet(context));
+              },
+              child: Container(
+                width: w(142),
+                height: h(142),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(48),
+                  border: Border.all(color: const Color(0xffE8DEEB), width: 2),
                 ),
-              );
-            });
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(48),
+                  child:
+                      BlocProvider.of<ProfileCubit>(context).profileImageFile ==
+                              null
+                          ? (context.read<UserDataCubit>().avatar == null)
+                              ? SvgPicture.asset(
+                                  'assets/images/profile.svg',
+                                  fit: BoxFit.fill,
+                                )
+                              : Image.network(
+                                  context.read<UserDataCubit>().cover!,
+                                  fit: BoxFit.fill,
+                                )
+                          : Image.file(
+                              BlocProvider.of<ProfileCubit>(context)
+                                  .profileImageFile!,
+                              fit: BoxFit.fill,
+                              width: w(142),
+                              height: h(142),
+                            ),
+                ),
+              ),
+            );
           }
         },
       ),
