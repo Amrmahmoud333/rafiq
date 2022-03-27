@@ -7,50 +7,6 @@ class Maps extends StatelessWidget {
 
   List<Widget> maps = [
     AutoSizeText(
-      'No maps yet 1',
-      style: ThemeOfProject.ligthTheme.textTheme.headline4,
-    ),
-    AutoSizeText(
-      'No maps yet 2',
-      style: ThemeOfProject.ligthTheme.textTheme.headline4,
-    ),
-    AutoSizeText(
-      'No maps yet 3',
-      style: ThemeOfProject.ligthTheme.textTheme.headline4,
-    ),
-    AutoSizeText(
-      'No maps yet 4',
-      style: ThemeOfProject.ligthTheme.textTheme.headline4,
-    ),
-    AutoSizeText(
-      'No maps yet 5',
-      style: ThemeOfProject.ligthTheme.textTheme.headline4,
-    ),
-    AutoSizeText(
-      'No maps yet 6',
-      style: ThemeOfProject.ligthTheme.textTheme.headline4,
-    ),
-    AutoSizeText(
-      'No maps yet 7',
-      style: ThemeOfProject.ligthTheme.textTheme.headline4,
-    ),
-    AutoSizeText(
-      'No maps yet 8',
-      style: ThemeOfProject.ligthTheme.textTheme.headline4,
-    ),
-    AutoSizeText(
-      'No maps yet 9',
-      style: ThemeOfProject.ligthTheme.textTheme.headline4,
-    ),
-    AutoSizeText(
-      'No maps yet 10',
-      style: ThemeOfProject.ligthTheme.textTheme.headline4,
-    ),
-    AutoSizeText(
-      'No maps yet 11',
-      style: ThemeOfProject.ligthTheme.textTheme.headline4,
-    ),
-    AutoSizeText(
       'No maps yet 12',
       style: ThemeOfProject.ligthTheme.textTheme.headline4,
     ),

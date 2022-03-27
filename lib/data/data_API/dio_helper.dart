@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
 
@@ -38,6 +40,18 @@ class DioHelper {
     return await dio.get(
       url!,
       options: Options(headers: header),
+    );
+  }
+
+  static Future<Response> putWithHeader({
+    @required String? url,
+    @required File? file,
+    @required Map<String, dynamic>? header,
+  }) async {
+    return await dio.put(
+      url!,
+      options: Options(headers: header),
+      data: file,
     );
   }
 }
