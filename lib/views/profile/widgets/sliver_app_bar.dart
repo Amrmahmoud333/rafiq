@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
+import 'package:rafiq/logic/cubit/profile_cubit/profile_states.dart';
 import 'package:rafiq/views/profile/widgets/row_tap_data.dart';
 
 class SliverAppBarWidget extends StatelessWidget {
@@ -21,74 +22,78 @@ class SliverAppBarWidget extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
-    return SliverPadding(
-      padding: EdgeInsets.symmetric(horizontal: 9),
-      sliver: SliverAppBar(
-        expandedHeight: 25,
-        pinned: true,
-        floating: true,
-        forceElevated: innerBoxIsScrolled,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            top: Radius.circular(15),
-          ),
-        ),
-        elevation: 0,
-        backgroundColor: const Color(0xffEFE7F2),
-        bottom: TabBar(
-          controller: tabController,
-          labelPadding: EdgeInsets.only(bottom: h(6)),
-          indicator: Dot(color: const Color(0xff5B618A), radius: 4),
-          labelColor: const Color(0xff5B618A),
-          unselectedLabelColor: const Color(0xff5B618A).withOpacity(0.35),
-          labelStyle: Theme.of(context).textTheme.headline6,
-          tabs: [
-            TapRowData(
-              widget: cubit.currentIndex == 0
-                  ? const Icon(
-                      Icons.post_add_outlined,
-                      size: 21,
-                    )
-                  : Container(),
-              lable: 'Posts',
+    return BlocBuilder<ProfileCubit, ProfileStates>(
+      builder: (context, state) {
+        return SliverPadding(
+          padding: EdgeInsets.symmetric(horizontal: w(9)),
+          sliver: SliverAppBar(
+            expandedHeight: h(25),
+            pinned: true,
+            floating: true,
+            forceElevated: innerBoxIsScrolled,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(15),
+              ),
             ),
-            TapRowData(
-              widget: cubit.currentIndex == 1
-                  ? const Icon(
-                      Icons.image,
-                      size: 21,
-                    )
-                  : Container(),
-              lable: 'Image',
-            ),
-            TapRowData(
-              widget: cubit.currentIndex == 2
-                  ? const Icon(
-                      Icons.videocam_outlined,
-                      size: 21,
-                    )
-                  : Container(),
-              lable: 'Videos',
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: w(10),
-                ),
+            elevation: 0,
+            backgroundColor: const Color(0xffEFE7F2),
+            bottom: TabBar(
+              controller: tabController,
+              labelPadding: EdgeInsets.only(bottom: h(6)),
+              indicator: Dot(color: const Color(0xff5B618A), radius: 4),
+              labelColor: const Color(0xff5B618A),
+              unselectedLabelColor: const Color(0xff5B618A).withOpacity(0.35),
+              labelStyle: Theme.of(context).textTheme.headline6,
+              tabs: [
                 TapRowData(
-                  widget: cubit.currentIndex == 3
+                  widget: cubit.currentIndex == 0
                       ? const Icon(
-                          Icons.map,
+                          Icons.post_add_outlined,
                           size: 21,
                         )
                       : Container(),
-                  lable: 'Map',
+                  lable: 'Posts',
+                ),
+                TapRowData(
+                  widget: cubit.currentIndex == 1
+                      ? const Icon(
+                          Icons.image,
+                          size: 21,
+                        )
+                      : Container(),
+                  lable: 'Image',
+                ),
+                TapRowData(
+                  widget: cubit.currentIndex == 2
+                      ? const Icon(
+                          Icons.videocam_outlined,
+                          size: 21,
+                        )
+                      : Container(),
+                  lable: 'Videos',
+                ),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: w(10),
+                    ),
+                    TapRowData(
+                      widget: cubit.currentIndex == 3
+                          ? const Icon(
+                              Icons.map,
+                              size: 21,
+                            )
+                          : Container(),
+                      lable: 'Map',
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }
