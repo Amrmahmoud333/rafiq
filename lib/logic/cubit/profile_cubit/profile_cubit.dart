@@ -1,11 +1,15 @@
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:rafiq/data/models/set_cover_image_model.dart';
+import 'package:rafiq/data/repositories/cover_image_repo.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_states.dart';
 
 class ProfileCubit extends Cubit<ProfileStates> {
-  ProfileCubit() : super(ProfileIntialState());
+  CoverImageRepo coverImageRepo;
+  ProfileCubit({required this.coverImageRepo}) : super(ProfileIntialState());
 
   // working with UI
 
@@ -18,6 +22,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
   File? coverImageFile;
   void fileCoverImagePath(XFile coverImage) {
     coverImageFile = File(coverImage.path);
+
     emit(CoverImageFromGalleryOrCameraState());
   }
 
@@ -25,5 +30,34 @@ class ProfileCubit extends Cubit<ProfileStates> {
   void ChangeIndex(index) {
     currentIndex = index;
     emit(ProfileChangeIndexState());
+  }
+
+  late SetCoverModel _setCoverModel;
+  late SetAvatarModel _setAvatarModel;
+
+  Future<void> setCover({File? file}) async {
+    emit(SetCoverLoadingState());
+    try {
+      _setCoverModel = await coverImageRepo.setCoverRepo(file: file!);
+
+      print(_setCoverModel.results!.cover);
+      emit(SetCoverSuccessState());
+    } on DioError catch (error) {
+      print(error);
+      emit(SetCoverErrorState());
+    }
+  }
+
+  Future<void> setAvatar({File? file}) async {
+    emit(SetAvatarLoadingState());
+    try {
+      _setAvatarModel = await coverImageRepo.setImageRepo(file: file!);
+
+      print(_setAvatarModel.results!.avatar);
+      emit(SetAvatarSuccessState());
+    } on DioError catch (error) {
+      print(error);
+      emit(SetAvatarErrorState());
+    }
   }
 }

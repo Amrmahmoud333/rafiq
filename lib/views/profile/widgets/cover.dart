@@ -44,31 +44,25 @@ class Cover extends StatelessWidget {
                       builder: (_) => buildBottomSheet(context));
                 },
                 child: Container(
-                  width: double.infinity,
-                  height: h(215),
-                  decoration: const BoxDecoration(
-                    color: Color(0xffE8DEEB),
-                  ),
-                  child: (state is UserGetDataLoadingState)
-                      ? SvgPicture.asset('assets/images/default_cover.svg')
-                      : (BlocProvider.of<ProfileCubit>(context)
-                                  .coverImageFile ==
-                              null)
-                          ? (context.read<UserDataCubit>().cover == null)
-                              ? SvgPicture.asset(
-                                  'assets/images/default_cover.svg',
-                                  fit: BoxFit.fill,
-                                )
-                              : Image.network(
-                                  context.read<UserDataCubit>().cover!,
-                                  fit: BoxFit.fill,
-                                )
-                          : Image.file(
-                              BlocProvider.of<ProfileCubit>(context)
-                                  .coverImageFile!,
-                              fit: BoxFit.fill,
-                            ),
-                ),
+                    width: double.infinity,
+                    height: h(215),
+                    decoration: const BoxDecoration(
+                      color: Color(0xffE8DEEB),
+                    ),
+                    child: (state is UserGetDataLoadingState)
+                        ? SvgPicture.asset('assets/images/default_cover.svg')
+                        : (state is SetCoverLoadingState)
+                            ? SvgPicture.asset(
+                                'assets/images/default_cover.svg')
+                            : (context.read<UserDataCubit>().cover == null)
+                                ? SvgPicture.asset(
+                                    'assets/images/default_cover.svg',
+                                    fit: BoxFit.fill,
+                                  )
+                                : Image.network(
+                                    context.read<UserDataCubit>().cover!,
+                                    fit: BoxFit.fill,
+                                  )),
               ),
             ),
           ],

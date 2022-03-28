@@ -11,3 +11,17 @@ class ProfileGetCoverSuccessErrorState extends ProfileStates {}
 class ProfileImageFromGalleryOrCameraState extends ProfileStates {}
 
 class CoverImageFromGalleryOrCameraState extends ProfileStates {}
+
+class CoverImageInitial extends ProfileStates {}
+
+class SetCoverLoadingState extends ProfileStates {}
+
+class SetCoverSuccessState extends ProfileStates {}
+
+class SetCoverErrorState extends ProfileStates {}
+
+class SetAvatarLoadingState extends ProfileStates {}
+
+class SetAvatarSuccessState extends ProfileStates {}
+
+class SetAvatarErrorState extends ProfileStates {}

@@ -11,20 +11,20 @@ String? token = CahchHelper.getData(key: 'token');
 
 class CoverImageAPI extends CoverImageRepo {
   @override
-  Future<setCoverModel> setCoverRepo({File? file}) async {
+  Future<SetCoverModel> setCoverRepo({File? file}) async {
     final response = await DioHelper.putWithHeader(
         url: '$URL/api/v1/users/$USERNAME/cover/',
         file: file,
         header: {'access-token': token});
-    return setCoverModel.fromJson(response.data);
+    return SetCoverModel.fromJson(response.data);
   }
 
   @override
-  Future<setAvatarModel> setImageRepo({File? file}) async {
+  Future<SetAvatarModel> setImageRepo({File? file}) async {
     final response = await DioHelper.putWithHeader(
         url: '$URL/api/v1/users/$USERNAME/avatar/',
         file: file,
         header: {'access-token': token});
-    return setAvatarModel.fromJson(response.data);
+    return SetAvatarModel.fromJson(response.data);
   }
 }

@@ -1,10 +1,10 @@
-class setCoverModel {
+class SetCoverModel {
   bool? success;
   Results? results;
 
-  setCoverModel({this.success, this.results});
+  SetCoverModel({this.success, this.results});
 
-  setCoverModel.fromJson(Map<String, dynamic> json) {
+  SetCoverModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     results =
         json['results'] != null ? new Results.fromJson(json['results']) : null;
@@ -21,13 +21,13 @@ class Results {
   }
 }
 
-class setAvatarModel {
+class SetAvatarModel {
   bool? success;
   ResultsAvatar? results;
 
-  setAvatarModel({this.success, this.results});
+  SetAvatarModel({this.success, this.results});
 
-  setAvatarModel.fromJson(Map<String, dynamic> json) {
+  SetAvatarModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     results = json['results'] != null
         ? new ResultsAvatar.fromJson(json['results'])
