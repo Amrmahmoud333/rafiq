@@ -54,7 +54,10 @@ class ProfilePhoto extends StatelessWidget {
               },
               child: BlocBuilder<ProfileCubit, ProfileStates>(
                   builder: (context, profileStete) {
+<<<<<<< Updated upstream
                 print('MOOOOOO');
+=======
+>>>>>>> Stashed changes
                 return Container(
                   width: w(142),
                   height: h(142),
@@ -67,10 +70,14 @@ class ProfilePhoto extends StatelessWidget {
                     borderRadius: BorderRadius.circular(48),
                     child: (userDataState is UserGetDataLoadingState ||
                             profileStete is SetAvatarLoadingState)
+<<<<<<< Updated upstream
                         ? SvgPicture.asset(
                             'assets/images/default.svg',
                             fit: BoxFit.fill,
                           )
+=======
+                        ? SvgPicture.asset('assets/images/default.svg')
+>>>>>>> Stashed changes
                         : (userDataState is UserGetDataSuccessState ||
                                 profileStete is SetAvatarSuccessState)
                             ? (avatar == null)

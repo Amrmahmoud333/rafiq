@@ -54,7 +54,6 @@ class Cover extends StatelessWidget {
                 },
                 child: BlocBuilder<UserDataCubit, UserDataState>(
                   builder: (context, userDataState) {
-                    // BlocProvider.of<UserDataCubit>(context).getUserData();
                     print('coverrrr');
                     return Container(
                         width: double.infinity,
@@ -149,15 +148,15 @@ class Cover extends StatelessWidget {
                 height: 50,
                 child: Row(
                   children: [
-                    const Icon(Icons.delete_forever,
-                        color: const Color(0xffc11717), size: 40),
+                    Icon(Icons.delete_forever,
+                        color: Color(0xffc11717), size: 40),
                     const SizedBox(width: 15),
                     Text(
                       'Delete cover picture',
                       style: Theme.of(context)
                           .textTheme
                           .headline4!
-                          .copyWith(color: const Color(0xffc11717)),
+                          .copyWith(color: Color(0xffc11717)),
                     ),
                   ],
                 ),

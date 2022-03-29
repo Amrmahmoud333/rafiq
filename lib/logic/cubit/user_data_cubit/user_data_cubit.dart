@@ -12,14 +12,12 @@ class UserDataCubit extends Cubit<UserDataState> {
   UserDataCubit({required this.userDataRepo}) : super(UserDataInitial());
 
   late UserDataModel _userDataModel;
-//  String? cover;
   String? firstName;
   String? lastName;
   String? userName;
   String? country;
   String? dateOfBirth;
   String? gender;
-  String? avatar;
 
   int? numberOfFollowers;
   int? numberOfFollowings;
@@ -35,8 +33,6 @@ class UserDataCubit extends Cubit<UserDataState> {
       country = _userDataModel.results!.country;
       userName = _userDataModel.results!.userName;
 
-      avatar = _userDataModel.results!.avatar;
-      //   cover = _userDataModel.results!.cover;
       dateOfBirth = _userDataModel.results!.dateOfBirth;
 
       numberOfFollowers = _userDataModel.results!.numberOfFollowers;
@@ -44,6 +40,10 @@ class UserDataCubit extends Cubit<UserDataState> {
 
       CahchHelper.saveData(key: 'cover', value: _userDataModel.results!.cover)
           .then((value) {});
+
+      CahchHelper.saveData(key: 'avatar', value: _userDataModel.results!.avatar)
+          .then((value) {});
+
       print(_userDataModel.results!.firstName);
       emit(UserGetDataSuccessState());
     } on DioError catch (error) {
