@@ -2,9 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rafiq/core/components/components.dart';
+import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_states.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
+
+/* 
+ to get cover we word in to satates profileState and getUserDataState 
+ we put the cover from cover string in consts , this cover is saved in memory 
+ and change in two classes (profile cubit . user data cubit)
+ user data cubit we you open the app 
+ profile cubit when you change the cover photo form screen 
+ */
 
 class Cover extends StatelessWidget {
   const Cover({Key? key}) : super(key: key);
@@ -16,7 +25,7 @@ class Cover extends StatelessWidget {
     }
 
     return BlocBuilder<ProfileCubit, ProfileStates>(
-      builder: (context, state) {
+      builder: (context, profilestate) {
         return Stack(
           children: [
             Opacity(
@@ -43,23 +52,37 @@ class Cover extends StatelessWidget {
                       context: context,
                       builder: (_) => buildBottomSheet(context));
                 },
-                child: Container(
-                    width: double.infinity,
-                    height: h(215),
-                    decoration: const BoxDecoration(
-                      color: Color(0xffE8DEEB),
-                    ),
-                    child: (state is UserGetDataLoadingState)
-                        ? SvgPicture.asset('assets/images/default_cover.svg')
-                        : (context.read<UserDataCubit>().cover == null)
+                child: BlocBuilder<UserDataCubit, UserDataState>(
+                  builder: (context, userDataState) {
+                    // BlocProvider.of<UserDataCubit>(context).getUserData();
+                    print('coverrrr');
+                    return Container(
+                        width: double.infinity,
+                        height: h(215),
+                        decoration: const BoxDecoration(
+                          color: Color(0xffE8DEEB),
+                        ),
+                        child: (userDataState is UserGetDataLoadingState ||
+                                profilestate is SetCoverLoadingState)
                             ? SvgPicture.asset(
-                                'assets/images/default_cover.svg',
-                                fit: BoxFit.fill,
-                              )
-                            : Image.network(
-                                context.read<UserDataCubit>().cover!,
-                                fit: BoxFit.fill,
-                              )),
+                                'assets/images/default_cover.svg')
+                            : (userDataState is UserGetDataSuccessState ||
+                                    profilestate is SetCoverSuccessState)
+                                ? (cover == null)
+                                    ? SvgPicture.asset(
+                                        'assets/images/default_cover.svg',
+                                        fit: BoxFit.fill,
+                                      )
+                                    : Image.network(
+                                        cover!,
+                                        fit: BoxFit.fill,
+                                      )
+                                : SvgPicture.asset(
+                                    'assets/images/default_cover.svg',
+                                    fit: BoxFit.fill,
+                                  ));
+                  },
+                ),
               ),
             ),
           ],

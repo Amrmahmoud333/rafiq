@@ -69,7 +69,7 @@ class ProfilePhoto extends StatelessWidget {
                                   fit: BoxFit.fill,
                                 )
                               : Image.network(
-                                  context.read<UserDataCubit>().cover!,
+                                  context.read<UserDataCubit>().avatar!,
                                   fit: BoxFit.fill,
                                 )
                           : Image.file(

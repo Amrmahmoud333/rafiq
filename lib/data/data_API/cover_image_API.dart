@@ -24,7 +24,7 @@ class CoverImageAPI extends CoverImageRepo {
     });
 
     final response = await DioHelper.putWithHeader(
-        url: '$URL/api/v1/users/$USERNAME/cover/',
+        url: '$URL/api/v1/users/amrma/cover/',
         data: formData,
         header: {'access-token': token});
     return SetCoverModel.fromJson(response.data);

@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
+import 'package:rafiq/data/chach_helper.dart';
 import 'package:rafiq/data/models/user_data_model.dart';
 import 'package:rafiq/data/repositories/user_data_repo.dart';
 
@@ -11,7 +12,7 @@ class UserDataCubit extends Cubit<UserDataState> {
   UserDataCubit({required this.userDataRepo}) : super(UserDataInitial());
 
   late UserDataModel _userDataModel;
-  String? cover;
+//  String? cover;
   String? firstName;
   String? lastName;
   String? userName;
@@ -35,11 +36,14 @@ class UserDataCubit extends Cubit<UserDataState> {
       userName = _userDataModel.results!.userName;
 
       avatar = _userDataModel.results!.avatar;
-      cover = _userDataModel.results!.cover;
+      //   cover = _userDataModel.results!.cover;
       dateOfBirth = _userDataModel.results!.dateOfBirth;
 
       numberOfFollowers = _userDataModel.results!.numberOfFollowers;
       numberOfFollowings = _userDataModel.results!.numberOfFollowings;
+
+      CahchHelper.saveData(key: 'cover', value: _userDataModel.results!.cover)
+          .then((value) {});
       print(_userDataModel.results!.firstName);
       emit(UserGetDataSuccessState());
     } on DioError catch (error) {

@@ -17,7 +17,7 @@ class UserDataAPI extends UserDataRepo {
 
 //$URL/$GETUSERPROFILE/$USERNAME/
 
-        url: '$URL/$GETUSERPROFILE/$userName/',
+        url: '$URL/$GETUSERPROFILE/amrma/',
         header: {'access-token': token});
     return UserDataModel.fromJson(resonse.data);
   }
