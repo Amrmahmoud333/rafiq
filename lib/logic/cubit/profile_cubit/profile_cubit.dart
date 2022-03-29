@@ -20,6 +20,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
     try {
       _setCoverModel = await coverImageRepo.setCoverRepo(file: file!);
       cover = _setCoverModel.results!.cover;
+
       print(_setCoverModel.results!.cover);
 
       emit(SetCoverSuccessState());
@@ -33,6 +34,8 @@ class ProfileCubit extends Cubit<ProfileStates> {
     emit(SetAvatarLoadingState());
     try {
       _setAvatarModel = await coverImageRepo.setImageRepo(file: file!);
+
+      avatar = _setAvatarModel.results!.avatar;
 
       print(_setAvatarModel.results!.avatar);
       emit(SetAvatarSuccessState());

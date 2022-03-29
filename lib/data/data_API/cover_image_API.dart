@@ -32,9 +32,18 @@ class CoverImageAPI extends CoverImageRepo {
 
   @override
   Future<SetAvatarModel> setImageRepo({File? file}) async {
+    String fileName = file!.path.split('/').last;
+    FormData formData = FormData.fromMap({
+      'avatar': await MultipartFile.fromFile(
+        file.path,
+        filename: fileName,
+        contentType: MediaType("image", "jpeg"),
+      ),
+    });
+
     final response = await DioHelper.putWithHeader(
         url: '$URL/api/v1/users/$USERNAME/avatar/',
-        data: {'avatar': file!},
+        data: formData,
         header: {'access-token': token});
     return SetAvatarModel.fromJson(response.data);
   }
