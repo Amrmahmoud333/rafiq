@@ -51,18 +51,15 @@ class Cover extends StatelessWidget {
                     ),
                     child: (state is UserGetDataLoadingState)
                         ? SvgPicture.asset('assets/images/default_cover.svg')
-                        : (state is SetCoverLoadingState)
+                        : (context.read<UserDataCubit>().cover == null)
                             ? SvgPicture.asset(
-                                'assets/images/default_cover.svg')
-                            : (context.read<UserDataCubit>().cover == null)
-                                ? SvgPicture.asset(
-                                    'assets/images/default_cover.svg',
-                                    fit: BoxFit.fill,
-                                  )
-                                : Image.network(
-                                    context.read<UserDataCubit>().cover!,
-                                    fit: BoxFit.fill,
-                                  )),
+                                'assets/images/default_cover.svg',
+                                fit: BoxFit.fill,
+                              )
+                            : Image.network(
+                                context.read<UserDataCubit>().cover!,
+                                fit: BoxFit.fill,
+                              )),
               ),
             ),
           ],

@@ -1,7 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/core/themes/theme.dart';
 import 'package:rafiq/data/chach_helper.dart';
+import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 import 'package:rafiq/views/profile/widgets/row_tap_data.dart';
 
 class NotificationScreen extends StatelessWidget {
@@ -96,79 +98,18 @@ class NotificationScreen extends StatelessWidget {
                       physics: const NeverScrollableScrollPhysics(),
                       children: [
                         SingleChildScrollView(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                color: Colors.red,
-                                height: 150,
-                                child: AutoSizeText(
-                                  'No posts yet',
-                                  style: ThemeOfProject
-                                      .ligthTheme.textTheme.headline4,
-                                ),
-                              ),
-                              SizedBox(height: 70),
-                              Container(
-                                color: Colors.amber,
-                                height: 150,
-                                child: AutoSizeText(
-                                  'No posts yet',
-                                  style: ThemeOfProject
-                                      .ligthTheme.textTheme.headline4,
-                                ),
-                              ),
-                              SizedBox(height: 70),
-                              Container(
-                                color: Colors.green,
-                                height: 150,
-                                child: AutoSizeText(
-                                  'No posts yet',
-                                  style: ThemeOfProject
-                                      .ligthTheme.textTheme.headline4,
-                                ),
-                              ),
-                              Container(
-                                color: Colors.red,
-                                height: 150,
-                                child: AutoSizeText(
-                                  'No posts yet',
-                                  style: ThemeOfProject
-                                      .ligthTheme.textTheme.headline4,
-                                ),
-                              ),
-                              SizedBox(height: 70),
-                              Container(
-                                color: Colors.red,
-                                height: 150,
-                                child: AutoSizeText(
-                                  'No posts yet',
-                                  style: ThemeOfProject
-                                      .ligthTheme.textTheme.headline4,
-                                ),
-                              ),
-                              SizedBox(height: 70),
-                              Container(
-                                color: Colors.red,
-                                height: 150,
-                                child: AutoSizeText(
-                                  'No posts yet',
-                                  style: ThemeOfProject
-                                      .ligthTheme.textTheme.headline4,
-                                ),
-                              ),
-                              SizedBox(height: 70),
-                              Container(
-                                color: Colors.red,
-                                height: 150,
-                                child: AutoSizeText(
-                                  'No posts yet',
-                                  style: ThemeOfProject
-                                      .ligthTheme.textTheme.headline4,
-                                ),
-                              ),
-                              SizedBox(height: 70),
-                            ],
+                          child: BlocBuilder<UserDataCubit, UserDataState>(
+                            builder: (context, state) {
+                              return Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.network(
+                                    context.read<UserDataCubit>().cover!,
+                                    fit: BoxFit.fill,
+                                  )
+                                ],
+                              );
+                            },
                           ),
                         ),
                         Column(
