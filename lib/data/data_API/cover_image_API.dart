@@ -14,7 +14,7 @@ class CoverImageAPI extends CoverImageRepo {
   Future<SetCoverModel> setCoverRepo({File? file}) async {
     final response = await DioHelper.putWithHeader(
         url: '$URL/api/v1/users/$USERNAME/cover/',
-        file: file,
+        data: {'cover': file!},
         header: {'access-token': token});
     return SetCoverModel.fromJson(response.data);
   }
@@ -23,7 +23,7 @@ class CoverImageAPI extends CoverImageRepo {
   Future<SetAvatarModel> setImageRepo({File? file}) async {
     final response = await DioHelper.putWithHeader(
         url: '$URL/api/v1/users/$USERNAME/avatar/',
-        file: file,
+        data: {'avatar': file!},
         header: {'access-token': token});
     return SetAvatarModel.fromJson(response.data);
   }

@@ -11,30 +11,9 @@ class ProfileCubit extends Cubit<ProfileStates> {
   CoverImageRepo coverImageRepo;
   ProfileCubit({required this.coverImageRepo}) : super(ProfileIntialState());
 
-  // working with UI
-
-  File? profileImageFile;
-  void fileProfileImagePath(XFile profileImage) {
-    profileImageFile = File(profileImage.path);
-    emit(ProfileImageFromGalleryOrCameraState());
-  }
-
-  File? coverImageFile;
-  void fileCoverImagePath(XFile coverImage) {
-    coverImageFile = File(coverImage.path);
-
-    emit(CoverImageFromGalleryOrCameraState());
-  }
-
-  int currentIndex = 0;
-  void ChangeIndex(index) {
-    currentIndex = index;
-    emit(ProfileChangeIndexState());
-  }
-
   late SetCoverModel _setCoverModel;
   late SetAvatarModel _setAvatarModel;
-
+  //API
   Future<void> setCover({File? file}) async {
     emit(SetCoverLoadingState());
     try {
@@ -59,5 +38,26 @@ class ProfileCubit extends Cubit<ProfileStates> {
       print(error);
       emit(SetAvatarErrorState());
     }
+  }
+
+  // working with UI
+
+  File? profileImageFile;
+  void fileProfileImagePath(XFile profileImage) {
+    profileImageFile = File(profileImage.path);
+    emit(ProfileImageFromGalleryOrCameraState());
+  }
+
+  File? coverImageFile;
+  void fileCoverImagePath(XFile coverImage) {
+    coverImageFile = File(coverImage.path);
+
+    emit(CoverImageFromGalleryOrCameraState());
+  }
+
+  int currentIndex = 0;
+  void ChangeIndex(index) {
+    currentIndex = index;
+    emit(ProfileChangeIndexState());
   }
 }

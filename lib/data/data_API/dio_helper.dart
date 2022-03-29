@@ -43,15 +43,16 @@ class DioHelper {
     );
   }
 
+  // test
   static Future<Response> putWithHeader({
     @required String? url,
-    @required File? file,
     @required Map<String, dynamic>? header,
+    @required Map<String, File>? data,
   }) async {
     return await dio.put(
       url!,
       options: Options(headers: header),
-      data: file,
+      data: data,
     );
   }
 }
