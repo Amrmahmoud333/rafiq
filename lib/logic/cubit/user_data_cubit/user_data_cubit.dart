@@ -43,7 +43,7 @@ class UserDataCubit extends Cubit<UserDataState> {
       print(_userDataModel.results!.firstName);
       emit(UserGetDataSuccessState());
     } on DioError catch (error) {
-      print(error);
+      print(error.toString() + 'get user data');
       emit(UserGetDataErrorState());
     }
   }

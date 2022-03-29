@@ -14,7 +14,9 @@ class UserDataAPI extends UserDataRepo {
         //'$URL$GETUSERPROFILE/$USERNAME/'
         // https://travel-with-rafiq.herokuapp.com/api/v1/users/amrma
 
-        url: '$URL/$GETUSERPROFILE/$USERNAME/',
+//$URL/$GETUSERPROFILE/$USERNAME/
+
+        url: 'https://travel-with-rafiq.herokuapp.com/api/v1/users/$USERNAME',
         header: {'access-token': token});
     return UserDataModel.fromJson(resonse.data);
   }

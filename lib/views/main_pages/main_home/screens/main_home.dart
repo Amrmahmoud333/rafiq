@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/logic/cubit/main_home/main_home_cubit.dart';
+import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 import 'package:rafiq/views/shared/bottom_nav_bar.dart';
 import 'package:rafiq/views/shared/floation_action_button.dart';
 import '../widgets/app_bar.dart';
@@ -10,6 +11,7 @@ class MainHomeScreen extends StatelessWidget {
   static const routeName = '/main_home_screen';
   @override
   Widget build(BuildContext context) {
+    BlocProvider.of<UserDataCubit>(context).getUserData();
     return BlocProvider(
       create: (context) => MainHomeCubit(),
       child: BlocConsumer<MainHomeCubit, MainHomeState>(

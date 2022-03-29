@@ -40,8 +40,7 @@ class MyApp extends StatelessWidget {
           create: (context) => LoginCubit(loginRepo: LoginAPI()),
         ),
         BlocProvider<UserDataCubit>(
-          create: (context) =>
-              UserDataCubit(userDataRepo: UserDataAPI())..getUserData(),
+          create: (context) => UserDataCubit(userDataRepo: UserDataAPI()),
         ),
         BlocProvider<ForgetCubit>(
           create: (context) => ForgetCubit(forgetPasswordRepo: ForgetApi()),
