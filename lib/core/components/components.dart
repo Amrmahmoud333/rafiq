@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -27,6 +29,8 @@ Future<void> getImageFromGalleryOrCamera(text, context, imageSource) async {
     BlocProvider.of<ProfileCubit>(context)
         .fileCoverImagePath(_profileOrCoverimage);
   }
+  BlocProvider.of<ProfileCubit>(context)
+      .setCover(file: File(_profileOrCoverimage.path));
 }
 
 showSelectionDialog({
