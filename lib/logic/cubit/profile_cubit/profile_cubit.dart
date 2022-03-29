@@ -47,9 +47,9 @@ class ProfileCubit extends Cubit<ProfileStates> {
 
   // working with UI
 
-  File? profileImageFile;
-  void fileProfileImagePath(XFile profileImage) {
-    profileImageFile = File(profileImage.path);
+  File? avatarImageFile;
+  void fileAvatarImagePath(XFile profileImage) {
+    avatarImageFile = File(profileImage.path);
     emit(ProfileImageFromGalleryOrCameraState());
   }
 

@@ -49,27 +49,27 @@ class NotificationScreen extends StatelessWidget {
                           elevation: 0,
                           backgroundColor: const Color(0xffEFE7F2),
                           bottom: TabBar(
-                            labelPadding: EdgeInsets.only(bottom: 6),
+                            labelPadding: const EdgeInsets.only(bottom: 6),
                             labelColor: const Color(0xff5B618A),
                             unselectedLabelColor:
                                 const Color(0xff5B618A).withOpacity(0.35),
                             labelStyle: Theme.of(context).textTheme.headline6,
                             tabs: [
-                              TapRowData(
-                                widget: const Icon(
+                              const TapRowData(
+                                widget: Icon(
                                   Icons.post_add_outlined,
                                   size: 21,
                                 ),
                                 lable: 'Posts',
                               ),
-                              TapRowData(
-                                widget: const Icon(
+                              const TapRowData(
+                                widget: Icon(
                                   Icons.image,
                                   size: 21,
                                 ),
                                 lable: 'Image',
                               ),
-                              TapRowData(
+                              const TapRowData(
                                 widget: Icon(
                                   Icons.videocam_outlined,
                                   size: 21,
@@ -77,12 +77,12 @@ class NotificationScreen extends StatelessWidget {
                                 lable: 'Videos',
                               ),
                               Row(
-                                children: [
+                                children: const [
                                   SizedBox(
                                     width: 10,
                                   ),
                                   TapRowData(
-                                    widget: const Icon(
+                                    widget: Icon(
                                       Icons.map,
                                       size: 21,
                                     ),

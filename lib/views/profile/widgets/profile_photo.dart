@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rafiq/core/components/components.dart';
+import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_states.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
@@ -25,8 +26,8 @@ class ProfilePhoto extends StatelessWidget {
       top: h(145),
       left: w(9),
       child: BlocBuilder<UserDataCubit, UserDataState>(
-        builder: (context, state) {
-          if (state is UserGetDataLoadingState) {
+        builder: (context, userDataState) {
+          if (userDataState is UserGetDataLoadingState) {
             return Container(
               width: w(142),
               height: h(142),
@@ -51,36 +52,43 @@ class ProfilePhoto extends StatelessWidget {
                     context: context,
                     builder: (_) => buildBottomSheet(context));
               },
-              child: Container(
-                width: w(142),
-                height: h(142),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(48),
-                  border: Border.all(color: const Color(0xffE8DEEB), width: 2),
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(48),
-                  child:
-                      BlocProvider.of<ProfileCubit>(context).profileImageFile ==
-                              null
-                          ? (context.read<UserDataCubit>().avatar == null)
-                              ? SvgPicture.asset(
-                                  'assets/images/profile.svg',
-                                  fit: BoxFit.fill,
-                                )
-                              : Image.network(
-                                  context.read<UserDataCubit>().avatar!,
-                                  fit: BoxFit.fill,
-                                )
-                          : Image.file(
-                              BlocProvider.of<ProfileCubit>(context)
-                                  .profileImageFile!,
-                              fit: BoxFit.fill,
-                              width: w(142),
-                              height: h(142),
-                            ),
-                ),
-              ),
+              child: BlocBuilder<ProfileCubit, ProfileStates>(
+                  builder: (context, profileStete) {
+                print('MOOOOOO');
+                return Container(
+                  width: w(142),
+                  height: h(142),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(48),
+                    border:
+                        Border.all(color: const Color(0xffE8DEEB), width: 2),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(48),
+                    child: (userDataState is UserGetDataLoadingState ||
+                            profileStete is SetAvatarLoadingState)
+                        ? SvgPicture.asset(
+                            'assets/images/default.svg',
+                            fit: BoxFit.fill,
+                          )
+                        : (userDataState is UserGetDataSuccessState ||
+                                profileStete is SetAvatarSuccessState)
+                            ? (avatar == null)
+                                ? SvgPicture.asset(
+                                    'assets/images/default.svg',
+                                    fit: BoxFit.fill,
+                                  )
+                                : Image.network(
+                                    avatar!,
+                                    fit: BoxFit.fill,
+                                  )
+                            : SvgPicture.asset(
+                                'assets/images/default.svg',
+                                fit: BoxFit.fill,
+                              ),
+                  ),
+                );
+              }),
             );
           }
         },
@@ -103,8 +111,7 @@ class ProfilePhoto extends StatelessWidget {
             const SizedBox(height: 20),
             InkWell(
               onTap: () async {
-                await showSelectionDialog(
-                    context: context, select_profile_or_cover: 'profile');
+                await showSelectionAvatarDialog(context: context);
                 Navigator.pop(context);
               },
               child: Container(
@@ -147,15 +154,15 @@ class ProfilePhoto extends StatelessWidget {
                 height: 50,
                 child: Row(
                   children: [
-                    Icon(Icons.delete_forever,
-                        color: Color(0xffc11717), size: 40),
+                    const Icon(Icons.delete_forever,
+                        color: const Color(0xffc11717), size: 40),
                     const SizedBox(width: 15),
                     Text(
                       'Delete profile picture',
                       style: Theme.of(context)
                           .textTheme
                           .headline4!
-                          .copyWith(color: Color(0xffc11717)),
+                          .copyWith(color: const Color(0xffc11717)),
                     ),
                   ],
                 ),

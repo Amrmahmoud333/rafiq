@@ -106,8 +106,7 @@ class Cover extends StatelessWidget {
             const SizedBox(height: 20),
             InkWell(
               onTap: () async {
-                await showSelectionDialog(
-                    context: context, select_profile_or_cover: 'cover');
+                await showSelectionCoverDialog(context: context);
                 Navigator.pop(context);
               },
               child: Container(
@@ -150,15 +149,15 @@ class Cover extends StatelessWidget {
                 height: 50,
                 child: Row(
                   children: [
-                    Icon(Icons.delete_forever,
-                        color: Color(0xffc11717), size: 40),
+                    const Icon(Icons.delete_forever,
+                        color: const Color(0xffc11717), size: 40),
                     const SizedBox(width: 15),
                     Text(
                       'Delete cover picture',
                       style: Theme.of(context)
                           .textTheme
                           .headline4!
-                          .copyWith(color: Color(0xffc11717)),
+                          .copyWith(color: const Color(0xffc11717)),
                     ),
                   ],
                 ),

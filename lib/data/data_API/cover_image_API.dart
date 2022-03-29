@@ -10,6 +10,7 @@ import 'package:rafiq/data/repositories/cover_image_repo.dart';
 import 'package:http_parser/http_parser.dart';
 
 String? token = CahchHelper.getData(key: 'token');
+String? userName = CahchHelper.getData(key: 'userName');
 
 class CoverImageAPI extends CoverImageRepo {
   @override
@@ -24,7 +25,7 @@ class CoverImageAPI extends CoverImageRepo {
     });
 
     final response = await DioHelper.putWithHeader(
-        url: '$URL/api/v1/users/amrma/cover/',
+        url: '$URL/api/v1/users/$USERNAME/cover/',
         data: formData,
         header: {'access-token': token});
     return SetCoverModel.fromJson(response.data);
