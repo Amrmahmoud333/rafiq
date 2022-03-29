@@ -6,6 +6,7 @@ import 'package:rafiq/data/models/user_data_model.dart';
 import 'package:rafiq/data/repositories/user_data_repo.dart';
 
 String? token = CahchHelper.getData(key: 'token');
+String? userName = CahchHelper.getData(key: 'userName');
 
 class UserDataAPI extends UserDataRepo {
   @override
@@ -16,7 +17,7 @@ class UserDataAPI extends UserDataRepo {
 
 //$URL/$GETUSERPROFILE/$USERNAME/
 
-        url: 'https://travel-with-rafiq.herokuapp.com/api/v1/users/$USERNAME',
+        url: '$URL/$GETUSERPROFILE/$userName/',
         header: {'access-token': token});
     return UserDataModel.fromJson(resonse.data);
   }

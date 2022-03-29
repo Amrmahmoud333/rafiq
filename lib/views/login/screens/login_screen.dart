@@ -60,6 +60,15 @@ class LoginScreen extends StatelessWidget {
             (value) => Navigator.pushReplacementNamed(
                 context, MainHomeScreen.routeName),
           );
+          CahchHelper.saveData(
+                  key: 'userName',
+                  value: cubit.loginModel.results!.user!.userName)
+              .then((value) {});
+          CahchHelper.saveData(
+                  key: 'refreshToken',
+                  value: cubit.loginModel.results!.refreshToken)
+              .then((value) {});
+
           showTosat(msg: cubit.messege, state: true);
         } else if (state is LoginErrorState)
           showTosat(msg: cubit.messege, state: false);
