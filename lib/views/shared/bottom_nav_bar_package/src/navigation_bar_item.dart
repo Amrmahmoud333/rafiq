@@ -17,6 +17,7 @@ class NavigationBarItem extends StatelessWidget {
   final Widget? child;
   final String? path;
 
+  // ignore: prefer_const_constructors_in_immutables
   NavigationBarItem({
     required this.isActive,
     required this.bubbleRadius,

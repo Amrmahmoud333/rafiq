@@ -106,7 +106,7 @@ class LoginScreen extends StatelessWidget {
                                 SizedBox(
                                   height: h(48.16),
                                 ),
-                                Container(
+                                SizedBox(
                                   width: w(313),
                                   child: const Center(
                                     child: AutoSizeText(
@@ -217,7 +217,7 @@ class LoginScreen extends StatelessWidget {
                                             //  MainHomeScreen.routeName);
                                           }
                                         }),
-                                    fallback: (context) => Container(
+                                    fallback: (context) => SizedBox(
                                       width: w(200),
                                       child: Center(
                                           child: CircularProgressIndicator(
@@ -227,7 +227,7 @@ class LoginScreen extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(height: h(20)),
-                                Container(
+                                SizedBox(
                                   width: w(313),
                                   child: Center(
                                     child: TextButton(

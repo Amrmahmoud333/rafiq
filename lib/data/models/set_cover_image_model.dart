@@ -7,7 +7,7 @@ class SetCoverModel {
   SetCoverModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     results =
-        json['results'] != null ? new Results.fromJson(json['results']) : null;
+        json['results'] != null ?  Results.fromJson(json['results']) : null;
   }
 }
 
@@ -30,7 +30,7 @@ class SetAvatarModel {
   SetAvatarModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     results = json['results'] != null
-        ? new ResultsAvatar.fromJson(json['results'])
+        ?  ResultsAvatar.fromJson(json['results'])
         : null;
   }
 }

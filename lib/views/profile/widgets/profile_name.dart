@@ -50,11 +50,12 @@ class ProfileName extends StatelessWidget {
               return const AutoSizeText(
                 '',
               );
-            } else
+            } else {
               return AutoSizeText(
                 ' @${cubit.userName}',
                 style: Theme.of(context).textTheme.headline6,
               );
+            }
           })
         ],
       ),

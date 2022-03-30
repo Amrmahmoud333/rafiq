@@ -26,8 +26,6 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => FirstForgetPassword());
       case SecondForgetPassword.routeName:
         return MaterialPageRoute(builder: (_) => const SecondForgetPassword());
-      case SecondForgetPassword.routeName:
-        return MaterialPageRoute(builder: (_) => const SecondForgetPassword());
       case LoginScreen.routeName:
         return MaterialPageRoute(builder: (_) => LoginScreen());
       case ProfileScreen.routeName:

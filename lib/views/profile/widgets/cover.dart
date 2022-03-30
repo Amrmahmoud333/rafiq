@@ -148,7 +148,7 @@ class Cover extends StatelessWidget {
                 height: 50,
                 child: Row(
                   children: [
-                    Icon(Icons.delete_forever,
+                    const Icon(Icons.delete_forever,
                         color: Color(0xffc11717), size: 40),
                     const SizedBox(width: 15),
                     Text(
@@ -156,7 +156,7 @@ class Cover extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .headline4!
-                          .copyWith(color: Color(0xffc11717)),
+                          .copyWith(color: const Color(0xffc11717)),
                     ),
                   ],
                 ),

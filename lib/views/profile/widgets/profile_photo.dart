@@ -54,10 +54,7 @@ class ProfilePhoto extends StatelessWidget {
               },
               child: BlocBuilder<ProfileCubit, ProfileStates>(
                   builder: (context, profileStete) {
-<<<<<<< Updated upstream
                 print('MOOOOOO');
-=======
->>>>>>> Stashed changes
                 return Container(
                   width: w(142),
                   height: h(142),
@@ -70,14 +67,10 @@ class ProfilePhoto extends StatelessWidget {
                     borderRadius: BorderRadius.circular(48),
                     child: (userDataState is UserGetDataLoadingState ||
                             profileStete is SetAvatarLoadingState)
-<<<<<<< Updated upstream
                         ? SvgPicture.asset(
                             'assets/images/default.svg',
                             fit: BoxFit.fill,
                           )
-=======
-                        ? SvgPicture.asset('assets/images/default.svg')
->>>>>>> Stashed changes
                         : (userDataState is UserGetDataSuccessState ||
                                 profileStete is SetAvatarSuccessState)
                             ? (avatar == null)
@@ -103,7 +96,7 @@ class ProfilePhoto extends StatelessWidget {
     );
   }
 
-  Widget buildBottomSheet(BuildContext context) => Container(
+  Widget buildBottomSheet(BuildContext context) => SizedBox(
         height: 255,
         child: Padding(
           padding: const EdgeInsets.only(left: 15.0, top: 12, right: 15),
@@ -121,7 +114,7 @@ class ProfilePhoto extends StatelessWidget {
                 await showSelectionAvatarDialog(context: context);
                 Navigator.pop(context);
               },
-              child: Container(
+              child: SizedBox(
                 height: 50,
                 child: Row(
                   children: [
@@ -139,7 +132,7 @@ class ProfilePhoto extends StatelessWidget {
             const SizedBox(height: 20),
             InkWell(
               onTap: () {},
-              child: Container(
+              child: SizedBox(
                 height: 50,
                 child: Row(
                   children: [
@@ -157,12 +150,12 @@ class ProfilePhoto extends StatelessWidget {
             const SizedBox(height: 20),
             InkWell(
               onTap: () {},
-              child: Container(
+              child: SizedBox(
                 height: 50,
                 child: Row(
                   children: [
                     const Icon(Icons.delete_forever,
-                        color: const Color(0xffc11717), size: 40),
+                        color: Color(0xffc11717), size: 40),
                     const SizedBox(width: 15),
                     Text(
                       'Delete profile picture',
