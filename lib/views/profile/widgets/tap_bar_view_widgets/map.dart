@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:rafiq/core/themes/theme.dart';
 
 class Maps extends StatelessWidget {
@@ -14,14 +15,9 @@ class Maps extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemBuilder: (context, index) => Container(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 10, bottom: 100),
-          child: Center(child: maps[index]),
-        ),
-      ),
-      itemCount: maps.length,
-    );
+    return const GoogleMap(
+        initialCameraPosition: CameraPosition(
+      target: LatLng(37.43296265331129, -122.08832357078792),
+    ));
   }
 }
