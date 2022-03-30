@@ -6,22 +6,18 @@ import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_states.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
-
 class ProfilePhoto extends StatelessWidget {
   const ProfilePhoto({
     Key? key,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     double h(double n) {
       return MediaQuery.of(context).size.height * (n / 851);
     }
-
     double w(double n) {
       return MediaQuery.of(context).size.width * (n / 393);
     }
-
     return Positioned(
       top: h(145),
       left: w(9),
@@ -54,30 +50,18 @@ class ProfilePhoto extends StatelessWidget {
               },
               child: BlocBuilder<ProfileCubit, ProfileStates>(
                   builder: (context, profileStete) {
-<<<<<<< Updated upstream
                 print('MOOOOOO');
-=======
->>>>>>> Stashed changes
                 return Container(
                   width: w(142),
                   height: h(142),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(48),
-                    border:
-                        Border.all(color: const Color(0xffE8DEEB), width: 2),
-                  ),
-                  child: ClipRRect(
+ class ProfilePhoto extends StatelessWidget {
                     borderRadius: BorderRadius.circular(48),
                     child: (userDataState is UserGetDataLoadingState ||
                             profileStete is SetAvatarLoadingState)
-<<<<<<< Updated upstream
                         ? SvgPicture.asset(
                             'assets/images/default.svg',
                             fit: BoxFit.fill,
                           )
-=======
-                        ? SvgPicture.asset('assets/images/default.svg')
->>>>>>> Stashed changes
                         : (userDataState is UserGetDataSuccessState ||
                                 profileStete is SetAvatarSuccessState)
                             ? (avatar == null)
@@ -102,7 +86,6 @@ class ProfilePhoto extends StatelessWidget {
       ),
     );
   }
-
   Widget buildBottomSheet(BuildContext context) => Container(
         height: 255,
         child: Padding(
@@ -178,4 +161,3 @@ class ProfilePhoto extends StatelessWidget {
           ]),
         ),
       );
-}
