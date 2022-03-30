@@ -33,6 +33,7 @@ class UserDataCubit extends Cubit<UserDataState> {
       country = _userDataModel.results!.country;
       userName = _userDataModel.results!.userName;
 
+    
       dateOfBirth = _userDataModel.results!.dateOfBirth;
 
       numberOfFollowers = _userDataModel.results!.numberOfFollowers;

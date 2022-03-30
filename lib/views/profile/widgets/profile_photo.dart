@@ -86,7 +86,12 @@ class ProfilePhoto extends StatelessWidget {
       ),
     );
   }
+<<<<<<< HEAD
   Widget buildBottomSheet(BuildContext context) => Container(
+=======
+
+  Widget buildBottomSheet(BuildContext context) => SizedBox(
+>>>>>>> 225c5bcd2bbc9d241ee7f06bf5999fdfe3eebcbd
         height: 255,
         child: Padding(
           padding: const EdgeInsets.only(left: 15.0, top: 12, right: 15),
@@ -104,7 +109,7 @@ class ProfilePhoto extends StatelessWidget {
                 await showSelectionAvatarDialog(context: context);
                 Navigator.pop(context);
               },
-              child: Container(
+              child: SizedBox(
                 height: 50,
                 child: Row(
                   children: [
@@ -122,7 +127,7 @@ class ProfilePhoto extends StatelessWidget {
             const SizedBox(height: 20),
             InkWell(
               onTap: () {},
-              child: Container(
+              child: SizedBox(
                 height: 50,
                 child: Row(
                   children: [
@@ -140,12 +145,12 @@ class ProfilePhoto extends StatelessWidget {
             const SizedBox(height: 20),
             InkWell(
               onTap: () {},
-              child: Container(
+              child: SizedBox(
                 height: 50,
                 child: Row(
                   children: [
                     const Icon(Icons.delete_forever,
-                        color: const Color(0xffc11717), size: 40),
+                        color: Color(0xffc11717), size: 40),
                     const SizedBox(width: 15),
                     Text(
                       'Delete profile picture',

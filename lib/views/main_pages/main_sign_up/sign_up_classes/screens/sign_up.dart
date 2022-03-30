@@ -5,7 +5,7 @@ import 'package:rafiq/views/main_pages/main_sign_up/sign_up_classes/widget/horiz
 import 'package:rafiq/views/shared/input_field.dart';
 
 class SignUp extends StatelessWidget {
-  SignUp({
+  const SignUp({
     Key? key,
   }) : super(key: key);
 

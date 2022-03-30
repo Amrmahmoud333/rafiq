@@ -13,18 +13,18 @@ class RegisterModel {
       print('register model');
     }
     results =
-        json['results'] != null ? new Results.fromJson(json['results']) : null;
-    error = json['error'] != null ? new Error.fromJson(json['error']) : null;
+        json['results'] != null ?  Results.fromJson(json['results']) : null;
+    error = json['error'] != null ?  Error.fromJson(json['error']) : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['success'] = this.success;
-    if (this.results != null) {
-      data['results'] = this.results!.toJson();
+    data['success'] = success;
+    if (results != null) {
+      data['results'] = results!.toJson();
     }
-    if (this.error != null) {
-      data['error'] = this.error!.toJson();
+    if (error != null) {
+      data['error'] = error!.toJson();
     }
     return data;
   }
@@ -41,7 +41,7 @@ class Results {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['message'] = this.message;
+    data['message'] = message;
     return data;
   }
 }
@@ -63,10 +63,10 @@ class Error {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['statusCode'] = this.statusCode;
-    data['name'] = this.name;
-    data['message'] = this.message;
-    data['stack'] = this.stack;
+    data['statusCode'] = statusCode;
+    data['name'] = name;
+    data['message'] = message;
+    data['stack'] = stack;
     return data;
   }
 }
