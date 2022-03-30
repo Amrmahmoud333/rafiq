@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:rafiq/core/components/components.dart';
 import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_states.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
+import 'package:rafiq/views/profile/widgets/profile_bottom_sheet.dart';
+
 class ProfilePhoto extends StatelessWidget {
   const ProfilePhoto({
     Key? key,
   }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     double h(double n) {
       return MediaQuery.of(context).size.height * (n / 851);
     }
+
     double w(double n) {
       return MediaQuery.of(context).size.width * (n / 393);
     }
+
     return Positioned(
       top: h(145),
       left: w(9),
@@ -40,13 +44,7 @@ class ProfilePhoto extends StatelessWidget {
           } else {
             return InkWell(
               onTap: () {
-                showModalBottomSheet(
-                    shape: RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.vertical(top: Radius.circular(h(25)))),
-                    backgroundColor: const Color(0xffEFE7F2),
-                    context: context,
-                    builder: (_) => buildBottomSheet(context));
+                profileBottomSheet(context);
               },
               child: BlocBuilder<ProfileCubit, ProfileStates>(
                   builder: (context, profileStete) {
@@ -54,7 +52,12 @@ class ProfilePhoto extends StatelessWidget {
                 return Container(
                   width: w(142),
                   height: h(142),
- class ProfilePhoto extends StatelessWidget {
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(48),
+                    border:
+                        Border.all(color: const Color(0xffE8DEEB), width: 2),
+                  ),
+                  child: ClipRRect(
                     borderRadius: BorderRadius.circular(48),
                     child: (userDataState is UserGetDataLoadingState ||
                             profileStete is SetAvatarLoadingState)
@@ -86,83 +89,4 @@ class ProfilePhoto extends StatelessWidget {
       ),
     );
   }
-<<<<<<< HEAD
-  Widget buildBottomSheet(BuildContext context) => Container(
-=======
-
-  Widget buildBottomSheet(BuildContext context) => SizedBox(
->>>>>>> 225c5bcd2bbc9d241ee7f06bf5999fdfe3eebcbd
-        height: 255,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 15.0, top: 12, right: 15),
-          child: Column(children: [
-            Center(
-              child: Container(
-                color: Theme.of(context).primaryColor,
-                width: 50,
-                height: 4,
-              ),
-            ),
-            const SizedBox(height: 20),
-            InkWell(
-              onTap: () async {
-                await showSelectionAvatarDialog(context: context);
-                Navigator.pop(context);
-              },
-              child: SizedBox(
-                height: 50,
-                child: Row(
-                  children: [
-                    Icon(Icons.photo_library_outlined,
-                        color: Theme.of(context).primaryColor, size: 40),
-                    const SizedBox(width: 15),
-                    Text(
-                      'Select profile picture',
-                      style: Theme.of(context).textTheme.headline4,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-            InkWell(
-              onTap: () {},
-              child: SizedBox(
-                height: 50,
-                child: Row(
-                  children: [
-                    Icon(Icons.person,
-                        color: Theme.of(context).primaryColor, size: 40),
-                    const SizedBox(width: 15),
-                    Text(
-                      'View profile picture',
-                      style: Theme.of(context).textTheme.headline4,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-            InkWell(
-              onTap: () {},
-              child: SizedBox(
-                height: 50,
-                child: Row(
-                  children: [
-                    const Icon(Icons.delete_forever,
-                        color: Color(0xffc11717), size: 40),
-                    const SizedBox(width: 15),
-                    Text(
-                      'Delete profile picture',
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline4!
-                          .copyWith(color: const Color(0xffc11717)),
-                    ),
-                  ],
-                ),
-              ),
-            )
-          ]),
-        ),
-      );
+}
