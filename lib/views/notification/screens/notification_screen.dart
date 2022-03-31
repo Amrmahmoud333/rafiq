@@ -15,7 +15,11 @@ class NotificationScreen extends StatelessWidget {
   bool? rememberMe = CahchHelper.getData(key: 'rememberMe');
 
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => print(token),
+      ),
+    );
   }
 }
 //mustafa

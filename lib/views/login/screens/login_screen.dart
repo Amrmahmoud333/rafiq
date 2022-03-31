@@ -267,7 +267,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         ),
                                       ),
                                       onPressed: () {
-                                        Navigator.pushNamed(context,
+                                        Navigator.pushReplacementNamed(context,
                                             FirstForgetPassword.routeName);
                                       },
                                     ),
