@@ -6,26 +6,9 @@ import 'package:rafiq/views/main_pages/main_sign_up/sign_up_classes/widget/horiz
 import 'package:rafiq/views/shared/input_field.dart';
 
 class SecondSignUp extends StatelessWidget {
-  const SecondSignUp({Key? key}) : super(key: key);
+  SecondSignUp({Key? key}) : super(key: key);
 
-  String? customValidteEmail(String? email) {
-    if (!(RegExp(
-            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-        .hasMatch(email!))) {
-      return 'Enter a correct email';
-    } else {
-      return null;
-    }
-  }
-
-  String? customValidtePassword(String? password) {
-    if (password!.length < 8 || password.length > 64) {
-      return 'Enter a correct password';
-    } else {
-      return null;
-    }
-  }
-
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     double height(double n) {
@@ -35,7 +18,7 @@ class SecondSignUp extends StatelessWidget {
     var cubit = context.read<RegisterCubit>();
     return SingleChildScrollView(
       child: Form(
-        key: cubit.formKey2,
+        key: formKey,
         child: Column(
           children: [
             SizedBox(
@@ -52,7 +35,7 @@ class SecondSignUp extends StatelessWidget {
               sizeoflabel: 18,
               obscureText: false,
               controller: cubit.emailController,
-              validator: customValidteEmail,
+              //validator: customValidteEmail,
             ),
             SizedBox(
               height: height(22),
@@ -63,16 +46,14 @@ class SecondSignUp extends StatelessWidget {
                 label: 'Password',
                 sizeoflabel: 18,
                 obscureText: context.read<RegisterCubit>().firstObscureText,
-                validator: customValidtePassword,
+                //  validator: customValidtePassword,
                 controller: cubit.passwordController,
                 widget: InkWell(
                   onTap: () {
-                    context.read<RegisterCubit>().changeFirstObscureText();
+                    cubit.changeFirstObscureText();
                   },
                   child: AutoSizeText(
-                    context.read<RegisterCubit>().firstObscureText
-                        ? 'Show'
-                        : 'Hide',
+                    cubit.firstObscureText ? 'Show' : 'Hide',
                     style:
                         const TextStyle(fontSize: 16, color: Color(0xff5B618A)),
                   ),
@@ -87,17 +68,15 @@ class SecondSignUp extends StatelessWidget {
               return InputField(
                 label: 'Confirm Password',
                 sizeoflabel: 18,
-                obscureText: context.read<RegisterCubit>().secondObscureText,
-                validator: customValidtePassword,
+                obscureText: cubit.secondObscureText,
+                //  validator: customValidtePassword,
                 controller: cubit.confirmPasswordController,
                 widget: InkWell(
                   onTap: () {
-                    context.read<RegisterCubit>().changeSecondObscureText();
+                    cubit.changeSecondObscureText();
                   },
                   child: AutoSizeText(
-                    context.read<RegisterCubit>().secondObscureText
-                        ? 'Show'
-                        : 'Hide',
+                    cubit.secondObscureText ? 'Show' : 'Hide',
                     style:
                         const TextStyle(fontSize: 16, color: Color(0xff5B618A)),
                   ),

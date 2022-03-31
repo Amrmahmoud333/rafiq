@@ -25,19 +25,6 @@ class RegisterCubit extends Cubit<RegisterState> {
     }
   }
 
-  //controllers of first Sign up
-  final TextEditingController firstNameController = TextEditingController();
-  final TextEditingController lastNameController = TextEditingController();
-  final TextEditingController userNameController = TextEditingController();
-  final formKey1 = GlobalKey<FormState>();
-
-  //controllers of Second Sign up
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController =
-      TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final formKey2 = GlobalKey<FormState>();
-
   //controller of Page View
   final PageController controllerpage = PageController();
   // manage register screens
@@ -113,5 +100,80 @@ class RegisterCubit extends Cubit<RegisterState> {
     isLastPage = false;
     lable = 'Next';
     emit(NotIsLastPageInPageViewState());
+  }
+
+  //controllers &&Functions Validate of first Sign up
+  final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController lastNameController = TextEditingController();
+  final TextEditingController userNameController = TextEditingController();
+
+  bool customValidteFirstName() {
+    if (!(RegExp(r'^[a-zA-Z]{2,35}$').hasMatch(firstNameController.text))) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  bool customValidteLastName() {
+    if (!(RegExp(r'^[a-zA-Z]{2,35}$').hasMatch(lastNameController.text))) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  bool customValidteUserName() {
+    bool b = false;
+    // dont work
+    for (int i = 1; i < userNameController.text.length; i++) {
+      if (userNameController.text[i] == ' ' &&
+          userNameController.text[i + 1] == ' ') {
+        b == true;
+      }
+    }
+    if (!(RegExp(r'^[a-z A-Z0-9]{2,35}$').hasMatch(userNameController.text))) {
+      if (b == true) {
+        return false;
+      } else {
+        return false;
+      }
+    } else {
+      return true;
+    }
+  }
+
+  //controllers  &&Functions Validateof Second Sign up
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+
+  bool customValidteEmail() {
+    if (!(RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(emailController.text))) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  bool customValidtePassword() {
+    if (passwordController.text.length < 8 ||
+        passwordController.text.length > 64) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  bool customValidteConfirmPassword() {
+    if (confirmPasswordController.text.length < 8 ||
+        confirmPasswordController.text.length > 64) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }

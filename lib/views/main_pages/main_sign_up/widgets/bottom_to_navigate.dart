@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:rafiq/core/components/components.dart';
 import 'package:rafiq/data/models/register_model.dart';
 import 'package:rafiq/logic/cubit/register_cubit/register_cubit.dart';
 import 'package:rafiq/views/shared/log_sign_button.dart';
@@ -14,30 +16,67 @@ class BottomToNavigate extends StatelessWidget {
       builder: (context, state) => LogSignButton(
         label: cubit.lable,
         ontap: () {
-          if (cubit.indexOfPageview == 0 &&
-              cubit.formKey1.currentState!.validate()) {
-            BlocProvider.of<RegisterCubit>(context).setFirstSignUp(
-                cubit.firstNameController.text,
-                cubit.lastNameController.text,
-                cubit.userNameController.text);
-            cubit.controllerpage.nextPage(
-              duration: const Duration(
-                milliseconds: 750,
-              ),
-              curve: Curves.fastLinearToSlowEaseIn,
-            );
-          } else if (cubit.indexOfPageview == 1 &&
-              cubit.formKey2.currentState!.validate()) {
-            BlocProvider.of<RegisterCubit>(context).setSecondSignUp(
-                cubit.emailController.text,
-                cubit.passwordController.text,
-                cubit.confirmPasswordController.text);
-            cubit.controllerpage.nextPage(
-              duration: const Duration(
-                milliseconds: 500,
-              ),
-              curve: Curves.fastLinearToSlowEaseIn,
-            );
+          if (cubit.indexOfPageview == 0) {
+            if (cubit.customValidteFirstName() &&
+                cubit.customValidteLastName() &&
+                cubit.customValidteUserName()) {
+              cubit.setFirstSignUp(cubit.firstNameController.text,
+                  cubit.lastNameController.text, cubit.userNameController.text);
+              cubit.controllerpage.nextPage(
+                duration: const Duration(
+                  milliseconds: 750,
+                ),
+                curve: Curves.fastLinearToSlowEaseIn,
+              );
+            } else {
+              if (!cubit.customValidteFirstName() &&
+                  cubit.customValidteLastName() &&
+                  cubit.customValidteUserName()) {
+                showValidationTosat('Please enter your correct first name ');
+              } else if (!cubit.customValidteLastName() &&
+                  cubit.customValidteFirstName() &&
+                  cubit.customValidteUserName()) {
+                showValidationTosat('Please enter your correct last name ');
+              } else if (cubit.customValidteLastName() &&
+                  cubit.customValidteFirstName() &&
+                  !cubit.customValidteUserName()) {
+                showValidationTosat('Please enter your correct user name ');
+              } else {
+                showValidationTosat('Please enter your correct data ');
+              }
+            }
+          } else if (cubit.indexOfPageview == 1) {
+            if (cubit.customValidteEmail() &&
+                cubit.customValidtePassword() &&
+                cubit.customValidteConfirmPassword()) {
+              cubit.setSecondSignUp(
+                  cubit.emailController.text,
+                  cubit.passwordController.text,
+                  cubit.confirmPasswordController.text);
+              cubit.controllerpage.nextPage(
+                duration: const Duration(
+                  milliseconds: 500,
+                ),
+                curve: Curves.fastLinearToSlowEaseIn,
+              );
+            } else {
+              if (!cubit.customValidteEmail() &&
+                  cubit.customValidtePassword() &&
+                  cubit.customValidteConfirmPassword()) {
+                showValidationTosat('Please enter your correct email ');
+              } else if (cubit.customValidteEmail() &&
+                  !cubit.customValidtePassword() &&
+                  cubit.customValidteConfirmPassword()) {
+                showValidationTosat('Please enter your correct password ');
+              } else if (cubit.customValidteEmail() &&
+                  cubit.customValidtePassword() &&
+                  !cubit.customValidteConfirmPassword()) {
+                showValidationTosat(
+                    'Please enter your correct Confirm password ');
+              } else {
+                showValidationTosat('Please enter your correct data ');
+              }
+            }
           } else {
             BlocProvider.of<RegisterCubit>(context)
                 .userRegister(RequsetRegisterModel(

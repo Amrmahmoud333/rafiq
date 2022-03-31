@@ -22,11 +22,11 @@ class PageViewWidget extends StatelessWidget {
           print(cubit.lable);
           print(cubit);
         },
-        //physics: NeverScrollableScrollPhysics(),
+        physics: NeverScrollableScrollPhysics(),
         controller: cubit.controllerpage,
         children: [
           SignUp(),
-          const SecondSignUp(),
+          SecondSignUp(),
           const ThirdSignUp(),
         ],
       ),

@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:rafiq/core/components/components.dart';
 import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/data/chach_helper.dart';
@@ -15,28 +16,39 @@ import 'package:rafiq/views/painter/top_cloud.dart';
 import 'package:rafiq/views/shared/input_field.dart';
 import 'package:rafiq/views/shared/log_sign_button.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
   static const routeName = '/login_screen';
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   final fromKey = GlobalKey<FormState>();
+
   final TextEditingController emailController = TextEditingController();
+
   final TextEditingController passwordController = TextEditingController();
 
   // validate functions
-  String? customValidteEmail(String? email) {
-    if (email!.isEmpty || email.length < 2 || email.length >= 35) {
-      return 'Enter a Correct Email or User Name';
+  bool customValidteEmail() {
+    if (emailController.text.isEmpty ||
+        emailController.text.length < 2 ||
+        emailController.text.length >= 35) {
+      return false;
     } else {
-      return null;
+      return true;
     }
   }
 
-  String? customValidtePasswrod(String? passwrod) {
-    if (passwrod!.isEmpty || passwrod.length < 7 || passwrod.length >= 65) {
-      return 'Enter a Correct Password';
+  bool customValidtePasswrod() {
+    if (passwordController.text.isEmpty ||
+        passwordController.text.length < 7 ||
+        passwordController.text.length >= 65) {
+      return false;
     } else {
-      return null;
+      return true;
     }
   }
 
@@ -99,6 +111,9 @@ class LoginScreen extends StatelessWidget {
                           padding: EdgeInsets.only(left: w(40)),
                           child: Form(
                             key: fromKey,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+
                             // TODO autovalidateMode: ,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -122,18 +137,20 @@ class LoginScreen extends StatelessWidget {
                                 ),
                                 SizedBox(height: h(41)),
                                 InputField(
+                                  // formKey: fromKey,
                                   label: 'Username or Email',
                                   sizeoflabel: 18,
                                   obscureText: false,
                                   controller: emailController,
-                                  validator: customValidteEmail,
+                                  // validator: customValidteEmail,
                                 ),
                                 SizedBox(height: h(34)),
                                 InputField(
+                                  //  formKey: fromKey,
                                   label: 'Password',
                                   sizeoflabel: 18,
                                   obscureText: cubit.obscureText,
-                                  validator: customValidtePasswrod,
+                                  //   validator: customValidtePasswrod,
                                   controller: passwordController,
                                   widget: InkWell(
                                     onTap: () {
@@ -199,24 +216,32 @@ class LoginScreen extends StatelessWidget {
                                   child: ConditionalBuilder(
                                     condition: (state is! LoginLoadingrState),
                                     builder: (context) => LogSignButton(
-                                        label: 'Log in',
-                                        ontap: () async {
-                                          if (fromKey.currentState!
-                                              .validate()) {
-                                            await cubit.login(
-                                              RequestLoginModel(
-                                                  userName:
-                                                      emailController.text,
-                                                  password:
-                                                      passwordController.text),
-                                            );
-
-                                            print(emailController.text);
-                                            print(ACCESSTOKEN);
-                                            //Navigator.pushNamed(context,
-                                            //  MainHomeScreen.routeName);
+                                      label: 'Log in',
+                                      ontap: () async {
+                                        if (customValidteEmail() &&
+                                            customValidtePasswrod()) {
+                                          await cubit.login(
+                                            RequestLoginModel(
+                                                userName: emailController.text,
+                                                password:
+                                                    passwordController.text),
+                                          );
+                                        } else {
+                                          if (!customValidteEmail() &&
+                                              customValidtePasswrod()) {
+                                            showValidationTosat(
+                                                'Please enter your correct email ');
+                                          } else if (!customValidtePasswrod() &&
+                                              customValidteEmail()) {
+                                            showValidationTosat(
+                                                'Please enter your correct password ');
+                                          } else {
+                                            showValidationTosat(
+                                                'Please enter your correct data ');
                                           }
-                                        }),
+                                        }
+                                      },
+                                    ),
                                     fallback: (context) => SizedBox(
                                       width: w(200),
                                       child: Center(

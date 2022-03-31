@@ -5,54 +5,11 @@ import 'package:rafiq/views/main_pages/main_sign_up/sign_up_classes/widget/horiz
 import 'package:rafiq/views/shared/input_field.dart';
 
 class SignUp extends StatelessWidget {
-  const SignUp({
+  SignUp({
     Key? key,
   }) : super(key: key);
 
-  String? customValidteFirstName(String? firstName) {
-    if (!(RegExp(r'^[a-zA-Z]{2,35}$').hasMatch(firstName!))) {
-      return 'Enter a correct first name';
-    } else {
-      return null;
-    }
-  }
-
-  String? customValidteLastName(String? lastName) {
-    if (!(RegExp(r'^[a-zA-Z]{2,35}$').hasMatch(lastName!))) {
-      return 'Enter a correct last name';
-    } else {
-      return null;
-    }
-  }
-
-  bool? checkTwoSpace(String? userName) {
-    bool b = false;
-    for (int i = 0; i < userName!.length; i++) {
-      if (userName[i] == ' ' && userName[i + 1] == ' ') {
-        b == true;
-      }
-    }
-    return b;
-  }
-
-  String? customValidteUserName(String? userName) {
-    bool b = false;
-    // dont work
-    for (int i = 1; i < userName!.length; i++) {
-      if (userName[i] == ' ' && userName[i + 1] == ' ') {
-        b == true;
-      }
-    }
-    if (!(RegExp(r'^[a-z A-Z0-9]{2,35}$').hasMatch(userName))) {
-      if (b == true) {
-        return 'Enter a Correct user name';
-      } else {
-        return 'Enter a Correct user name';
-      }
-    } else {
-      return null;
-    }
-  }
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +19,7 @@ class SignUp extends StatelessWidget {
 
     var cubit = BlocProvider.of<RegisterCubit>(context);
     return Form(
-      key: cubit.formKey1,
+      key: formKey,
       child: Column(
         children: [
           SizedBox(
@@ -79,7 +36,7 @@ class SignUp extends StatelessWidget {
             sizeoflabel: 18,
             obscureText: false,
             controller: cubit.firstNameController,
-            validator: customValidteFirstName,
+            //validator: customValidteFirstName,
           ),
           SizedBox(
             height: height(22),
@@ -89,7 +46,7 @@ class SignUp extends StatelessWidget {
             sizeoflabel: 18,
             obscureText: false,
             controller: cubit.lastNameController,
-            validator: customValidteLastName,
+            //validator: customValidteLastName,
           ),
           SizedBox(
             height: height(29),
@@ -99,7 +56,7 @@ class SignUp extends StatelessWidget {
             sizeoflabel: 18,
             obscureText: false,
             controller: cubit.userNameController,
-            validator: customValidteUserName,
+            // validator: customValidteUserName,
           ),
         ],
       ),

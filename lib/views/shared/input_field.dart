@@ -68,7 +68,7 @@ class InputField extends StatelessWidget {
                   obscureText: obscureText,
                   keyboardType: keyboardType,
                   controller: controller,
-                  validator: validator,
+                  // validator: validator,
                   maxLength: maxLength,
                   decoration: const InputDecoration(
                     border: InputBorder.none,

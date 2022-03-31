@@ -5,13 +5,23 @@ import 'package:image_picker/image_picker.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 
 void showTosat({required msg, required state}) => Fluttertoast.showToast(
-    msg: msg,
-    toastLength: Toast.LENGTH_SHORT,
-    gravity: ToastGravity.BOTTOM,
-    timeInSecForIosWeb: 5,
-    backgroundColor: state ? Colors.green : Colors.amber,
-    textColor: Colors.white,
-    fontSize: 15.0);
+      msg: msg,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 5,
+      backgroundColor: state ? Colors.green : Colors.amber,
+      textColor: Colors.white,
+      fontSize: 15.0,
+    );
+void showValidationTosat(message) => Fluttertoast.showToast(
+      msg: message,
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 5,
+      backgroundColor: Colors.red,
+      textColor: Colors.white,
+      fontSize: 20.0,
+    );
 
 final ImagePicker _image = ImagePicker();
 
