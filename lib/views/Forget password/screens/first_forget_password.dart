@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rafiq/core/components/components.dart';
 import 'package:rafiq/data/models/forget_model.dart';
 import 'package:rafiq/logic/cubit/forget_cubit/forget_cubit.dart';
 import 'package:rafiq/views/Forget%20password/screens/second_forget_password.dart';
@@ -14,12 +15,14 @@ class FirstForgetPassword extends StatelessWidget {
   static const routeName = '/first_forget_password';
 
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController emailcontroller = TextEditingController();
-  String? customValidteEmail(String? email) {
-    if (email!.isEmpty || email.length < 2 || email.length >= 35) {
-      return 'Enter a Correct Email or User Name';
+  final TextEditingController emailController = TextEditingController();
+  bool customValidteEmail() {
+    if (emailController.text.isEmpty ||
+        emailController.text.length < 2 ||
+        emailController.text.length >= 35) {
+      return false;
     } else {
-      return null;
+      return true;
     }
   }
 
@@ -33,11 +36,6 @@ class FirstForgetPassword extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Color(0xFFE3E3E3),
-      statusBarBrightness: Brightness.dark,
-      statusBarIconBrightness: Brightness.dark,
-    ));
     return Scaffold(
       backgroundColor: const Color(0xFFE3E3E3),
       body: SingleChildScrollView(
@@ -126,8 +124,7 @@ class FirstForgetPassword extends StatelessWidget {
                             sizeoflabel: 20,
                             obscureText: false,
                             keyboardType: TextInputType.emailAddress,
-                            controller: emailcontroller,
-                            validator: customValidteEmail,
+                            controller: emailController,
                           ),
                         ),
                         Container(
@@ -139,13 +136,16 @@ class FirstForgetPassword extends StatelessWidget {
                             child: LogSignButton(
                               label: 'Send',
                               ontap: () async {
-                                if (_formKey.currentState!.validate()) {
+                                if (customValidteEmail()) {
                                   await BlocProvider.of<ForgetCubit>(context)
                                       .forgetPassword(
-                                    RequestForgetModel(emailcontroller.text),
+                                    RequestForgetModel(emailController.text),
                                   );
                                   Navigator.pushReplacementNamed(
                                       context, SecondForgetPassword.routeName);
+                                } else {
+                                  showValidationTosat(context,
+                                      'Please enter your Username or Email ');
                                 }
                               },
                             ),

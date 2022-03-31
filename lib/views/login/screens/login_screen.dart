@@ -229,14 +229,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                         } else {
                                           if (!customValidteEmail() &&
                                               customValidtePasswrod()) {
-                                            showValidationTosat(
+                                            showValidationTosat(context,
                                                 'Please enter your correct email ');
                                           } else if (!customValidtePasswrod() &&
                                               customValidteEmail()) {
-                                            showValidationTosat(
+                                            showValidationTosat(context,
                                                 'Please enter your correct password ');
                                           } else {
-                                            showValidationTosat(
+                                            showValidationTosat(context,
                                                 'Please enter your correct data ');
                                           }
                                         }

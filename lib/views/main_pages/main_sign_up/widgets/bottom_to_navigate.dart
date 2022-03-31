@@ -32,17 +32,20 @@ class BottomToNavigate extends StatelessWidget {
               if (!cubit.customValidteFirstName() &&
                   cubit.customValidteLastName() &&
                   cubit.customValidteUserName()) {
-                showValidationTosat('Please enter your correct first name ');
+                showValidationTosat(
+                    context, 'Please enter your correct first name ');
               } else if (!cubit.customValidteLastName() &&
                   cubit.customValidteFirstName() &&
                   cubit.customValidteUserName()) {
-                showValidationTosat('Please enter your correct last name ');
+                showValidationTosat(
+                    context, 'Please enter your correct last name ');
               } else if (cubit.customValidteLastName() &&
                   cubit.customValidteFirstName() &&
                   !cubit.customValidteUserName()) {
-                showValidationTosat('Please enter your correct user name ');
+                showValidationTosat(
+                    context, 'Please enter your correct user name ');
               } else {
-                showValidationTosat('Please enter your correct data ');
+                showValidationTosat(context, 'Please enter your correct data ');
               }
             }
           } else if (cubit.indexOfPageview == 1) {
@@ -63,18 +66,20 @@ class BottomToNavigate extends StatelessWidget {
               if (!cubit.customValidteEmail() &&
                   cubit.customValidtePassword() &&
                   cubit.customValidteConfirmPassword()) {
-                showValidationTosat('Please enter your correct email ');
+                showValidationTosat(
+                    context, 'Please enter your correct email ');
               } else if (cubit.customValidteEmail() &&
                   !cubit.customValidtePassword() &&
                   cubit.customValidteConfirmPassword()) {
-                showValidationTosat('Please enter your correct password ');
+                showValidationTosat(
+                    context, 'Please enter your correct password ');
               } else if (cubit.customValidteEmail() &&
                   cubit.customValidtePassword() &&
                   !cubit.customValidteConfirmPassword()) {
                 showValidationTosat(
-                    'Please enter your correct Confirm password ');
+                    context, 'Please enter your correct Confirm password ');
               } else {
-                showValidationTosat('Please enter your correct data ');
+                showValidationTosat(context, 'Please enter your correct data ');
               }
             }
           } else {

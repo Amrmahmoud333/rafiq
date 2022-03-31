@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:motion_toast/motion_toast.dart';
+import 'package:motion_toast/resources/arrays.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 
 void showTosat({required msg, required state}) => Fluttertoast.showToast(
@@ -13,15 +15,21 @@ void showTosat({required msg, required state}) => Fluttertoast.showToast(
       textColor: Colors.white,
       fontSize: 15.0,
     );
-void showValidationTosat(message) => Fluttertoast.showToast(
-      msg: message,
-      toastLength: Toast.LENGTH_LONG,
-      gravity: ToastGravity.BOTTOM,
-      timeInSecForIosWeb: 5,
-      backgroundColor: Colors.red,
-      textColor: Colors.white,
-      fontSize: 20.0,
-    );
+
+void showValidationTosat(context, message) {
+  MotionToast.error(
+    title: const Text(
+      "Error",
+      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+    ),
+    description: Text(message,
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
+    toastDuration: const Duration(milliseconds: 2500),
+    animationType: ANIMATION.fromRight,
+    animationCurve: Curves.decelerate,
+    position: MOTION_TOAST_POSITION.top,
+  ).show(context);
+}
 
 final ImagePicker _image = ImagePicker();
 
