@@ -5,7 +5,7 @@ import 'package:rafiq/core/themes/theme.dart';
 class Images extends StatelessWidget {
   Images({Key? key}) : super(key: key);
 
-  List<Widget> images = [
+  final List<Widget> images = [
     AutoSizeText(
       'No images yet 1',
       style: ThemeOfProject.ligthTheme.textTheme.headline4,
@@ -59,11 +59,9 @@ class Images extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemBuilder: (context, index) => Container(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 10, bottom: 100),
-          child: Center(child: images[index]),
-        ),
+      itemBuilder: (context, index) => Padding(
+        padding: const EdgeInsets.only(top: 10, bottom: 100),
+        child: Center(child: images[index]),
       ),
       itemCount: images.length,
     );

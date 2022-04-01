@@ -5,7 +5,7 @@ import 'package:rafiq/core/themes/theme.dart';
 class Videos extends StatelessWidget {
   Videos({Key? key}) : super(key: key);
 
-  List<Widget> videos = [
+  final List<Widget> videos = [
     AutoSizeText(
       'No videos yet 1',
       style: ThemeOfProject.ligthTheme.textTheme.headline4,
@@ -59,11 +59,9 @@ class Videos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemBuilder: (context, index) => Container(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 10, bottom: 100),
-          child: Center(child: videos[index]),
-        ),
+      itemBuilder: (context, index) => Padding(
+        padding: const EdgeInsets.only(top: 10, bottom: 100),
+        child: Center(child: videos[index]),
       ),
       itemCount: videos.length,
     );

@@ -6,7 +6,7 @@ import 'package:rafiq/core/themes/theme.dart';
 class Maps extends StatelessWidget {
   Maps({Key? key}) : super(key: key);
 
-  List<Widget> maps = [
+  final List<Widget> maps = [
     AutoSizeText(
       'No maps yet 12',
       style: ThemeOfProject.ligthTheme.textTheme.headline4,

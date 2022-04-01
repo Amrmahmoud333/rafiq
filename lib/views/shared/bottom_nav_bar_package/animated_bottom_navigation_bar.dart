@@ -293,7 +293,7 @@ class _AnimatedBottomNavigationBarState
       child: Material(
         color: widget.backgroundColor ?? Colors.white,
         child: SafeArea(
-          child: Container(
+          child: SizedBox(
             height: widget.height ?? 56,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,

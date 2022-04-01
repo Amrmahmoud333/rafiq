@@ -81,8 +81,9 @@ class _LoginScreenState extends State<LoginScreen> {
               .then((value) {});
 
           showTosat(msg: cubit.messege, state: true);
-        } else if (state is LoginErrorState)
+        } else if (state is LoginErrorState) {
           showTosat(msg: cubit.messege, state: false);
+        }
       },
       builder: (context, state) {
         bool? rememberMe = CahchHelper.getData(key: 'rememberMe');
@@ -164,7 +165,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         fontSize: 16,
                                         fontFamily: 'DavidLibre',
                                         fontWeight: FontWeight.w500,
-                                        color: const Color(0xFF5B618A),
+                                        color: Color(0xFF5B618A),
                                       ),
                                     ),
                                   ),

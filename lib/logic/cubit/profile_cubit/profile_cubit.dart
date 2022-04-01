@@ -4,7 +4,6 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:rafiq/core/constants/authentication_const.dart';
-import 'package:rafiq/data/chach_helper.dart';
 import 'package:rafiq/data/models/delete_cover_avatar.dart';
 import 'package:rafiq/data/models/set_cover_avatar_model.dart';
 import 'package:rafiq/data/repositories/cover_image_repo.dart';
