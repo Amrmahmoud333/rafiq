@@ -48,7 +48,8 @@ class Cover extends StatelessWidget {
                 },
                 child: BlocBuilder<UserDataCubit, UserDataState>(
                   builder: (context, userDataState) {
-                    print('coverrrr');
+                    print(cover);
+
                     return Container(
                         width: double.infinity,
                         height: h(215),
@@ -62,19 +63,19 @@ class Cover extends StatelessWidget {
                                 ? SvgPicture.asset(
                                     'assets/images/default_cover.svg')
                                 : (userDataState is UserGetDataSuccessState)
-                                    ? (cover == null)
+                                    ? (cover == 'null')
                                         ? SvgPicture.asset(
                                             'assets/images/default_cover.svg',
                                             fit: BoxFit.fill,
                                           )
-                                        : (cover != null)
+                                        : (cover != 'null')
                                             ? Image.network(
                                                 cover!,
                                                 fit: BoxFit.fill,
                                               )
                                             : (profilestate
                                                     is SetCoverSuccessState)
-                                                ? (cover == null)
+                                                ? (cover == 'null')
                                                     ? SvgPicture.asset(
                                                         'assets/images/default_cover.svg',
                                                         fit: BoxFit.fill,

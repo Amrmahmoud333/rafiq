@@ -25,3 +25,15 @@ class SetAvatarLoadingState extends ProfileStates {}
 class SetAvatarSuccessState extends ProfileStates {}
 
 class SetAvatarErrorState extends ProfileStates {}
+
+class DeleteCoverLoadingState extends ProfileStates {}
+
+class DeleteCoverSuccessState extends ProfileStates {}
+
+class DeleteCoverErrorState extends ProfileStates {}
+
+class DeleteAvatarLoadingState extends ProfileStates {}
+
+class DeleteAvatarSuccessState extends ProfileStates {}
+
+class DeleteAvatarErrorState extends ProfileStates {}

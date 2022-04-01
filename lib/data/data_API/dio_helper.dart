@@ -53,4 +53,14 @@ class DioHelper {
       data: data,
     );
   }
+
+  static Future<Response> deleteWithHeader({
+    required String? url,
+    required Map<String, dynamic>? header,
+  }) async {
+    return await dio.delete(
+      url!,
+      options: Options(headers: header),
+    );
+  }
 }

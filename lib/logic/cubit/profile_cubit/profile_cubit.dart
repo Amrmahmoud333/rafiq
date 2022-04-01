@@ -4,7 +4,9 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:rafiq/core/constants/authentication_const.dart';
-import 'package:rafiq/data/models/set_cover_image_model.dart';
+import 'package:rafiq/data/chach_helper.dart';
+import 'package:rafiq/data/models/delete_cover_avatar.dart';
+import 'package:rafiq/data/models/set_cover_avatar_model.dart';
 import 'package:rafiq/data/repositories/cover_image_repo.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_states.dart';
 
@@ -14,7 +16,12 @@ class ProfileCubit extends Cubit<ProfileStates> {
 
   late SetCoverModel _setCoverModel;
   late SetAvatarModel _setAvatarModel;
+  late DeleteCoverModel _deleteCoverModel;
+  late DeleteAvatarModel _deleteAvatarModel;
+
   //API
+
+  // two functions for Set covrt && avatart
   Future<void> setCover({File? file}) async {
     emit(SetCoverLoadingState());
     try {
@@ -45,6 +52,30 @@ class ProfileCubit extends Cubit<ProfileStates> {
     }
   }
 
+  // two functions for delete covrt && avatart
+  Future<void> deleteCover() async {
+    emit(DeleteCoverLoadingState());
+    try {
+      _deleteCoverModel = await coverImageRepo.deleteCoverRepo();
+      cover = 'null';
+      emit(DeleteCoverSuccessState());
+    } on DioError catch (error) {
+      print(error);
+      emit(DeleteCoverErrorState());
+    }
+  }
+
+  Future<void> deleteAvatar() async {
+    emit(DeleteAvatarLoadingState());
+    try {
+      _deleteAvatarModel = await coverImageRepo.deleteAvatarRepo();
+      avatar = 'null';
+      emit(DeleteCoverSuccessState());
+    } on DioError catch (error) {
+      print(error);
+      emit(DeleteCoverErrorState());
+    }
+  }
   // working with UI
 
   File? avatarImageFile;

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rafiq/data/chach_helper.dart';
+import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 import 'package:rafiq/views/profile/widgets/cover_dialog.dart';
 
 coverBottomSheet(context) async {
@@ -63,7 +66,6 @@ Widget buildBottomSheet(BuildContext context) => SizedBox(
           ),
           const SizedBox(height: 20),
           InkWell(
-            onTap: () {},
             child: SizedBox(
               height: 50,
               child: Row(
@@ -81,6 +83,11 @@ Widget buildBottomSheet(BuildContext context) => SizedBox(
                 ],
               ),
             ),
+            onTap: () {
+              BlocProvider.of<ProfileCubit>(context).deleteCover();
+              CahchHelper.removeData(key: 'cover');
+              Navigator.pop(context);
+            },
           )
         ]),
       ),

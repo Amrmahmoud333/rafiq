@@ -5,7 +5,8 @@ import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/core/constants/url.dart';
 import 'package:rafiq/data/chach_helper.dart';
 import 'package:rafiq/data/data_API/dio_helper.dart';
-import 'package:rafiq/data/models/set_cover_image_model.dart';
+import 'package:rafiq/data/models/delete_cover_avatar.dart';
+import 'package:rafiq/data/models/set_cover_avatar_model.dart';
 import 'package:rafiq/data/repositories/cover_image_repo.dart';
 import 'package:http_parser/http_parser.dart';
 
@@ -47,5 +48,23 @@ class CoverImageAPI extends CoverImageRepo {
         data: formData,
         header: {'access-token': token});
     return SetAvatarModel.fromJson(response.data);
+  }
+
+  @override
+  Future<DeleteCoverModel> deleteCoverRepo() async {
+    final response = await DioHelper.deleteWithHeader(
+        url: '$URL/api/v1/users/$USERNAME/cover/',
+        header: {'access-token': token});
+
+    return DeleteCoverModel.fromjson(response.data);
+  }
+
+  @override
+  Future<DeleteAvatarModel> deleteAvatarRepo() async {
+    final response = await DioHelper.deleteWithHeader(
+        url: '$URL/api/v1/users/$USERNAME/cover/',
+        header: {'access-token': token});
+
+    return DeleteAvatarModel.fromjson(response.data);
   }
 }

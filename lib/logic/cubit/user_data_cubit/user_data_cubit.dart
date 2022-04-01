@@ -33,13 +33,13 @@ class UserDataCubit extends Cubit<UserDataState> {
       country = _userDataModel.results!.country;
       userName = _userDataModel.results!.userName;
 
-    
       dateOfBirth = _userDataModel.results!.dateOfBirth;
 
       numberOfFollowers = _userDataModel.results!.numberOfFollowers;
       numberOfFollowings = _userDataModel.results!.numberOfFollowings;
 
-      CahchHelper.saveData(key: 'cover', value: _userDataModel.results!.cover)
+      CahchHelper.saveData(
+              key: 'cover', value: _userDataModel.results!.cover.toString())
           .then((value) {});
 
       CahchHelper.saveData(key: 'avatar', value: _userDataModel.results!.avatar)
