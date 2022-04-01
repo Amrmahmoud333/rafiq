@@ -37,13 +37,14 @@ class Maps extends StatelessWidget {
                     color: Color(0xff5B618A),
                     spreadRadius: 5,
                     blurRadius: 5,
-                    offset: Offset(7, 5), // changes position of shadow
+                    offset: Offset(7, 5),
                   ),
                 ],
               ),
               child: const GoogleMap(
                 initialCameraPosition: CameraPosition(
                   target: LatLng(37.43296265331129, -122.08832357078792),
+                  zoom: -150,
                 ),
               ),
             ),

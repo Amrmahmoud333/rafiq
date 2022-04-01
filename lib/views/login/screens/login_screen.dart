@@ -2,14 +2,13 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:rafiq/core/components/components.dart';
 import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/data/chach_helper.dart';
 import 'package:rafiq/data/models/login_model.dart';
 import 'package:rafiq/logic/cubit/login_cubit/login_cubit.dart';
 import 'package:rafiq/views/Forget%20password/screens/first_forget_password.dart';
-import 'package:rafiq/views/login/screens/widgets/custom_check_box.dart';
+import 'package:rafiq/views/login/widgets/custom_check_box.dart';
 import 'package:rafiq/views/main_pages/main_home/screens/main_home.dart';
 import 'package:rafiq/views/painter/bottom_cloud.dart';
 import 'package:rafiq/views/painter/top_cloud.dart';
@@ -226,6 +225,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                 password:
                                                     passwordController.text),
                                           );
+                                          print(ACCESSTOKEN);
                                         } else {
                                           if (!customValidteEmail() &&
                                               customValidtePasswrod()) {
