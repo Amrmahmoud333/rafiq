@@ -18,52 +18,6 @@ import 'package:rafiq/views/profile/widgets/cover_bottom_sheet.dart';
 class Cover extends StatelessWidget {
   const Cover({Key? key}) : super(key: key);
 
-  Widget checkCover(userDataState, profilestate) {
-    Widget? image;
-    if (userDataState is UserGetDataLoadingState) {
-      image = SvgPicture.asset('assets/images/default_cover.svg');
-      if (userDataState is UserGetDataSuccessState) {
-        if (cover == null) {
-          image = SvgPicture.asset(
-            'assets/images/default_cover.svg',
-            fit: BoxFit.fill,
-          );
-        } else {
-          image = Image.network(
-            cover!,
-            fit: BoxFit.fill,
-          );
-        }
-      } else {
-        image = SvgPicture.asset(
-          'assets/images/default_cover.svg',
-          fit: BoxFit.fill,
-        );
-      }
-    } else if (profilestate is SetCoverLoadingState) {
-      image = SvgPicture.asset('assets/images/default_cover.svg');
-      if (profilestate is SetCoverSuccessState) {
-        if (cover == null) {
-          image = SvgPicture.asset(
-            'assets/images/default_cover.svg',
-            fit: BoxFit.fill,
-          );
-        } else {
-          image = Image.network(
-            cover!,
-            fit: BoxFit.fill,
-          );
-        }
-      } else {
-        image = SvgPicture.asset(
-          'assets/images/default_cover.svg',
-          fit: BoxFit.fill,
-        );
-      }
-    }
-    return image!;
-  }
-
   @override
   Widget build(BuildContext context) {
     double h(double n) {
@@ -96,13 +50,47 @@ class Cover extends StatelessWidget {
                   builder: (context, userDataState) {
                     print('coverrrr');
                     return Container(
-                      width: double.infinity,
-                      height: h(215),
-                      decoration: const BoxDecoration(
-                        color: Color(0xffE8DEEB),
-                      ),
-                      child: checkCover(userDataState, profilestate),
-                    );
+                        width: double.infinity,
+                        height: h(215),
+                        decoration: const BoxDecoration(
+                          color: Color(0xffE8DEEB),
+                        ),
+                        child: (userDataState is UserGetDataLoadingState)
+                            ? SvgPicture.asset(
+                                'assets/images/default_cover.svg')
+                            : (profilestate is SetCoverLoadingState)
+                                ? SvgPicture.asset(
+                                    'assets/images/default_cover.svg')
+                                : (userDataState is UserGetDataSuccessState)
+                                    ? (cover == null)
+                                        ? SvgPicture.asset(
+                                            'assets/images/default_cover.svg',
+                                            fit: BoxFit.fill,
+                                          )
+                                        : (cover != null)
+                                            ? Image.network(
+                                                cover!,
+                                                fit: BoxFit.fill,
+                                              )
+                                            : (profilestate
+                                                    is SetCoverSuccessState)
+                                                ? (cover == null)
+                                                    ? SvgPicture.asset(
+                                                        'assets/images/default_cover.svg',
+                                                        fit: BoxFit.fill,
+                                                      )
+                                                    : Image.network(
+                                                        cover!,
+                                                        fit: BoxFit.fill,
+                                                      )
+                                                : SvgPicture.asset(
+                                                    'assets/images/default_cover.svg',
+                                                    fit: BoxFit.fill,
+                                                  )
+                                    : SvgPicture.asset(
+                                        'assets/images/default_cover.svg',
+                                        fit: BoxFit.fill,
+                                      ));
                   },
                 ),
               ),
