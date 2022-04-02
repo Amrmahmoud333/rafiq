@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
-import 'package:rafiq/logic/cubit/profile_cubit/profile_states.dart';
 import 'package:rafiq/views/profile/widgets/tap_bar_view_widgets/images.dart';
 import 'package:rafiq/views/profile/widgets/tap_bar_view_widgets/map.dart';
 import 'package:rafiq/views/profile/widgets/tap_bar_view_widgets/posts.dart';

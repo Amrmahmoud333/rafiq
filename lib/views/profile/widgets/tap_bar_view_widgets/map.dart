@@ -1,17 +1,26 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:rafiq/core/themes/theme.dart';
 
-class Maps extends StatelessWidget {
-  Maps({Key? key}) : super(key: key);
+class Maps extends StatefulWidget {
+  const Maps({Key? key}) : super(key: key);
 
-  final List<Widget> maps = [
-    AutoSizeText(
-      'No maps yet 12',
-      style: ThemeOfProject.ligthTheme.textTheme.headline4,
-    ),
-  ];
+  @override
+  State<Maps> createState() => _MapsState();
+}
+
+class _MapsState extends State<Maps> {
+  late GoogleMapController _mapController;
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  Future<void> onMapCreated(GoogleMapController controller) async {
+    _mapController = controller;
+    String value = await DefaultAssetBundle.of(context)
+        .loadString('assets/map_style.json');
+    _mapController.setMapStyle(value);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,11 +50,12 @@ class Maps extends StatelessWidget {
                   ),
                 ],
               ),
-              child: const GoogleMap(
-                initialCameraPosition: CameraPosition(
+              child: GoogleMap(
+                initialCameraPosition: const CameraPosition(
                   target: LatLng(37.43296265331129, -122.08832357078792),
                   zoom: -150,
                 ),
+                onMapCreated: onMapCreated,
               ),
             ),
           ),
