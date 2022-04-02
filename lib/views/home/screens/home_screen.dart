@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq/views/shared/input_field2.dart';
+import 'package:rafiq/views/shared/edit_input_field.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              InputField2(
+              EditInputField(
                 validator: customValidteEmail,
                 label: 'label',
                 obscureText: false,

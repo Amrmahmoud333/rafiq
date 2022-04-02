@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../../core/themes/theme.dart';
 
-class InputField extends StatelessWidget {
-  const InputField({
+class EditInputField extends StatelessWidget {
+  const EditInputField({
     Key? key,
     required this.label,
     this.widget,
@@ -54,7 +54,7 @@ class InputField extends StatelessWidget {
                 color: const Color(0xFF5B618A),
               ),
             ),
-            color: const Color(0xFFEBEBEB),
+            color: const Color(0xFF5B618A).withOpacity(.10),
           ),
           child: Row(
             children: [

@@ -1,0 +1,17 @@
+<svg id="tiktok" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23.017" height="22.318" viewBox="0 0 23.017 22.318">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" y1="-0.005" x2="0.5" y2="1.019" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#5b618a"/>
+      <stop offset="0.49" stop-color="#bcb5cd"/>
+      <stop offset="0.734" stop-color="#be8cd5"/>
+      <stop offset="1" stop-color="#c415ec"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.5" y1="0.048" x2="0.5" y2="0.945" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#5b618a"/>
+      <stop offset="0.674" stop-color="#bd7ecf"/>
+      <stop offset="1" stop-color="#ba15e6"/>
+    </linearGradient>
+  </defs>
+  <path id="Path_5886" data-name="Path 5886" d="M26.378,6.167H8.539A2.74,2.74,0,0,0,6.087,8.85l.286,17.31a2.175,2.175,0,0,0,2.166,2.325H26.712A2.361,2.361,0,0,0,29.1,26.16L29.042,8.85A2.936,2.936,0,0,0,26.378,6.167ZM27.516,25.6c0,.769-.012,1.346-.8,1.346H8.539c-.791,0-.565-.577-.565-1.346V9.562c0-.769.244-1.715,1.035-1.715H26.378c.791,0,1.138.946,1.138,1.715Z" transform="translate(-6.087 -6.167)" fill="url(#linear-gradient)"/>
+  <path id="Path_5887" data-name="Path 5887" d="M26.895,16.665a2.833,2.833,0,0,1-2.869-2.79H22.112v8.834a2.392,2.392,0,1,1-2.391-2.325,2.455,2.455,0,0,1,.478.047V18.552a4.393,4.393,0,0,0-.478-.027,4.186,4.186,0,1,0,4.3,4.185V17.586a4.842,4.842,0,0,0,3.826.843V16.494A2.907,2.907,0,0,1,26.895,16.665Z" transform="translate(-9.617 -9.225)" fill="url(#linear-gradient-2)"/>
+</svg>

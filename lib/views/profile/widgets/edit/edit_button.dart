@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rafiq/views/profile/widgets/edit/edit_screen.dart';
 
 class EditButton extends StatelessWidget {
   const EditButton({
@@ -20,7 +21,9 @@ class EditButton extends StatelessWidget {
       top: h(187),
       left: w(352),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, EditScreen.routeName);
+        },
         child: Container(
           width: w(27),
           height: h(35),

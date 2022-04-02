@@ -5,6 +5,7 @@ import 'package:rafiq/views/Forget%20password/screens/second_forget_password.dar
 import 'package:rafiq/views/home/screens/home_screen.dart';
 import 'package:rafiq/views/login/screens/login_screen.dart';
 import 'package:rafiq/views/profile/screens/profile_screen.dart';
+import 'package:rafiq/views/profile/widgets/edit/edit_screen.dart';
 import '../main_pages/main_home/screens/main_home.dart';
 import '../main_pages/main_sign_up/screens/main_sign_up.dart';
 import '../notification/screens/notification_screen.dart';
@@ -26,6 +27,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => FirstForgetPassword());
       case SecondForgetPassword.routeName:
         return MaterialPageRoute(builder: (_) => const SecondForgetPassword());
+      case EditScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const EditScreen());
       case LoginScreen.routeName:
         return MaterialPageRoute(builder: (_) => LoginScreen());
       case ProfileScreen.routeName:
