@@ -8,7 +8,7 @@ class Maps extends StatefulWidget {
   State<Maps> createState() => _MapsState();
 }
 
-class _MapsState extends State<Maps> {
+class _MapsState extends State<Maps> with AutomaticKeepAliveClientMixin {
   late GoogleMapController _mapController;
   @override
   void initState() {
@@ -21,6 +21,10 @@ class _MapsState extends State<Maps> {
         .loadString('assets/map_style.json');
     _mapController.setMapStyle(value);
   }
+
+  @override
+  // to solve BufferQueue has been abandoned
+  bool get wantKeepAlive => true;
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +56,8 @@ class _MapsState extends State<Maps> {
               ),
               child: GoogleMap(
                 initialCameraPosition: const CameraPosition(
-                  target: LatLng(37.43296265331129, -122.08832357078792),
-                  zoom: -150,
+                  target: LatLng(10, 20),
+                  zoom: 3,
                 ),
                 onMapCreated: onMapCreated,
               ),
