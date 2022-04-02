@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_viewer/image_viewer.dart';
 import 'package:rafiq/data/chach_helper.dart';
 
 class NotificationScreen extends StatelessWidget {
@@ -7,11 +8,24 @@ class NotificationScreen extends StatelessWidget {
   @override
   String? token = CahchHelper.getData(key: 'token');
   bool? rememberMe = CahchHelper.getData(key: 'rememberMe');
-
+  List<String> list = [
+    'assets/images/Done.png',
+    'assets/images/Forget password.png'
+  ];
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () => print(token),
+      ),
+      body: Column(
+        children: [
+          TextButton(
+            onPressed: () {
+              //   ImageViewer.showImageSlider(images: list);
+            },
+            child: Text('child'),
+          ),
+        ],
       ),
     );
   }

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/data/chach_helper.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
-import 'package:rafiq/views/profile/widgets/avatar_dialog.dart';
+import 'package:rafiq/views/profile/widgets/cover/cover_dialog.dart';
 
-Future avatarBottomSheet(context) async {
+coverBottomSheet(context) async {
   return await showModalBottomSheet(
       shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular((25)))),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(25))),
       backgroundColor: const Color(0xffEFE7F2),
       context: context,
       builder: (_) => buildBottomSheet(context));
@@ -28,7 +28,7 @@ Widget buildBottomSheet(BuildContext context) => SizedBox(
           const SizedBox(height: 20),
           InkWell(
             onTap: () async {
-              await showSelectionAvatarDialog(context: context);
+              await showSelectionCoverDialog(context: context);
               Navigator.pop(context);
             },
             child: SizedBox(
@@ -39,7 +39,7 @@ Widget buildBottomSheet(BuildContext context) => SizedBox(
                       color: Theme.of(context).primaryColor, size: 40),
                   const SizedBox(width: 15),
                   Text(
-                    'Select profile picture',
+                    'Select cover picture',
                     style: Theme.of(context).textTheme.headline4,
                   ),
                 ],
@@ -57,7 +57,7 @@ Widget buildBottomSheet(BuildContext context) => SizedBox(
                       color: Theme.of(context).primaryColor, size: 40),
                   const SizedBox(width: 15),
                   Text(
-                    'View profile picture',
+                    'View cover picture',
                     style: Theme.of(context).textTheme.headline4,
                   ),
                 ],
@@ -74,7 +74,7 @@ Widget buildBottomSheet(BuildContext context) => SizedBox(
                       color: Color(0xffc11717), size: 40),
                   const SizedBox(width: 15),
                   Text(
-                    'Delete profile picture',
+                    'Delete cover picture',
                     style: Theme.of(context)
                         .textTheme
                         .headline4!
@@ -84,8 +84,8 @@ Widget buildBottomSheet(BuildContext context) => SizedBox(
               ),
             ),
             onTap: () {
-              BlocProvider.of<ProfileCubit>(context).deleteAvatar();
-              CahchHelper.removeData(key: 'avatar');
+              BlocProvider.of<ProfileCubit>(context).deleteCover();
+              CahchHelper.removeData(key: 'cover');
               Navigator.pop(context);
             },
           )

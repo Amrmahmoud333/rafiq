@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/data/data_API/cover_image_API.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
-import 'package:rafiq/views/profile/widgets/cover.dart';
-import 'package:rafiq/views/profile/widgets/edit_button.dart';
+import 'package:rafiq/views/profile/widgets/cover/cover.dart';
+import 'package:rafiq/views/profile/widgets/edit/edit_button.dart';
 import 'package:rafiq/views/profile/widgets/profile_Information.dart';
 import 'package:rafiq/views/profile/widgets/profile_name.dart';
-import 'package:rafiq/views/profile/widgets/profile_photo.dart';
-import 'package:rafiq/views/profile/widgets/sliver_app_bar.dart';
+import 'package:rafiq/views/profile/widgets/avatar/avatar_photo.dart';
+import 'package:rafiq/views/profile/widgets/sliver_app_bar/sliver_app_bar.dart';
 import 'package:rafiq/views/profile/widgets/tap_bar_view.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -48,7 +48,7 @@ class ProfileScreen extends StatelessWidget {
                                 child: Stack(
                                   children: const [
                                     Cover(),
-                                    ProfilePhoto(),
+                                    AvatarPhoto(),
                                     ProfileName(),
                                     EditButton(),
                                   ],

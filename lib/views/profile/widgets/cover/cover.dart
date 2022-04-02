@@ -5,7 +5,7 @@ import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_states.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
-import 'package:rafiq/views/profile/widgets/cover_bottom_sheet.dart';
+import 'package:rafiq/views/profile/widgets/cover/cover_bottom_sheet.dart';
 
 /* 
  to get cover we word in to satates profileState and getUserDataState 

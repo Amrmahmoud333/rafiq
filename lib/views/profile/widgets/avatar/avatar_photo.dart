@@ -5,10 +5,10 @@ import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_states.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
-import 'package:rafiq/views/profile/widgets/avatar_bottom_sheet.dart';
+import 'package:rafiq/views/profile/widgets/avatar/avatar_bottom_sheet.dart';
 
-class ProfilePhoto extends StatelessWidget {
-  const ProfilePhoto({
+class AvatarPhoto extends StatelessWidget {
+  const AvatarPhoto({
     Key? key,
   }) : super(key: key);
 

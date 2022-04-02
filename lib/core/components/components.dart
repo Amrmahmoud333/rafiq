@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:image_viewer/image_viewer.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:motion_toast/resources/arrays.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
@@ -49,4 +50,12 @@ Future<void> getCoverFromGalleryOrCamera(context, imageSource) async {
   BlocProvider.of<ProfileCubit>(context).fileCoverImagePath(coverImage);
   BlocProvider.of<ProfileCubit>(context)
       .setCover(file: BlocProvider.of<ProfileCubit>(context).coverImageFile);
+}
+
+List<String> images = [];
+
+void imageView(images) {
+  ImageViewer.showImageSlider(
+    images: images,
+  );
 }
