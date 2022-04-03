@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -10,16 +12,48 @@ class Maps extends StatefulWidget {
 
 class _MapsState extends State<Maps> with AutomaticKeepAliveClientMixin {
   late GoogleMapController _mapController;
-  @override
-  void initState() {
-    super.initState();
-  }
+
+  var myMarkers = HashSet<Marker>(); // collection
 
   Future<void> onMapCreated(GoogleMapController controller) async {
     _mapController = controller;
     String value = await DefaultAssetBundle.of(context)
         .loadString('assets/map_style.json');
     _mapController.setMapStyle(value);
+    setState(() {
+      myMarkers.add(
+        const Marker(
+          markerId: MarkerId('1'),
+          position: LatLng(10, 50),
+        ),
+      );
+      myMarkers.add(
+        const Marker(
+          markerId: MarkerId('2'),
+          position: LatLng(10, 20),
+        ),
+      );
+      myMarkers.add(
+        Marker(
+          markerId: MarkerId('5'),
+          position: LatLng(10, 25),
+          icon:
+              BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+        ),
+      );
+    });
+  }
+
+  handelTap(LatLng latLng) {
+    setState(() {
+      myMarkers.add(
+        Marker(
+          markerId: MarkerId(latLng.toString()),
+          position: latLng,
+          draggable: true,
+        ),
+      );
+    });
   }
 
   @override
@@ -60,11 +94,19 @@ class _MapsState extends State<Maps> with AutomaticKeepAliveClientMixin {
                   zoom: 3,
                 ),
                 onMapCreated: onMapCreated,
+                markers: myMarkers,
+                onTap: handelTap,
               ),
             ),
           ),
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _mapController.dispose();
+    super.dispose();
   }
 }
