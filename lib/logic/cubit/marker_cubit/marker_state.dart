@@ -12,3 +12,9 @@ class AddMarkerSuccessStete extends MarkerState {}
 class AddMarkerErrorStete extends MarkerState {}
 
 class AddNewMarkerState extends MarkerState {}
+
+class GetMarkerSuccessStete extends MarkerState {}
+
+class GetMarkerErrorStete extends MarkerState {}
+
+class GetNewMarkerState extends MarkerState {}

@@ -5,10 +5,10 @@ import 'package:dio/dio.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:meta/meta.dart';
 import 'package:rafiq/data/models/add_marker_model.dart';
-import 'package:rafiq/data/repositories/marker.dart';
+import 'package:rafiq/data/models/get_marker_model.dart';
+import 'package:rafiq/data/repositories/marker_repo.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter_platform_interface/src/types/marker.dart'
-    as Marker;
+
 part 'marker_state.dart';
 
 class MarkerCubit extends Cubit<MarkerState> {
@@ -24,21 +24,23 @@ class MarkerCubit extends Cubit<MarkerState> {
 
       emit(AddMarkerSuccessStete());
     } on DioError catch (error) {
-      print(error.error['message'] + 'from marker cubit');
+      print(error.error.toString() + 'from marker cubit');
       emit(AddMarkerErrorStete());
     }
   }
 
-  var myMarkers = HashSet<Marker.Marker>(); // collection
+  late GetMarkerResponseModel getMarkerResponseModel;
+  late Set<Marker> myMarkers;
 
-  void onTapMap(LatLng latLng) {
-    myMarkers.add(
-      Marker.Marker(
-        markerId: MarkerId(latLng.toString()),
-        position: latLng,
-        draggable: true,
-      ),
-    );
-    emit(AddNewMarkerState());
+  Future<void> getMarker() async {
+    emit(GetMarkerSuccessStete());
+    try {
+      getMarkerResponseModel = await markerRepo.getMarkRepo();
+      //  myMarkers = getMarkerResponseModel.results.travelMap;
+      emit(GetMarkerSuccessStete());
+    } on DioError catch (error) {
+      print(error.error.toString() + 'from marker cubit');
+      emit(GetMarkerErrorStete());
+    }
   }
 }
