@@ -16,10 +16,10 @@ class ContainerChoose extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: _isChoosen ? const Color(0xFF5B618A) : Colors.white,
+        color: _isChoosen ? const Color(0xFF5B618A) : const Color(0xffF2ECF4),
         border: Border.all(
           color: const Color(0xff6E75A0),
-          width: 1,
+          width: 2,
         ), //Border.all
         borderRadius: BorderRadius.circular(8),
       ),

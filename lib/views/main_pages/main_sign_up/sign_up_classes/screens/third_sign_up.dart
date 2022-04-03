@@ -68,6 +68,7 @@ class ThirdSignUp extends StatelessWidget {
               child: BlocBuilder<RegisterCubit, RegisterState>(
                 builder: (context, state) => DropdownButtonHideUnderline(
                   child: DropdownButton<String>(
+                    dropdownColor: const Color(0xffE9DCEC),
                     value: context.read<RegisterCubit>().countryValue,
                     isExpanded: true,
                     iconSize: height(26),
@@ -101,6 +102,24 @@ class ThirdSignUp extends StatelessWidget {
                   initialDate: cubit.dateTime,
                   firstDate: DateTime(1900),
                   lastDate: DateTime(2100),
+                  builder: (context, child) {
+                    return Theme(
+                      data: Theme.of(context).copyWith(
+                        colorScheme: const ColorScheme.light(
+                          primary: Color(0xFF5B618A), // header background color
+                          onPrimary: Color(0xffE9DCEC), // header text color
+                          onSurface: Colors.black, // body text color
+                        ),
+                        textButtonTheme: TextButtonThemeData(
+                          style: TextButton.styleFrom(
+                            primary:
+                                const Color(0xFF5B618A), // button text color
+                          ),
+                        ),
+                      ),
+                      child: child!,
+                    );
+                  },
                 );
                 if (newDateTime == null) return;
                 cubit.chandeDateTime(newDateTime);
@@ -190,6 +209,11 @@ class ThirdSignUp extends StatelessWidget {
         value: country,
         child: AutoSizeText(
           country,
+          style: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w500,
+            color: Color(0xFF5B618A),
+          ),
         ),
       );
 }

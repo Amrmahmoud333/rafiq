@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
-import '../../core/themes/theme.dart';
+import '../../../../../core/themes/theme.dart';
 
 class EditInputField extends StatelessWidget {
   const EditInputField({
@@ -41,10 +41,8 @@ class EditInputField extends StatelessWidget {
           label,
           style: lableInputField(sizeoflabel),
         ),
+        SizedBox(height: height(4)),
         Container(
-          margin: EdgeInsets.only(
-            top: height(4),
-          ),
           width: width(313),
           height: height(38),
           decoration: BoxDecoration(
@@ -58,19 +56,24 @@ class EditInputField extends StatelessWidget {
           ),
           child: Row(
             children: [
+              SizedBox(
+                width: width(8),
+              ),
               Expanded(
                 child: TextFormField(
+                  maxLines: 1,
                   style: const TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                     color: Color(0xFF6E75A0),
                     fontWeight: FontWeight.w500,
                   ),
                   obscureText: obscureText,
                   keyboardType: keyboardType,
                   controller: controller,
-                  // validator: validator,
                   maxLength: maxLength,
                   decoration: const InputDecoration(
+                    isDense: true,
+                    contentPadding: EdgeInsets.zero,
                     border: InputBorder.none,
                     enabledBorder: InputBorder.none,
                   ),

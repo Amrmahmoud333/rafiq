@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq/views/shared/edit_input_field.dart';
+import 'package:rafiq/views/profile/widgets/edit/widgets/edit_input_field.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
