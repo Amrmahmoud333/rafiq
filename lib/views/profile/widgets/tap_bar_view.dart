@@ -25,7 +25,7 @@ class TabBarViewWidget extends StatelessWidget {
             Posts(),
             Images(),
             Videos(),
-            const Maps(),
+            Maps(),
           ],
         ),
       ),

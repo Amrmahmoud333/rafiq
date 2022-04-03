@@ -1,59 +1,40 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:rafiq/data/models/add_marker_model.dart';
+import 'package:rafiq/logic/cubit/marker_cubit/marker_cubit.dart';
 
-class Maps extends StatefulWidget {
-  const Maps({Key? key}) : super(key: key);
-
-  @override
-  State<Maps> createState() => _MapsState();
-}
-
-class _MapsState extends State<Maps> with AutomaticKeepAliveClientMixin {
+class Maps extends StatelessWidget {
   late GoogleMapController _mapController;
 
   var myMarkers = HashSet<Marker>(); // collection
 
-  Future<void> onMapCreated(GoogleMapController controller) async {
-    _mapController = controller;
-    String value = await DefaultAssetBundle.of(context)
-        .loadString('assets/map_style.json');
-    _mapController.setMapStyle(value);
-    setState(() {
-      myMarkers.add(
-        const Marker(
-          markerId: MarkerId('1'),
-          position: LatLng(10, 50),
-        ),
-      );
-    });
-  }
-
-  handelTap(LatLng latLng) {
-    setState(() {
-      myMarkers.add(
-        Marker(
-          markerId: MarkerId(latLng.toString()),
-          position: latLng,
-          draggable: true,
-        ),
-      );
-    });
-  }
-
-  @override
-  // to solve BufferQueue has been abandoned
-  bool get wantKeepAlive => true;
-
   @override
   Widget build(BuildContext context) {
+    var cubit = BlocProvider.of<MarkerCubit>(context);
     double h(double n) {
       return MediaQuery.of(context).size.height * (n / 851);
     }
 
     double w(double n) {
       return MediaQuery.of(context).size.height * (n / 393);
+    }
+
+    handelTap(LatLng latLng) {
+      cubit.addMarker(AddMarkRequestModel(
+        type: 'done',
+        latitude: latLng.latitude,
+        longitude: latLng.longitude,
+      ));
+    }
+
+    Future<void> onMapCreated(GoogleMapController controller) async {
+      _mapController = controller;
+      String value = await DefaultAssetBundle.of(context)
+          .loadString('assets/map_style.json');
+      _mapController.setMapStyle(value);
     }
 
     return SingleChildScrollView(
@@ -88,11 +69,5 @@ class _MapsState extends State<Maps> with AutomaticKeepAliveClientMixin {
         ],
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _mapController.dispose();
-    super.dispose();
   }
 }

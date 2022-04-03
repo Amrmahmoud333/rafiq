@@ -29,25 +29,25 @@ class AddMarkResponseModel {
 
 class Results {
   String? message;
-  Marker? marker;
+  Markers? marker;
 
   Results({this.message, this.marker});
 
   Results.fromJson(Map<String, dynamic> json) {
     message = json['message'];
-    marker = json['marker'] != null ? Marker.fromJson(json['marker']) : null;
+    marker = json['marker'] != null ? Markers.fromJson(json['marker']) : null;
   }
 }
 
-class Marker {
+class Markers {
   double? latitude;
   double? longitude;
   String? type;
   String? sId;
 
-  Marker({this.latitude, this.longitude, this.type, this.sId});
+  Markers({this.latitude, this.longitude, this.type, this.sId});
 
-  Marker.fromJson(Map<String, dynamic> json) {
+  Markers.fromJson(Map<String, dynamic> json) {
     latitude = json['latitude'];
     longitude = json['longitude'];
     type = json['type'];

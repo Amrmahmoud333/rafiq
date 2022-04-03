@@ -8,9 +8,11 @@ import 'package:rafiq/data/data_API/authentication/login_API.dart';
 import 'package:rafiq/data/data_API/cover_image_API.dart';
 import 'package:rafiq/data/data_API/dio_helper.dart';
 import 'package:rafiq/data/data_API/authentication/register_api.dart';
+import 'package:rafiq/data/data_API/marker_API.dart';
 import 'package:rafiq/data/data_API/user_data_API.dart';
 import 'package:rafiq/logic/cubit/forget_cubit/forget_cubit.dart';
 import 'package:rafiq/logic/cubit/login_cubit/login_cubit.dart';
+import 'package:rafiq/logic/cubit/marker_cubit/marker_cubit.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 import 'package:rafiq/logic/cubit/register_cubit/register_cubit.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
@@ -49,6 +51,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<ProfileCubit>(
           create: (context) => ProfileCubit(coverImageRepo: CoverImageAPI()),
+        ),
+        BlocProvider<MarkerCubit>(
+          create: (context) => MarkerCubit(markerRepo: MarkerAPI()),
         ),
       ],
       child: MaterialApp(

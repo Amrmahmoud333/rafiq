@@ -4,3 +4,11 @@ part of 'marker_cubit.dart';
 abstract class MarkerState {}
 
 class MarkerInitial extends MarkerState {}
+
+class AddMarkerLoadingStete extends MarkerState {}
+
+class AddMarkerSuccessStete extends MarkerState {}
+
+class AddMarkerErrorStete extends MarkerState {}
+
+class AddNewMarkerState extends MarkerState {}
