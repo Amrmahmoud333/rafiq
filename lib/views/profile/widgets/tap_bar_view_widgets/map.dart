@@ -27,20 +27,6 @@ class _MapsState extends State<Maps> with AutomaticKeepAliveClientMixin {
           position: LatLng(10, 50),
         ),
       );
-      myMarkers.add(
-        const Marker(
-          markerId: MarkerId('2'),
-          position: LatLng(10, 20),
-        ),
-      );
-      myMarkers.add(
-        Marker(
-          markerId: MarkerId('5'),
-          position: LatLng(10, 25),
-          icon:
-              BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
-        ),
-      );
     });
   }
 
