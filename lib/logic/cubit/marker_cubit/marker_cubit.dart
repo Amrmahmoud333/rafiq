@@ -6,7 +6,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:meta/meta.dart';
 import 'package:rafiq/data/models/add_marker_model.dart';
 import 'package:rafiq/data/models/get_marker_model.dart';
-import 'package:rafiq/data/repositories/marker_repo.dart';
+import 'package:rafiq/data/repositories/profile/marker_repo.dart';
 import 'package:flutter/material.dart';
 
 part 'marker_state.dart';
