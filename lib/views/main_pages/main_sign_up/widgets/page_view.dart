@@ -15,9 +15,9 @@ class PageViewWidget extends StatelessWidget {
       child: PageView(
         onPageChanged: (index) {
           if (index == 2) {
-            cubit.IsLastPageInPageView(index);
+            cubit.isLastPageInPageView(index);
           } else
-            cubit.NotIsLastPageInPageView(index);
+            cubit.notIsLastPageInPageView(index);
 
           print(cubit.lable);
           print(cubit);

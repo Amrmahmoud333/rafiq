@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:image_viewer/image_viewer.dart';
 import 'package:rafiq/data/chach_helper.dart';
 
 class NotificationScreen extends StatelessWidget {
@@ -23,7 +22,7 @@ class NotificationScreen extends StatelessWidget {
             onPressed: () {
               //   ImageViewer.showImageSlider(images: list);
             },
-            child: Text('child'),
+            child: const Text('child'),
           ),
         ],
       ),

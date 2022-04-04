@@ -31,7 +31,7 @@ class ProfileScreen extends StatelessWidget {
 
             _tabController.addListener(
               () => BlocProvider.of<ProfileCubit>(context)
-                  .ChangeIndex(_tabController.index),
+                  .changeIndex(_tabController.index),
             );
             return Scaffold(
               body: NestedScrollView(

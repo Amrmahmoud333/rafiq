@@ -15,7 +15,7 @@ class MainHomeCubit extends Cubit<MainHomeState> {
     HomeScreen(),
     const TripScreen(),
     NotificationScreen(),
-    ProfileScreen(),
+    const ProfileScreen(),
   ];
   void changeIndexForNavScreen(index) {
     currentIndex = index;

@@ -92,7 +92,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
   }
 
   int currentIndex = 0;
-  void ChangeIndex(index) {
+  void changeIndex(index) {
     currentIndex = index;
     emit(ProfileChangeIndexState());
   }
