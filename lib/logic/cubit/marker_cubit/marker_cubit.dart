@@ -30,13 +30,13 @@ class MarkerCubit extends Cubit<MarkerState> {
   }
 
   late GetMarkerResponseModel getMarkerResponseModel;
-  late Set<Marker> myMarkers;
+  late List<dynamic> myMarkers;
 
   Future<void> getMarker() async {
     emit(GetMarkerSuccessStete());
     try {
       getMarkerResponseModel = await markerRepo.getMarkRepo();
-      //  myMarkers = getMarkerResponseModel.results.travelMap;
+      myMarkers = getMarkerResponseModel.results!.travelMap!;
       emit(GetMarkerSuccessStete());
     } on DioError catch (error) {
       print(error.error.toString() + 'from marker cubit');
