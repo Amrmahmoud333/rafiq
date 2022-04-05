@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:rafiq/data/chach_helper.dart';
 
 class AddPost extends StatelessWidget {
   const AddPost({Key? key}) : super(key: key);
@@ -14,6 +15,7 @@ class AddPost extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
+    String avatar = CahchHelper.getData(key: 'avatar');
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xffE8DEEB),
@@ -58,22 +60,49 @@ class AddPost extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     border:
                         Border.all(color: const Color(0xffE8DEEB), width: 2),
-                    image: const DecorationImage(
+                    image: DecorationImage(
                       fit: BoxFit.fill,
-                      image: AssetImage('assets/images/clouds.png'),
+                      image: NetworkImage(avatar),
                     ),
                   ),
                 ),
                 SizedBox(width: w(9)),
-                const AutoSizeText(
-                  'Amr Mahmoud',
-                  style: TextStyle(
+                AutoSizeText(
+                  CahchHelper.getData(key: 'userName'),
+                  style: const TextStyle(
                     fontSize: 20,
                     color: Color(0XFF5B618A),
                     fontFamily: 'DavidLibre',
                   ),
                 ),
               ],
+            ),
+            SizedBox(
+              height: h(400),
+              width: w(370),
+              //  color: Colors.amber,
+              child: const TextField(
+                expands: true,
+                maxLines: null,
+                style: TextStyle(
+                  fontSize: 25,
+                  color: Color(0xFF6E75A0),
+                  fontWeight: FontWeight.w500,
+                ),
+                keyboardType: TextInputType.multiline,
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: 'add text...',
+                  hintStyle:
+                      TextStyle(fontSize: 25.0, color: Color(0xFF6E75A0)),
+                ),
+                /*String value = "";
+                TextField(
+                   onChanged: (text) {
+                      value = text;
+                          },
+                        )*/
+              ),
             ),
           ],
         ),
