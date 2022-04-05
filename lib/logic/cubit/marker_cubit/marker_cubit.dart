@@ -43,4 +43,6 @@ class MarkerCubit extends Cubit<MarkerState> {
       emit(GetMarkerErrorStete());
     }
   }
+
+  String type = 'done';
 }

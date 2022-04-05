@@ -24,11 +24,17 @@ class Maps extends StatelessWidget {
     }
 
     handelTap(LatLng latLng) {
-      cubit.addMarker(AddMarkRequestModel(
-        type: 'done',
-        latitude: latLng.latitude,
-        longitude: latLng.longitude,
-      ));
+      cubit.type == 'done'
+          ? cubit.addMarker(AddMarkRequestModel(
+              type: 'done',
+              latitude: latLng.latitude,
+              longitude: latLng.longitude,
+            ))
+          : cubit.addMarker(AddMarkRequestModel(
+              type: 'wish',
+              latitude: latLng.latitude,
+              longitude: latLng.longitude,
+            ));
     }
 
     Future<void> onMapCreated(GoogleMapController controller) async {
@@ -72,7 +78,9 @@ class Maps extends StatelessWidget {
                       Container(
                           color: Colors.grey.withOpacity(0.8),
                           child: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              cubit.type = 'done';
+                            },
                             icon: const FaIcon(
                               FontAwesomeIcons.marker,
                               color: Colors.blue,
@@ -81,7 +89,9 @@ class Maps extends StatelessWidget {
                       Container(
                           color: Colors.grey.withOpacity(0.8),
                           child: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              cubit.type = 'wish';
+                            },
                             icon: const FaIcon(
                               FontAwesomeIcons.marker,
                               color: Colors.red,

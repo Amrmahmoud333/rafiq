@@ -23,7 +23,7 @@ void main() async {
   await CahchHelper.init();
   DioHelper.init();
 
-  runApp(DevicePreview(enabled: false, builder: (context) => MyApp()));
+  runApp(DevicePreview(enabled: false, builder: (context) => const MyApp()));
 }
 
 final AppRouter appRouter = AppRouter();
