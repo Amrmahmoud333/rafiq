@@ -20,7 +20,6 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     }
 
     return AppBar(
-      //  toolbarHeight: h(100),
       backgroundColor: const Color(0xffE8DEEB),
       title: InkWell(
         onTap: () {

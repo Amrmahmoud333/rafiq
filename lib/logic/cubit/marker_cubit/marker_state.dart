@@ -18,3 +18,5 @@ class GetMarkerSuccessStete extends MarkerState {}
 class GetMarkerErrorStete extends MarkerState {}
 
 class GetNewMarkerState extends MarkerState {}
+
+class ChangeIsDoneState extends MarkerState {}
