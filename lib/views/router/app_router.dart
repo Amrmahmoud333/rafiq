@@ -44,6 +44,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const MainHomeScreen());
       case MainSignUpScreen.routeName:
         return MaterialPageRoute(builder: (_) => const MainSignUpScreen());
+      case AddPost.routeName:
+        return MaterialPageRoute(builder: (_) => const AddPost());
       default:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
     }

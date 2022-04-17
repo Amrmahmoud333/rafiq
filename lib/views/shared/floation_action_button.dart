@@ -35,13 +35,19 @@ class CustomFloationActionButton extends StatelessWidget {
           ],*/
         ),
         decoration: const BoxDecoration(
-            shape: BoxShape.circle,
-            gradient: LinearGradient(
-                colors: [Color(0xffB99AC2), Color(0xff906F9ABD)])),
+          shape: BoxShape.circle,
+          gradient: LinearGradient(
+            colors: [
+              Color(0xffB99AC2),
+              Color(0xff906F9ABD),
+            ],
+          ),
+        ),
       ),
       onPressed: () {
         Navigator.pushNamed(context, AddPost.routeName);
       },
+      heroTag: null,
     );
   }
 }
