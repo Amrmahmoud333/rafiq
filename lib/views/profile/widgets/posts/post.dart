@@ -5,9 +5,16 @@ import 'package:flutter_svg/svg.dart';
 import 'package:rafiq/data/chach_helper.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 
-class Post extends StatelessWidget {
+class Post extends StatefulWidget {
   const Post({Key? key}) : super(key: key);
 
+  @override
+  State<Post> createState() => _PostState();
+}
+
+class _PostState extends State<Post> {
+  bool isMore = true;
+  String label = 'See More';
   @override
   Widget build(BuildContext context) {
     double h(double n) {
@@ -138,22 +145,43 @@ class Post extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              const AutoSizeText(
-                'Albania possesses significant diversity with the landscape ranging from the snow-capped mountains in the Albanian Alps as well as the Korab, Skanderbeg, Pindus and Ceraunian Mountains to the hot and sunny coasts of the Albanian Adriatic and Ionian Sea along the Mediterranean Sea.',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  color: Color(0XFF5B618A),
-                  fontFamily: 'DavidLibre',
-                ),
-                maxLines: 2,
-                minFontSize: 18,
-                overflow: TextOverflow.ellipsis,
-              ),
+              isMore
+                  ? SizedBox(
+                      width: w(354),
+                      child: const AutoSizeText(
+                        'Albania possesses significant diversity with the landscape ranging from the snow-capped mountains in the Albanian Alps as well as the Korab, Skanderbeg, Pindus and Ceraunian Mountains to the hot and sunny coasts of the Albanian Adriatic and Ionian Sea along the Mediterranean Sea.',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0XFF5B618A),
+                          fontFamily: 'DavidLibre',
+                        ),
+                        maxLines: 2,
+                        minFontSize: 18,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    )
+                  : SizedBox(
+                      width: w(354),
+                      child: const AutoSizeText(
+                        'Albania possesses significant diversity with the landscape ranging from the snow-capped mountains in the Albanian Alps as well as the Korab, Skanderbeg, Pindus and Ceraunian Mountains to the hot and sunny coasts of the Albanian Adriatic and Ionian Sea along the Mediterranean Sea.',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0XFF5B618A),
+                          fontFamily: 'DavidLibre',
+                        ),
+                        minFontSize: 18,
+                      )),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  setState(() {
+                    isMore = !isMore;
+                    isMore ? label = 'See More...' : label = 'See Less...';
+                  });
+                },
                 child: AutoSizeText(
-                  'See More...',
+                  label,
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w500,

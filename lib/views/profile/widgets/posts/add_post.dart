@@ -8,7 +8,9 @@ import 'package:rafiq/views/profile/widgets/posts/widgets/add_container.dart';
 
 class AddPost extends StatelessWidget {
   const AddPost({Key? key}) : super(key: key);
+
   static const routeName = '/add_post';
+
   @override
   Widget build(BuildContext context) {
     double h(double n) {
