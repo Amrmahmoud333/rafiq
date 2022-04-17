@@ -75,6 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   key: 'userName',
                   value: cubit.loginModel.results!.user!.userName)
               .then((value) {});
+
           CahchHelper.saveData(
                   key: 'refreshToken',
                   value: cubit.loginModel.results!.refreshToken)

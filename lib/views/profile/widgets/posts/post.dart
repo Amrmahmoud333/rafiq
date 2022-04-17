@@ -1,7 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rafiq/data/chach_helper.dart';
+import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 
 class Post extends StatelessWidget {
   const Post({Key? key}) : super(key: key);
@@ -17,7 +19,7 @@ class Post extends StatelessWidget {
     }
 
     String avatar = CahchHelper.getData(key: 'avatar');
-
+    var cubit = context.read<UserDataCubit>();
     return Container(
       color: const Color(0xffDBD4DD),
       child: Column(
@@ -42,9 +44,9 @@ class Post extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: w(6)),
-                const AutoSizeText(
-                  'Amr Mahmoud',
-                  style: TextStyle(
+                AutoSizeText(
+                  '${cubit.firstName} ${cubit.lastName}',
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Color(0XFF5B618A),
@@ -56,23 +58,32 @@ class Post extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            width: w(332),
+          SizedBox(
+            width: w(390),
             height: h(224),
             child: ListView(
               scrollDirection: Axis.horizontal,
-              children: const [
-                Image(
-                  image: AssetImage('assets/images/test1.png'),
-                  fit: BoxFit.cover,
+              children: [
+                SizedBox(
+                  width: w(380),
+                  child: const Image(
+                    image: AssetImage('assets/images/test1.png'),
+                    fit: BoxFit.cover,
+                  ),
                 ),
-                Image(
-                  image: AssetImage('assets/images/test1.png'),
-                  fit: BoxFit.cover,
+                SizedBox(
+                  width: w(380),
+                  child: const Image(
+                    image: AssetImage('assets/images/test1.png'),
+                    fit: BoxFit.cover,
+                  ),
                 ),
-                Image(
-                  image: AssetImage('assets/images/test2.png'),
-                  fit: BoxFit.cover,
+                SizedBox(
+                  width: w(380),
+                  child: const Image(
+                    image: AssetImage('assets/images/test2.png'),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ],
             ),
@@ -82,13 +93,12 @@ class Post extends StatelessWidget {
             children: [
               SizedBox(width: w(9)),
               Column(
-                children: [
-                  SvgPicture.asset(
-                    'assets/images/love.svg',
-                    width: w(27),
-                    height: h(27),
+                children: const [
+                  Icon(
+                    Icons.heart_broken,
+                    color: Color(0XFF5B618A),
                   ),
-                  const AutoSizeText(
+                  AutoSizeText(
                     '10',
                     style: TextStyle(
                       fontSize: 12,
@@ -124,6 +134,37 @@ class Post extends StatelessWidget {
               ),
             ],
           ),
+          SizedBox(height: h(9)),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              const AutoSizeText(
+                'Albania possesses significant diversity with the landscape ranging from the snow-capped mountains in the Albanian Alps as well as the Korab, Skanderbeg, Pindus and Ceraunian Mountains to the hot and sunny coasts of the Albanian Adriatic and Ionian Sea along the Mediterranean Sea.',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0XFF5B618A),
+                  fontFamily: 'DavidLibre',
+                ),
+                maxLines: 2,
+                minFontSize: 18,
+                overflow: TextOverflow.ellipsis,
+              ),
+              InkWell(
+                onTap: () {},
+                child: AutoSizeText(
+                  'See More...',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
+                    color: const Color(0XFF5B618A).withOpacity(0.60),
+                    fontFamily: 'DavidLibre',
+                  ),
+                ),
+              ),
+              SizedBox(height: h(7)),
+            ],
+          )
         ],
       ),
     );

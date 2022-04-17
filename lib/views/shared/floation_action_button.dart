@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rafiq/views/profile/widgets/posts/add_post.dart';
 
 class CustomFloationActionButton extends StatelessWidget {
   const CustomFloationActionButton({
@@ -38,7 +39,9 @@ class CustomFloationActionButton extends StatelessWidget {
             gradient: LinearGradient(
                 colors: [Color(0xffB99AC2), Color(0xff906F9ABD)])),
       ),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.pushNamed(context, AddPost.routeName);
+      },
     );
   }
 }
