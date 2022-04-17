@@ -1,10 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/data/chach_helper.dart';
+import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 import 'package:rafiq/views/profile/widgets/posts/widgets/add_container.dart';
 
 // TODO add name insted of user name
-// TODO remove underline in text field
 
 class AddPost extends StatelessWidget {
   const AddPost({Key? key}) : super(key: key);
@@ -22,6 +23,7 @@ class AddPost extends StatelessWidget {
     }
 
     String avatar = CahchHelper.getData(key: 'avatar');
+    var cubit = context.read<UserDataCubit>();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xffE8DEEB),
@@ -75,13 +77,23 @@ class AddPost extends StatelessWidget {
                     ),
                   ),
                   SizedBox(width: w(9)),
-                  AutoSizeText(
-                    CahchHelper.getData(key: 'userName'),
-                    style: const TextStyle(
-                      fontSize: 20,
-                      color: Color(0XFF5B618A),
-                      fontFamily: 'DavidLibre',
-                    ),
+                  BlocBuilder<UserDataCubit, UserDataState>(
+                    builder: (context, state) {
+                      if (state is UserGetDataLoadingState) {
+                        return const AutoSizeText(
+                          '',
+                        );
+                      } else {
+                        return AutoSizeText(
+                          '${cubit.firstName} ${cubit.lastName}',
+                          style: const TextStyle(
+                            fontSize: 20,
+                            color: Color(0XFF5B618A),
+                            fontFamily: 'DavidLibre',
+                          ),
+                        );
+                      }
+                    },
                   ),
                 ],
               ),

@@ -15,7 +15,7 @@ class Posts extends StatelessWidget {
     return ListView.builder(
       itemBuilder: (context, index) => Padding(
         padding: EdgeInsets.only(top: h(14)),
-        child: Post(),
+        child: const Post(),
       ),
       itemCount: 5,
     );
