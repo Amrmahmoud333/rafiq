@@ -1,8 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:rafiq/data/chach_helper.dart';
 import 'package:rafiq/views/profile/widgets/posts/widgets/add_container.dart';
+
+// TODO add name insted of user name
+// TODO remove underline in text field
 
 class AddPost extends StatelessWidget {
   const AddPost({Key? key}) : super(key: key);

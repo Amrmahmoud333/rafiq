@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="27" height="27" viewBox="0 0 27 27">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_222" data-name="Rectangle 222" width="27" height="27" transform="translate(0 0.309)" fill="none" stroke="#5b618a" stroke-width="0.5"/>
+    </clipPath>
+  </defs>
+  <g id="love" transform="translate(0 -0.309)" clip-path="url(#clip-path)">
+    <g id="Heart" transform="translate(-0.362 0.133)">
+      <path id="Path_956" data-name="Path 956" d="M0,0H27.26V26.287H0Z" fill="rgba(0,0,0,0)"/>
+      <path id="Path_957" data-name="Path 957" d="M15.442,26.223l-1.647-1.446c-5.85-5.115-9.711-8.488-9.711-12.629A6.079,6.079,0,0,1,10.33,6.125a6.907,6.907,0,0,1,5.111,2.289,6.907,6.907,0,0,1,5.111-2.289A6.079,6.079,0,0,1,26.8,12.149c0,4.14-3.862,7.514-9.711,12.639Z" transform="translate(-1.812 -2.839)" fill="none" stroke="#5b618a" stroke-width="1.8"/>
+    </g>
+  </g>
+</svg>

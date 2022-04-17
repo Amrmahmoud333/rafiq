@@ -21,7 +21,7 @@ class AppRouter {
       case '/':
         return MaterialPageRoute(
             builder: (context) => (token != null && rememberMe == true)
-                ? const AddPost()
+                ? const MainHomeScreen()
                 : const LoginScreen());
 
       case FirstForgetPassword.routeName:

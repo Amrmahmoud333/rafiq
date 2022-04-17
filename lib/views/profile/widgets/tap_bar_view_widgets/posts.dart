@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:rafiq/core/themes/theme.dart';
+import 'package:rafiq/views/profile/widgets/posts/post.dart';
 
 class Posts extends StatelessWidget {
   Posts({Key? key}) : super(key: key);
@@ -58,12 +59,20 @@ class Posts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double h(double n) {
+      return MediaQuery.of(context).size.height * (n / 851);
+    }
+
+    double w(double n) {
+      return MediaQuery.of(context).size.width * (n / 393);
+    }
+
     return ListView.builder(
       itemBuilder: (context, index) => Padding(
-        padding: const EdgeInsets.only(top: 10, bottom: 100),
-        child: Center(child: posts[index]),
+        padding: EdgeInsets.only(top: h(14)),
+        child: const Post(),
       ),
-      itemCount: posts.length,
+      itemCount: 5,
     );
   }
 }
