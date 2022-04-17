@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rafiq/data/data_API/profile/cover_image_API.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 import 'package:rafiq/views/profile/widgets/cover/cover.dart';
 import 'package:rafiq/views/profile/widgets/edit/edit_button.dart';
@@ -77,7 +76,6 @@ class ProfileScreen extends StatelessWidget {
               ),
             );
           }),
-        ),
       ),
     );
   }

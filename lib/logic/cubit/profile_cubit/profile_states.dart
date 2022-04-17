@@ -37,16 +37,3 @@ class DeleteAvatarLoadingState extends ProfileStates {}
 class DeleteAvatarSuccessState extends ProfileStates {}
 
 class DeleteAvatarErrorState extends ProfileStates {}
-
-// edit button profile data state
-class ChangeLableOfButtonState extends ProfileStates {}
-
-class ChangeBackGroundColorOfButtonState extends ProfileStates {}
-
-class ChangeColorLableOfButtonState extends ProfileStates {}
-
-class ChangeCountryValueState extends ProfileStates {}
-
-class ChangeGenderValueState extends ProfileStates {}
-
-class ChandeDateTimeState extends ProfileStates {}
