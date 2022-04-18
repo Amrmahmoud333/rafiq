@@ -2,8 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/core/themes/theme.dart';
-import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
-import 'package:rafiq/logic/cubit/profile_cubit/profile_states.dart';
+import 'package:rafiq/logic/cubit/update_user_info_cubit/update_user_cubit.dart';
 
 class DateOfBirthInputField extends StatelessWidget {
   const DateOfBirthInputField({Key? key}) : super(key: key);
@@ -18,7 +17,7 @@ class DateOfBirthInputField extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
-    var cubit = context.read<ProfileCubit>();
+    var cubit = context.read<UpdateUserCubit>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -74,7 +73,7 @@ class DateOfBirthInputField extends StatelessWidget {
                 top: height(10),
                 left: width(8),
               ),
-              child: BlocBuilder<ProfileCubit, ProfileStates>(
+              child: BlocBuilder<UpdateUserCubit, UpdateUserState>(
                 builder: (context, state) => AutoSizeText(
                   cubit.dateOfBirth,
                   style: const TextStyle(

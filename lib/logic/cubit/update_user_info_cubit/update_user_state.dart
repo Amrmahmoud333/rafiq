@@ -10,3 +10,16 @@ class UpdateUserInfoLoadingState extends UpdateUserState {}
 class UpdateUserInfoSuccessState extends UpdateUserState {}
 
 class UpdateUserInfoErrorState extends UpdateUserState {}
+
+// edit button profile data state
+class ChangeLableOfButtonState extends UpdateUserState {}
+
+class ChangeBackGroundColorOfButtonState extends UpdateUserState {}
+
+class ChangeColorLableOfButtonState extends UpdateUserState {}
+
+class ChangeCountryValueState extends UpdateUserState {}
+
+class ChangeGenderValueState extends UpdateUserState {}
+
+class ChandeDateTimeState extends UpdateUserState {}

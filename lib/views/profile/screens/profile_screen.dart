@@ -19,63 +19,61 @@ class ProfileScreen extends StatelessWidget {
       return MediaQuery.of(context).size.height * (n / 851);
     }
 
-    return BlocProvider(
-      create: (context) => ProfileCubit(coverImageRepo: CoverImageAPI()),
-      child: DefaultTabController(
-        length: 4,
-        initialIndex: 0,
-        child: SafeArea(
-          child: Builder(builder: (context) {
-            TabController _tabController = DefaultTabController.of(context)!;
+    return DefaultTabController(
+      length: 4,
+      initialIndex: 0,
+      child: SafeArea(
+        child: Builder(builder: (context) {
+          TabController _tabController = DefaultTabController.of(context)!;
 
-            _tabController.addListener(
-              () => BlocProvider.of<ProfileCubit>(context)
-                  .changeIndex(_tabController.index),
-            );
-            return Scaffold(
-              body: NestedScrollView(
-                // physics: ScrollPhysics(parent: PageScrollPhysics()),
-                headerSliverBuilder: (context, innerBoxIsScrolled) {
-                  return [
-                    SliverList(
-                      delegate: SliverChildListDelegate(
-                        [
-                          Column(
-                            children: [
-                              SizedBox(
-                                height: h(288),
-                                child: Stack(
-                                  children: const [
-                                    Cover(),
-                                    AvatarPhoto(),
-                                    ProfileName(),
-                                    EditButton(),
-                                  ],
-                                ),
+          _tabController.addListener(
+            () => BlocProvider.of<ProfileCubit>(context)
+                .changeIndex(_tabController.index),
+          );
+          return Scaffold(
+            body: NestedScrollView(
+              // physics: ScrollPhysics(parent: PageScrollPhysics()),
+              headerSliverBuilder: (context, innerBoxIsScrolled) {
+                return [
+                  SliverList(
+                    delegate: SliverChildListDelegate(
+                      [
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: h(288),
+                              child: Stack(
+                                children: const [
+                                  Cover(),
+                                  AvatarPhoto(),
+                                  ProfileName(),
+                                  EditButton(),
+                                ],
                               ),
-                              SizedBox(
-                                height: h(31),
-                              ),
-                              const ProfileInformation(),
-                              SizedBox(
-                                height: h(25),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                            ),
+                            SizedBox(
+                              height: h(31),
+                            ),
+                            const ProfileInformation(),
+                            SizedBox(
+                              height: h(25),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                    SliverAppBarWidget(
-                        innerBoxIsScrolled: innerBoxIsScrolled,
-                        tabController: _tabController)
-                  ];
-                },
-                body: TabBarViewWidget(
-                  tabController: _tabController,
-                ),
+                  ),
+                  SliverAppBarWidget(
+                      innerBoxIsScrolled: innerBoxIsScrolled,
+                      tabController: _tabController)
+                ];
+              },
+              body: TabBarViewWidget(
+                tabController: _tabController,
               ),
-            );
-          }),
+            ),
+          );
+        }),
       ),
     );
   }

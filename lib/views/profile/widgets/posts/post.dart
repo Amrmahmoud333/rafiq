@@ -101,10 +101,14 @@ class _PostState extends State<Post> {
               SizedBox(width: w(9)),
               Column(
                 children: const [
-                  Icon(
-                    Icons.heart_broken,
-                    color: Color(0XFF5B618A),
+                  InkWell(
+                    child: Icon(
+                      Icons.favorite_border,
+                      color: Color(0XFF5B618A),
+                      size: 30,
+                    ),
                   ),
+                  //   Icons.favorite,
                   AutoSizeText(
                     '10',
                     style: TextStyle(
@@ -118,10 +122,12 @@ class _PostState extends State<Post> {
               SizedBox(width: w(24)),
               Column(
                 children: [
-                  SvgPicture.asset(
-                    'assets/images/comments.svg',
-                    width: w(27),
-                    height: h(27),
+                  InkWell(
+                    child: SvgPicture.asset(
+                      'assets/images/comments.svg',
+                      width: w(27),
+                      height: h(27),
+                    ),
                   ),
                   const AutoSizeText(
                     '2',
@@ -134,10 +140,12 @@ class _PostState extends State<Post> {
                 ],
               ),
               SizedBox(width: w(244)),
-              SvgPicture.asset(
-                'assets/images/share.svg',
-                width: w(27),
-                height: h(27),
+              InkWell(
+                child: SvgPicture.asset(
+                  'assets/images/share.svg',
+                  width: w(27),
+                  height: h(27),
+                ),
               ),
             ],
           ),
