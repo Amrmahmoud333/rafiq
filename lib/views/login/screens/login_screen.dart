@@ -143,25 +143,19 @@ class _LoginScreenState extends State<LoginScreen> {
                                   sizeoflabel: 18,
                                   obscureText: false,
                                   controller: emailController,
-                                  // validator: customValidteEmail,
                                 ),
                                 SizedBox(height: h(34)),
                                 InputField(
-                                  //  formKey: fromKey,
                                   label: 'Password',
                                   sizeoflabel: 18,
                                   obscureText: cubit.obscureText,
-                                  //   validator: customValidtePasswrod,
                                   controller: passwordController,
                                   widget: InkWell(
                                     onTap: () {
                                       cubit.changeObscureText();
                                     },
                                     child: AutoSizeText(
-                                      BlocProvider.of<LoginCubit>(context)
-                                              .obscureText
-                                          ? 'Show'
-                                          : 'Hide',
+                                      cubit.obscureText ? 'Show' : 'Hide',
                                       style: const TextStyle(
                                         fontSize: 16,
                                         fontFamily: 'DavidLibre',
@@ -192,9 +186,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               value: cubit.checkedBox);
                                         }
                                       },
-                                      child: CustomCheckBox(context
-                                          .read<LoginCubit>()
-                                          .checkedBox),
+                                      child: CustomCheckBox(cubit.checkedBox),
                                     ),
                                     SizedBox(
                                       width: w(8),
@@ -247,9 +239,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                     fallback: (context) => SizedBox(
                                       width: w(200),
                                       child: Center(
-                                          child: CircularProgressIndicator(
-                                        color: Theme.of(context).primaryColor,
-                                      )),
+                                        child: CircularProgressIndicator(
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),

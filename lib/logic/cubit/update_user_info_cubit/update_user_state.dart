@@ -23,3 +23,5 @@ class ChangeCountryValueState extends UpdateUserState {}
 class ChangeGenderValueState extends UpdateUserState {}
 
 class ChandeDateTimeState extends UpdateUserState {}
+
+class ChangeObscureTextState extends UpdateUserState {}

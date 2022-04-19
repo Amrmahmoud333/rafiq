@@ -26,7 +26,6 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               EditInputField(
-                validator: customValidteEmail,
                 label: 'label',
                 obscureText: false,
                 sizeoflabel: 18,

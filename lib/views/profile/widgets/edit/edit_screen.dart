@@ -1,10 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq/data/data_API/profile/update_user_info_API.dart';
 import 'package:rafiq/logic/cubit/update_user_info_cubit/update_user_cubit.dart';
+import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 
 import 'package:rafiq/views/main_pages/main_sign_up/sign_up_classes/widget/container_choose.dart';
 import 'package:rafiq/views/profile/widgets/edit/widgets/country_input_field.dart';
@@ -29,16 +31,19 @@ class EditScreen extends StatelessWidget {
     }
 
     TextEditingController firstNameController = TextEditingController()
-      ..text = 'firstName'; //context.read<UserDataCubit>().firstName!;
+      ..text = ' ${context.read<UserDataCubit>().firstName!}';
+
     TextEditingController lastNameController = TextEditingController()
-      ..text = 'lastName'; //context.read<UserDataCubit>().lastName!;
-    TextEditingController passwordController;
-    TextEditingController facebookController = TextEditingController()
-      ..text = 'facebook';
-    TextEditingController instagramController = TextEditingController()
-      ..text = 'instagram';
-    TextEditingController tiktokController = TextEditingController()
-      ..text = 'tiktok';
+      ..text = '${context.read<UserDataCubit>().lastName!}';
+
+    TextEditingController passwordController = TextEditingController();
+
+    TextEditingController facebookController = TextEditingController();
+
+    TextEditingController instagramController = TextEditingController();
+
+    TextEditingController tiktokController = TextEditingController();
+
     return BlocProvider(
       create: (context) =>
           UpdateUserCubit(updataUserInfoRepo: UpdateUserInfoAPI()),
@@ -128,11 +133,34 @@ class EditScreen extends StatelessWidget {
                   SizedBox(height: height(31)),
                   const DateOfBirthInputField(),
                   SizedBox(height: height(31)),
-                  const EditInputField(
-                    label: 'Password',
-                    sizeoflabel: 20,
-                    obscureText: false,
-                    keyboardType: TextInputType.text,
+                  BlocBuilder<UpdateUserCubit, UpdateUserState>(
+                    builder: (context, state) {
+                      return EditInputField(
+                        label: 'Password',
+                        sizeoflabel: 20,
+                        obscureText:
+                            context.read<UpdateUserCubit>().obscureText,
+                        keyboardType: TextInputType.visiblePassword,
+                        controller: passwordController,
+                        widget: InkWell(
+                          onTap: () {
+                            context.read<UpdateUserCubit>().changeObscureText();
+                          },
+                          child: AutoSizeText(
+                            BlocProvider.of<UpdateUserCubit>(context)
+                                    .obscureText
+                                ? 'Show'
+                                : 'Hide',
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontFamily: 'DavidLibre',
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xFF5B618A),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
                   ),
                   SizedBox(height: height(31)),
                   EditInputField(
@@ -250,57 +278,58 @@ class EditScreen extends StatelessWidget {
                       child: SvgPicture.asset(
                           'assets/images/edit_profile/plane.svg'),
                     ),
-                    BlocBuilder<UpdateUserCubit, UpdateUserState>(
-                      builder: (context, state) {
-                        return Positioned(
-                          right: width(128),
-                          bottom: height(26),
-                          child: BlocBuilder<UpdateUserCubit, UpdateUserState>(
-                            builder: (context, state) {
-                              var cubit = context.read<UpdateUserCubit>();
-                              return InkWell(
-                                onTap: () {
-                                  cubit
-                                      .changeLableOfButtonSaveEditProfileData();
-                                  cubit
-                                      .changeBackGroundColorOfButtonSaveEditProfileData();
-                                  cubit
-                                      .changeColorLableOfButtonSaveEditProfileData();
-                                },
-                                child: Container(
-                                  height: height(43),
-                                  width: width(136),
-                                  decoration: BoxDecoration(
-                                    boxShadow: const [
-                                      BoxShadow(
-                                        color: Color(0xff6E75A0),
-                                        blurRadius: 7,
-                                      ),
-                                    ],
-                                    border: Border.all(
-                                      color: const Color(0xff6E75A0),
-                                      width: 2,
+                    Positioned(
+                      right: width(128),
+                      bottom: height(26),
+                      child: BlocBuilder<UpdateUserCubit, UpdateUserState>(
+                        builder: (context, state) {
+                          var cubit = context.read<UpdateUserCubit>();
+                          return ConditionalBuilder(
+                            condition: (state is! UpdateUserInfoLoadingState),
+                            builder: (context) => InkWell(
+                              onTap: () {
+                                cubit.changeLableOfButtonSaveEditProfileData();
+                                cubit
+                                    .changeBackGroundColorOfButtonSaveEditProfileData();
+                                cubit
+                                    .changeColorLableOfButtonSaveEditProfileData();
+                              },
+                              child: Container(
+                                height: height(43),
+                                width: width(136),
+                                decoration: BoxDecoration(
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      color: Color(0xff6E75A0),
+                                      blurRadius: 7,
                                     ),
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: cubit.backGroundBottonColor,
+                                  ],
+                                  border: Border.all(
+                                    color: const Color(0xff6E75A0),
+                                    width: 2,
                                   ),
-                                  child: Center(
-                                    child: AutoSizeText(
-                                      cubit.lable,
-                                      style: TextStyle(
-                                        color: cubit.colorOFLable,
-                                        fontSize: 25,
-                                        fontFamily: 'DavidLibre',
-                                        fontWeight: FontWeight.w500,
-                                      ),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: cubit.backGroundBottonColor,
+                                ),
+                                child: Center(
+                                  child: AutoSizeText(
+                                    cubit.lable,
+                                    style: TextStyle(
+                                      color: cubit.colorOFLable,
+                                      fontSize: 25,
+                                      fontFamily: 'DavidLibre',
+                                      fontWeight: FontWeight.w500,
                                     ),
                                   ),
                                 ),
-                              );
-                            },
-                          ),
-                        );
-                      },
+                              ),
+                            ),
+                            fallback: (context) => CircularProgressIndicator(
+                              color: Theme.of(context).primaryColor,
+                            ),
+                          );
+                        },
+                      ),
                     ),
                   ],
                 ),

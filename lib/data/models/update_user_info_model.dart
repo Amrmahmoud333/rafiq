@@ -17,7 +17,7 @@ class UpdateUserInfoReqModel {
       this.socialMedia});
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['firstName'] = firstName;
     data['lastName'] = lastName;
     data['country'] = country;
@@ -38,7 +38,7 @@ class SocialMedia {
   SocialMedia({this.userName, this.label});
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['userName'] = userName;
     data['label'] = label;
     return data;

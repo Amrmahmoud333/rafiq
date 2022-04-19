@@ -60,7 +60,7 @@ class _PostState extends State<Post> {
                     fontFamily: 'DavidLibre',
                   ),
                 ),
-                SizedBox(width: w(170)),
+                SizedBox(width: w(140)),
                 SvgPicture.asset('assets/images/Options.svg')
               ],
             ),

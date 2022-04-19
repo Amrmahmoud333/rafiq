@@ -11,7 +11,6 @@ class EditInputField extends StatelessWidget {
     this.controller,
     required this.sizeoflabel,
     this.keyboardType,
-    this.validator,
     this.maxLength,
     required this.obscureText,
   }) : super(key: key);
@@ -22,7 +21,6 @@ class EditInputField extends StatelessWidget {
   final double sizeoflabel;
   final TextInputType? keyboardType;
   final bool obscureText;
-  final FormFieldValidator<String>? validator;
   final int? maxLength;
   @override
   Widget build(BuildContext context) {

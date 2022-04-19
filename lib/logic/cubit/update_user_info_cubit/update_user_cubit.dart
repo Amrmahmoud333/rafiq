@@ -76,4 +76,10 @@ class UpdateUserCubit extends Cubit<UpdateUserState> {
     dateOfBirth = '${dateTime.day}/${dateTime.month}/${dateTime.year}';
     emit(ChandeDateTimeState());
   }
+
+  bool obscureText = true;
+  void changeObscureText() {
+    obscureText = !obscureText;
+    emit(ChangeObscureTextState());
+  }
 }
