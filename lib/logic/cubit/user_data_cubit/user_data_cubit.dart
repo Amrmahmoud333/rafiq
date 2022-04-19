@@ -18,10 +18,10 @@ class UserDataCubit extends Cubit<UserDataState> {
   String? country;
   String? dateOfBirth;
   String? gender;
-
+  List<SocialMedia>? socialMedia;
   int? numberOfFollowers;
   int? numberOfFollowings;
-
+  String? liveIn;
   Future<void> getUserData() async {
     emit(UserGetDataLoadingState());
     try {
@@ -34,10 +34,10 @@ class UserDataCubit extends Cubit<UserDataState> {
       userName = _userDataModel.results!.userName;
 
       dateOfBirth = _userDataModel.results!.dateOfBirth;
-
+      socialMedia = _userDataModel.results!.socialMedia;
       numberOfFollowers = _userDataModel.results!.numberOfFollowers;
       numberOfFollowings = _userDataModel.results!.numberOfFollowings;
-
+      liveIn = _userDataModel.results!.liveIn;
       CahchHelper.saveData(
               key: 'cover', value: _userDataModel.results!.cover.toString())
           .then((value) {});

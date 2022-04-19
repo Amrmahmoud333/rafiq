@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq/data/data_API/profile/update_user_info_API.dart';
+import 'package:rafiq/data/models/update_user_info_model.dart';
 import 'package:rafiq/logic/cubit/update_user_info_cubit/update_user_cubit.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 
@@ -30,6 +31,23 @@ class EditScreen extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
+    bool facebook = false, insta = false, tikTok = false;
+    int indexfaceBook = 0, indexInsta = 0, indexTiktok = 0;
+    for (var x = 0;
+        x < context.read<UserDataCubit>().socialMedia!.length;
+        x++) {
+      if (context.read<UserDataCubit>().socialMedia![x].label == 'facebook') {
+        facebook = true;
+        indexfaceBook = x;
+      } else if (context.read<UserDataCubit>().socialMedia![x].label ==
+          'instagram') {
+        insta = true;
+        indexInsta = x;
+      } else {
+        tikTok = true;
+        indexTiktok = x;
+      }
+    }
     TextEditingController firstNameController = TextEditingController()
       ..text = ' ${context.read<UserDataCubit>().firstName!}';
 
@@ -38,11 +56,42 @@ class EditScreen extends StatelessWidget {
 
     TextEditingController passwordController = TextEditingController();
 
-    TextEditingController facebookController = TextEditingController();
+    TextEditingController liveInController = TextEditingController()
+      ..text = context.read<UserDataCubit>().liveIn == null
+          ? ''
+          : '${context.read<UserDataCubit>().liveIn}';
 
-    TextEditingController instagramController = TextEditingController();
+    TextEditingController facebookController = TextEditingController()
+      ..text = !facebook
+          ? ''
+          : '${context.read<UserDataCubit>().socialMedia![indexfaceBook].userName}';
 
-    TextEditingController tiktokController = TextEditingController();
+    TextEditingController instagramController = TextEditingController()
+      ..text = !insta
+          ? ''
+          : '${context.read<UserDataCubit>().socialMedia![indexInsta].userName}';
+
+    TextEditingController tiktokController = TextEditingController()
+      ..text = !tikTok
+          ? ''
+          : '${context.read<UserDataCubit>().socialMedia![indexTiktok].userName}';
+
+    List<SocialMedia> listOfsocial = [];
+    if (facebookController != '') {
+      listOfsocial.add(
+        SocialMedia(label: 'facebook', userName: facebookController.text),
+      );
+    }
+    if (instagramController != '') {
+      listOfsocial.add(
+        SocialMedia(label: 'instagram', userName: instagramController.text),
+      );
+    }
+    if (tiktokController != '') {
+      listOfsocial.add(
+        SocialMedia(label: 'tiktok', userName: tiktokController.text),
+      );
+    }
 
     return BlocProvider(
       create: (context) =>
@@ -124,8 +173,9 @@ class EditScreen extends StatelessWidget {
                   SizedBox(height: height(31)),
                   const CountryInputField(),
                   SizedBox(height: height(31)),
-                  const EditInputField(
+                  EditInputField(
                     label: 'Lives in',
+                    controller: liveInController,
                     sizeoflabel: 20,
                     obscureText: false,
                     keyboardType: TextInputType.text,
@@ -203,6 +253,28 @@ class EditScreen extends StatelessWidget {
                         ),
                         SvgPicture.asset(
                             'assets/images/edit_profile/instagram.svg'),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: height(31)),
+                  EditInputField(
+                    controller: tiktokController,
+                    label: 'Youtube',
+                    sizeoflabel: 20,
+                    obscureText: false,
+                    keyboardType: TextInputType.text,
+                    widget: Row(
+                      children: [
+                        Container(
+                          height: height(38),
+                          width: width(4),
+                          color: const Color(0xFF5B618A).withOpacity(0.6),
+                        ),
+                        SizedBox(
+                          width: width(7),
+                        ),
+                        SvgPicture.asset(
+                            'assets/images/edit_profile/youtube.svg'),
                       ],
                     ),
                   ),
@@ -287,7 +359,18 @@ class EditScreen extends StatelessWidget {
                           return ConditionalBuilder(
                             condition: (state is! UpdateUserInfoLoadingState),
                             builder: (context) => InkWell(
-                              onTap: () {
+                              onTap: () async {
+                                await cubit.updateUserInfo(
+                                  UpdateUserInfoReqModel(
+                                    firstName: firstNameController.text,
+                                    lastName: lastNameController.text,
+                                    liveIn: liveInController.text,
+                                    gender: cubit.genderChoose,
+                                    dateOfBirth: cubit.dateOfBirth,
+                                    country: cubit.countryValue,
+                                    socialMedia: listOfsocial,
+                                  ),
+                                );
                                 cubit.changeLableOfButtonSaveEditProfileData();
                                 cubit
                                     .changeBackGroundColorOfButtonSaveEditProfileData();

@@ -63,7 +63,7 @@ class Results {
     if (json['socialMedia'] != null) {
       socialMedia = <SocialMedia>[];
       json['socialMedia'].forEach((v) {
-        socialMedia!.add(new SocialMedia.fromJson(v));
+        socialMedia!.add(SocialMedia.fromJson(v));
       });
     }
   }
