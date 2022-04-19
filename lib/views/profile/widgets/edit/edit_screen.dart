@@ -31,8 +31,8 @@ class EditScreen extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
-    bool facebook = false, insta = false, tikTok = false;
-    int indexfaceBook = 0, indexInsta = 0, indexTiktok = 0;
+    bool facebook = false, insta = false, tikTok = false, youtube = false;
+    int indexfaceBook = 0, indexInsta = 0, indexTiktok = 0, indexYoutube = 0;
     for (var x = 0;
         x < context.read<UserDataCubit>().socialMedia!.length;
         x++) {
@@ -43,6 +43,10 @@ class EditScreen extends StatelessWidget {
           'instagram') {
         insta = true;
         indexInsta = x;
+      } else if (context.read<UserDataCubit>().socialMedia![x].label ==
+          'youtube') {
+        youtube = true;
+        indexYoutube = x;
       } else {
         tikTok = true;
         indexTiktok = x;
@@ -75,23 +79,12 @@ class EditScreen extends StatelessWidget {
       ..text = !tikTok
           ? ''
           : '${context.read<UserDataCubit>().socialMedia![indexTiktok].userName}';
+    TextEditingController youtubeController = TextEditingController()
+      ..text = !youtube
+          ? ''
+          : '${context.read<UserDataCubit>().socialMedia![indexYoutube].userName}';
 
     List<SocialMedia> listOfsocial = [];
-    if (facebookController != '') {
-      listOfsocial.add(
-        SocialMedia(label: 'facebook', userName: facebookController.text),
-      );
-    }
-    if (instagramController != '') {
-      listOfsocial.add(
-        SocialMedia(label: 'instagram', userName: instagramController.text),
-      );
-    }
-    if (tiktokController != '') {
-      listOfsocial.add(
-        SocialMedia(label: 'tiktok', userName: tiktokController.text),
-      );
-    }
 
     return BlocProvider(
       create: (context) =>
@@ -258,7 +251,7 @@ class EditScreen extends StatelessWidget {
                   ),
                   SizedBox(height: height(31)),
                   EditInputField(
-                    controller: tiktokController,
+                    controller: youtubeController,
                     label: 'Youtube',
                     sizeoflabel: 20,
                     obscureText: false,
@@ -355,26 +348,62 @@ class EditScreen extends StatelessWidget {
                       bottom: height(26),
                       child: BlocBuilder<UpdateUserCubit, UpdateUserState>(
                         builder: (context, state) {
-                          var cubit = context.read<UpdateUserCubit>();
+                          var cubitUpdate = context.read<UpdateUserCubit>();
+                          var cubitDate = context.read<UserDataCubit>();
+
                           return ConditionalBuilder(
                             condition: (state is! UpdateUserInfoLoadingState),
                             builder: (context) => InkWell(
                               onTap: () async {
-                                await cubit.updateUserInfo(
+                                if (facebookController.text != '') {
+                                  listOfsocial.add(
+                                    SocialMedia(
+                                        label: 'facebook',
+                                        userName: facebookController.text),
+                                  );
+                                }
+                                if (instagramController.text != '') {
+                                  listOfsocial.add(
+                                    SocialMedia(
+                                        label: 'instagram',
+                                        userName: instagramController.text),
+                                  );
+                                }
+                                if (tiktokController.text != '') {
+                                  listOfsocial.add(
+                                    SocialMedia(
+                                        label: 'tiktok',
+                                        userName: tiktokController.text),
+                                  );
+                                }
+                                if (youtubeController.text != '') {
+                                  listOfsocial.add(
+                                    SocialMedia(
+                                        label: 'youtube',
+                                        userName: youtubeController.text),
+                                  );
+                                }
+
+                                await cubitUpdate.updateUserInfo(
                                   UpdateUserInfoReqModel(
                                     firstName: firstNameController.text,
                                     lastName: lastNameController.text,
                                     liveIn: liveInController.text,
-                                    gender: cubit.genderChoose,
-                                    dateOfBirth: cubit.dateOfBirth,
-                                    country: cubit.countryValue,
+                                    gender: cubitUpdate.genderChoose ??
+                                        cubitDate.gender,
+                                    dateOfBirth: cubitUpdate.dateOfBirth == ''
+                                        ? cubitDate.dateOfBirth
+                                        : cubitUpdate.dateOfBirth,
+                                    country: cubitUpdate.countryValue ??
+                                        cubitDate.country,
                                     socialMedia: listOfsocial,
                                   ),
                                 );
-                                cubit.changeLableOfButtonSaveEditProfileData();
-                                cubit
+                                cubitUpdate
+                                    .changeLableOfButtonSaveEditProfileData();
+                                cubitUpdate
                                     .changeBackGroundColorOfButtonSaveEditProfileData();
-                                cubit
+                                cubitUpdate
                                     .changeColorLableOfButtonSaveEditProfileData();
                               },
                               child: Container(
@@ -392,13 +421,13 @@ class EditScreen extends StatelessWidget {
                                     width: 2,
                                   ),
                                   borderRadius: BorderRadius.circular(10),
-                                  color: cubit.backGroundBottonColor,
+                                  color: cubitUpdate.backGroundBottonColor,
                                 ),
                                 child: Center(
                                   child: AutoSizeText(
-                                    cubit.lable,
+                                    cubitUpdate.lable,
                                     style: TextStyle(
-                                      color: cubit.colorOFLable,
+                                      color: cubitUpdate.colorOFLable,
                                       fontSize: 25,
                                       fontFamily: 'DavidLibre',
                                       fontWeight: FontWeight.w500,

@@ -21,7 +21,7 @@ class UpdateUserCubit extends Cubit<UpdateUserState> {
           await updataUserInfoRepo.updateUserInfoRepo(updateUserInfoReqModel);
       emit(UpdateUserInfoSuccessState());
     } on DioError catch (error) {
-      print(error.toString() + 'update user info');
+      print(error.response!.data);
       emit(UpdateUserInfoErrorState());
     }
   }
@@ -53,7 +53,7 @@ class UpdateUserCubit extends Cubit<UpdateUserState> {
     emit(ChangeCountryValueState());
   }
 
-  String genderChoose = '';
+  String? genderChoose;
   bool isMale = false, isFemale = false;
 
   void changeGenderValue(String gender) {
