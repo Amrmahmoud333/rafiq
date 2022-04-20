@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rafiq/core/constants/authentication_const.dart';
+import 'package:rafiq/data/chach_helper.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_states.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
@@ -21,6 +22,8 @@ class AvatarPhoto extends StatelessWidget {
     double w(double n) {
       return MediaQuery.of(context).size.width * (n / 393);
     }
+
+    String? avatar = CahchHelper.getData(key: 'avatar');
 
     return Positioned(
       top: h(145),

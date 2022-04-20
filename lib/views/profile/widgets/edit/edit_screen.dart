@@ -8,8 +8,11 @@ import 'package:rafiq/data/data_API/profile/update_user_info_API.dart';
 import 'package:rafiq/data/models/update_user_info_model.dart';
 import 'package:rafiq/logic/cubit/update_user_info_cubit/update_user_cubit.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
+import 'package:rafiq/views/home/screens/home_screen.dart';
+import 'package:rafiq/views/main_pages/main_home/screens/main_home.dart';
 
 import 'package:rafiq/views/main_pages/main_sign_up/sign_up_classes/widget/container_choose.dart';
+import 'package:rafiq/views/profile/screens/profile_screen.dart';
 import 'package:rafiq/views/profile/widgets/edit/widgets/country_input_field.dart';
 import 'package:rafiq/views/profile/widgets/edit/widgets/date_of%20_birth_input_field.dart';
 import 'package:rafiq/views/profile/widgets/edit/widgets/edit_input_field.dart';
@@ -137,7 +140,10 @@ class EditScreen extends StatelessWidget {
                       top: height(-10),
                       right: width(-25),
                       child: SvgPicture.asset(
-                          'assets/images/edit_profile/Earth.svg'),
+                        'assets/images/edit_profile/Earth.svg',
+                        width: width(115.19),
+                        height: height(115.17),
+                      ),
                     ),
                     Positioned(
                       top: height(95),
@@ -341,7 +347,10 @@ class EditScreen extends StatelessWidget {
                       left: width(0),
                       bottom: height(-2),
                       child: SvgPicture.asset(
-                          'assets/images/edit_profile/plane.svg'),
+                        'assets/images/edit_profile/plane.svg',
+                        width: width(95.99),
+                        height: height(156.29),
+                      ),
                     ),
                     Positioned(
                       right: width(128),
@@ -405,6 +414,8 @@ class EditScreen extends StatelessWidget {
                                     .changeBackGroundColorOfButtonSaveEditProfileData();
                                 cubitUpdate
                                     .changeColorLableOfButtonSaveEditProfileData();
+                                await cubitDate.getUserData();
+                                Navigator.pop(context);
                               },
                               child: Container(
                                 height: height(43),
@@ -436,8 +447,13 @@ class EditScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            fallback: (context) => CircularProgressIndicator(
-                              color: Theme.of(context).primaryColor,
+                            fallback: (context) => SizedBox(
+                              width: width(150),
+                              child: Center(
+                                child: CircularProgressIndicator(
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                              ),
                             ),
                           );
                         },
