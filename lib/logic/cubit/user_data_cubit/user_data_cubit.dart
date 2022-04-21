@@ -22,6 +22,7 @@ class UserDataCubit extends Cubit<UserDataState> {
   int? numberOfFollowers;
   int? numberOfFollowings;
   String? liveIn;
+  String? cover;
   Future<void> getUserData() async {
     emit(UserGetDataLoadingState());
     try {
@@ -32,7 +33,7 @@ class UserDataCubit extends Cubit<UserDataState> {
       gender = _userDataModel.results!.gender;
       country = _userDataModel.results!.country;
       userName = _userDataModel.results!.userName;
-
+      cover = _userDataModel.results!.cover;
       dateOfBirth = _userDataModel.results!.dateOfBirth;
       socialMedia = _userDataModel.results!.socialMedia;
       numberOfFollowers = _userDataModel.results!.numberOfFollowers;
@@ -49,7 +50,7 @@ class UserDataCubit extends Cubit<UserDataState> {
       print(_userDataModel.results!.firstName);
       emit(UserGetDataSuccessState());
     } on DioError catch (error) {
-      print(error.toString() + 'get user data');
+      print(error.response!.data);
       emit(UserGetDataErrorState());
     }
   }

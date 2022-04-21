@@ -19,7 +19,7 @@ class TripScreen extends StatelessWidget {
             print(avatar);
             cover = '';
             avatar = '';
-            // Navigator.pushReplacementNamed(context, LoginScreen.routeName);
+            Navigator.pushReplacementNamed(context, LoginScreen.routeName);
             // Navigator.pushReplacementNamed(context, LoginScreen.routeName);
             /*await CahchHelper.removeData(key: 'token').then((value) {
               if (value) {

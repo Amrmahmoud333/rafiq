@@ -33,7 +33,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
 
       emit(SetCoverSuccessState());
     } on DioError catch (error) {
-      print(error);
+      print(error.response!.data);
       emit(SetCoverErrorState());
     }
   }
