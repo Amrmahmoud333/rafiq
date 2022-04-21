@@ -25,6 +25,8 @@ class Cover extends StatelessWidget {
       return MediaQuery.of(context).size.height * (n / 851);
     }
 
+    var cubit = context.read<UserDataCubit>();
+
     return BlocBuilder<ProfileCubit, ProfileStates>(
       builder: (context, profilestate) {
         return Stack(
@@ -49,7 +51,7 @@ class Cover extends StatelessWidget {
                 },
                 child: BlocBuilder<UserDataCubit, UserDataState>(
                   builder: (context, userDataState) {
-                    print(cover);
+                    print(cubit.cover);
 
                     return Container(
                         width: double.infinity,
@@ -64,25 +66,25 @@ class Cover extends StatelessWidget {
                                 ? SvgPicture.asset(
                                     'assets/images/default_cover.svg')
                                 : (userDataState is UserGetDataSuccessState)
-                                    ? (cover == 'null')
+                                    ? (cubit.cover == 'null')
                                         ? SvgPicture.asset(
                                             'assets/images/default_cover.svg',
                                             fit: BoxFit.fill,
                                           )
-                                        : (cover != 'null')
+                                        : (cubit.cover != 'null')
                                             ? Image.network(
-                                                cover!,
+                                                cubit.cover!,
                                                 fit: BoxFit.fill,
                                               )
                                             : (profilestate
                                                     is SetCoverSuccessState)
-                                                ? (cover == 'null')
+                                                ? (cubit.cover == 'null')
                                                     ? SvgPicture.asset(
                                                         'assets/images/default_cover.svg',
                                                         fit: BoxFit.fill,
                                                       )
                                                     : Image.network(
-                                                        cover!,
+                                                        cubit.cover!,
                                                         fit: BoxFit.fill,
                                                       )
                                                 : SvgPicture.asset(

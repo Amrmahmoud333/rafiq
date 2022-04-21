@@ -46,7 +46,7 @@ class _PostState extends State<Post> {
                         Border.all(color: const Color(0xffE8DEEB), width: 2),
                     image: DecorationImage(
                       fit: BoxFit.fill,
-                      image: NetworkImage(avatar!),
+                      image: NetworkImage(cubit.avatar!),
                     ),
                   ),
                 ),

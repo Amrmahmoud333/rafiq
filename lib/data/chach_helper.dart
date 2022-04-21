@@ -27,6 +27,11 @@ class CahchHelper {
     return await sharedPreferences.remove(key);
   }
 
+  static void updateData({required String key, required value}) async {
+    await sharedPreferences.remove(key);
+    await saveData(key: key, value: value);
+  }
+
   static Future<bool> clearData() async {
     return await sharedPreferences.clear();
   }

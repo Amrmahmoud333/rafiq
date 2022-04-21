@@ -23,6 +23,8 @@ class AvatarPhoto extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
+    var cubit = context.read<UserDataCubit>();
+
     return Positioned(
       top: h(145),
       left: w(9),
@@ -68,13 +70,13 @@ class AvatarPhoto extends StatelessWidget {
                           )
                         : (userDataState is UserGetDataSuccessState ||
                                 profileStete is SetAvatarSuccessState)
-                            ? (avatar == 'null')
+                            ? (cubit.avatar == 'null')
                                 ? SvgPicture.asset(
                                     'assets/images/default.svg',
                                     fit: BoxFit.fill,
                                   )
                                 : Image.network(
-                                    avatar!,
+                                    cubit.avatar!,
                                     fit: BoxFit.fill,
                                   )
                             : SvgPicture.asset(

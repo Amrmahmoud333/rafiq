@@ -15,10 +15,10 @@ class TripScreen extends StatelessWidget {
         child: TextButton(
           onPressed: () async {
             await CahchHelper.clearData();
-            print(cover);
+            /*   print(cover);
             print(avatar);
             cover = '';
-            avatar = '';
+            avatar = '';*/
             Navigator.pushReplacementNamed(context, LoginScreen.routeName);
             // Navigator.pushReplacementNamed(context, LoginScreen.routeName);
             /*await CahchHelper.removeData(key: 'token').then((value) {

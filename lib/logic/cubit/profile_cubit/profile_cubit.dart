@@ -27,8 +27,9 @@ class ProfileCubit extends Cubit<ProfileStates> {
     emit(SetCoverLoadingState());
     try {
       _setCoverModel = await coverImageRepo.setCoverRepo(file: file!);
-      cover = _setCoverModel.results!.cover;
-
+      //  cover = _setCoverModel.results!.cover;
+      /* CahchHelper.updateData(
+          key: 'cover', value: _setCoverModel.results!.cover);*/
       print(_setCoverModel.results!.cover);
 
       emit(SetCoverSuccessState());
@@ -43,7 +44,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
     try {
       _setAvatarModel = await coverImageRepo.setImageRepo(file: file!);
 
-      avatar = _setAvatarModel.results!.avatar;
+      //   avatar = _setAvatarModel.results!.avatar;
 
       print(_setAvatarModel.results!.avatar);
       emit(SetAvatarSuccessState());
@@ -58,7 +59,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
     emit(DeleteCoverLoadingState());
     try {
       _deleteCoverModel = await coverImageRepo.deleteCoverRepo();
-      cover = 'null';
+      //  cover = 'null';
       emit(DeleteCoverSuccessState());
     } on DioError catch (error) {
       print(error.response!.data);
@@ -70,7 +71,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
     emit(DeleteAvatarLoadingState());
     try {
       _deleteAvatarModel = await coverImageRepo.deleteAvatarRepo();
-      avatar = 'null';
+      // avatar = 'null';
       emit(DeleteCoverSuccessState());
     } on DioError catch (error) {
       print(error.response!.data);

@@ -4,6 +4,7 @@ import 'package:meta/meta.dart';
 import 'package:rafiq/data/chach_helper.dart';
 import 'package:rafiq/data/models/user_data_model.dart';
 import 'package:rafiq/data/repositories/profile/user_data_repo.dart';
+import 'package:rafiq/views/profile/widgets/posts/post.dart';
 
 part 'user_data_state.dart';
 
@@ -23,6 +24,7 @@ class UserDataCubit extends Cubit<UserDataState> {
   int? numberOfFollowings;
   String? liveIn;
   String? cover;
+  String? avatar;
   Future<void> getUserData() async {
     emit(UserGetDataLoadingState());
     try {
@@ -34,19 +36,20 @@ class UserDataCubit extends Cubit<UserDataState> {
       country = _userDataModel.results!.country;
       userName = _userDataModel.results!.userName;
       cover = _userDataModel.results!.cover;
+      avatar = _userDataModel.results!.avatar;
       dateOfBirth = _userDataModel.results!.dateOfBirth;
       socialMedia = _userDataModel.results!.socialMedia;
       numberOfFollowers = _userDataModel.results!.numberOfFollowers;
       numberOfFollowings = _userDataModel.results!.numberOfFollowings;
       liveIn = _userDataModel.results!.liveIn;
-      CahchHelper.saveData(
+      /*  CahchHelper.saveData(
               key: 'cover', value: _userDataModel.results!.cover.toString())
           .then((value) {});
 
       CahchHelper.saveData(
               key: 'avatar', value: _userDataModel.results!.avatar.toString())
           .then((value) {});
-
+*/
       print(_userDataModel.results!.firstName);
       emit(UserGetDataSuccessState());
     } on DioError catch (error) {
