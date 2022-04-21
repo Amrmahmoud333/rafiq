@@ -6,3 +6,5 @@ String? USERNAME = CahchHelper.getData(key: 'userName');
 String? ACCESSTOKEN = CahchHelper.getData(key: 'token');
 // ignore: non_constant_identifier_names
 String? REFRESHTOKEN;
+String? cover = CahchHelper.getData(key: 'cover');
+String? avatar = CahchHelper.getData(key: 'avatar');

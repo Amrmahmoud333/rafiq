@@ -25,8 +25,6 @@ class Cover extends StatelessWidget {
       return MediaQuery.of(context).size.height * (n / 851);
     }
 
-    String? cover = CahchHelper.getData(key: 'cover');
-
     return BlocBuilder<ProfileCubit, ProfileStates>(
       builder: (context, profilestate) {
         return Stack(

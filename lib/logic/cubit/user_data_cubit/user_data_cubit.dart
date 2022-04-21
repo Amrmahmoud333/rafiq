@@ -42,7 +42,8 @@ class UserDataCubit extends Cubit<UserDataState> {
               key: 'cover', value: _userDataModel.results!.cover.toString())
           .then((value) {});
 
-      CahchHelper.saveData(key: 'avatar', value: _userDataModel.results!.avatar)
+      CahchHelper.saveData(
+              key: 'avatar', value: _userDataModel.results!.avatar.toString())
           .then((value) {});
 
       print(_userDataModel.results!.firstName);

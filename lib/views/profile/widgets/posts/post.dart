@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/data/chach_helper.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 
@@ -25,7 +26,6 @@ class _PostState extends State<Post> {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
-    String avatar = CahchHelper.getData(key: 'avatar');
     var cubit = context.read<UserDataCubit>();
     return Container(
       color: const Color(0xffDBD4DD),
@@ -46,7 +46,7 @@ class _PostState extends State<Post> {
                         Border.all(color: const Color(0xffE8DEEB), width: 2),
                     image: DecorationImage(
                       fit: BoxFit.fill,
-                      image: NetworkImage(avatar),
+                      image: NetworkImage(avatar!),
                     ),
                   ),
                 ),

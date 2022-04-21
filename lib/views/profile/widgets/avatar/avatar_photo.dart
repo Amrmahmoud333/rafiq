@@ -23,8 +23,6 @@ class AvatarPhoto extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
-    String? avatar = CahchHelper.getData(key: 'avatar');
-
     return Positioned(
       top: h(145),
       left: w(9),

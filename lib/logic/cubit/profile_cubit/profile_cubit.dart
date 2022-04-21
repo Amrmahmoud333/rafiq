@@ -20,9 +20,6 @@ class ProfileCubit extends Cubit<ProfileStates> {
   late DeleteCoverModel _deleteCoverModel;
   late DeleteAvatarModel _deleteAvatarModel;
 
-  String? cover = CahchHelper.getData(key: 'cover');
-  String? avatar = CahchHelper.getData(key: 'avatar');
-
   //API
 
   // two functions for Set covrt && avatart
@@ -51,7 +48,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
       print(_setAvatarModel.results!.avatar);
       emit(SetAvatarSuccessState());
     } on DioError catch (error) {
-      print(error);
+      print(error.response!.data);
       emit(SetAvatarErrorState());
     }
   }
@@ -64,7 +61,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
       cover = 'null';
       emit(DeleteCoverSuccessState());
     } on DioError catch (error) {
-      print(error);
+      print(error.response!.data);
       emit(DeleteCoverErrorState());
     }
   }
@@ -76,7 +73,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
       avatar = 'null';
       emit(DeleteCoverSuccessState());
     } on DioError catch (error) {
-      print(error);
+      print(error.response!.data);
       emit(DeleteCoverErrorState());
     }
   }
