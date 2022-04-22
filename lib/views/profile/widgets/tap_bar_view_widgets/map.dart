@@ -10,7 +10,9 @@ import 'package:rafiq/logic/cubit/marker_cubit/marker_cubit.dart';
 class Maps extends StatelessWidget {
   late GoogleMapController _mapController;
 
-  Set<Marker> myMarkers = Set<Marker>(); // collection
+  Set<Marker> myMarkers = Set<Marker>();
+
+  Maps({Key? key}) : super(key: key); // collection
 
   @override
   Widget build(BuildContext context) {

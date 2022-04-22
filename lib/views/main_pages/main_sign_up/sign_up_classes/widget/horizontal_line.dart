@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 
 class HorizontalLinee extends StatelessWidget {
   HorizontalLinee({
+    Key? key,
     required this.precent,
-  });
+  }) : super(key: key);
   final int precent;
   double? w;
   @override

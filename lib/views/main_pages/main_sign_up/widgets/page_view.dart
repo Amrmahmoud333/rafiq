@@ -16,13 +16,11 @@ class PageViewWidget extends StatelessWidget {
         onPageChanged: (index) {
           if (index == 2) {
             cubit.isLastPageInPageView(index);
-          } else
+          } else {
             cubit.notIsLastPageInPageView(index);
-
-          print(cubit.lable);
-          print(cubit);
+          }
         },
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         controller: cubit.controllerpage,
         children: [
           SignUp(),

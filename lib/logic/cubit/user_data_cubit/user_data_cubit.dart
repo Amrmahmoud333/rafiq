@@ -42,15 +42,7 @@ class UserDataCubit extends Cubit<UserDataState> {
       numberOfFollowers = _userDataModel.results!.numberOfFollowers;
       numberOfFollowings = _userDataModel.results!.numberOfFollowings;
       liveIn = _userDataModel.results!.liveIn;
-      /*  CahchHelper.saveData(
-              key: 'cover', value: _userDataModel.results!.cover.toString())
-          .then((value) {});
 
-      CahchHelper.saveData(
-              key: 'avatar', value: _userDataModel.results!.avatar.toString())
-          .then((value) {});
-*/
-      print(_userDataModel.results!.firstName);
       emit(UserGetDataSuccessState());
     } on DioError catch (error) {
       print(error.response!.data);

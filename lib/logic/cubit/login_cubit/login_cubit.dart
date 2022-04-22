@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/data/models/login_model.dart';
 import 'package:rafiq/data/repositories/authentication/login_repo.dart';
 

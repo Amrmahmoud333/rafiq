@@ -25,81 +25,60 @@ class Cover extends StatelessWidget {
 
     var cubit = context.read<UserDataCubit>();
 
-    return BlocBuilder<ProfileCubit, ProfileStates>(
-      builder: (context, profilestate) {
-        return Stack(
-          children: [
-            Opacity(
-              opacity: 0.05,
-              child: ClipPath(
-                clipper: CustomCover(),
-                child: Container(
-                  height: h(221),
-                  decoration: const BoxDecoration(
-                    color: Colors.black,
-                  ),
-                ),
+    return Stack(
+      children: [
+        Opacity(
+          opacity: 0.05,
+          child: ClipPath(
+            clipper: CustomCover(),
+            child: Container(
+              height: h(221),
+              decoration: const BoxDecoration(
+                color: Colors.black,
               ),
             ),
-            ClipPath(
-              clipper: CustomCover(),
-              child: InkWell(
-                onTap: () {
-                  coverBottomSheet(context);
-                },
-                child: BlocBuilder<UserDataCubit, UserDataState>(
-                  builder: (context, userDataState) {
-                    print(cubit.cover);
-
-                    return Container(
-                        width: double.infinity,
-                        height: h(215),
-                        decoration: const BoxDecoration(
-                          color: Color(0xffE8DEEB),
-                        ),
-                        child: (userDataState is UserGetDataLoadingState)
-                            ? SvgPicture.asset(
-                                'assets/images/default_cover.svg')
-                            : (profilestate is SetCoverLoadingState)
+          ),
+        ),
+        ClipPath(
+          clipper: CustomCover(),
+          child: InkWell(
+            onTap: () {
+              coverBottomSheet(context);
+            },
+            child: BlocBuilder<UserDataCubit, UserDataState>(
+              builder: (context, userDataState) {
+                return Container(
+                    width: double.infinity,
+                    height: h(215),
+                    decoration: const BoxDecoration(
+                      color: Color(0xffE8DEEB),
+                    ),
+                    child: (userDataState is UserGetDataLoadingState)
+                        ? SvgPicture.asset('assets/images/default_cover.svg')
+                        : (userDataState is UserGetDataSuccessState)
+                            ? (cubit.cover == null)
                                 ? SvgPicture.asset(
-                                    'assets/images/default_cover.svg')
-                                : (userDataState is UserGetDataSuccessState)
-                                    ? (cubit.cover == null)
-                                        ? SvgPicture.asset(
-                                            'assets/images/default_cover.svg',
-                                            fit: BoxFit.fill,
-                                          )
-                                        : (cubit.cover != null)
-                                            ? Image.network(
-                                                cubit.cover!,
-                                                fit: BoxFit.fill,
-                                              )
-                                            : (profilestate
-                                                    is SetCoverSuccessState)
-                                                ? (cubit.cover == null)
-                                                    ? SvgPicture.asset(
-                                                        'assets/images/default_cover.svg',
-                                                        fit: BoxFit.fill,
-                                                      )
-                                                    : Image.network(
-                                                        cubit.cover!,
-                                                        fit: BoxFit.fill,
-                                                      )
-                                                : SvgPicture.asset(
-                                                    'assets/images/default_cover.svg',
-                                                    fit: BoxFit.fill,
-                                                  )
+                                    'assets/images/default_cover.svg',
+                                    fit: BoxFit.fill,
+                                  )
+                                : (cubit.cover != null)
+                                    ? Image.network(
+                                        cubit.cover!,
+                                        fit: BoxFit.fill,
+                                      )
                                     : SvgPicture.asset(
                                         'assets/images/default_cover.svg',
                                         fit: BoxFit.fill,
-                                      ));
-                  },
-                ),
-              ),
+                                      )
+                            : SvgPicture.asset(
+                                'assets/images/default_cover.svg',
+                                fit: BoxFit.fill,
+                              ));
+              },
             ),
-          ],
-        );
-      },
+          ),
+        ),
+      ],
     );
   }
 }
