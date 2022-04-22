@@ -8,11 +8,8 @@ import 'package:rafiq/data/data_API/profile/update_user_info_API.dart';
 import 'package:rafiq/data/models/update_user_info_model.dart';
 import 'package:rafiq/logic/cubit/update_user_info_cubit/update_user_cubit.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
-import 'package:rafiq/views/home/screens/home_screen.dart';
-import 'package:rafiq/views/main_pages/main_home/screens/main_home.dart';
 
 import 'package:rafiq/views/main_pages/main_sign_up/sign_up_classes/widget/container_choose.dart';
-import 'package:rafiq/views/profile/screens/profile_screen.dart';
 import 'package:rafiq/views/profile/widgets/edit/widgets/country_input_field.dart';
 import 'package:rafiq/views/profile/widgets/edit/widgets/date_of%20_birth_input_field.dart';
 import 'package:rafiq/views/profile/widgets/edit/widgets/edit_input_field.dart';
@@ -55,39 +52,39 @@ class EditScreen extends StatelessWidget {
         indexTiktok = x;
       }
     }
-    TextEditingController firstNameController = TextEditingController()
+    final TextEditingController firstNameController = TextEditingController()
       ..text = ' ${context.read<UserDataCubit>().firstName!}';
 
-    TextEditingController lastNameController = TextEditingController()
+    final TextEditingController lastNameController = TextEditingController()
       ..text = '${context.read<UserDataCubit>().lastName!}';
 
-    TextEditingController passwordController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
 
-    TextEditingController liveInController = TextEditingController()
+    final TextEditingController liveInController = TextEditingController()
       ..text = context.read<UserDataCubit>().liveIn == null
           ? ''
           : '${context.read<UserDataCubit>().liveIn}';
 
-    TextEditingController facebookController = TextEditingController()
+    final TextEditingController facebookController = TextEditingController()
       ..text = !facebook
           ? ''
           : '${context.read<UserDataCubit>().socialMedia![indexfaceBook].userName}';
 
-    TextEditingController instagramController = TextEditingController()
+    final TextEditingController instagramController = TextEditingController()
       ..text = !insta
           ? ''
           : '${context.read<UserDataCubit>().socialMedia![indexInsta].userName}';
 
-    TextEditingController tiktokController = TextEditingController()
+    final TextEditingController tiktokController = TextEditingController()
       ..text = !tikTok
           ? ''
           : '${context.read<UserDataCubit>().socialMedia![indexTiktok].userName}';
-    TextEditingController youtubeController = TextEditingController()
+    final TextEditingController youtubeController = TextEditingController()
       ..text = !youtube
           ? ''
           : '${context.read<UserDataCubit>().socialMedia![indexYoutube].userName}';
 
-    List<SocialMedia> listOfsocial = [];
+    final List<SocialMedia> listOfsocial = [];
 
     return BlocProvider(
       create: (context) =>

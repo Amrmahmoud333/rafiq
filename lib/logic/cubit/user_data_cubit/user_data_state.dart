@@ -10,3 +10,5 @@ class UserGetDataLoadingState extends UserDataInitial {}
 class UserGetDataSuccessState extends UserDataInitial {}
 
 class UserGetDataErrorState extends UserDataInitial {}
+
+class UserubdateErrorState extends UserDataInitial {}
