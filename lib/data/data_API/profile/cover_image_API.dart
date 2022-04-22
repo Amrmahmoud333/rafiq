@@ -10,9 +10,6 @@ import 'package:rafiq/data/models/set_cover_avatar_model.dart';
 import 'package:rafiq/data/repositories/profile/cover_image_repo.dart';
 import 'package:http_parser/http_parser.dart';
 
-String? token = CahchHelper.getData(key: 'token');
-String? userName = CahchHelper.getData(key: 'userName');
-
 // user name dons not deleted
 class CoverImageAPI extends CoverImageRepo {
   @override
@@ -25,11 +22,11 @@ class CoverImageAPI extends CoverImageRepo {
         contentType: MediaType("image", "jpeg"),
       ),
     });
-    print('cover image api' + userName.toString());
+    print('cover image api' + USERNAME.toString());
     final response = await DioHelper.putWithHeader(
-        url: '$URL/api/v1/users/$userName/cover/',
+        url: '$URL/api/v1/users/$USERNAME/cover/',
         data: formData,
-        header: {'access-token': token});
+        header: {'access-token': ACCESSTOKEN});
     return SetCoverModel.fromJson(response.data);
   }
 
@@ -47,7 +44,7 @@ class CoverImageAPI extends CoverImageRepo {
     final response = await DioHelper.putWithHeader(
         url: '$URL/api/v1/users/$USERNAME/avatar/',
         data: formData,
-        header: {'access-token': token});
+        header: {'access-token': ACCESSTOKEN});
     return SetAvatarModel.fromJson(response.data);
   }
 
@@ -55,7 +52,7 @@ class CoverImageAPI extends CoverImageRepo {
   Future<DeleteCoverModel> deleteCoverRepo() async {
     final response = await DioHelper.deleteWithHeader(
         url: '$URL/api/v1/users/$USERNAME/cover/',
-        header: {'access-token': token});
+        header: {'access-token': ACCESSTOKEN});
 
     return DeleteCoverModel.fromjson(response.data);
   }
@@ -64,7 +61,7 @@ class CoverImageAPI extends CoverImageRepo {
   Future<DeleteAvatarModel> deleteAvatarRepo() async {
     final response = await DioHelper.deleteWithHeader(
         url: '$URL/api/v1/users/$USERNAME/cover/',
-        header: {'access-token': token});
+        header: {'access-token': ACCESSTOKEN});
 
     return DeleteAvatarModel.fromjson(response.data);
   }
