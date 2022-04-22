@@ -13,6 +13,7 @@ import 'package:http_parser/http_parser.dart';
 String? token = CahchHelper.getData(key: 'token');
 String? userName = CahchHelper.getData(key: 'userName');
 
+// user name dons not deleted
 class CoverImageAPI extends CoverImageRepo {
   @override
   Future<SetCoverModel> setCoverRepo({File? file}) async {
@@ -24,9 +25,9 @@ class CoverImageAPI extends CoverImageRepo {
         contentType: MediaType("image", "jpeg"),
       ),
     });
-
+    print('cover image api' + userName.toString());
     final response = await DioHelper.putWithHeader(
-        url: '$URL/api/v1/users/$USERNAME/cover/',
+        url: '$URL/api/v1/users/$userName/cover/',
         data: formData,
         header: {'access-token': token});
     return SetCoverModel.fromJson(response.data);

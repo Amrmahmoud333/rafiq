@@ -18,12 +18,20 @@ import 'package:rafiq/logic/cubit/register_cubit/register_cubit.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 import 'package:rafiq/views/router/app_router.dart';
 
+import 'logic/state_observer.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await CahchHelper.init();
   DioHelper.init();
-
-  runApp(DevicePreview(enabled: false, builder: (context) => const MyApp()));
+  BlocOverrides.runZoned(
+    () {
+      runApp(
+          DevicePreview(enabled: false, builder: (context) => const MyApp()));
+    },
+    blocObserver: StateObserver(),
+  );
 }
 
 final AppRouter appRouter = AppRouter();
