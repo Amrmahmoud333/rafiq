@@ -1,12 +1,10 @@
 import 'package:dio/dio.dart';
+import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/core/constants/url.dart';
 import 'package:rafiq/data/chach_helper.dart';
 import 'package:rafiq/data/data_API/dio_helper.dart';
 import 'package:rafiq/data/models/update_user_info_model.dart';
 import 'package:rafiq/data/repositories/profile/update_user_info_model_repo.dart';
-
-String? token = CahchHelper.getData(key: 'token');
-String? userName = CahchHelper.getData(key: 'userName');
 
 class UpdateUserInfoAPI extends UpdataUserInfoRepo {
   @override

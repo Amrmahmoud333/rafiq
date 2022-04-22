@@ -14,7 +14,9 @@ class TripScreen extends StatelessWidget {
       body: Center(
         child: TextButton(
           onPressed: () async {
-            await CahchHelper.clearData();
+            //   await CahchHelper.clearData();
+            userName = '';
+            token = '';
             /*   print(cover);
             print(avatar);
             cover = '';
