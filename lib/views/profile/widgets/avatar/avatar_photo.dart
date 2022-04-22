@@ -70,7 +70,7 @@ class AvatarPhoto extends StatelessWidget {
                           )
                         : (userDataState is UserGetDataSuccessState ||
                                 profileStete is SetAvatarSuccessState)
-                            ? (cubit.avatar == 'null')
+                            ? (cubit.avatar == null)
                                 ? SvgPicture.asset(
                                     'assets/images/default.svg',
                                     fit: BoxFit.fill,

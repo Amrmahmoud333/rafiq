@@ -10,7 +10,7 @@ import 'package:rafiq/data/models/set_cover_avatar_model.dart';
 import 'package:rafiq/data/repositories/profile/cover_image_repo.dart';
 import 'package:http_parser/http_parser.dart';
 
-// user name dons not deleted
+// when we use userName like other cubits make error
 class CoverImageAPI extends CoverImageRepo {
   @override
   Future<SetCoverModel> setCoverRepo({File? file}) async {
@@ -22,11 +22,11 @@ class CoverImageAPI extends CoverImageRepo {
         contentType: MediaType("image", "jpeg"),
       ),
     });
-    print('cover image api' + USERNAME.toString());
+    print('cover image api' + userName.toString());
     final response = await DioHelper.putWithHeader(
-        url: '$URL/api/v1/users/$USERNAME/cover/',
+        url: '$URL/api/v1/users/$userName/cover/',
         data: formData,
-        header: {'access-token': ACCESSTOKEN});
+        header: {'access-token': token});
     return SetCoverModel.fromJson(response.data);
   }
 
@@ -42,17 +42,17 @@ class CoverImageAPI extends CoverImageRepo {
     });
 
     final response = await DioHelper.putWithHeader(
-        url: '$URL/api/v1/users/$USERNAME/avatar/',
+        url: '$URL/api/v1/users/$userName/avatar/',
         data: formData,
-        header: {'access-token': ACCESSTOKEN});
+        header: {'access-token': token});
     return SetAvatarModel.fromJson(response.data);
   }
 
   @override
   Future<DeleteCoverModel> deleteCoverRepo() async {
     final response = await DioHelper.deleteWithHeader(
-        url: '$URL/api/v1/users/$USERNAME/cover/',
-        header: {'access-token': ACCESSTOKEN});
+        url: '$URL/api/v1/users/$userName/cover/',
+        header: {'access-token': token});
 
     return DeleteCoverModel.fromjson(response.data);
   }
@@ -60,8 +60,8 @@ class CoverImageAPI extends CoverImageRepo {
   @override
   Future<DeleteAvatarModel> deleteAvatarRepo() async {
     final response = await DioHelper.deleteWithHeader(
-        url: '$URL/api/v1/users/$USERNAME/cover/',
-        header: {'access-token': ACCESSTOKEN});
+        url: '$URL/api/v1/users/$userName/cover/',
+        header: {'access-token': token});
 
     return DeleteAvatarModel.fromjson(response.data);
   }

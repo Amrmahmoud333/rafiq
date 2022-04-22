@@ -63,23 +63,49 @@ class _LoginScreenState extends State<LoginScreen> {
 
     var cubit = BlocProvider.of<LoginCubit>(context);
     return BlocConsumer<LoginCubit, LoginState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state is LoginSuccessState) {
-          CahchHelper.saveData(
-                  key: 'token', value: cubit.loginModel.results!.accessToken)
-              .then(
-            (value) => Navigator.pushReplacementNamed(
-                context, MainHomeScreen.routeName),
-          );
-          CahchHelper.saveData(
-                  key: 'userName',
-                  value: cubit.loginModel.results!.user!.userName)
-              .then((value) {});
-
-          CahchHelper.saveData(
-                  key: 'refreshToken',
-                  value: cubit.loginModel.results!.refreshToken)
-              .then((value) {});
+          if (token == '') {
+            await CahchHelper.updateData(
+                    key: 'token', value: cubit.loginModel.results!.accessToken)
+                .then(
+              (value) => token = CahchHelper.getData(key: 'token'),
+            );
+          } else {
+            await CahchHelper.saveData(
+                    key: 'token', value: cubit.loginModel.results!.accessToken)
+                .then((value) {
+              token = CahchHelper.getData(key: 'token');
+            });
+          }
+          // user name
+          if (userName == '') {
+            await CahchHelper.updateData(
+                    key: 'userName',
+                    value: cubit.loginModel.results!.user!.userName)
+                .then(
+              (value) => userName = CahchHelper.getData(key: 'userName'),
+            );
+          } else {
+            await CahchHelper.saveData(
+                    key: 'userName',
+                    value: cubit.loginModel.results!.user!.userName)
+                .then((value) {
+              userName = CahchHelper.getData(key: 'userName');
+            });
+          }
+          Navigator.pushReplacementNamed(context, MainHomeScreen.routeName);
+          // refreshtoken
+          /*  if (CahchHelper.getData(key: 'refreshToken') == '') {
+            CahchHelper.saveData(
+                    key: 'refreshToken',
+                    value: cubit.loginModel.results!.accessToken)
+                .then(
+              (value) => Navigator.pushReplacementNamed(
+                  context, MainHomeScreen.routeName),
+            );
+          } 
+*/
 
           showTosat(msg: cubit.messege, state: true);
         } else if (state is LoginErrorState) {
@@ -219,7 +245,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                                 password:
                                                     passwordController.text),
                                           );
-                                          print(ACCESSTOKEN);
                                         } else {
                                           if (!customValidteEmail() &&
                                               customValidtePasswrod()) {

@@ -4,7 +4,6 @@ import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/data/chach_helper.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 import 'package:rafiq/views/login/screens/login_screen.dart';
-import 'dart:io';
 
 class TripScreen extends StatelessWidget {
   const TripScreen({Key? key}) : super(key: key);
@@ -15,13 +14,14 @@ class TripScreen extends StatelessWidget {
       body: Center(
         child: TextButton(
           onPressed: () async {
-            await CahchHelper.clearData();
-
+            //   await CahchHelper.clearData();
+            userName = '';
+            token = '';
             /*   print(cover);
             print(avatar);
             cover = '';
             avatar = '';*/
-            // Navigator.pushReplacementNamed(context, LoginScreen.routeName);
+            Navigator.pushReplacementNamed(context, LoginScreen.routeName);
             // Navigator.pushReplacementNamed(context, LoginScreen.routeName);
             /*await CahchHelper.removeData(key: 'token').then((value) {
               if (value) {

@@ -64,19 +64,19 @@ class Cover extends StatelessWidget {
                                 ? SvgPicture.asset(
                                     'assets/images/default_cover.svg')
                                 : (userDataState is UserGetDataSuccessState)
-                                    ? (cubit.cover == 'null')
+                                    ? (cubit.cover == null)
                                         ? SvgPicture.asset(
                                             'assets/images/default_cover.svg',
                                             fit: BoxFit.fill,
                                           )
-                                        : (cubit.cover != 'null')
+                                        : (cubit.cover != null)
                                             ? Image.network(
                                                 cubit.cover!,
                                                 fit: BoxFit.fill,
                                               )
                                             : (profilestate
                                                     is SetCoverSuccessState)
-                                                ? (cubit.cover == 'null')
+                                                ? (cubit.cover == null)
                                                     ? SvgPicture.asset(
                                                         'assets/images/default_cover.svg',
                                                         fit: BoxFit.fill,
