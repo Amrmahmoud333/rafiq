@@ -1,18 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
-import 'package:rafiq/logic/cubit/profile_cubit/profile_states.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 import 'package:rafiq/views/profile/widgets/cover/cover_bottom_sheet.dart';
-
-/* 
- to get cover we word in to satates profileState and getUserDataState 
- we put the cover from cover string in consts , this cover is saved in memory 
- and change in two classes (profile cubit . user data cubit)
- user data cubit we you open the app 
- profile cubit when you change the cover photo form screen 
- */
 
 class Cover extends StatelessWidget {
   const Cover({Key? key}) : super(key: key);

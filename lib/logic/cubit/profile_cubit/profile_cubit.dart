@@ -90,9 +90,9 @@ class ProfileCubit extends Cubit<ProfileStates> {
     emit(CoverImageFromGalleryOrCameraState());
   }
 
-  int currentIndex = 0;
+  /*int currentIndex = 0;
   void changeIndex(index) {
     currentIndex = index;
     emit(ProfileChangeIndexState());
-  }
+  }*/
 }
