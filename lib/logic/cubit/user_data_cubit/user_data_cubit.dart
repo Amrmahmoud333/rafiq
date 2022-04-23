@@ -1,10 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
-import 'package:rafiq/data/chach_helper.dart';
 import 'package:rafiq/data/models/user_data_model.dart';
 import 'package:rafiq/data/repositories/profile/user_data_repo.dart';
-import 'package:rafiq/views/profile/widgets/posts/post.dart';
 
 part 'user_data_state.dart';
 
