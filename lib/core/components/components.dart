@@ -5,6 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:image_viewer/image_viewer.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:motion_toast/resources/arrays.dart';
+import 'package:rafiq/logic/cubit/add_post_cubit/add_post_cubit.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 
 void showTosat({required msg, required state}) => Fluttertoast.showToast(
@@ -58,4 +59,11 @@ void imageView(images) {
   ImageViewer.showImageSlider(
     images: images,
   );
+}
+
+Future<void> getImageOrVideo(context, imageSource) async {
+  final XFile? _imageOrVideo = await _image.pickImage(source: imageSource);
+  if (_imageOrVideo == null) return;
+
+  BlocProvider.of<AddPostCubit>(context).fileAvatarImagePath(_imageOrVideo);
 }
