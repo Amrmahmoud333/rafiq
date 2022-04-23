@@ -33,7 +33,7 @@ class DioHelper {
 
   static Future<Response> postDataWithHeader({
     @required String? url,
-    @required Map<String, dynamic>? data,
+    @required dynamic data,
     @required Map<String, dynamic>? header,
   }) async {
     return await dio.post(

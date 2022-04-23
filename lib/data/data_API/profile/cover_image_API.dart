@@ -22,7 +22,6 @@ class CoverImageAPI extends CoverImageRepo {
         contentType: MediaType("image", "jpeg"),
       ),
     });
-    print('cover image api' + userName.toString());
     final response = await DioHelper.putWithHeader(
         url: '$URL/api/v1/users/$userName/cover/',
         data: formData,
