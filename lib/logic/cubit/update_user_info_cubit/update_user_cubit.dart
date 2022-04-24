@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/data/models/update_user_info_model.dart';
 import 'package:rafiq/data/repositories/profile/update_user_info_model_repo.dart';
 
@@ -82,4 +83,50 @@ class UpdateUserCubit extends Cubit<UpdateUserState> {
     obscureText = !obscureText;
     emit(ChangeObscureTextState());
   }
+
+  /*tackControllersData({
+    required String firstName,
+    required String lastName,
+    required String lineIn,
+  }) async {
+    fIRSTNAME = firstName;
+    lASTNAME = lastName;
+    lIVEIN = lineIn;
+    emit(TackControllersData());
+  }*/
+
+  final TextEditingController firstNameController =
+      TextEditingController(text: fIRSTNAME);
+  //  ..text = ' ${context.read<UserDataCubit>().firstName!}';
+
+  final TextEditingController lastNameController =
+      TextEditingController(text: lASTNAME);
+  // ..text = '${context.read<UserDataCubit>().lastName!}';
+
+  final TextEditingController passwordController = TextEditingController();
+
+  final TextEditingController liveInController =
+      TextEditingController(text: lIVEIN);
+  /* ..text = context.read<UserDataCubit>().liveIn == null
+          ? ''
+          : '${context.read<UserDataCubit>().liveIn}';*/
+
+  final TextEditingController facebookController = TextEditingController();
+  /* ..text = !facebook
+          ? ''
+          : '${context.read<UserDataCubit>().socialMedia![indexfaceBook].userName}';*/
+
+  final TextEditingController instagramController = TextEditingController();
+  /*..text = !insta
+          ? ''
+          : '${context.read<UserDataCubit>().socialMedia![indexInsta].userName}';*/
+
+  final TextEditingController tiktokController = TextEditingController();
+  /*   ..text = !tikTok
+          ? ''
+          : '${context.read<UserDataCubit>().socialMedia![indexTiktok].userName}';*/
+  final TextEditingController youtubeController = TextEditingController();
+  /* ..text = !youtube
+          ? ''
+          : '${context.read<UserDataCubit>().socialMedia![indexYoutube].userName}';*/
 }

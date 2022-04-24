@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/data/data_API/profile/update_user_info_API.dart';
 import 'package:rafiq/data/models/update_user_info_model.dart';
 import 'package:rafiq/logic/cubit/update_user_info_cubit/update_user_cubit.dart';
@@ -52,37 +53,6 @@ class EditScreen extends StatelessWidget {
         indexTiktok = x;
       }
     }
-    final TextEditingController firstNameController = TextEditingController()
-      ..text = ' ${context.read<UserDataCubit>().firstName!}';
-
-    final TextEditingController lastNameController = TextEditingController()
-      ..text = '${context.read<UserDataCubit>().lastName!}';
-
-    final TextEditingController passwordController = TextEditingController();
-
-    final TextEditingController liveInController = TextEditingController()
-      ..text = context.read<UserDataCubit>().liveIn == null
-          ? ''
-          : '${context.read<UserDataCubit>().liveIn}';
-
-    final TextEditingController facebookController = TextEditingController()
-      ..text = !facebook
-          ? ''
-          : '${context.read<UserDataCubit>().socialMedia![indexfaceBook].userName}';
-
-    final TextEditingController instagramController = TextEditingController()
-      ..text = !insta
-          ? ''
-          : '${context.read<UserDataCubit>().socialMedia![indexInsta].userName}';
-
-    final TextEditingController tiktokController = TextEditingController()
-      ..text = !tikTok
-          ? ''
-          : '${context.read<UserDataCubit>().socialMedia![indexTiktok].userName}';
-    final TextEditingController youtubeController = TextEditingController()
-      ..text = !youtube
-          ? ''
-          : '${context.read<UserDataCubit>().socialMedia![indexYoutube].userName}';
 
     final List<SocialMedia> listOfsocial = [];
 
@@ -145,159 +115,179 @@ class EditScreen extends StatelessWidget {
                     Positioned(
                       top: height(95),
                       left: width(39),
-                      child: EditInputField(
-                        controller: firstNameController,
-                        label: 'FirstName',
-                        sizeoflabel: 20,
-                        obscureText: false,
-                        keyboardType: TextInputType.text,
+                      child: BlocBuilder<UpdateUserCubit, UpdateUserState>(
+                        builder: (context, state) {
+                          return EditInputField(
+                            controller: context
+                                .read<UpdateUserCubit>()
+                                .firstNameController,
+                            label: 'FirstName',
+                            sizeoflabel: 20,
+                            obscureText: false,
+                            keyboardType: TextInputType.text,
+                          );
+                        },
                       ),
                     ),
                   ],
                 ),
               ),
               SizedBox(height: height(31)),
-              Column(
-                children: [
-                  EditInputField(
-                    controller: lastNameController,
-                    label: 'LastName',
-                    sizeoflabel: 20,
-                    obscureText: false,
-                    keyboardType: TextInputType.text,
-                  ),
-                  SizedBox(height: height(31)),
-                  const CountryInputField(),
-                  SizedBox(height: height(31)),
-                  EditInputField(
-                    label: 'Lives in',
-                    controller: liveInController,
-                    sizeoflabel: 20,
-                    obscureText: false,
-                    keyboardType: TextInputType.text,
-                  ),
-                  SizedBox(height: height(31)),
-                  const DateOfBirthInputField(),
-                  SizedBox(height: height(31)),
-                  BlocBuilder<UpdateUserCubit, UpdateUserState>(
-                    builder: (context, state) {
-                      return EditInputField(
-                        label: 'Password',
+              BlocBuilder<UpdateUserCubit, UpdateUserState>(
+                builder: (context, state) {
+                  return Column(
+                    children: [
+                      EditInputField(
+                        controller:
+                            context.read<UpdateUserCubit>().lastNameController,
+                        label: 'LastName',
                         sizeoflabel: 20,
-                        obscureText:
-                            context.read<UpdateUserCubit>().obscureText,
-                        keyboardType: TextInputType.visiblePassword,
-                        controller: passwordController,
-                        widget: InkWell(
-                          onTap: () {
-                            context.read<UpdateUserCubit>().changeObscureText();
-                          },
-                          child: AutoSizeText(
-                            BlocProvider.of<UpdateUserCubit>(context)
-                                    .obscureText
-                                ? 'Show'
-                                : 'Hide',
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontFamily: 'DavidLibre',
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xFF5B618A),
+                        obscureText: false,
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: height(31)),
+                      const CountryInputField(),
+                      SizedBox(height: height(31)),
+                      EditInputField(
+                        label: 'Lives in',
+                        controller:
+                            context.read<UpdateUserCubit>().liveInController,
+                        sizeoflabel: 20,
+                        obscureText: false,
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: height(31)),
+                      const DateOfBirthInputField(),
+                      SizedBox(height: height(31)),
+                      BlocBuilder<UpdateUserCubit, UpdateUserState>(
+                        builder: (context, state) {
+                          return EditInputField(
+                            label: 'Password',
+                            sizeoflabel: 20,
+                            obscureText:
+                                context.read<UpdateUserCubit>().obscureText,
+                            keyboardType: TextInputType.visiblePassword,
+                            controller: context
+                                .read<UpdateUserCubit>()
+                                .passwordController,
+                            widget: InkWell(
+                              onTap: () {
+                                context
+                                    .read<UpdateUserCubit>()
+                                    .changeObscureText();
+                              },
+                              child: AutoSizeText(
+                                BlocProvider.of<UpdateUserCubit>(context)
+                                        .obscureText
+                                    ? 'Show'
+                                    : 'Hide',
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontFamily: 'DavidLibre',
+                                  fontWeight: FontWeight.w500,
+                                  color: Color(0xFF5B618A),
+                                ),
+                              ),
                             ),
-                          ),
+                          );
+                        },
+                      ),
+                      SizedBox(height: height(31)),
+                      EditInputField(
+                        controller:
+                            context.read<UpdateUserCubit>().facebookController,
+                        label: 'Facebook',
+                        sizeoflabel: 20,
+                        obscureText: false,
+                        keyboardType: TextInputType.text,
+                        widget: Row(
+                          children: [
+                            Container(
+                              height: height(38),
+                              width: width(4),
+                              color: const Color(0xFF5B618A).withOpacity(0.6),
+                            ),
+                            SizedBox(
+                              width: width(7),
+                            ),
+                            SvgPicture.asset(
+                                'assets/images/edit_profile/facebook.svg'),
+                          ],
                         ),
-                      );
-                    },
-                  ),
-                  SizedBox(height: height(31)),
-                  EditInputField(
-                    controller: facebookController,
-                    label: 'Facebook',
-                    sizeoflabel: 20,
-                    obscureText: false,
-                    keyboardType: TextInputType.text,
-                    widget: Row(
-                      children: [
-                        Container(
-                          height: height(38),
-                          width: width(4),
-                          color: const Color(0xFF5B618A).withOpacity(0.6),
+                      ),
+                      SizedBox(height: height(31)),
+                      EditInputField(
+                        controller:
+                            context.read<UpdateUserCubit>().instagramController,
+                        label: 'Instagram',
+                        sizeoflabel: 20,
+                        obscureText: false,
+                        keyboardType: TextInputType.text,
+                        widget: Row(
+                          children: [
+                            Container(
+                              height: height(38),
+                              width: width(4),
+                              color: const Color(0xFF5B618A).withOpacity(0.6),
+                            ),
+                            SizedBox(
+                              width: width(7),
+                            ),
+                            SvgPicture.asset(
+                                'assets/images/edit_profile/instagram.svg'),
+                          ],
                         ),
-                        SizedBox(
-                          width: width(7),
+                      ),
+                      SizedBox(height: height(31)),
+                      EditInputField(
+                        controller:
+                            context.read<UpdateUserCubit>().youtubeController,
+                        label: 'Youtube',
+                        sizeoflabel: 20,
+                        obscureText: false,
+                        keyboardType: TextInputType.text,
+                        widget: Row(
+                          children: [
+                            Container(
+                              height: height(38),
+                              width: width(4),
+                              color: const Color(0xFF5B618A).withOpacity(0.6),
+                            ),
+                            SizedBox(
+                              width: width(7),
+                            ),
+                            SvgPicture.asset(
+                                'assets/images/edit_profile/youtube.svg'),
+                          ],
                         ),
-                        SvgPicture.asset(
-                            'assets/images/edit_profile/facebook.svg'),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: height(31)),
-                  EditInputField(
-                    controller: instagramController,
-                    label: 'Instagram',
-                    sizeoflabel: 20,
-                    obscureText: false,
-                    keyboardType: TextInputType.text,
-                    widget: Row(
-                      children: [
-                        Container(
-                          height: height(38),
-                          width: width(4),
-                          color: const Color(0xFF5B618A).withOpacity(0.6),
+                      ),
+                      SizedBox(height: height(31)),
+                      EditInputField(
+                        controller:
+                            context.read<UpdateUserCubit>().tiktokController,
+                        label: 'TikTok',
+                        sizeoflabel: 20,
+                        obscureText: false,
+                        keyboardType: TextInputType.text,
+                        widget: Row(
+                          children: [
+                            Container(
+                              height: height(38),
+                              width: width(4),
+                              color: const Color(0xFF5B618A).withOpacity(0.6),
+                            ),
+                            SizedBox(
+                              width: width(7),
+                            ),
+                            SvgPicture.asset(
+                                'assets/images/edit_profile/tiktok.svg'),
+                          ],
                         ),
-                        SizedBox(
-                          width: width(7),
-                        ),
-                        SvgPicture.asset(
-                            'assets/images/edit_profile/instagram.svg'),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: height(31)),
-                  EditInputField(
-                    controller: youtubeController,
-                    label: 'Youtube',
-                    sizeoflabel: 20,
-                    obscureText: false,
-                    keyboardType: TextInputType.text,
-                    widget: Row(
-                      children: [
-                        Container(
-                          height: height(38),
-                          width: width(4),
-                          color: const Color(0xFF5B618A).withOpacity(0.6),
-                        ),
-                        SizedBox(
-                          width: width(7),
-                        ),
-                        SvgPicture.asset(
-                            'assets/images/edit_profile/youtube.svg'),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: height(31)),
-                  EditInputField(
-                    controller: tiktokController,
-                    label: 'TikTok',
-                    sizeoflabel: 20,
-                    obscureText: false,
-                    keyboardType: TextInputType.text,
-                    widget: Row(
-                      children: [
-                        Container(
-                          height: height(38),
-                          width: width(4),
-                          color: const Color(0xFF5B618A).withOpacity(0.6),
-                        ),
-                        SizedBox(
-                          width: width(7),
-                        ),
-                        SvgPicture.asset(
-                            'assets/images/edit_profile/tiktok.svg'),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: height(28)),
-                ],
+                      ),
+                      SizedBox(height: height(28)),
+                    ],
+                  );
+                },
               ),
               SizedBox(
                 height: height(205),
@@ -361,40 +351,77 @@ class EditScreen extends StatelessWidget {
                             condition: (state is! UpdateUserInfoLoadingState),
                             builder: (context) => InkWell(
                               onTap: () async {
-                                if (facebookController.text != '') {
+                                if (context
+                                        .read<UpdateUserCubit>()
+                                        .facebookController
+                                        .text !=
+                                    '') {
                                   listOfsocial.add(
                                     SocialMedia(
                                         label: 'facebook',
-                                        userName: facebookController.text),
+                                        userName: context
+                                            .read<UpdateUserCubit>()
+                                            .facebookController
+                                            .text),
                                   );
                                 }
-                                if (instagramController.text != '') {
+                                if (context
+                                        .read<UpdateUserCubit>()
+                                        .instagramController
+                                        .text !=
+                                    '') {
                                   listOfsocial.add(
                                     SocialMedia(
                                         label: 'instagram',
-                                        userName: instagramController.text),
+                                        userName: context
+                                            .read<UpdateUserCubit>()
+                                            .instagramController
+                                            .text),
                                   );
                                 }
-                                if (tiktokController.text != '') {
+                                if (context
+                                        .read<UpdateUserCubit>()
+                                        .tiktokController
+                                        .text !=
+                                    '') {
                                   listOfsocial.add(
                                     SocialMedia(
                                         label: 'tiktok',
-                                        userName: tiktokController.text),
+                                        userName: context
+                                            .read<UpdateUserCubit>()
+                                            .tiktokController
+                                            .text),
                                   );
                                 }
-                                if (youtubeController.text != '') {
+                                if (context
+                                        .read<UpdateUserCubit>()
+                                        .youtubeController
+                                        .text !=
+                                    '') {
                                   listOfsocial.add(
                                     SocialMedia(
                                         label: 'youtube',
-                                        userName: youtubeController.text),
+                                        userName: context
+                                            .read<UpdateUserCubit>()
+                                            .youtubeController
+                                            .text),
                                   );
                                 }
 
                                 await cubitUpdate.updateUserInfo(
                                   UpdateUserInfoReqModel(
-                                    firstName: firstNameController.text,
-                                    lastName: lastNameController.text,
-                                    liveIn: liveInController.text,
+                                    firstName: context
+                                        .read<UpdateUserCubit>()
+                                        .firstNameController
+                                        .text,
+                                    lastName: context
+                                        .read<UpdateUserCubit>()
+                                        .lastNameController
+                                        .text,
+                                    liveIn: context
+                                        .read<UpdateUserCubit>()
+                                        .liveInController
+                                        .text,
                                     gender: cubitUpdate.genderChoose ??
                                         cubitDate.gender,
                                     dateOfBirth: cubitUpdate.dateOfBirth == ''
@@ -411,6 +438,9 @@ class EditScreen extends StatelessWidget {
                                     .changeBackGroundColorOfButtonSaveEditProfileData();
                                 cubitUpdate
                                     .changeColorLableOfButtonSaveEditProfileData();
+                                fIRSTNAME = '';
+                                lASTNAME = '';
+                                lIVEIN = '';
                                 await cubitDate.getUserData();
                                 Navigator.pop(context);
                               },

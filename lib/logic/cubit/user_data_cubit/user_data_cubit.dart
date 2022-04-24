@@ -1,6 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
+import 'package:rafiq/core/constants/authentication_const.dart';
+import 'package:rafiq/data/chach_helper.dart';
 import 'package:rafiq/data/models/user_data_model.dart';
 import 'package:rafiq/data/repositories/profile/user_data_repo.dart';
 
@@ -40,7 +42,42 @@ class UserDataCubit extends Cubit<UserDataState> {
       numberOfFollowers = _userDataModel.results!.numberOfFollowers;
       numberOfFollowings = _userDataModel.results!.numberOfFollowings;
       liveIn = _userDataModel.results!.liveIn;
-
+      if (fIRSTNAME == '') {
+        await CahchHelper.updateData(
+                key: 'firstName', value: firstName.toString())
+            .then(
+          (value) => fIRSTNAME = CahchHelper.getData(key: 'firstName'),
+        );
+      } else {
+        await CahchHelper.saveData(
+                key: 'firstName', value: firstName.toString())
+            .then((value) {
+          fIRSTNAME = CahchHelper.getData(key: 'firstName');
+        });
+      }
+      if (lASTNAME == '') {
+        await CahchHelper.updateData(
+                key: 'lastName', value: lastName.toString())
+            .then(
+          (value) => lASTNAME = CahchHelper.getData(key: 'lastName'),
+        );
+      } else {
+        await CahchHelper.saveData(key: 'lastName', value: lastName.toString())
+            .then((value) {
+          lASTNAME = CahchHelper.getData(key: 'lastName');
+        });
+      }
+      if (lIVEIN == '') {
+        await CahchHelper.updateData(key: 'liveIn', value: liveIn.toString())
+            .then(
+          (value) => lIVEIN = CahchHelper.getData(key: 'liveIn'),
+        );
+      } else {
+        await CahchHelper.saveData(key: 'liveIn', value: liveIn.toString())
+            .then((value) {
+          liveIn = CahchHelper.getData(key: 'liveIn');
+        });
+      }
       emit(UserGetDataSuccessState());
     } on DioError catch (error) {
       print(error.response!.data);

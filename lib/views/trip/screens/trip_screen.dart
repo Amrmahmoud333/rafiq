@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/data/chach_helper.dart';
+import 'package:rafiq/logic/cubit/login_cubit/login_cubit.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 import 'package:rafiq/views/login/screens/login_screen.dart';
 
@@ -14,9 +15,16 @@ class TripScreen extends StatelessWidget {
       body: Center(
         child: TextButton(
           onPressed: () async {
-            //   await CahchHelper.clearData();
             userName = '';
             token = '';
+            fIRSTNAME = '';
+            lIVEIN = '';
+            lASTNAME = '';
+            if (context.read<LoginCubit>().checkedBox == true) {
+              context.read<LoginCubit>().changeCheckBox();
+            }
+            await CahchHelper.clearData();
+
             /*   print(cover);
             print(avatar);
             cover = '';

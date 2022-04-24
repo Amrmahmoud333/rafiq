@@ -25,3 +25,5 @@ class ChangeGenderValueState extends UpdateUserState {}
 class ChandeDateTimeState extends UpdateUserState {}
 
 class ChangeObscureTextState extends UpdateUserState {}
+
+class TackControllersData extends UpdateUserState {}
