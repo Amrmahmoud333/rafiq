@@ -441,6 +441,11 @@ class EditScreen extends StatelessWidget {
                                 fIRSTNAME = '';
                                 lASTNAME = '';
                                 lIVEIN = '';
+                                FACEBOOK = '';
+                                INSTAGRAM = '';
+                                YOUTUBE = '';
+                                TIKToK = '';
+
                                 await cubitDate.getUserData();
                                 Navigator.pop(context);
                               },

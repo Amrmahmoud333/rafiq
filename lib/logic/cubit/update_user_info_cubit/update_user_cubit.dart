@@ -84,49 +84,26 @@ class UpdateUserCubit extends Cubit<UpdateUserState> {
     emit(ChangeObscureTextState());
   }
 
-  /*tackControllersData({
-    required String firstName,
-    required String lastName,
-    required String lineIn,
-  }) async {
-    fIRSTNAME = firstName;
-    lASTNAME = lastName;
-    lIVEIN = lineIn;
-    emit(TackControllersData());
-  }*/
-
   final TextEditingController firstNameController =
       TextEditingController(text: fIRSTNAME);
-  //  ..text = ' ${context.read<UserDataCubit>().firstName!}';
 
   final TextEditingController lastNameController =
       TextEditingController(text: lASTNAME);
-  // ..text = '${context.read<UserDataCubit>().lastName!}';
 
   final TextEditingController passwordController = TextEditingController();
 
   final TextEditingController liveInController =
       TextEditingController(text: lIVEIN);
-  /* ..text = context.read<UserDataCubit>().liveIn == null
-          ? ''
-          : '${context.read<UserDataCubit>().liveIn}';*/
 
-  final TextEditingController facebookController = TextEditingController();
-  /* ..text = !facebook
-          ? ''
-          : '${context.read<UserDataCubit>().socialMedia![indexfaceBook].userName}';*/
+  final TextEditingController facebookController =
+      TextEditingController(text: FACEBOOK);
 
-  final TextEditingController instagramController = TextEditingController();
-  /*..text = !insta
-          ? ''
-          : '${context.read<UserDataCubit>().socialMedia![indexInsta].userName}';*/
+  final TextEditingController instagramController =
+      TextEditingController(text: INSTAGRAM);
 
-  final TextEditingController tiktokController = TextEditingController();
-  /*   ..text = !tikTok
-          ? ''
-          : '${context.read<UserDataCubit>().socialMedia![indexTiktok].userName}';*/
-  final TextEditingController youtubeController = TextEditingController();
-  /* ..text = !youtube
-          ? ''
-          : '${context.read<UserDataCubit>().socialMedia![indexYoutube].userName}';*/
+  final TextEditingController tiktokController =
+      TextEditingController(text: TIKToK);
+
+  final TextEditingController youtubeController =
+      TextEditingController(text: YOUTUBE);
 }

@@ -78,6 +78,85 @@ class UserDataCubit extends Cubit<UserDataState> {
           liveIn = CahchHelper.getData(key: 'liveIn');
         });
       }
+
+      for (var x = 0; x < _userDataModel.results!.socialMedia!.length; x++) {
+        if (_userDataModel.results!.socialMedia![x].label == 'facebook') {
+          if (FACEBOOK == '') {
+            await CahchHelper.updateData(
+                    key: 'facebook',
+                    value: _userDataModel.results!.socialMedia![x].userName
+                        .toString())
+                .then(
+              (value) => FACEBOOK = CahchHelper.getData(key: 'facebook'),
+            );
+          } else {
+            await CahchHelper.saveData(
+                    key: 'facebook',
+                    value: _userDataModel.results!.socialMedia![x].userName
+                        .toString())
+                .then((value) {
+              FACEBOOK = CahchHelper.getData(key: 'facebook');
+            });
+          }
+        } else if (_userDataModel.results!.socialMedia![x].label ==
+            'instagram') {
+          if (INSTAGRAM == '') {
+            await CahchHelper.updateData(
+                    key: 'instagram',
+                    value: _userDataModel.results!.socialMedia![x].userName
+                        .toString())
+                .then(
+              (value) => INSTAGRAM = CahchHelper.getData(key: 'instagram'),
+            );
+          } else {
+            await CahchHelper.saveData(
+                    key: 'instagram',
+                    value: _userDataModel.results!.socialMedia![x].userName
+                        .toString())
+                .then((value) {
+              INSTAGRAM = CahchHelper.getData(key: 'instagram');
+            });
+          }
+        } else if (_userDataModel.results!.socialMedia![x].label == 'youtube') {
+          if (YOUTUBE == '') {
+            await CahchHelper.updateData(
+                    key: 'youtube',
+                    value: _userDataModel.results!.socialMedia![x].userName
+                        .toString())
+                .then(
+              (value) => YOUTUBE = CahchHelper.getData(key: 'youtube'),
+            );
+          } else {
+            await CahchHelper.saveData(
+                    key: 'youtube',
+                    value: _userDataModel.results!.socialMedia![x].userName
+                        .toString())
+                .then((value) {
+              YOUTUBE = CahchHelper.getData(key: 'youtube');
+            });
+          }
+        } else {
+          {
+            if (TIKToK == '') {
+              await CahchHelper.updateData(
+                      key: 'tiktok',
+                      value: _userDataModel.results!.socialMedia![x].userName
+                          .toString())
+                  .then(
+                (value) => TIKToK = CahchHelper.getData(key: 'tiktok'),
+              );
+            } else {
+              await CahchHelper.saveData(
+                      key: 'tiktok',
+                      value: _userDataModel.results!.socialMedia![x].userName
+                          .toString())
+                  .then((value) {
+                TIKToK = CahchHelper.getData(key: 'tiktok');
+              });
+            }
+          }
+        }
+      }
       emit(UserGetDataSuccessState());
     } on DioError catch (error) {
       print(error.response!.data);

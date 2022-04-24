@@ -14,3 +14,7 @@ String? userName = CahchHelper.getData(key: 'userName');
 String? fIRSTNAME = CahchHelper.getData(key: 'firstName');
 String? lASTNAME = CahchHelper.getData(key: 'lastName');
 String? lIVEIN = CahchHelper.getData(key: 'liveIn');
+String? FACEBOOK = CahchHelper.getData(key: 'facebook');
+String? INSTAGRAM = CahchHelper.getData(key: 'instagram');
+String? YOUTUBE = CahchHelper.getData(key: 'youtube');
+String? TIKToK = CahchHelper.getData(key: 'tiktok');

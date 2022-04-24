@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/data/chach_helper.dart';
 
 class NotificationScreen extends StatelessWidget {
@@ -21,7 +20,6 @@ class NotificationScreen extends StatelessWidget {
         children: [
           TextButton(
             onPressed: () {
-              print('$fIRSTNAME+$lASTNAME+$lIVEIN');
               //   ImageViewer.showImageSlider(images: list);
             },
             child: const Text('child'),

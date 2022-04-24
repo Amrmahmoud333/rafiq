@@ -20,6 +20,10 @@ class TripScreen extends StatelessWidget {
             fIRSTNAME = '';
             lIVEIN = '';
             lASTNAME = '';
+            FACEBOOK = '';
+            INSTAGRAM = '';
+            YOUTUBE = '';
+            TIKToK = '';
             if (context.read<LoginCubit>().checkedBox == true) {
               context.read<LoginCubit>().changeCheckBox();
             }
