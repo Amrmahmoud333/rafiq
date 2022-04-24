@@ -11,6 +11,10 @@ class AddPostSuccessState extends AddPostState {}
 
 class AddPostErrorState extends AddPostState {}
 
-class GetImageOrVideoSuccess extends AddPostState {}
+class GetSingleImageSuccess extends AddPostState {}
 
 class ChangeColorState extends AddPostState {}
+
+class GetVideoSuccess extends AddPostState {}
+
+class ChangeValueState extends AddPostState {}

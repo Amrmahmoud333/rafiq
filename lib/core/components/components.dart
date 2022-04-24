@@ -61,9 +61,24 @@ void imageView(images) {
   );
 }
 
-Future<void> getImageOrVideo(context, imageSource) async {
-  final XFile? _imageOrVideo = await _image.pickImage(source: imageSource);
-  if (_imageOrVideo == null) return;
+Future<void> getImagePostFromCamera(context) async {
+  final XFile? _images = await _image.pickImage(source: ImageSource.camera);
+  if (_images == null) return;
 
-  BlocProvider.of<AddPostCubit>(context).fileAvatarImagePath(_imageOrVideo);
+  BlocProvider.of<AddPostCubit>(context).addSingleImagepostFiles(_images);
+}
+
+Future<void> getMultiImagePost(context) async {
+  final List<XFile>? _imagesList = await _image.pickMultiImage();
+  if (_imagesList == null) return;
+
+  BlocProvider.of<AddPostCubit>(context).imagesList.addAll(_imagesList);
+  BlocProvider.of<AddPostCubit>(context).convert();
+}
+
+Future<void> getVideoPost(context, videoSource) async {
+  final XFile? _video = await _image.pickVideo(source: videoSource);
+  if (_video == null) return;
+
+  BlocProvider.of<AddPostCubit>(context).addVideopostFiles(_video);
 }

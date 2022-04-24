@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq/core/components/components.dart';
 import 'package:rafiq/logic/cubit/add_post_cubit/add_post_cubit.dart';
+import 'package:rafiq/views/profile/widgets/posts/image_post_dialog.dart';
+import 'package:rafiq/views/profile/widgets/posts/video_post_dialog.dart';
 
 class AddContainer extends StatelessWidget {
   AddContainer({
@@ -29,6 +31,12 @@ class AddContainer extends StatelessWidget {
     var cubit = context.read<AddPostCubit>();
     return InkWell(
       onTap: () {
+        if (index == 1) {
+          showSelectionImagePostDialog(context: context);
+        }
+        if (index == 2) {
+          showSelectionVideoPostDialog(context: context);
+        }
         // getImageOrVideo(context , );
         cubit.changeBackgroundColor(index);
       },

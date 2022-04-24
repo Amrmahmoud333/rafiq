@@ -28,10 +28,27 @@ class AddPostCubit extends Cubit<AddPostState> {
     }
   }
 
-  List<File>? imageOrVideoList;
-  void fileAvatarImagePath(XFile imageOrVideo) {
-    imageOrVideoList!.add(File(imageOrVideo.path));
-    emit(GetImageOrVideoSuccess());
+  List<XFile> imagesList = [];
+  List<File> imageListFile = [];
+
+  void convert() {
+    for (int i = 0; i < imagesList.length; i++) {
+      imageListFile.add(File(imagesList[i].path));
+    }
+  }
+
+  File? singleImageFromCamera;
+  void addSingleImagepostFiles(XFile images) {
+    singleImageFromCamera = (File(images.path));
+    imageListFile.add(singleImageFromCamera!);
+    emit(GetSingleImageSuccess());
+  }
+
+  File? videoPostFile;
+  void addVideopostFiles(XFile video) {
+    videoPostFile = (File(video.path));
+    imageListFile.add(videoPostFile!);
+    emit(GetVideoSuccess());
   }
 
 // work with UI
@@ -59,5 +76,11 @@ class AddPostCubit extends Cubit<AddPostState> {
     } else {
       return color_3;
     }
+  }
+
+  String textPost = "";
+  void changeValue(text) {
+    textPost = text;
+    emit(ChangeValueState());
   }
 }

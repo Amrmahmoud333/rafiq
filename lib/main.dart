@@ -9,8 +9,10 @@ import 'package:rafiq/data/data_API/profile/cover_image_API.dart';
 import 'package:rafiq/data/data_API/dio_helper.dart';
 import 'package:rafiq/data/data_API/authentication/register_api.dart';
 import 'package:rafiq/data/data_API/profile/marker_API.dart';
+import 'package:rafiq/data/data_API/profile/post_API.dart';
 import 'package:rafiq/data/data_API/profile/update_user_info_API.dart';
 import 'package:rafiq/data/data_API/profile/user_data_API.dart';
+import 'package:rafiq/logic/cubit/add_post_cubit/add_post_cubit.dart';
 import 'package:rafiq/logic/cubit/forget_cubit/forget_cubit.dart';
 import 'package:rafiq/logic/cubit/login_cubit/login_cubit.dart';
 import 'package:rafiq/logic/cubit/marker_cubit/marker_cubit.dart';
@@ -68,6 +70,9 @@ class MyApp extends StatelessWidget {
         BlocProvider<UpdateUserCubit>(
           create: (context) =>
               UpdateUserCubit(updataUserInfoRepo: UpdateUserInfoAPI()),
+        ),
+        BlocProvider<AddPostCubit>(
+          create: (context) => AddPostCubit(postRepo: PostAPI()),
         ),
       ],
       child: MaterialApp(
