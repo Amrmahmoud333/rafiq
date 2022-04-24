@@ -42,6 +42,7 @@ class UserDataCubit extends Cubit<UserDataState> {
       numberOfFollowers = _userDataModel.results!.numberOfFollowers;
       numberOfFollowings = _userDataModel.results!.numberOfFollowings;
       liveIn = _userDataModel.results!.liveIn;
+
       if (fIRSTNAME == '') {
         await CahchHelper.updateData(
                 key: 'firstName', value: firstName.toString())
