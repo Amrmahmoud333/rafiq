@@ -93,7 +93,59 @@ class _PostState extends State<Post> {
               ],
             ),
           ),
-          SizedBox(height: h(5)),
+          // SizedBox(height: h(5)),
+          SizedBox(height: h(9)),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              isMore
+                  ? SizedBox(
+                      width: w(354),
+                      child: const AutoSizeText(
+                        'Albania possesses significant diversity with the landscape ranging from the snow-capped mountains in the Albanian Alps as well as the Korab, Skanderbeg, Pindus and Ceraunian Mountains to the hot and sunny coasts of the Albanian Adriatic and Ionian Sea along the Mediterranean Sea.',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0XFF5B618A),
+                          fontFamily: 'DavidLibre',
+                        ),
+                        maxLines: 2,
+                        minFontSize: 18,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    )
+                  : SizedBox(
+                      width: w(354),
+                      child: const AutoSizeText(
+                        'Albania possesses significant diversity with the landscape ranging from the snow-capped mountains in the Albanian Alps as well as the Korab, Skanderbeg, Pindus and Ceraunian Mountains to the hot and sunny coasts of the Albanian Adriatic and Ionian Sea along the Mediterranean Sea.',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0XFF5B618A),
+                          fontFamily: 'DavidLibre',
+                        ),
+                        minFontSize: 18,
+                      )),
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    isMore = !isMore;
+                    isMore ? label = 'See More...' : label = 'See Less...';
+                  });
+                },
+                child: AutoSizeText(
+                  label,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
+                    color: const Color(0XFF5B618A).withOpacity(0.60),
+                    fontFamily: 'DavidLibre',
+                  ),
+                ),
+              ),
+              SizedBox(height: h(5)),
+            ],
+          ),
           Row(
             children: [
               SizedBox(width: w(9)),
@@ -147,58 +199,7 @@ class _PostState extends State<Post> {
               ),
             ],
           ),
-          SizedBox(height: h(9)),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              isMore
-                  ? SizedBox(
-                      width: w(354),
-                      child: const AutoSizeText(
-                        'Albania possesses significant diversity with the landscape ranging from the snow-capped mountains in the Albanian Alps as well as the Korab, Skanderbeg, Pindus and Ceraunian Mountains to the hot and sunny coasts of the Albanian Adriatic and Ionian Sea along the Mediterranean Sea.',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          color: Color(0XFF5B618A),
-                          fontFamily: 'DavidLibre',
-                        ),
-                        maxLines: 2,
-                        minFontSize: 18,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    )
-                  : SizedBox(
-                      width: w(354),
-                      child: const AutoSizeText(
-                        'Albania possesses significant diversity with the landscape ranging from the snow-capped mountains in the Albanian Alps as well as the Korab, Skanderbeg, Pindus and Ceraunian Mountains to the hot and sunny coasts of the Albanian Adriatic and Ionian Sea along the Mediterranean Sea.',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          color: Color(0XFF5B618A),
-                          fontFamily: 'DavidLibre',
-                        ),
-                        minFontSize: 18,
-                      )),
-              InkWell(
-                onTap: () {
-                  setState(() {
-                    isMore = !isMore;
-                    isMore ? label = 'See More...' : label = 'See Less...';
-                  });
-                },
-                child: AutoSizeText(
-                  label,
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
-                    color: const Color(0XFF5B618A).withOpacity(0.60),
-                    fontFamily: 'DavidLibre',
-                  ),
-                ),
-              ),
-              SizedBox(height: h(7)),
-            ],
-          )
+          SizedBox(height: h(7)),
         ],
       ),
     );

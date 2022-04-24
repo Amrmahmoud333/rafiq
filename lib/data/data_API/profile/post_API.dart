@@ -20,17 +20,6 @@ class PostAPI extends PostRepo {
     text ??= '';
     formData.fields.add(MapEntry('text', text));
 
-    /*  for (int i = 0; i < photo!.length; i++) {
-       String fileName = photo[i].path.split('/').last;
-    formData. = FormData.fromMap({
-        'post': await MultipartFile.fromFile(
-          photo[i].path,
-          filename: fileName,
-          contentType: MediaType("image", "jpeg"),
-        ),
-      });
-    }*/
-
     final response = await DioHelper.postDataWithHeader(
       url: '$URL/api/v1/users/$userName/posts/',
       header: {'access-token': token},
