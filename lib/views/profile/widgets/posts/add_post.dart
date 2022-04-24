@@ -130,18 +130,21 @@ class AddPost extends StatelessWidget {
                 ),
                 SizedBox(height: h(30)),
                 AddContainer(
-                  path: 'assets/images/add_image.svg',
+                  imagePath: 'assets/images/add_image.svg',
                   text: 'Add Image/s',
+                  index: 1,
                 ),
                 SizedBox(height: h(20)),
                 AddContainer(
-                  path: 'assets/images/add_video.svg',
+                  imagePath: 'assets/images/add_video.svg',
                   text: 'Add Video',
+                  index: 2,
                 ),
                 SizedBox(height: h(20)),
                 AddContainer(
-                  path: 'assets/images/add_image.svg',
+                  imagePath: 'assets/images/add_image.svg',
                   text: 'Tag people/ cities',
+                  index: 3,
                 ),
                 SizedBox(height: h(40)),
                 Align(
