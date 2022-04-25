@@ -14,7 +14,6 @@ class SliverAppBarWidget extends StatelessWidget {
   bool innerBoxIsScrolled;
   @override
   Widget build(BuildContext context) {
-    //ProfileCubit cubit = BlocProvider.of<ProfileCubit>(context);
     double h(double n) {
       return MediaQuery.of(context).size.height * (n / 851);
     }
