@@ -5,7 +5,10 @@ import 'package:rafiq/data/chach_helper.dart';
 import 'package:rafiq/data/data_API/profile/post_API.dart';
 import 'package:rafiq/logic/cubit/add_post_cubit/add_post_cubit.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
+import 'package:rafiq/views/profile/widgets/posts/image_post_dialog.dart';
+import 'package:rafiq/views/profile/widgets/posts/video_post_dialog.dart';
 import 'package:rafiq/views/profile/widgets/posts/widgets/add_container.dart';
+import 'package:rafiq/views/profile/widgets/tap_bar_view_widgets/videos.dart';
 
 // TODO add name insted of user name
 
@@ -103,43 +106,140 @@ class AddPost extends StatelessWidget {
               SizedBox(
                 height: h(360),
                 width: w(370),
-                child: TextField(
-                  expands: true,
-                  maxLines: null,
-                  style: const TextStyle(
-                    fontSize: 25,
-                    color: Color(0xFF6E75A0),
-                    fontWeight: FontWeight.w500,
-                  ),
-                  keyboardType: TextInputType.multiline,
-                  decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'add text...',
-                    hintStyle:
-                        TextStyle(fontSize: 25.0, color: Color(0xFF6E75A0)),
-                  ),
-                  onChanged: (text) {
-                    context.read<AddPostCubit>().changeValue(text);
+                child: BlocBuilder<AddPostCubit, AddPostState>(
+                  builder: (context, state) {
+                    return Column(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            //expands: true,
+                            maxLines: null,
+                            style: const TextStyle(
+                              fontSize: 25,
+                              color: Color(0xFF6E75A0),
+                              fontWeight: FontWeight.w500,
+                            ),
+                            keyboardType: TextInputType.multiline,
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'add text...',
+                              hintStyle: TextStyle(
+                                  fontSize: 25.0, color: Color(0xFF6E75A0)),
+                            ),
+                            onChanged: (text) {
+                              context.read<AddPostCubit>().changeValue(text);
+                            },
+                          ),
+                        ),
+                        if (context
+                                .read<AddPostCubit>()
+                                .singleImageFromCamera !=
+                            null)
+                          Image.file(
+                            context.read<AddPostCubit>().singleImageFromCamera!,
+                            width: 200,
+                            height: 200,
+                          )
+                        else
+                          Container(),
+                      ],
+                    );
                   },
                 ),
               ),
               SizedBox(height: h(30)),
-              AddContainer(
-                imagePath: 'assets/images/add_image.svg',
-                text: 'Add Image/s',
-                index: 1,
+              if (context.read<AddPostCubit>().clickableImage)
+                BlocBuilder<AddPostCubit, AddPostState>(
+                  builder: (context, state) {
+                    return (context.read<AddPostCubit>().clickableImage)
+                        ? InkWell(
+                            onTap: () async {
+                              showSelectionImagePostDialog(context: context);
+                              context
+                                  .read<AddPostCubit>()
+                                  .changeBackgroundColor(1);
+                              await context.read<AddPostCubit>().nonclickable();
+                            },
+                            child: AddContainer(
+                              imagePath: 'assets/images/add_image.svg',
+                              text: 'Add Image/s',
+                              index: 1,
+                            ),
+                          )
+                        : context.read<AddPostCubit>().singleImageFromCamera !=
+                                null
+                            ? AddContainer(
+                                imagePath: 'assets/images/add_image.svg',
+                                text: 'Add Image/s',
+                                index: 1,
+                              )
+                            : InkWell(
+                                onTap: () async {
+                                  showSelectionImagePostDialog(
+                                      context: context);
+                                  context
+                                      .read<AddPostCubit>()
+                                      .changeBackgroundColor(1);
+                                  await context
+                                      .read<AddPostCubit>()
+                                      .nonclickable();
+                                },
+                                child: AddContainer(
+                                  imagePath: 'assets/images/add_image.svg',
+                                  text: 'Add Image/s',
+                                  index: 1,
+                                ),
+                              );
+                  },
+                ),
+              SizedBox(height: h(20)),
+              BlocBuilder<AddPostCubit, AddPostState>(
+                builder: (context, state) {
+                  return context.read<AddPostCubit>().clickableImage
+                      ? InkWell(
+                          onTap: () async {
+                            showSelectionVideoPostDialog(context: context);
+                            context
+                                .read<AddPostCubit>()
+                                .changeBackgroundColor(2);
+                            await context.read<AddPostCubit>().nonclickable();
+                          },
+                          child: AddContainer(
+                            imagePath: 'assets/images/add_video.svg',
+                            text: 'Add Video',
+                            index: 2,
+                          ),
+                        )
+                      : AddContainer(
+                          imagePath: 'assets/images/add_video.svg',
+                          text: 'Add Video',
+                          index: 2,
+                        );
+                },
               ),
               SizedBox(height: h(20)),
-              AddContainer(
-                imagePath: 'assets/images/add_video.svg',
-                text: 'Add Video',
-                index: 2,
-              ),
-              SizedBox(height: h(20)),
-              AddContainer(
-                imagePath: 'assets/images/add_image.svg',
-                text: 'Tag people/ cities',
-                index: 3,
+              BlocBuilder<AddPostCubit, AddPostState>(
+                builder: (context, state) {
+                  return context.read<AddPostCubit>().clickableImage
+                      ? InkWell(
+                          onTap: () async {
+                            context
+                                .read<AddPostCubit>()
+                                .changeBackgroundColor(3);
+                            await context.read<AddPostCubit>().nonclickable();
+                          },
+                          child: AddContainer(
+                            imagePath: 'assets/images/add_image.svg',
+                            text: 'Tag people/ cities',
+                            index: 3,
+                          ),
+                        )
+                      : AddContainer(
+                          imagePath: 'assets/images/add_image.svg',
+                          text: 'Tag people/ cities',
+                          index: 3,
+                        );
+                },
               ),
               SizedBox(height: h(40)),
               Align(

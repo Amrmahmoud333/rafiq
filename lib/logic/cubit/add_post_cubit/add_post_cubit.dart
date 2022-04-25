@@ -59,10 +59,16 @@ class AddPostCubit extends Cubit<AddPostState> {
   changeBackgroundColor(int index) {
     if (index == 1) {
       color_1 = const Color(0xff5B618A);
+      color_2 = Colors.grey;
+      color_3 = Colors.grey;
     } else if (index == 2) {
       color_2 = const Color(0xff5B618A);
+      color_1 = Colors.grey;
+      color_3 = Colors.grey;
     } else {
       color_3 = const Color(0xff5B618A);
+      color_2 = Colors.grey;
+      color_1 = Colors.grey;
     }
     isChecked = !isChecked;
     emit(ChangeColorState());
@@ -82,5 +88,13 @@ class AddPostCubit extends Cubit<AddPostState> {
   void changeValue(text) {
     textPost = text;
     emit(ChangeValueState());
+  }
+
+  bool clickableImage = true, clickableVideo = true, clickableTag = true;
+  Future<void> nonclickable() async {
+    clickableImage = false;
+    clickableVideo = false;
+    clickableTag = false;
+    emit(NonClickableState());
   }
 }

@@ -18,3 +18,5 @@ class ChangeColorState extends AddPostState {}
 class GetVideoSuccess extends AddPostState {}
 
 class ChangeValueState extends AddPostState {}
+
+class NonClickableState extends AddPostState {}

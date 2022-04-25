@@ -29,54 +29,42 @@ class AddContainer extends StatelessWidget {
     }
 
     var cubit = context.read<AddPostCubit>();
-    return InkWell(
-      onTap: () {
-        if (index == 1) {
-          showSelectionImagePostDialog(context: context);
-        }
-        if (index == 2) {
-          showSelectionVideoPostDialog(context: context);
-        }
-        // getImageOrVideo(context , );
-        cubit.changeBackgroundColor(index);
-      },
-      child: BlocBuilder<AddPostCubit, AddPostState>(
-        builder: (context, state) {
-          return Container(
-            width: w(355),
-            height: h(66),
-            decoration: BoxDecoration(
-              color: cubit.getColor(index),
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: const Color(0xff5B618A), width: 1),
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(width: w(20)),
-                SvgPicture.asset(
-                  imagePath,
-                  width: w(40),
-                  height: h(35),
+    return BlocBuilder<AddPostCubit, AddPostState>(
+      builder: (context, state) {
+        return Container(
+          width: w(355),
+          height: h(66),
+          decoration: BoxDecoration(
+            color: cubit.getColor(index),
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: const Color(0xff5B618A), width: 1),
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(width: w(20)),
+              SvgPicture.asset(
+                imagePath,
+                width: w(40),
+                height: h(35),
+                color: cubit.getColor(index) == const Color(0xff5B618A)
+                    ? const Color(0xffE8DEEB)
+                    : const Color(0xff5B618A),
+              ),
+              SizedBox(width: w(13)),
+              AutoSizeText(
+                text,
+                style: TextStyle(
+                  fontSize: 20,
                   color: cubit.getColor(index) == const Color(0xff5B618A)
                       ? const Color(0xffE8DEEB)
                       : const Color(0xff5B618A),
                 ),
-                SizedBox(width: w(13)),
-                AutoSizeText(
-                  text,
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: cubit.getColor(index) == const Color(0xff5B618A)
-                        ? const Color(0xffE8DEEB)
-                        : const Color(0xff5B618A),
-                  ),
-                )
-              ],
-            ),
-          );
-        },
-      ),
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 }
