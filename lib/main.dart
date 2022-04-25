@@ -16,6 +16,7 @@ import 'package:rafiq/logic/cubit/add_post_cubit/add_post_cubit.dart';
 import 'package:rafiq/logic/cubit/forget_cubit/forget_cubit.dart';
 import 'package:rafiq/logic/cubit/login_cubit/login_cubit.dart';
 import 'package:rafiq/logic/cubit/marker_cubit/marker_cubit.dart';
+import 'package:rafiq/logic/cubit/post/post_screen_cubit/post_cubit.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 import 'package:rafiq/logic/cubit/register_cubit/register_cubit.dart';
 import 'package:rafiq/logic/cubit/update_user_info_cubit/update_user_cubit.dart';
@@ -73,6 +74,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<AddPostCubit>(
           create: (context) => AddPostCubit(postRepo: PostAPI()),
+        ),
+        BlocProvider<PostCubit>(
+          create: (context) => PostCubit(),
         ),
       ],
       child: MaterialApp(
