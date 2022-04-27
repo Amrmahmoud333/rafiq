@@ -13,7 +13,7 @@ class Videos extends StatelessWidget {
       itemBuilder: (context, index) {
         return ChewieItem(
           videoPlayerController: VideoPlayerController.network(
-              'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/error.mp4'),
+              'https://www.fluttercampus.com/video.mp4'),
           looping: true,
         );
       },

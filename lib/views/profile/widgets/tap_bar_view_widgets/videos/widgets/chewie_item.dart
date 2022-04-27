@@ -43,10 +43,28 @@ class _ChewieItemState extends State<ChewieItem> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Chewie(
-        controller: _chewieController,
+    double h(double n) {
+      return MediaQuery.of(context).size.height * (n / 851);
+    }
+
+    double w(double n) {
+      return MediaQuery.of(context).size.height * (n / 393);
+    }
+
+    return Container(
+      decoration: BoxDecoration(
+        color: const Color(0xffEFE7F2),
+        borderRadius: BorderRadius.circular(50),
+      ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: w(15), vertical: h(15)),
+        child: Container(
+          width: w(321),
+          height: h(167),
+          child: Chewie(
+            controller: _chewieController,
+          ),
+        ),
       ),
     );
   }
