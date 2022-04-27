@@ -175,16 +175,17 @@ class Post extends StatelessWidget {
               children: [
                 SizedBox(width: w(9)),
                 Column(
-                  children: const [
+                  children: [
                     InkWell(
-                      child: Icon(
+                      onTap: () {},
+                      child: const Icon(
                         Icons.favorite_border,
                         color: Color(0XFF5B618A),
                         size: 30,
                       ),
                     ),
                     //   Icons.favorite,
-                    AutoSizeText(
+                    const AutoSizeText(
                       '10',
                       style: TextStyle(
                         fontSize: 12,
