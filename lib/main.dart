@@ -94,10 +94,13 @@ class MyApp extends StatelessWidget {
 
 
 // TODO Mustafa 
-// TODO work with InputFeild
 // TODO Validate Third sgin up inputs
 
-// TODO Sign in && login with google or facebook (We or backEnd)
-// TODO Make Map in Profile screen
 // TODO   الجزء العلوي ف السكرول ال تاب بار لما برفعها لاعلي الشاشه
 // TODO Add Maps to IOS
+/*
+If you are using an iOS simulator,
+ you will not be able to play videos. 
+ For iOS, you have to connect a real device.
+ If you are using an iOS simulator, you will not be able to play videos. For iOS, you have to connect a real device.
+*/

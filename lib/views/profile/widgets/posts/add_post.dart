@@ -8,7 +8,7 @@ import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 import 'package:rafiq/views/profile/widgets/posts/image_post_dialog.dart';
 import 'package:rafiq/views/profile/widgets/posts/video_post_dialog.dart';
 import 'package:rafiq/views/profile/widgets/posts/widgets/add_container.dart';
-import 'package:rafiq/views/profile/widgets/tap_bar_view_widgets/videos.dart';
+import 'package:rafiq/views/profile/widgets/tap_bar_view_widgets/videos/videos.dart';
 
 // TODO add name insted of user name
 

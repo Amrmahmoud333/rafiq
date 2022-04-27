@@ -25,8 +25,6 @@ class ProfileCubit extends Cubit<ProfileStates> {
     try {
       _setCoverModel = await coverImageRepo.setCoverRepo(file: file!);
 
-      print(_setCoverModel.results!.cover);
-
       emit(SetCoverSuccessState());
     } on DioError catch (error) {
       print(error.response!.data);

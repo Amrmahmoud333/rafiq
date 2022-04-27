@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rafiq/views/profile/widgets/tap_bar_view_widgets/images.dart';
 import 'package:rafiq/views/profile/widgets/tap_bar_view_widgets/map.dart';
 import 'package:rafiq/views/profile/widgets/tap_bar_view_widgets/posts.dart';
-import 'package:rafiq/views/profile/widgets/tap_bar_view_widgets/videos.dart';
+import 'package:rafiq/views/profile/widgets/tap_bar_view_widgets/videos/videos.dart';
 
 class TabBarViewWidget extends StatelessWidget {
   const TabBarViewWidget({Key? key, required this.tabController})
@@ -21,12 +21,7 @@ class TabBarViewWidget extends StatelessWidget {
         child: TabBarView(
           physics: const NeverScrollableScrollPhysics(),
           controller: tabController,
-          children: [
-            Posts(),
-            Images(),
-            Videos(),
-            Maps(),
-          ],
+          children: [Posts(), Images(), Videos(), Maps()],
         ),
       ),
     );

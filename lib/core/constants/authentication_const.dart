@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:rafiq/data/chach_helper.dart';
 
 /*
