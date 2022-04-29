@@ -100,7 +100,9 @@ class ProfileInformation extends StatelessWidget {
                             Align(
                               alignment: Alignment.bottomRight,
                               child: InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  _launchUrl(cubit.socialMedia![i].link!);
+                                },
                                 child: SvgPicture.asset(
                                   cubit.socialMedia![i].label == 'instagram'
                                       ? 'assets/images/insta_icon.svg'
@@ -131,5 +133,15 @@ class ProfileInformation extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  _launchUrl(String url) async {
+    final uri = Uri.parse(url);
+
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } else {
+      throw 'Could not launch $uri';
+    }
   }
 }
