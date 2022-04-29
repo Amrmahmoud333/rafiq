@@ -1,6 +1,7 @@
+// ignore_for_file: file_names
+
 import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/core/constants/url.dart';
-import 'package:rafiq/data/chach_helper.dart';
 import 'package:rafiq/data/data_API/dio_helper.dart';
 import 'package:rafiq/data/models/user_data_model.dart';
 import 'package:rafiq/data/repositories/profile/user_data_repo.dart';
