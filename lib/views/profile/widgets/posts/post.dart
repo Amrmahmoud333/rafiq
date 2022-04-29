@@ -45,16 +45,21 @@ class Post extends StatelessWidget {
                     ),
                   ),
                   SizedBox(width: w(6)),
-                  AutoSizeText(
-                    '${cubit.firstName} ${cubit.lastName}',
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0XFF5B618A),
-                      fontFamily: 'DavidLibre',
+                  Container(
+                    width: w(121),
+                    child: FittedBox(
+                      child: AutoSizeText(
+                        '${cubit.firstName} ${cubit.lastName}',
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0XFF5B618A),
+                          fontFamily: 'DavidLibre',
+                        ),
+                      ),
                     ),
                   ),
-                  SizedBox(width: w(140)),
+                  SizedBox(width: w(160)),
                   SvgPicture.asset('assets/images/Options.svg')
                 ],
               ),
