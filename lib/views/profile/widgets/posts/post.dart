@@ -2,7 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:rafiq/logic/cubit/post/post_screen_cubit/post_cubit.dart';
+import 'package:rafiq/data/data_API/profile/get_profile_sections_API.dart';
+import 'package:rafiq/logic/cubit/get_user_sections/get_user_posts_cubit/get_user_posts_cubit.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 
 class Post extends StatelessWidget {
@@ -20,7 +21,8 @@ class Post extends StatelessWidget {
 
     var cubit = context.read<UserDataCubit>();
     return BlocProvider(
-      create: (context) => PostCubit(),
+      create: (context) =>
+          GetUserPostsCubit(getProfileSectionsRepo: GetProfileSectionsAPI()),
       child: Container(
         color: const Color(0xffDBD4DD),
         child: Column(
@@ -45,7 +47,7 @@ class Post extends StatelessWidget {
                     ),
                   ),
                   SizedBox(width: w(6)),
-                  Container(
+                  SizedBox(
                     width: w(121),
                     child: FittedBox(
                       child: AutoSizeText(
@@ -99,14 +101,14 @@ class Post extends StatelessWidget {
                       ],
                     ),
                   ),
-                  BlocBuilder<PostCubit, PostState>(
+                  BlocBuilder<GetUserPostsCubit, GetUserPostsState>(
                     builder: (context, state) {
                       return Positioned(
                         bottom: 0,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            context.read<PostCubit>().isMore
+                            context.read<GetUserPostsCubit>().isMore
                                 ? Container(
                                     color: const Color(0xffDBD4DD),
                                     width: w(390),
@@ -148,12 +150,14 @@ class Post extends StatelessWidget {
                             // see more widget
                             InkWell(
                               onTap: () {
-                                context.read<PostCubit>().changeSeeMore();
+                                context
+                                    .read<GetUserPostsCubit>()
+                                    .changeSeeMore();
                               },
                               child: Padding(
                                 padding: EdgeInsets.only(right: w(25)),
                                 child: AutoSizeText(
-                                  context.read<PostCubit>().label,
+                                  context.read<GetUserPostsCubit>().label,
                                   style: TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.w500,

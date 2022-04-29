@@ -10,3 +10,5 @@ class GetUserPostsLoadinngState extends GetUserPostsState {}
 class GetUserPostsSuccessState extends GetUserPostsState {}
 
 class GetUserPostsErrorState extends GetUserPostsState {}
+
+class ChangeSeeMoreSuccessState extends GetUserPostsState {}
