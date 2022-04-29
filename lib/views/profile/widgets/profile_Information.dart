@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 import 'package:rafiq/views/profile/widgets/row_data.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfileInformation extends StatelessWidget {
   const ProfileInformation({
