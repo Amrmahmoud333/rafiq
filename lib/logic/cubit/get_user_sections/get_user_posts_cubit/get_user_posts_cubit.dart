@@ -39,7 +39,7 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
     }
   }
 
-  //
+  // UI logic
   bool isMore = true;
   String label = 'See More';
 
