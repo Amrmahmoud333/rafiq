@@ -1,9 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:rafiq/core/constants/url.dart';
 import 'package:rafiq/data/models/get_profile_posts_model.dart';
 import 'package:rafiq/data/repositories/profile/get_profile_sections_repo.dart';
+import 'package:rafiq/views/profile/widgets/posts/post.dart';
 
 part 'get_user_posts_state.dart';
 
@@ -13,24 +15,65 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
       : super(GetUserPostsInitial());
 
   late GetProfilePostsModel getProfilePostsModel;
+  int page = 1;
+
+  /*void loadPosts() {
+    if (state is PostsLoading) return;
+
+    // the current  state of this cubit 
+    final currentState = state;
+
+    var oldPosts = <Posts>[];
+    if (currentState is PostsLoaded) {
+      oldPosts = currentState.posts;
+    }
+
+    emit(PostsLoading(oldPosts, isFirstFetch: page == 1));
+
+    getProfileSectionsRepo.fetchPosts(page).then((newPosts) {
+      page++;
+
+      final posts = (state as PostsLoading).oldPosts;
+      posts.addAll(newPosts);    
+
+      emit(PostsLoaded(posts));
+    });
+  }*/
+
   /*
   we will send in UI lastPostId 
   and the user name of the showen profile
   */
-  Future<void> getPosts({String? lastPostId, String? userID}) async {
+  List<Posts> posts = [];
+  Future<void> getFirstPosts({@required userID}) async {
+    emit(GetUserFirstPostsLoadinngState());
+    try {
+      getProfilePostsModel = await getProfileSectionsRepo.getSomeUserPost(
+        url: '$URL/api/v1/users/$userID/posts?limit=1,10',
+      );
+      for (int i = 0; i < getProfilePostsModel.posts!.length; i++) {
+        posts.add(getProfilePostsModel.posts![i]);
+      }
+      page++;
+      emit(GetUserFirstPostsSuccessState());
+    } on DioError catch (error) {
+      print(error.response!.data);
+      emit(GetUserFirstPostsErrorState());
+    }
+  }
+
+  Future<void> getMorePosts({required String? userID}) async {
     emit(GetUserPostsLoadinngState());
     try {
-      if (lastPostId == '') {
-        getProfilePostsModel = await getProfileSectionsRepo.getSomeUserPost(
-          lastId: lastPostId,
-          url: '$URL/api/v1/users/$userID/posts?limit=1,10',
-        );
-      } else {
-        getProfilePostsModel = await getProfileSectionsRepo.getSomeUserPost(
-          lastId: lastPostId,
-          url: '$URL/api/v1/users/$userID/posts/morePosts/$lastPostId',
-        );
+      String lastPostId = getProfilePostsModel.posts![posts.length - 1].sId!;
+      getProfilePostsModel = await getProfileSectionsRepo.getSomeUserPost(
+        url: '$URL/api/v1/users/$userID/posts/morePosts/$lastPostId',
+      );
+
+      for (int i = 0; i < getProfilePostsModel.posts!.length; i++) {
+        posts.add(getProfilePostsModel.posts![i]);
       }
+      print(posts.length);
 
       emit(GetUserPostsSuccessState());
     } on DioError catch (error) {
