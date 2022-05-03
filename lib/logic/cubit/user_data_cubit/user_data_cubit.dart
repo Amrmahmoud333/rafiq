@@ -160,7 +160,7 @@ class UserDataCubit extends Cubit<UserDataState> {
       }
       emit(UserGetDataSuccessState());
     } on DioError catch (error) {
-      print(error.response!.data);
+      //print(error.response!.data);
       emit(UserGetDataErrorState());
     }
   }
