@@ -29,6 +29,8 @@ class _ChewieItemState extends State<ChewieItem> {
         // Prepare the video to be played and display the first frame
         autoInitialize: true,
         looping: widget.looping!,
+        autoPlay: false,
+
         // Errors can occur for example when trying to play a video
         // from a non-existent URL
         errorBuilder: (context, errorMessage) {
@@ -58,7 +60,7 @@ class _ChewieItemState extends State<ChewieItem> {
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: w(15), vertical: h(15)),
-        child: Container(
+        child: SizedBox(
           width: w(321),
           height: h(167),
           child: Chewie(
@@ -71,9 +73,10 @@ class _ChewieItemState extends State<ChewieItem> {
 
   @override
   void dispose() {
-    super.dispose();
     // IMPORTANT to dispose of all the used resources
     widget.videoPlayerController.dispose();
     _chewieController.dispose();
+    super.dispose();
+    print('=================disposed');
   }
 }

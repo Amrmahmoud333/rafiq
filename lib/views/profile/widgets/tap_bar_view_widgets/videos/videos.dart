@@ -12,6 +12,7 @@ class Videos extends StatelessWidget {
     return ListView.builder(
       itemBuilder: (context, index) {
         return ChewieItem(
+          key: Key("${index.hashCode}_key"),
           videoPlayerController: VideoPlayerController.network(
               'https://www.fluttercampus.com/video.mp4'),
           looping: true,

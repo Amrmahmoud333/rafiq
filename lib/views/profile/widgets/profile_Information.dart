@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 import 'package:rafiq/views/profile/widgets/row_data.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfileInformation extends StatelessWidget {
   const ProfileInformation({
@@ -99,7 +100,9 @@ class ProfileInformation extends StatelessWidget {
                             Align(
                               alignment: Alignment.bottomRight,
                               child: InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  _launchUrl(cubit.socialMedia![i].link!);
+                                },
                                 child: SvgPicture.asset(
                                   cubit.socialMedia![i].label == 'instagram'
                                       ? 'assets/images/insta_icon.svg'
@@ -130,5 +133,15 @@ class ProfileInformation extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  _launchUrl(String url) async {
+    final uri = Uri.parse(url);
+
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } else {
+      throw 'Could not launch $uri';
+    }
   }
 }
