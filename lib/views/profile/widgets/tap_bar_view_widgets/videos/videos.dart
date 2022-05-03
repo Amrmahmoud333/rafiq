@@ -17,7 +17,7 @@ class Videos extends StatelessWidget {
           looping: true,
         );
       },
-      itemCount: 5,
+      itemCount: 1,
     );
   }
 }
