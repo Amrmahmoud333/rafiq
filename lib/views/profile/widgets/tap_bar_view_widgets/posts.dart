@@ -29,7 +29,6 @@ class Posts extends StatelessWidget {
     // var cubit = ;
     //  cubit.initStateUI();
     // setupScrollController(context);
-    context.read<GetUserPostsCubit>().getFirstPosts(userID: userName);
 
     return BlocBuilder<GetUserPostsCubit, GetUserPostsState>(
         builder: (context, state) {
@@ -40,20 +39,27 @@ class Posts extends StatelessWidget {
       return ListView.builder(
         controller: scrollController,
         itemBuilder: (context, index) {
-          if (index <
-              context
-                  .read<GetUserPostsCubit>()
-                  .getProfilePostsModel
-                  .posts!
-                  .length) {
+          //   print(context.read<GetUserPostsCubit>().isMore);
+          if (index < context.read<GetUserPostsCubit>().posts.length) {
+            if (context.read<GetUserPostsCubit>().page % 2 == 0) {
+              if (context.read<GetUserPostsCubit>().morePosts == false) {
+                context.read<GetUserPostsCubit>().changeMorePosts();
+                //   context.read<GetUserPostsCubit>().page++;
+              }
+            }
             return Padding(
               padding: EdgeInsets.only(top: h(14)),
               child: const Post(),
             );
           } else {
-            context.read<GetUserPostsCubit>().getMorePosts(
-                  userID: userName,
-                );
+            if (context.read<GetUserPostsCubit>().morePosts) {
+              context.read<GetUserPostsCubit>().getMorePosts(
+                    userID: userName,
+                  );
+              context.read<GetUserPostsCubit>().changeMorePosts();
+              context.read<GetUserPostsCubit>().page++;
+            }
+
             return Padding(
               padding: EdgeInsets.only(bottom: h(30), top: h(5)),
               child: const Center(
@@ -62,12 +68,7 @@ class Posts extends StatelessWidget {
             );
           }
         },
-        itemCount: context
-                .read<GetUserPostsCubit>()
-                .getProfilePostsModel
-                .posts!
-                .length +
-            1,
+        itemCount: context.read<GetUserPostsCubit>().posts.length + 1,
       );
     });
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rafiq/core/constants/authentication_const.dart';
+import 'package:rafiq/logic/cubit/get_user_sections/get_user_posts_cubit/get_user_posts_cubit.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_states.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/tab_cubit/cubit/tab_cubit.dart';
@@ -21,6 +23,8 @@ class ProfileScreen extends StatelessWidget {
     double h(double n) {
       return MediaQuery.of(context).size.height * (n / 851);
     }
+
+    context.read<GetUserPostsCubit>().getFirstPosts(userID: userName);
 
     return BlocProvider(
       create: (context) => TabCubit(),

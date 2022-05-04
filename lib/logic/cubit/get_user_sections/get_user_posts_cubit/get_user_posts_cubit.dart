@@ -15,7 +15,6 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
       : super(GetUserPostsInitial());
 
   late GetProfilePostsModel getProfilePostsModel;
-  int page = 1;
 
   /*void loadPosts() {
     if (state is PostsLoading) return;
@@ -48,13 +47,14 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
   Future<void> getFirstPosts({@required userID}) async {
     emit(GetUserFirstPostsLoadinngState());
     try {
+      posts = [];
       getProfilePostsModel = await getProfileSectionsRepo.getSomeUserPost(
         url: '$URL/api/v1/users/$userID/posts?limit=1,10',
       );
       for (int i = 0; i < getProfilePostsModel.posts!.length; i++) {
         posts.add(getProfilePostsModel.posts![i]);
       }
-      page++;
+      print(posts.length);
       emit(GetUserFirstPostsSuccessState());
     } on DioError catch (error) {
       print(error.response!.data);
@@ -62,8 +62,9 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
     }
   }
 
+  int page = 1;
   Future<void> getMorePosts({required String? userID}) async {
-    emit(GetUserPostsLoadinngState());
+    emit(GetUserMorePostsLoadinngState());
     try {
       String lastPostId = getProfilePostsModel.posts![posts.length - 1].sId!;
       getProfilePostsModel = await getProfileSectionsRepo.getSomeUserPost(
@@ -75,11 +76,17 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
       }
       print(posts.length);
 
-      emit(GetUserPostsSuccessState());
+      emit(GetUserMorePostsSuccessState());
     } on DioError catch (error) {
       print(error.response!.data);
-      emit(GetUserPostsErrorState());
+      emit(GetUserMorePostsErrorState());
     }
+  }
+
+  bool morePosts = true;
+  void changeMorePosts() {
+    morePosts = !morePosts;
+    emit(ChangeMorePostsState());
   }
 
   // UI logic

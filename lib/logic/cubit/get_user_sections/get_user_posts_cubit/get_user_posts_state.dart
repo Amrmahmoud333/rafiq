@@ -28,12 +28,14 @@ class GetUserFirstPostsSuccessState extends GetUserPostsState {}
 
 class GetUserFirstPostsErrorState extends GetUserPostsState {}
 
-class GetUserPostsLoadinngState extends GetUserPostsState {}
+class GetUserMorePostsLoadinngState extends GetUserPostsState {}
 
-class GetUserPostsSuccessState extends GetUserPostsState {}
+class GetUserMorePostsSuccessState extends GetUserPostsState {}
 
-class GetUserPostsErrorState extends GetUserPostsState {}
+class GetUserMorePostsErrorState extends GetUserPostsState {}
 
 class ChangeSeeMoreSuccessState extends GetUserPostsState {}
 
 class InitStateUISuccess extends GetUserPostsState {}
+
+class ChangeMorePostsState extends GetUserPostsState {}
