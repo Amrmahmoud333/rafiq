@@ -38,6 +38,7 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
     }
   }
 
+  int? lengthOfListThatComesFromRequest;
   Future<void> getMorePosts(
       {required String? userID, String? lastPostId}) async {
     emit(GetUserMorePostsLoadinngState());
@@ -49,6 +50,7 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
       for (int i = 0; i < getProfilePostsModel.posts!.length; i++) {
         posts.add(getProfilePostsModel.posts![i]);
       }
+      lengthOfListThatComesFromRequest = getProfilePostsModel.posts!.length;
       print(posts.length);
 
       emit(GetUserMorePostsSuccessState());
