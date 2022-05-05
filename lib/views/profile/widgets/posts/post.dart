@@ -15,7 +15,7 @@ class Post extends StatelessWidget {
     var cubitPost = context.read<GetUserPostsCubit>();
 
     String check = cubitPost.checkPostList(index: index);
-    print('$check  $index');
+    // print('$check  $index');
 
     return check == 'justPhoto'
         ? JustPhoto(
@@ -23,7 +23,13 @@ class Post extends StatelessWidget {
             cubitPost: cubitPost,
             index: index,
           )
-        : Container();
+        : check == 'photoAndText'
+            ? TextWithPhoto(
+                cubit: cubit,
+                cubitPost: cubitPost,
+                index: index,
+              )
+            : Container();
   }
 }
 
@@ -31,9 +37,13 @@ class TextWithPhoto extends StatelessWidget {
   const TextWithPhoto({
     Key? key,
     required this.cubit,
+    required this.cubitPost,
+    required this.index,
   }) : super(key: key);
 
   final UserDataCubit cubit;
+  final GetUserPostsCubit cubitPost;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -98,31 +108,17 @@ class TextWithPhoto extends StatelessWidget {
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
-                      // check photo or video
-                      // loop and show photo (if photo)
-                      // if video show video
-                      // if just text change all UI
-                      SizedBox(
-                        width: w(380),
-                        child: const Image(
-                          image: AssetImage('assets/images/test1.png'),
-                          fit: BoxFit.cover,
+                      for (int i = 0;
+                          i < cubitPost.posts[index].content!.files!.length;
+                          i++)
+                        SizedBox(
+                          width: w(380),
+                          child: Image(
+                            image: NetworkImage(
+                                cubitPost.posts[index].content!.files![i]),
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        width: w(380),
-                        child: const Image(
-                          image: AssetImage('assets/images/test1.png'),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      SizedBox(
-                        width: w(380),
-                        child: const Image(
-                          image: AssetImage('assets/images/test2.png'),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
                     ],
                   ),
                 ),
@@ -141,9 +137,9 @@ class TextWithPhoto extends StatelessWidget {
                                   child: Padding(
                                     padding: EdgeInsets.only(
                                         left: w(10), right: w(15)),
-                                    child: const AutoSizeText(
-                                      'Albania possesses significant diversity with the landscape ranging from the snow-capped mountains in the Albanian Alps as well as the Korab, Skanderbeg, Pindus and Ceraunian Mountains to the hot and sunny coasts of the Albanian Adriatic and Ionian Sea along the Mediterranean Sea.',
-                                      style: TextStyle(
+                                    child: AutoSizeText(
+                                      cubitPost.posts[index].content!.text!,
+                                      style: const TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.w500,
                                         color: Color(0XFF5B618A),
@@ -162,9 +158,9 @@ class TextWithPhoto extends StatelessWidget {
                                   child: Padding(
                                     padding: EdgeInsets.only(
                                         left: w(10), right: w(15), top: h(5)),
-                                    child: const AutoSizeText(
-                                      'Albania possesses significant diversity with the landscape ranging from the snow-capped mountains in the Albanian Alps as well as the Korab, Skanderbeg, Pindus and Ceraunian Mountains to the hot and sunny coasts of the Albanian Adriatic and Ionian Sea along the Mediterranean Sea.',
-                                      style: TextStyle(
+                                    child: AutoSizeText(
+                                      cubitPost.posts[index].content!.text!,
+                                      style: const TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.w500,
                                         color: Color(0XFF5B618A),

@@ -63,7 +63,7 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
   String checkPostList({required int index}) {
     String messege = '';
 
-    if (posts[index].content!.text != "" &&
+    if (posts[index].content!.text == "" &&
         posts[index].content!.files!.isNotEmpty) {
       if (posts[index].content!.files![0].contains('jpg')) {
         messege = 'justPhoto';
@@ -73,7 +73,7 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
     } else if (posts[index].content!.text == "" &&
         posts[index].content!.files!.isEmpty) {
       messege = 'justText';
-    } else if (posts[index].content!.text == "" &&
+    } else if (posts[index].content!.text != "" &&
         posts[index].content!.files!.isNotEmpty) {
       if (posts[index].content!.files![0].contains('jpg')) {
         messege = 'photoAndText';
