@@ -54,7 +54,7 @@ class Posts extends StatelessWidget {
               child: const Post(),
             );
           } else {
-            if (context.read<GetUserPostsCubit>().morePosts) {
+            if (index % 10 == 0 && index != 0) {
               context.read<GetUserPostsCubit>().getMorePosts(
                     userID: userName,
                   );
