@@ -27,7 +27,9 @@ class Posts extends StatelessWidget {
           if (index < cubit.posts.length) {
             return Padding(
               padding: EdgeInsets.only(top: h(14)),
-              child: const Post(),
+              child: Post(
+                index: index,
+              ),
             );
           } else {
             if (state is! GetUserMorePostsLoadinngState) {
