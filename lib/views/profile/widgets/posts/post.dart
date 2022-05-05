@@ -16,7 +16,6 @@ class Post extends StatelessWidget {
     var cubitPost = context.read<GetUserPostsCubit>();
 
     String check = cubitPost.checkPostList(index: index);
-    // print('$check  $index');
 
     return check == 'justPhoto'
         ? JustPhoto(

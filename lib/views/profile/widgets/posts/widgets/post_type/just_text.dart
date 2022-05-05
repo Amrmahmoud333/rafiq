@@ -153,9 +153,9 @@ class JustText extends StatelessWidget {
                     ),
                   ),
                   //   Icons.favorite,
-                  const AutoSizeText(
-                    '10',
-                    style: TextStyle(
+                  AutoSizeText(
+                    '${cubitPost.posts[index].numberOfLikes!}',
+                    style: const TextStyle(
                       fontSize: 12,
                       color: Color(0XFF5B618A),
                       fontFamily: 'DavidLibre',
@@ -173,9 +173,9 @@ class JustText extends StatelessWidget {
                       height: h(27),
                     ),
                   ),
-                  const AutoSizeText(
-                    '2',
-                    style: TextStyle(
+                  AutoSizeText(
+                    '${cubitPost.posts[index].numberOfComments!}',
+                    style: const TextStyle(
                       fontSize: 12,
                       color: Color(0XFF5B618A),
                       fontFamily: 'DavidLibre',
