@@ -54,20 +54,6 @@ class Posts {
         : null;
     iV = json['__v'];
   }
-
-  @override
-  List<Object?> get props => [
-        authorInfo,
-        sId,
-        content,
-        isLiked,
-        numberOfLikes,
-        numberOfComments,
-        shares,
-        isShared,
-        sharedSource,
-        iV
-      ];
 }
 
 class AuthorInfo {

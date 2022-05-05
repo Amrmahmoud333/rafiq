@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rafiq/data/data_API/profile/get_profile_sections_API.dart';
 import 'package:rafiq/data/data_API/profile/marker_API.dart';
 import 'package:rafiq/logic/cubit/get_user_sections/get_user_posts_cubit/get_user_posts_cubit.dart';
 import 'package:rafiq/views/profile/widgets/posts/post.dart';
@@ -39,12 +38,10 @@ class Posts extends StatelessWidget {
       return ListView.builder(
         controller: scrollController,
         itemBuilder: (context, index) {
-          //   print(context.read<GetUserPostsCubit>().isMore);
           if (index < context.read<GetUserPostsCubit>().posts.length) {
-            if (context.read<GetUserPostsCubit>().page % 2 == 0) {
+            if (index == (context.read<GetUserPostsCubit>().posts.length) - 1) {
               if (context.read<GetUserPostsCubit>().morePosts == false) {
                 context.read<GetUserPostsCubit>().changeMorePosts();
-                //   context.read<GetUserPostsCubit>().page++;
               }
             }
             return Padding(
@@ -57,7 +54,6 @@ class Posts extends StatelessWidget {
                     userID: userName,
                   );
               context.read<GetUserPostsCubit>().changeMorePosts();
-              context.read<GetUserPostsCubit>().page++;
             }
 
             return Padding(
