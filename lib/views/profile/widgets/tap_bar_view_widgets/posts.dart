@@ -5,19 +5,7 @@ import 'package:rafiq/logic/cubit/get_user_sections/get_user_posts_cubit/get_use
 import 'package:rafiq/views/profile/widgets/posts/post.dart';
 
 class Posts extends StatelessWidget {
-  Posts({Key? key}) : super(key: key);
-  final scrollController = ScrollController();
-
-  /* void setupScrollController(context) {
-    scrollController.addListener(() {
-      if (scrollController.position.atEdge) {
-        if (scrollController.position.pixels != 0) {
-          BlocProvider.of<GetUserPostsCubit>(context)
-              .getMorePosts(userID: userName);
-        }
-      }
-    });
-  }*/
+  const Posts({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +13,7 @@ class Posts extends StatelessWidget {
       return MediaQuery.of(context).size.height * (n / 851);
     }
 
-    // var cubit = ;
-    //  cubit.initStateUI();
-    // setupScrollController(context);
+    var cubit = context.read<GetUserPostsCubit>();
 
     return BlocBuilder<GetUserPostsCubit, GetUserPostsState>(
         builder: (context, state) {
@@ -36,29 +22,19 @@ class Posts extends StatelessWidget {
       }
 
       return ListView.builder(
-        controller: scrollController,
+        itemCount: cubit.posts.length + 1,
         itemBuilder: (context, index) {
-          if (index < context.read<GetUserPostsCubit>().posts.length) {
-            // context.read<GetUserPostsCubit>().morePosts = true;
-            /* if (scrollController.position.pixels != 0) {
-              if (context.read<GetUserPostsCubit>().morePosts == false) {
-                context.read<GetUserPostsCubit>().morePosts = false;
-                print(index);
-              } else {
-                print('object');
-              }
-            }*/
-
+          if (index < cubit.posts.length) {
             return Padding(
               padding: EdgeInsets.only(top: h(14)),
               child: const Post(),
             );
           } else {
-            if (index % 10 == 0 && index != 0) {
-              context.read<GetUserPostsCubit>().getMorePosts(
-                    userID: userName,
-                  );
-              context.read<GetUserPostsCubit>().changeMorePosts();
+            if (state is! GetUserMorePostsLoadinngState) {
+              if (index % 10 == 0 && index != 0) {
+                cubit.getMorePosts(
+                    userID: userName, lastPostId: cubit.posts[index - 1].sId);
+              }
             }
 
             return Padding(
@@ -69,7 +45,6 @@ class Posts extends StatelessWidget {
             );
           }
         },
-        itemCount: context.read<GetUserPostsCubit>().posts.length + 1,
       );
     });
   }

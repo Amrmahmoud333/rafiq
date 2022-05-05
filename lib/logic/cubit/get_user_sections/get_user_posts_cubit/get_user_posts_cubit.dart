@@ -5,7 +5,6 @@ import 'package:meta/meta.dart';
 import 'package:rafiq/core/constants/url.dart';
 import 'package:rafiq/data/models/get_profile_posts_model.dart';
 import 'package:rafiq/data/repositories/profile/get_profile_sections_repo.dart';
-import 'package:rafiq/views/profile/widgets/posts/post.dart';
 
 part 'get_user_posts_state.dart';
 
@@ -15,29 +14,6 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
       : super(GetUserPostsInitial());
 
   late GetProfilePostsModel getProfilePostsModel;
-
-  /*void loadPosts() {
-    if (state is PostsLoading) return;
-
-    // the current  state of this cubit 
-    final currentState = state;
-
-    var oldPosts = <Posts>[];
-    if (currentState is PostsLoaded) {
-      oldPosts = currentState.posts;
-    }
-
-    emit(PostsLoading(oldPosts, isFirstFetch: page == 1));
-
-    getProfileSectionsRepo.fetchPosts(page).then((newPosts) {
-      page++;
-
-      final posts = (state as PostsLoading).oldPosts;
-      posts.addAll(newPosts);    
-
-      emit(PostsLoaded(posts));
-    });
-  }*/
 
   /*
   we will send in UI lastPostId 
@@ -62,20 +38,17 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
     }
   }
 
-  int page = 1;
-  int x = 0;
-  Future<void> getMorePosts({required String? userID}) async {
+  Future<void> getMorePosts(
+      {required String? userID, String? lastPostId}) async {
     emit(GetUserMorePostsLoadinngState());
     try {
-      String lastPostId = getProfilePostsModel.posts![posts.length - 1].sId!;
       getProfilePostsModel = await getProfileSectionsRepo.getSomeUserPost(
         url: '$URL/api/v1/users/$userID/posts/morePosts/$lastPostId',
       );
 
-      /*for (int i = 0; i < getProfilePostsModel.posts!.length; i++) {
+      for (int i = 0; i < getProfilePostsModel.posts!.length; i++) {
         posts.add(getProfilePostsModel.posts![i]);
-      }*/
-      posts.addAll(getProfilePostsModel.posts!);
+      }
       print(posts.length);
 
       emit(GetUserMorePostsSuccessState());
@@ -83,12 +56,6 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
       print(error.response!.data);
       emit(GetUserMorePostsErrorState());
     }
-  }
-
-  bool morePosts = true;
-  void changeMorePosts() {
-    morePosts = !morePosts;
-    emit(ChangeMorePostsState());
   }
 
   // UI logic
