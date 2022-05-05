@@ -180,13 +180,14 @@ class TextWithPhoto extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: () {},
-                    child: const Icon(
-                      Icons.favorite_border,
-                      color: Color(0XFF5B618A),
+                    child: Icon(
+                      cubitPost.posts[index].isLiked!
+                          ? Icons.favorite
+                          : Icons.favorite_border,
+                      color: const Color(0XFF5B618A),
                       size: 30,
                     ),
                   ),
-                  //   Icons.favorite,
                   AutoSizeText(
                     '${cubitPost.posts[index].numberOfLikes!}',
                     style: const TextStyle(
