@@ -131,14 +131,30 @@ class AddPost extends StatelessWidget {
                             },
                           ),
                         ),
-                        if (context
+                        if (context.read<AddPostCubit>().isSelectAddImage &&
+                            context
                                 .read<AddPostCubit>()
-                                .singleImageFromCamera !=
-                            null)
-                          Image.file(
-                            context.read<AddPostCubit>().singleImageFromCamera!,
-                            width: 200,
-                            height: 200,
+                                .imageListFile
+                                .isNotEmpty)
+                          Expanded(
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (context, index) => Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Image.file(
+                                  context
+                                      .read<AddPostCubit>()
+                                      .imageListFile[index],
+                                  width: w(250),
+                                  height: h(250),
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
+                              itemCount: context
+                                  .read<AddPostCubit>()
+                                  .imageListFile
+                                  .length,
+                            ),
                           )
                         else
                           Container(),

@@ -52,16 +52,19 @@ class AddPostCubit extends Cubit<AddPostState> {
   }
 
 // work with UI
+  bool isSelectAddImage = false;
   bool isChecked = false;
   Color color_1 = const Color(0xffE8DEEB),
       color_2 = const Color(0xffE8DEEB),
       color_3 = const Color(0xffE8DEEB);
   changeBackgroundColor(int index) {
     if (index == 1) {
+      isSelectAddImage = true;
       color_1 = const Color(0xff5B618A);
       color_2 = Colors.grey;
       color_3 = Colors.grey;
     } else if (index == 2) {
+      isSelectAddImage = false;
       color_2 = const Color(0xff5B618A);
       color_1 = Colors.grey;
       color_3 = Colors.grey;

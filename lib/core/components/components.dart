@@ -7,6 +7,7 @@ import 'package:motion_toast/motion_toast.dart';
 import 'package:motion_toast/resources/arrays.dart';
 import 'package:rafiq/logic/cubit/add_post_cubit/add_post_cubit.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
+import 'package:multi_image_picker/multi_image_picker.dart';
 
 void showTosat({required msg, required state}) => Fluttertoast.showToast(
       msg: msg,
