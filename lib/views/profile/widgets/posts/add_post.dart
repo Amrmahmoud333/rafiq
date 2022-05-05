@@ -40,7 +40,7 @@ class AddPost extends StatelessWidget {
           icon: const Icon(Icons.arrow_back, color: Color(0XFF5B618A)),
           onPressed: () {
             Navigator.of(context).pop();
-            context.read<AddPostCubit>().reSetAddPostScreen();
+            context.read<AddPostCubit>().resetAddPostScreen();
           },
         ),
         centerTitle: true,
@@ -273,7 +273,7 @@ class AddPost extends StatelessWidget {
                         showTosat(
                             msg: 'Post created successfully', state: true);
                         Navigator.pop(context);
-                        context.read<AddPostCubit>().reSetAddPostScreen();
+                        context.read<AddPostCubit>().resetAddPostScreen();
                       }
                     },
                     builder: (context, state) {
