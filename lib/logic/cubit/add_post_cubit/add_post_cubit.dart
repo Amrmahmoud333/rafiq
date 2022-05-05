@@ -84,6 +84,17 @@ class AddPostCubit extends Cubit<AddPostState> {
     emit(ChangeColorState());
   }
 
+  void resetAddPostScreen() {
+    isSelectAddImage = false;
+    imageListFile = [];
+    clickableImage = true;
+    clickableVideo = true;
+    clickableTag = true;
+    color_1 = const Color(0xffE8DEEB);
+    color_2 = const Color(0xffE8DEEB);
+    color_3 = const Color(0xffE8DEEB);
+  }
+
   Color getColor(index) {
     if (index == 1) {
       return color_1;

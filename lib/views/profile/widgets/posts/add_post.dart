@@ -33,16 +33,15 @@ class AddPost extends StatelessWidget {
     var cubit = context.read<UserDataCubit>();
 
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            print(context.read<AddPostCubit>().videoPostFile.toString()),
-      ),
       appBar: AppBar(
         backgroundColor: const Color(0xffE8DEEB),
         elevation: 5,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Color(0XFF5B618A)),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () {
+            Navigator.of(context).pop();
+            context.read<AddPostCubit>().reSetAddPostScreen();
+          },
         ),
         centerTitle: true,
         title: const AutoSizeText(
@@ -274,6 +273,7 @@ class AddPost extends StatelessWidget {
                         showTosat(
                             msg: 'Post created successfully', state: true);
                         Navigator.pop(context);
+                        context.read<AddPostCubit>().reSetAddPostScreen();
                       }
                     },
                     builder: (context, state) {

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:rafiq/core/components/components.dart';
+
+import '../../../../logic/cubit/add_post_cubit/add_post_cubit.dart';
 
 showSelectionVideoPostDialog({
   required BuildContext context,
@@ -29,7 +32,7 @@ showSelectionVideoPostDialog({
           ),
           onPressed: () async {
             await getVideoPost(context, ImageSource.gallery);
-
+            context.read<AddPostCubit>().resetAddPostScreen();
             Navigator.pop(context);
           },
         ),
@@ -48,6 +51,7 @@ showSelectionVideoPostDialog({
           ),
           onPressed: () async {
             await getVideoPost(context, ImageSource.camera);
+            context.read<AddPostCubit>().resetAddPostScreen();
             Navigator.pop(context);
           },
         ),

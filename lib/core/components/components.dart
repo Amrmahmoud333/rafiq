@@ -86,7 +86,9 @@ Future<void> getImagePostFromCamera(context) async {
 
 Future<void> getMultiImagePost(context) async {
   final List<XFile>? _imagesList = await _image.pickMultiImage();
-  if (_imagesList == null) return;
+  if (_imagesList == null) {
+    return;
+  }
 
   BlocProvider.of<AddPostCubit>(context).imagesList.addAll(_imagesList);
   BlocProvider.of<AddPostCubit>(context).convert();
