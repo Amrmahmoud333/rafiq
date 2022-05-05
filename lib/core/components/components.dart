@@ -11,10 +11,10 @@ import 'package:multi_image_picker/multi_image_picker.dart';
 
 void showTosat({required msg, required state}) => Fluttertoast.showToast(
       msg: msg,
-      toastLength: Toast.LENGTH_SHORT,
+      toastLength: Toast.LENGTH_LONG,
       gravity: ToastGravity.BOTTOM,
       timeInSecForIosWeb: 5,
-      backgroundColor: state ? Colors.green : Colors.amber,
+      backgroundColor: state ? const Color(0Xff575D85) : Colors.amber,
       textColor: Colors.white,
       fontSize: 15.0,
     );
@@ -23,6 +23,21 @@ void showValidationTosat(context, message) {
   MotionToast.error(
     title: const Text(
       "Error",
+      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+    ),
+    description: Text(message,
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
+    toastDuration: const Duration(milliseconds: 2500),
+    animationType: ANIMATION.fromRight,
+    animationCurve: Curves.decelerate,
+    position: MOTION_TOAST_POSITION.top,
+  ).show(context);
+}
+
+Future showSuccessTosat({required context, required String message}) async {
+  MotionToast.success(
+    title: const Text(
+      "Success",
       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
     ),
     description: Text(message,

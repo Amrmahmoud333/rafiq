@@ -1,6 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rafiq/core/components/components.dart';
 import 'package:rafiq/data/chach_helper.dart';
 import 'package:rafiq/data/data_API/profile/post_API.dart';
 import 'package:rafiq/logic/cubit/add_post_cubit/add_post_cubit.dart';
@@ -31,6 +33,9 @@ class AddPost extends StatelessWidget {
     var cubit = context.read<UserDataCubit>();
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => print(context.read<AddPostCubit>().isSuccess),
+      ),
       appBar: AppBar(
         backgroundColor: const Color(0xffE8DEEB),
         elevation: 5,
@@ -262,33 +267,58 @@ class AddPost extends StatelessWidget {
                 alignment: Alignment.bottomRight,
                 child: Padding(
                   padding: EdgeInsets.only(right: w(20)),
-                  child: InkWell(
-                    onTap: () {
-                      BlocProvider.of<AddPostCubit>(context).addPost(
-                        text: context.read<AddPostCubit>().textPost,
-                        postOrVideo: BlocProvider.of<AddPostCubit>(context)
-                            .imageListFile,
+                  child: BlocConsumer<AddPostCubit, AddPostState>(
+                    listener: (context, state) async {
+                      if (state is AddPostSuccessState) {
+                        showTosat(
+                            msg: 'Post created successfully', state: true);
+                        Navigator.pop(context);
+                      }
+                    },
+                    builder: (context, state) {
+                      return InkWell(
+                        onTap: () {
+                          BlocProvider.of<AddPostCubit>(context).addPost(
+                            text: context.read<AddPostCubit>().textPost,
+                            postOrVideo: BlocProvider.of<AddPostCubit>(context)
+                                .imageListFile,
+                          );
+                        },
+                        child: ConditionalBuilder(
+                          condition: (state is! AddPostLoadingState),
+                          builder: (context) {
+                            context.read<AddPostCubit>().isSuccess = true;
+                            return Container(
+                              height: h(45),
+                              width: w(141),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: const Color(0xFF5B618A),
+                              ),
+                              child: const Center(
+                                child: AutoSizeText(
+                                  'Post',
+                                  style: TextStyle(
+                                    color: Color(0xFFE8DEEB),
+                                    fontSize: 25,
+                                    fontFamily: 'DavidLibre',
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                          fallback: (context) {
+                            context.read<AddPostCubit>().isSuccess = false;
+                            return const Center(
+                              child: CircularProgressIndicator(
+                                color: Color(0xFF5B618A),
+                              ),
+                            );
+                          },
+                        ),
                       );
                     },
-                    child: Container(
-                      height: h(45),
-                      width: w(141),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: const Color(0xFF5B618A),
-                      ),
-                      child: const Center(
-                        child: AutoSizeText(
-                          'Post',
-                          style: TextStyle(
-                            color: Color(0xFFE8DEEB),
-                            fontSize: 25,
-                            fontFamily: 'DavidLibre',
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                    ),
                   ),
                 ),
               ),

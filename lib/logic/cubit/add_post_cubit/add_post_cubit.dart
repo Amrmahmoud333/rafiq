@@ -51,6 +51,7 @@ class AddPostCubit extends Cubit<AddPostState> {
     emit(GetVideoSuccess());
   }
 
+  bool isSuccess = false;
 // work with UI
   bool isSelectAddImage = false;
   bool isChecked = false;
