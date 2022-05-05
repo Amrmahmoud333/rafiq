@@ -34,7 +34,8 @@ class AddPost extends StatelessWidget {
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () => print(context.read<AddPostCubit>().isSuccess),
+        onPressed: () =>
+            print(context.read<AddPostCubit>().videoPostFile.toString()),
       ),
       appBar: AppBar(
         backgroundColor: const Color(0xffE8DEEB),

@@ -12,18 +12,25 @@ import 'package:http_parser/http_parser.dart';
 
 class PostAPI extends PostRepo {
   @override
-  Future<AddPostModel> addPost({String? text, List<File>? photoOrVideo}) async {
+  Future<AddPostModel> addPost(
+      {String? text, List<File>? photoOrVideo, bool? isVideo}) async {
     FormData formData = FormData();
     for (var file in photoOrVideo!) {
       String fileName = file.path.split('/').last;
       formData.files.addAll([
         MapEntry(
           'post',
-          await MultipartFile.fromFile(
-            file.path,
-            filename: fileName,
-            contentType: MediaType("image", "jpeg"),
-          ),
+          await MultipartFile.fromFile(file.path,
+              filename: fileName,
+              contentType: isVideo!
+                  ? MediaType(
+                      "video",
+                      "mp4",
+                    )
+                  : MediaType(
+                      "image",
+                      "jpeg",
+                    )),
         ),
       ]);
     }

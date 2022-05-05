@@ -19,8 +19,14 @@ class AddPostCubit extends Cubit<AddPostState> {
   Future<void> addPost({String? text, List<File>? postOrVideo}) async {
     emit(AddPostLoadingState());
     try {
-      addPostModel =
-          await postRepo.addPost(text: text, photoOrVideo: postOrVideo);
+      bool isVideo = false;
+      if (videoPostFile != null) {
+        isVideo = true;
+      } else {
+        isVideo = false;
+      }
+      addPostModel = await postRepo.addPost(
+          text: text, photoOrVideo: postOrVideo, isVideo: isVideo);
       emit(AddPostSuccessState());
     } on DioError catch (error) {
       print(error.response!.data);
