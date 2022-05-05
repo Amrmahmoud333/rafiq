@@ -41,15 +41,7 @@ class Posts extends StatelessWidget {
                     cubit.posts.length % 10 != 0
                 ? Container(
                     height: h(35),
-                  ) /*Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 15, bottom: 40),
-                      child: Text(
-                        'No More Posts',
-                        style: Theme.of(context).textTheme.headline3,
-                      ),
-                    ),
-                  )*/
+                  )
                 : Padding(
                     padding: EdgeInsets.only(bottom: h(35), top: h(9)),
                     child: const Center(

@@ -60,6 +60,30 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
     }
   }
 
+  String checkPostList({required int index}) {
+    String messege = '';
+
+    if (posts[index].content!.text != "" &&
+        posts[index].content!.files!.isNotEmpty) {
+      if (posts[index].content!.files![0].contains('jpg')) {
+        messege = 'justPhoto';
+      } else {
+        messege = 'justVideo';
+      }
+    } else if (posts[index].content!.text == "" &&
+        posts[index].content!.files!.isEmpty) {
+      messege = 'justText';
+    } else if (posts[index].content!.text == "" &&
+        posts[index].content!.files!.isNotEmpty) {
+      if (posts[index].content!.files![0].contains('jpg')) {
+        messege = 'photoAndText';
+      }
+    } else {
+      messege = 'videoAndText';
+    }
+    return messege;
+  }
+
   // UI logic
   bool isMore = true;
   String label = 'See More';

@@ -2,7 +2,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:rafiq/data/data_API/profile/get_profile_sections_API.dart';
 import 'package:rafiq/logic/cubit/get_user_sections/get_user_posts_cubit/get_user_posts_cubit.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 
@@ -20,8 +19,10 @@ class Post extends StatelessWidget {
     }
 
     var cubit = context.read<UserDataCubit>();
+    var cubitPost = context.read<GetUserPostsCubit>();
+
     return Container(
-      color: const Color(0xffDBD4DD),
+      color: const Color(0xffDBD4DD).withOpacity(0.15),
       child: Column(
         children: [
           Padding(
@@ -73,9 +74,12 @@ class Post extends StatelessWidget {
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
+                      // check photo or video
+                      // loop and show photo (if photo)
+                      // if video show video
+                      // if just text change all UI
                       SizedBox(
                         width: w(380),
-                        // height: h(224),
                         child: const Image(
                           image: AssetImage('assets/images/test1.png'),
                           fit: BoxFit.cover,
@@ -107,13 +111,14 @@ class Post extends StatelessWidget {
                         children: [
                           context.read<GetUserPostsCubit>().isMore
                               ? Container(
-                                  color: const Color(0xffDBD4DD),
+                                  color:
+                                      const Color(0xffDBD4DD).withOpacity(0.15),
                                   width: w(390),
                                   child: Padding(
                                     padding: EdgeInsets.only(
                                         left: w(10), right: w(15)),
                                     child: const AutoSizeText(
-                                      'Albania possesses significant diversity with the landscape ranging from the snow-capped mountains in the Albanian Alps as well as the Korab, Skanderbeg, Pindus and Ceraunian Mountains to the hot and sunny coasts of the Albanian Adriatic and Ionian Sea along the Mediterranean Sea.',
+                                      '',
                                       style: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.w500,
@@ -127,13 +132,14 @@ class Post extends StatelessWidget {
                                   ),
                                 )
                               : Container(
-                                  color: const Color(0xffDBD4DD),
+                                  color:
+                                      const Color(0xffDBD4DD).withOpacity(0.9),
                                   width: w(390),
                                   child: Padding(
                                     padding: EdgeInsets.only(
                                         left: w(10), right: w(15), top: h(5)),
                                     child: const AutoSizeText(
-                                      'Albania possesses significant diversity with the landscape ranging from the snow-capped mountains in the Albanian Alps as well as the Korab, Skanderbeg, Pindus and Ceraunian Mountains to the hot and sunny coasts of the Albanian Adriatic and Ionian Sea along the Mediterranean Sea.',
+                                      '',
                                       style: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.w500,
