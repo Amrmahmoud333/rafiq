@@ -63,6 +63,7 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
   }
 
   int page = 1;
+  int x = 0;
   Future<void> getMorePosts({required String? userID}) async {
     emit(GetUserMorePostsLoadinngState());
     try {
@@ -71,9 +72,10 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
         url: '$URL/api/v1/users/$userID/posts/morePosts/$lastPostId',
       );
 
-      for (int i = 0; i < getProfilePostsModel.posts!.length; i++) {
+      /*for (int i = 0; i < getProfilePostsModel.posts!.length; i++) {
         posts.add(getProfilePostsModel.posts![i]);
-      }
+      }*/
+      posts.addAll(getProfilePostsModel.posts!);
       print(posts.length);
 
       emit(GetUserMorePostsSuccessState());

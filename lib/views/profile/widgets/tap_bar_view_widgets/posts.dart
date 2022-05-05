@@ -8,7 +8,7 @@ class Posts extends StatelessWidget {
   Posts({Key? key}) : super(key: key);
   final scrollController = ScrollController();
 
-  void setupScrollController(context) {
+  /* void setupScrollController(context) {
     scrollController.addListener(() {
       if (scrollController.position.atEdge) {
         if (scrollController.position.pixels != 0) {
@@ -17,7 +17,7 @@ class Posts extends StatelessWidget {
         }
       }
     });
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -39,11 +39,16 @@ class Posts extends StatelessWidget {
         controller: scrollController,
         itemBuilder: (context, index) {
           if (index < context.read<GetUserPostsCubit>().posts.length) {
-            if (index == (context.read<GetUserPostsCubit>().posts.length) - 1) {
+            // context.read<GetUserPostsCubit>().morePosts = true;
+            /* if (scrollController.position.pixels != 0) {
               if (context.read<GetUserPostsCubit>().morePosts == false) {
-                context.read<GetUserPostsCubit>().changeMorePosts();
+                context.read<GetUserPostsCubit>().morePosts = false;
+                print(index);
+              } else {
+                print('object');
               }
-            }
+            }*/
+
             return Padding(
               padding: EdgeInsets.only(top: h(14)),
               child: const Post(),

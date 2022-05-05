@@ -52,6 +52,12 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         )
                       : Scaffold(
+                          floatingActionButton: FloatingActionButton(
+                            onPressed: () {
+                              print(
+                                  context.read<GetUserPostsCubit>().morePosts);
+                            },
+                          ),
                           body: NestedScrollView(
                             headerSliverBuilder: (context, innerBoxIsScrolled) {
                               return [
