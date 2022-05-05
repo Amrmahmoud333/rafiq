@@ -53,7 +53,7 @@ class MySearchDelegate extends SearchDelegate {
     // TODO: implement buildResults
     throw UnimplementedError();
   }
-
+  
   @override
   Widget buildSuggestions(BuildContext context) {
     // TODO: implement buildSuggestions
