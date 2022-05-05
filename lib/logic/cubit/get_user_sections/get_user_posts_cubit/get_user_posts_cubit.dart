@@ -70,16 +70,16 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
       } else {
         messege = 'justVideo';
       }
-    } else if (posts[index].content!.text == "" &&
+    } else if (posts[index].content!.text != "" &&
         posts[index].content!.files!.isEmpty) {
       messege = 'justText';
     } else if (posts[index].content!.text != "" &&
         posts[index].content!.files!.isNotEmpty) {
       if (posts[index].content!.files![0].contains('jpg')) {
-        messege = 'photoAndText';
+        messege = 'TextWithPhoto';
       }
     } else {
-      messege = 'videoAndText';
+      messege = 'TextWithVideo';
     }
     return messege;
   }
