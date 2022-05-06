@@ -1,12 +1,13 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq/logic/cubit/get_user_sections/get_user_posts_cubit/get_user_posts_cubit.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
+import 'package:rafiq/views/profile/widgets/tap_bar_view_widgets/videos/widgets/chewie_item.dart';
+import 'package:video_player/video_player.dart';
 
-class JustText extends StatelessWidget {
-  const JustText({
+class JustVideo extends StatelessWidget {
+  const JustVideo({
     Key? key,
     required this.cubit,
     required this.cubitPost,
@@ -16,7 +17,6 @@ class JustText extends StatelessWidget {
   final UserDataCubit cubit;
   final GetUserPostsCubit cubitPost;
   final int index;
-
   @override
   Widget build(BuildContext context) {
     double h(double n) {
@@ -70,75 +70,16 @@ class JustText extends StatelessWidget {
               ],
             ),
           ),
-
-          BlocBuilder<GetUserPostsCubit, GetUserPostsState>(
-            builder: (context, state) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  context.read<GetUserPostsCubit>().isMore
-                      ? SizedBox(
-                          width: w(390),
-                          child: Padding(
-                            padding: EdgeInsets.only(left: w(10), right: w(15)),
-                            child: AutoSizeText(
-                              cubitPost.posts[index].content!.text!,
-                              style: const TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                                color: Color(0XFF5B618A),
-                                fontFamily: 'DavidLibre',
-                              ),
-                              maxLines: 2,
-                              minFontSize: 18,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                        )
-                      : SizedBox(
-                          width: w(390),
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                                left: w(10), right: w(15), top: h(5)),
-                            child: AutoSizeText(
-                              cubitPost.posts[index].content!.text!,
-                              style: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                                color: Color(0XFF5B618A),
-                                fontFamily: 'DavidLibre',
-                              ),
-                              minFontSize: 18,
-                            ),
-                          )),
-
-                  // see more widget
-                  InkWell(
-                    onTap: () {
-                      context.read<GetUserPostsCubit>().changeSeeMore();
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(right: w(25)),
-                      child: AutoSizeText(
-                        context.read<GetUserPostsCubit>().label,
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w500,
-                          color: const Color(0XFF5B618A).withOpacity(0.60),
-                          fontFamily: 'DavidLibre',
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: h(5)),
-                ],
-              );
-            },
+          SizedBox(
+            width: w(390),
+            height: h(224),
+            child: ChewieItem(
+              videoPlayerController: VideoPlayerController.network(
+                  cubitPost.posts[index].content!.files![0]),
+              looping: false,
+            ),
           ),
-
-          // SizedBox(height: h(5)),
-          //  SizedBox(height: h(9)),
-
+          SizedBox(height: h(9)),
           Row(
             children: [
               SizedBox(width: w(9)),
@@ -154,6 +95,7 @@ class JustText extends StatelessWidget {
                       size: 30,
                     ),
                   ),
+                  //
                   AutoSizeText(
                     '${cubitPost.posts[index].numberOfLikes!}',
                     style: const TextStyle(
