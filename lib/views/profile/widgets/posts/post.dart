@@ -20,23 +20,11 @@ class Post extends StatelessWidget {
     String check = cubitPost.checkPostList(index: index);
 
     return check == 'justPhoto'
-        ? JustPhoto(
-            cubit: cubit,
-            cubitPost: cubitPost,
-            index: index,
-          )
+        ? JustPhoto(cubit: cubit, cubitPost: cubitPost, index: index)
         : check == 'TextWithPhoto'
-            ? TextWithPhoto(
-                cubit: cubit,
-                cubitPost: cubitPost,
-                index: index,
-              )
+            ? TextWithPhoto(cubit: cubit, cubitPost: cubitPost, index: index)
             : check == 'justText'
-                ? JustText(
-                    cubit: cubit,
-                    cubitPost: cubitPost,
-                    index: index,
-                  )
+                ? JustText(cubit: cubit, cubitPost: cubitPost, index: index)
                 : check == 'justVideo'
                     ? JustVideo(
                         cubit: cubit, cubitPost: cubitPost, index: index)
