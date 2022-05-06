@@ -6,6 +6,7 @@ import 'package:rafiq/views/profile/widgets/posts/widgets/post_type/just_photo.d
 import 'package:rafiq/views/profile/widgets/posts/widgets/post_type/just_text.dart';
 import 'package:rafiq/views/profile/widgets/posts/widgets/post_type/just_video.dart';
 import 'package:rafiq/views/profile/widgets/posts/widgets/post_type/text_with_photo.dart';
+import 'package:rafiq/views/profile/widgets/posts/widgets/post_type/text_with_video.dart';
 
 class Post extends StatelessWidget {
   const Post({Key? key, required this.index}) : super(key: key);
@@ -39,6 +40,7 @@ class Post extends StatelessWidget {
                 : check == 'justVideo'
                     ? JustVideo(
                         cubit: cubit, cubitPost: cubitPost, index: index)
-                    : Container();
+                    : TextWithVideo(
+                        cubit: cubit, cubitPost: cubitPost, index: index);
   }
 }
