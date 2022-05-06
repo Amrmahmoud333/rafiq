@@ -24,13 +24,10 @@ class Post extends StatelessWidget {
             : check == 'justText'
                 ? JustText(cubit: cubit, cubitPost: cubitPost, index: index)
                 : Container();
-<<<<<<< Updated upstream
-=======
     // : check == 'justVideo'
     //     ? JustVideo(
     //         cubit: cubit, cubitPost: cubitPost, index: index)
     //     : TextWithVideo(
     //         cubit: cubit, cubitPost: cubitPost, index: index);
->>>>>>> Stashed changes
   }
 }

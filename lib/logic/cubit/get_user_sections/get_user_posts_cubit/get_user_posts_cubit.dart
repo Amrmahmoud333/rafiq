@@ -84,6 +84,15 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
     return messege;
   }
 
+  bool CheckSeeMore(String latter) {
+    int count = 0;
+    for (int i = 0; i < latter.length; i++) {
+      count++;
+    }
+    if (count > 84) return true;
+    return false;
+  }
+
   // UI logic
   bool isMore = true;
   String label = 'See More';
