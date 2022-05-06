@@ -29,8 +29,11 @@ showSelectionImagePostDialog({
             ),
           ),
           onPressed: () async {
+            if (context.read<AddPostCubit>().imageListFile.isNotEmpty) {
+              context.read<AddPostCubit>().clickableImage = false;
+            }
+
             await getMultiImagePost(context);
-            context.read<AddPostCubit>().resetAddPostScreen();
             Navigator.pop(context);
           },
         ),
@@ -48,8 +51,12 @@ showSelectionImagePostDialog({
             ),
           ),
           onPressed: () async {
+            if (context.read<AddPostCubit>().singleImageFromCamera != null) {
+              context.read<AddPostCubit>().clickableImage = false;
+            }
+
             await getImagePostFromCamera(context);
-            context.read<AddPostCubit>().resetAddPostScreen();
+
             Navigator.pop(context);
           },
         ),

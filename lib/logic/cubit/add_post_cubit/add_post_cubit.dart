@@ -68,17 +68,17 @@ class AddPostCubit extends Cubit<AddPostState> {
     if (index == 1) {
       isSelectAddImage = true;
       color_1 = const Color(0xff5B618A);
-      color_2 = Colors.grey;
-      color_3 = Colors.grey;
+      color_2 = const Color(0xffE8DEEB).withOpacity(0.8);
+      color_3 = const Color(0xffE8DEEB).withOpacity(0.8);
     } else if (index == 2) {
       isSelectAddImage = false;
       color_2 = const Color(0xff5B618A);
-      color_1 = Colors.grey;
-      color_3 = Colors.grey;
+      color_1 = const Color(0xffE8DEEB).withOpacity(0.8);
+      color_3 = const Color(0xffE8DEEB).withOpacity(0.8);
     } else {
       color_3 = const Color(0xff5B618A);
-      color_2 = Colors.grey;
-      color_1 = Colors.grey;
+      color_2 = const Color(0xffE8DEEB).withOpacity(0.8);
+      color_1 = const Color(0xffE8DEEB).withOpacity(0.8);
     }
     isChecked = !isChecked;
     emit(ChangeColorState());
@@ -87,6 +87,7 @@ class AddPostCubit extends Cubit<AddPostState> {
   void resetAddPostScreen() {
     isSelectAddImage = false;
     imageListFile = [];
+    imagesList = [];
     clickableImage = true;
     clickableVideo = true;
     clickableTag = true;
@@ -112,10 +113,21 @@ class AddPostCubit extends Cubit<AddPostState> {
   }
 
   bool clickableImage = true, clickableVideo = true, clickableTag = true;
-  Future<void> nonclickable() async {
-    clickableImage = false;
-    clickableVideo = false;
-    clickableTag = false;
+  Future<void> nonclickable({required int index}) async {
+    if (index == 1) {
+      clickableImage = true;
+      clickableVideo = false;
+      clickableTag = false;
+    } else if (index == 2) {
+      clickableImage = false;
+      clickableVideo = true;
+      clickableTag = false;
+    } else {
+      clickableImage = false;
+      clickableVideo = false;
+      clickableTag = true;
+    }
+
     emit(NonClickableState());
   }
 }

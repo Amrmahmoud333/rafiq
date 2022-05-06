@@ -32,7 +32,9 @@ showSelectionVideoPostDialog({
           ),
           onPressed: () async {
             await getVideoPost(context, ImageSource.gallery);
-            context.read<AddPostCubit>().resetAddPostScreen();
+            if (context.read<AddPostCubit>().videoPostFile != null) {
+              context.read<AddPostCubit>().clickableVideo = false;
+            }
             Navigator.pop(context);
           },
         ),
@@ -50,8 +52,11 @@ showSelectionVideoPostDialog({
             ),
           ),
           onPressed: () async {
+            if (context.read<AddPostCubit>().videoPostFile != null) {
+              context.read<AddPostCubit>().clickableVideo = false;
+            }
             await getVideoPost(context, ImageSource.camera);
-            context.read<AddPostCubit>().resetAddPostScreen();
+
             Navigator.pop(context);
           },
         ),

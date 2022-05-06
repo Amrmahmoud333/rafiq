@@ -25,14 +25,14 @@ class CustomFloationActionButton extends StatelessWidget {
           Icons.add,
           size: 45,
           color: Color.fromARGB(255, 223, 223, 223),
-          /* shadows: [
+          shadows: [
             BoxShadow(
               color: Colors.black54,
               spreadRadius: 5,
               blurRadius: 7,
               offset: Offset(0, 3),
             ),
-          ],*/
+          ],
         ),
         decoration: const BoxDecoration(
           shape: BoxShape.circle,

@@ -2,10 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rafiq/core/components/components.dart';
 import 'package:rafiq/logic/cubit/add_post_cubit/add_post_cubit.dart';
-import 'package:rafiq/views/profile/widgets/posts/image_post_dialog.dart';
-import 'package:rafiq/views/profile/widgets/posts/video_post_dialog.dart';
 
 class AddContainer extends StatelessWidget {
   AddContainer({
@@ -35,6 +32,15 @@ class AddContainer extends StatelessWidget {
           width: w(355),
           height: h(66),
           decoration: BoxDecoration(
+            boxShadow: const [
+              BoxShadow(
+                color: Color(0xff5B618A),
+                blurStyle: BlurStyle.inner,
+                spreadRadius: 2,
+                blurRadius: 6,
+                offset: Offset(-2, -3),
+              )
+            ],
             color: cubit.getColor(index),
             borderRadius: BorderRadius.circular(10),
             border: Border.all(color: const Color(0xff5B618A), width: 1),
