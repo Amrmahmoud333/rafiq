@@ -18,14 +18,14 @@ class LoginCubit extends Cubit<LoginState> {
     try {
       loginModel = await loginRepo.loginRepo(requestLoginModel);
       messege = loginModel.results!.message!;
-      /*  ACCESSTOKEN = loginModel.results!.accessToken;
-      REFRESHTOKEN = loginModel.results!.refreshToken;
-      USERNAME = loginModel.results!.user!.userName;*/
+
       print(loginModel.results!.message.toString());
       emit(LoginSuccessState());
     } on DioError catch (error) {
-      messege = error.response!.data['error']['message'];
-      print(error.response!.data['error']['message']);
+      error.message.contains('SocketException')
+          ? messege = 'No internet connection'
+          : messege = error.response!.data['error']['message'];
+      // print(error.response!.data['error']['message']);
       emit(LoginErrorState());
     }
   }
