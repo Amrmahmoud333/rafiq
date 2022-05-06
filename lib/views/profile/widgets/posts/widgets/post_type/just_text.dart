@@ -111,25 +111,26 @@ class JustText extends StatelessWidget {
                               minFontSize: 18,
                             ),
                           )),
-
-                  // see more widget
-                  InkWell(
-                    onTap: () {
-                      context.read<GetUserPostsCubit>().changeSeeMore();
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(right: w(25)),
-                      child: AutoSizeText(
-                        context.read<GetUserPostsCubit>().label,
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w500,
-                          color: const Color(0XFF5B618A).withOpacity(0.60),
-                          fontFamily: 'DavidLibre',
-                        ),
-                      ),
-                    ),
-                  ),
+                  cubitPost.CheckSeeMore(cubitPost.posts[index].content!.text!)
+                      ? InkWell(
+                          onTap: () {
+                            context.read<GetUserPostsCubit>().changeSeeMore();
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.only(right: w(25)),
+                            child: AutoSizeText(
+                              context.read<GetUserPostsCubit>().label,
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                                color:
+                                    const Color(0XFF5B618A).withOpacity(0.60),
+                                fontFamily: 'DavidLibre',
+                              ),
+                            ),
+                          ),
+                        )
+                      : const SizedBox(),
                   SizedBox(height: h(5)),
                 ],
               );
