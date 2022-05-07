@@ -57,7 +57,7 @@ class DioHelper {
   static Future<Response> putWithHeader({
     @required String? url,
     @required Map<String, dynamic>? header,
-    @required dynamic data,
+    dynamic data,
   }) async {
     return await dio.put(
       url!,
