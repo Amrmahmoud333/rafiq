@@ -74,7 +74,7 @@ class TextWithVideo extends StatelessWidget {
           ),
           SizedBox(
             height:
-                cubitPost.CheckSeeMore(cubitPost.posts[index].content!.text!)
+                cubitPost.checkSeeMore(cubitPost.posts[index].content!.text!)
                     ? h(290)
                     : h(272),
             child: Stack(
@@ -91,7 +91,7 @@ class TextWithVideo extends StatelessWidget {
                 BlocBuilder<GetUserPostsCubit, GetUserPostsState>(
                   builder: (context, state) {
                     return Positioned(
-                      bottom: cubitPost.CheckSeeMore(
+                      bottom: cubitPost.checkSeeMore(
                               cubitPost.posts[index].content!.text!)
                           ? 0
                           : 5,
@@ -138,7 +138,7 @@ class TextWithVideo extends StatelessWidget {
                                       minFontSize: 18,
                                     ),
                                   )),
-                          cubitPost.CheckSeeMore(
+                          cubitPost.checkSeeMore(
                                   cubitPost.posts[index].content!.text!)
                               ? InkWell(
                                   onTap: () {

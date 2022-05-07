@@ -111,7 +111,7 @@ class JustText extends StatelessWidget {
                               minFontSize: 18,
                             ),
                           )),
-                  cubitPost.CheckSeeMore(cubitPost.posts[index].content!.text!)
+                  cubitPost.checkSeeMore(cubitPost.posts[index].content!.text!)
                       ? InkWell(
                           onTap: () {
                             context.read<GetUserPostsCubit>().changeSeeMore();

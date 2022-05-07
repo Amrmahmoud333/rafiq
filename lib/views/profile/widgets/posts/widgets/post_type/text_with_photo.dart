@@ -72,7 +72,7 @@ class TextWithPhoto extends StatelessWidget {
           ),
           SizedBox(
             height:
-                cubitPost.CheckSeeMore(cubitPost.posts[index].content!.text!)
+                cubitPost.checkSeeMore(cubitPost.posts[index].content!.text!)
                     ? h(290)
                     : h(272),
             child: Stack(
@@ -100,7 +100,7 @@ class TextWithPhoto extends StatelessWidget {
                 BlocBuilder<GetUserPostsCubit, GetUserPostsState>(
                   builder: (context, state) {
                     return Positioned(
-                      bottom: cubitPost.CheckSeeMore(
+                      bottom: cubitPost.checkSeeMore(
                               cubitPost.posts[index].content!.text!)
                           ? 0
                           : 5,
@@ -130,8 +130,7 @@ class TextWithPhoto extends StatelessWidget {
                                   ),
                                 )
                               : Container(
-                                  color:
-                                      const Color(0xffDBD4DD).withOpacity(0.9),
+                                  color: const Color(0xffDBD4DD),
                                   width: w(390),
                                   child: Padding(
                                     padding: EdgeInsets.only(
@@ -147,18 +146,16 @@ class TextWithPhoto extends StatelessWidget {
                                       minFontSize: 18,
                                     ),
                                   )),
-                          cubitPost.CheckSeeMore(
+                          cubitPost.checkSeeMore(
                                   cubitPost.posts[index].content!.text!)
                               ? InkWell(
                                   onTap: () {
-                                    context
-                                        .read<GetUserPostsCubit>()
-                                        .changeSeeMore();
+                                    cubitPost.changeSeeMore();
                                   },
                                   child: Padding(
                                     padding: EdgeInsets.only(right: w(25)),
                                     child: AutoSizeText(
-                                      context.read<GetUserPostsCubit>().label,
+                                      cubitPost.label,
                                       style: TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w500,
@@ -179,9 +176,6 @@ class TextWithPhoto extends StatelessWidget {
               ],
             ),
           ),
-          // SizedBox(height: h(5)),
-          //  SizedBox(height: h(9)),
-
           Row(
             children: [
               SizedBox(width: w(9)),

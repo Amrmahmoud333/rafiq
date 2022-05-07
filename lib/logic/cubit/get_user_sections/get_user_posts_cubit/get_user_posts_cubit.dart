@@ -60,6 +60,7 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
     }
   }
 
+  // UI logic
   String checkPostList({required int index}) {
     String messege = '';
 
@@ -84,7 +85,7 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
     return messege;
   }
 
-  bool CheckSeeMore(String latter) {
+  bool checkSeeMore(String latter) {
     int count = 0;
     for (int i = 0; i < latter.length; i++) {
       count++;
@@ -93,7 +94,6 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
     return false;
   }
 
-  // UI logic
   bool isMore = true;
   String label = 'See More';
 
@@ -102,4 +102,24 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
     isMore ? label = 'See More...' : label = 'See Less...';
     emit(ChangeSeeMoreSuccessState());
   }
+
+  changeLabel() {
+    if (label == 'See More...') {
+      label = 'See Less...';
+    } else {
+      label = 'See More...';
+    }
+    emit(ChangeLabelState());
+  }
+
+  /* String changeSeeMore(bool isMore) {
+    isMore = !isMore;
+    if (isMore) {
+      emit(ChangeSeeMoreSuccessState());
+      return 'See More...';
+    } else {
+      emit(ChangeSeeMoreSuccessState());
+      return 'See Less...';
+    }
+  }*/
 }

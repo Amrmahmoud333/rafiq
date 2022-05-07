@@ -39,3 +39,5 @@ class ChangeSeeMoreSuccessState extends GetUserPostsState {}
 class InitStateUISuccess extends GetUserPostsState {}
 
 class ChangeMorePostsState extends GetUserPostsState {}
+
+class ChangeLabelState extends GetUserPostsState {}
