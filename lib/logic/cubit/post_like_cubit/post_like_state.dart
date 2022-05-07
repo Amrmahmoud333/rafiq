@@ -11,3 +11,10 @@ class PostLikeLoadingState extends PostLikeState {}
 class PostLikeSuccessState extends PostLikeState {}
 
 class PostLikeErrorState extends PostLikeState {}
+
+// is like
+class IsLikeLoadingState extends PostLikeState {}
+
+class IsLikeSuccessState extends PostLikeState {}
+
+class IsLikeErrorState extends PostLikeState {}
