@@ -1,7 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rafiq/data/data_API/post_like_API.dart';
 import 'package:rafiq/logic/cubit/get_user_sections/get_user_posts_cubit/get_user_posts_cubit.dart';
+import 'package:rafiq/logic/cubit/post_like_cubit/post_like_cubit.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 
 class JustPhoto extends StatelessWidget {
@@ -94,15 +97,22 @@ class JustPhoto extends StatelessWidget {
               SizedBox(width: w(9)),
               Column(
                 children: [
-                  InkWell(
-                    onTap: () {},
-                    child: Icon(
-                      cubitPost.posts[index].isLiked!
-                          ? Icons.favorite
-                          : Icons.favorite_border,
-                      color: const Color(0XFF5B618A),
-                      size: 30,
-                    ),
+                  BlocBuilder<GetUserPostsCubit, GetUserPostsState>(
+                    builder: (context, state) {
+                      return InkWell(
+                        onTap: () {
+                          context.read<PostLikeCubit>().makeLikeToPost(
+                              postId: cubitPost.posts[index].sId!);
+                        },
+                        child: Icon(
+                          cubitPost.posts[index].isLiked!
+                              ? Icons.favorite
+                              : Icons.favorite_border,
+                          color: const Color(0XFF5B618A),
+                          size: 30,
+                        ),
+                      );
+                    },
                   ),
                   //
                   AutoSizeText(

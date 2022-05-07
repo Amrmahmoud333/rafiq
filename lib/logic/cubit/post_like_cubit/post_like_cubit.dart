@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:meta/meta.dart';
 import 'package:rafiq/data/data_API/post_like_API.dart';
 import 'package:rafiq/data/models/post_like.dart';
@@ -22,4 +24,8 @@ class PostLikeCubit extends Cubit<PostLikeState> {
       print(error.response);
     }
   }
+
+  // UI logic
+
+  Icon isLike = const Icon(Icons.favorite);
 }
