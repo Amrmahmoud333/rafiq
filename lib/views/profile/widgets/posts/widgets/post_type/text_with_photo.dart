@@ -107,7 +107,7 @@ class TextWithPhoto extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          context.read<GetUserPostsCubit>().isMore
+                          !context.read<GetUserPostsCubit>().posts[index].isMore
                               ? Container(
                                   color:
                                       const Color(0xffDBD4DD).withOpacity(0.15),
@@ -150,12 +150,14 @@ class TextWithPhoto extends StatelessWidget {
                                   cubitPost.posts[index].content!.text!)
                               ? InkWell(
                                   onTap: () {
-                                    cubitPost.changeSeeMore();
+                                    cubitPost.changeIsMore(index);
                                   },
                                   child: Padding(
                                     padding: EdgeInsets.only(right: w(25)),
                                     child: AutoSizeText(
-                                      cubitPost.label,
+                                      cubitPost.posts[index].isMore
+                                          ? "See Less..."
+                                          : 'See More...',
                                       style: TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w500,

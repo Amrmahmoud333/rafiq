@@ -94,32 +94,8 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
     return false;
   }
 
-  bool isMore = true;
-  String label = 'See More';
-
-  changeSeeMore() {
-    isMore = !isMore;
-    isMore ? label = 'See More...' : label = 'See Less...';
-    emit(ChangeSeeMoreSuccessState());
+  void changeIsMore(index) {
+    posts[index].isMore = !posts[index].isMore;
+    emit(ChangeISMoreState());
   }
-
-  changeLabel() {
-    if (label == 'See More...') {
-      label = 'See Less...';
-    } else {
-      label = 'See More...';
-    }
-    emit(ChangeLabelState());
-  }
-
-  /* String changeSeeMore(bool isMore) {
-    isMore = !isMore;
-    if (isMore) {
-      emit(ChangeSeeMoreSuccessState());
-      return 'See More...';
-    } else {
-      emit(ChangeSeeMoreSuccessState());
-      return 'See Less...';
-    }
-  }*/
 }

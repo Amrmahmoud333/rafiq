@@ -76,7 +76,7 @@ class JustText extends StatelessWidget {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  context.read<GetUserPostsCubit>().isMore
+                  !context.read<GetUserPostsCubit>().posts[index].isMore
                       ? SizedBox(
                           width: w(390),
                           child: Padding(
@@ -114,12 +114,14 @@ class JustText extends StatelessWidget {
                   cubitPost.checkSeeMore(cubitPost.posts[index].content!.text!)
                       ? InkWell(
                           onTap: () {
-                            context.read<GetUserPostsCubit>().changeSeeMore();
+                            cubitPost.changeIsMore(index);
                           },
                           child: Padding(
                             padding: EdgeInsets.only(right: w(25)),
                             child: AutoSizeText(
-                              context.read<GetUserPostsCubit>().label,
+                              cubitPost.posts[index].isMore
+                                  ? "See Less..."
+                                  : 'See More...',
                               style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w500,

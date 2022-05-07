@@ -24,6 +24,7 @@ class Posts {
   bool? isShared;
   SharedSource? sharedSource;
   int? iV;
+  bool isMore = false;
 
   Posts(
       {this.authorInfo,
