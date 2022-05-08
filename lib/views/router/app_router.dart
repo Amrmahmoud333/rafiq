@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:rafiq/data/chach_helper.dart';
-import 'package:rafiq/views/Forget%20password/screens/first_forget_password.dart';
 import 'package:rafiq/views/Forget%20password/screens/second_forget_password.dart';
 import 'package:rafiq/views/home/screens/home_screen.dart';
 import 'package:rafiq/views/login/screens/login_screen.dart';
 import 'package:rafiq/views/profile/screens/profile_screen.dart';
 import 'package:rafiq/views/profile/widgets/edit/edit_screen.dart';
 import 'package:rafiq/views/profile/widgets/posts/add_post.dart';
+import 'package:rafiq/views/profile/widgets/posts/share_post.dart';
 import '../main_pages/main_home/screens/main_home.dart';
 import '../main_pages/main_sign_up/screens/main_sign_up.dart';
 import '../notification/screens/notification_screen.dart';
@@ -46,6 +46,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const MainSignUpScreen());
       case AddPost.routeName:
         return MaterialPageRoute(builder: (_) => const AddPost());
+      case SharePost.routeName:
+        return MaterialPageRoute(builder: (_) => const SharePost());
       default:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
     }
