@@ -72,7 +72,9 @@ Widget buildBottomSheet(context) => SizedBox(
                   ),
                   const SizedBox(width: 9),
                   AutoSizeText('Delete post',
-                      style: Theme.of(context).textTheme.headline5),
+                      style: Theme.of(context).textTheme.headline5?.copyWith(
+                            color: const Color(0xffC11717),
+                          )),
                 ],
               ),
             ),
