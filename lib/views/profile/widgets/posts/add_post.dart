@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/core/components/components.dart';
 import 'package:rafiq/logic/cubit/add_post_cubit/add_post_cubit.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
-import 'package:rafiq/views/profile/widgets/posts/image_post_dialog.dart';
-import 'package:rafiq/views/profile/widgets/posts/video_post_dialog.dart';
+import 'package:rafiq/views/profile/widgets/posts/widgets/image_post_dialog.dart';
+import 'package:rafiq/views/profile/widgets/posts/widgets/video_post_dialog.dart';
 import 'package:rafiq/views/profile/widgets/posts/widgets/add_container.dart';
 
 // TODO add name insted of user name
@@ -114,7 +114,6 @@ class AddPost extends StatelessWidget {
                       children: [
                         Expanded(
                           child: TextField(
-                            //expands: true,
                             maxLines: null,
                             style: const TextStyle(
                               fontSize: 25,
@@ -169,7 +168,9 @@ class AddPost extends StatelessWidget {
                           onTap: () async {
                             context.read<AddPostCubit>().imageListFile = [];
                             context.read<AddPostCubit>().imagesList = [];
-                            context.read<AddPostCubit>().nonclickable(index: 1);
+                            await context
+                                .read<AddPostCubit>()
+                                .nonclickable(index: 1);
                             await showSelectionImagePostDialog(
                                 context: context);
                             context
@@ -193,7 +194,9 @@ class AddPost extends StatelessWidget {
                           onTap: () async {
                             context.read<AddPostCubit>().imageListFile = [];
                             context.read<AddPostCubit>().imagesList = [];
-                            context.read<AddPostCubit>().nonclickable(index: 2);
+                            await context
+                                .read<AddPostCubit>()
+                                .nonclickable(index: 2);
                             await showSelectionVideoPostDialog(
                                 context: context);
                             context
