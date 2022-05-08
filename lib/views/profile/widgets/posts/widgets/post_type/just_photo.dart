@@ -6,6 +6,7 @@ import 'package:rafiq/data/data_API/post_like_API.dart';
 import 'package:rafiq/logic/cubit/get_user_sections/get_user_posts_cubit/get_user_posts_cubit.dart';
 import 'package:rafiq/logic/cubit/post_like_cubit/post_like_cubit.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
+import 'package:rafiq/views/profile/widgets/posts/widgets/options_bottom_sheet.dart';
 
 class JustPhoto extends StatelessWidget {
   const JustPhoto({
@@ -67,7 +68,10 @@ class JustPhoto extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: w(160)),
-                SvgPicture.asset('assets/images/Options.svg')
+                InkWell(
+                  onTap: () => optionsBottomSheet(context: context),
+                  child: SvgPicture.asset('assets/images/Options.svg'),
+                ),
               ],
             ),
           ),

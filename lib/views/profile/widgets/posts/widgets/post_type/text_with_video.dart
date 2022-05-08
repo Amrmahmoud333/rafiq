@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq/logic/cubit/get_user_sections/get_user_posts_cubit/get_user_posts_cubit.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
+import 'package:rafiq/views/profile/widgets/posts/widgets/options_bottom_sheet.dart';
 import 'package:rafiq/views/profile/widgets/tap_bar_view_widgets/videos/widgets/chewie_item.dart';
 import 'package:video_player/video_player.dart';
 
@@ -68,7 +69,10 @@ class TextWithVideo extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: w(160)),
-                SvgPicture.asset('assets/images/Options.svg')
+                InkWell(
+                  onTap: () => optionsBottomSheet(context: context),
+                  child: SvgPicture.asset('assets/images/Options.svg'),
+                ),
               ],
             ),
           ),
