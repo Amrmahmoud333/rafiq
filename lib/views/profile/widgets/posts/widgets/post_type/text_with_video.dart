@@ -74,7 +74,12 @@ class TextWithVideo extends StatelessWidget {
                     await showModalBottomSheet(
                       backgroundColor: const Color(0xffDBD4DD),
                       context: context,
-                      builder: (context) => const BuildOptionsBottomSheet(),
+                      builder: (context) => BuildOptionsBottomSheet(
+                          index: index,
+                          postId: context
+                              .read<GetUserPostsCubit>()
+                              .posts[index]
+                              .sId!),
                     );
                   },
                   child: SvgPicture.asset('assets/images/Options.svg'),

@@ -1,10 +1,15 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rafiq/logic/cubit/get_user_sections/get_user_posts_cubit/get_user_posts_cubit.dart';
 
 class BuildOptionsBottomSheet extends StatelessWidget {
-  const BuildOptionsBottomSheet({Key? key}) : super(key: key);
-
+  const BuildOptionsBottomSheet(
+      {Key? key, required this.postId, required this.index})
+      : super(key: key);
+  final String postId;
+  final int index;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -60,7 +65,15 @@ class BuildOptionsBottomSheet extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 25, top: 9.5),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                context
+                    .read<GetUserPostsCubit>()
+                    .deletePost(postId: postId)
+                    .then((value) {
+                  context.read<GetUserPostsCubit>().posts.removeAt(index);
+                });
+                Navigator.pop(context);
+              },
               child: Row(
                 children: [
                   const Icon(

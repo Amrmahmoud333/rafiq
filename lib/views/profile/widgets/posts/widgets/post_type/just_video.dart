@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq/logic/cubit/get_user_sections/get_user_posts_cubit/get_user_posts_cubit.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
@@ -72,7 +73,12 @@ class JustVideo extends StatelessWidget {
                     await showModalBottomSheet(
                       backgroundColor: const Color(0xffDBD4DD),
                       context: context,
-                      builder: (context) => const BuildOptionsBottomSheet(),
+                      builder: (context) => BuildOptionsBottomSheet(
+                          index: index,
+                          postId: context
+                              .read<GetUserPostsCubit>()
+                              .posts[index]
+                              .sId!),
                     );
                   },
                   child: SvgPicture.asset('assets/images/Options.svg'),
