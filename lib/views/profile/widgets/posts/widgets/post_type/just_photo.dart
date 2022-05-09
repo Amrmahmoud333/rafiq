@@ -109,24 +109,16 @@ class JustPhoto extends StatelessWidget {
                     builder: (context, state) {
                       return InkWell(
                         onTap: () {
-                          //  print(cubitPostLike.isLikeBool);
-
                           cubitPost.posts[index].isLiked!
                               ? cubitPostLike
                                   .unLike(postId: postId, userId: userName!)
                                   .then((value) {
                                   cubitPost.posts[index].isLiked = false;
-                                  // cubitPostLike
-                                  //     .iSLike(postId: postId)
-                                  //     .then((value) {});
                                 })
                               : cubitPostLike
                                   .makeLikeToPost(postId: postId)
                                   .then((value) {
                                   cubitPost.posts[index].isLiked = true;
-                                  // cubitPostLike
-                                  //     .iSLike(postId: postId)
-                                  //     .then((value) {});
                                 });
                         },
                         child: Icon(
