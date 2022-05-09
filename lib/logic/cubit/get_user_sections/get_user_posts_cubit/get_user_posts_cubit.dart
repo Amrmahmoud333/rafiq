@@ -2,19 +2,25 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
+import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/core/constants/url.dart';
+import 'package:rafiq/data/chach_helper.dart';
 import 'package:rafiq/data/models/get_profile_posts_model.dart';
+import 'package:rafiq/data/models/post/delete_post.dart';
 import 'package:rafiq/data/repositories/profile/get_profile_sections_repo.dart';
+import 'package:rafiq/data/repositories/profile/post_repo.dart';
 
 part 'get_user_posts_state.dart';
 
 class GetUserPostsCubit extends Cubit<GetUserPostsState> {
   GetProfileSectionsRepo getProfileSectionsRepo;
-  GetUserPostsCubit({required this.getProfileSectionsRepo})
+  PostRepo postRepo;
+  GetUserPostsCubit(
+      {required this.getProfileSectionsRepo, required this.postRepo})
       : super(GetUserPostsInitial());
 
   late GetProfilePostsModel getProfilePostsModel;
-
+  late DeletePostModel deletePostModel;
   /*
   we will send in UI lastPostId 
   and the user name of the showen profile
@@ -30,6 +36,7 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
       for (int i = 0; i < getProfilePostsModel.posts!.length; i++) {
         posts.add(getProfilePostsModel.posts![i]);
       }
+
       print(posts.length);
       emit(GetUserFirstPostsSuccessState());
     } on DioError catch (error) {
@@ -57,6 +64,17 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
     } on DioError catch (error) {
       print(error.response!.data);
       emit(GetUserMorePostsErrorState());
+    }
+  }
+
+  Future<void> deletePost({required String postId}) async {
+    emit(DeletePostLoadingState());
+    try {
+      deletePostModel = await postRepo.deletePostRepo(postId: postId);
+      emit(DeletePostSuccessState());
+    } on DioError catch (error) {
+      print(error.response!.data);
+      emit(DeletePostErrorState());
     }
   }
 

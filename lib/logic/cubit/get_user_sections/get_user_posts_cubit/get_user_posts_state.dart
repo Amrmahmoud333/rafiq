@@ -18,3 +18,11 @@ class GetUserMorePostsSuccessState extends GetUserPostsState {}
 class GetUserMorePostsErrorState extends GetUserPostsState {}
 
 class ChangeISMoreState extends GetUserPostsState {}
+
+class GetPostIdStateState extends GetUserPostsState {}
+
+class DeletePostLoadingState extends GetUserPostsState {}
+
+class DeletePostSuccessState extends GetUserPostsState {}
+
+class DeletePostErrorState extends GetUserPostsState {}

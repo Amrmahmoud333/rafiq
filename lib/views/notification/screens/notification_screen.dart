@@ -19,15 +19,13 @@ class NotificationScreen extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () =>
-            Navigator.popAndPushNamed(context, SharePost.routeName),
+            Navigator.pushReplacementNamed(context, SharePost.routeName),
       ),
       body: Column(
         children: [
           TextButton(
             onPressed: () {
-              print(context
-                  .read<GetUserPostsCubit>()
-                  .lengthOfListThatComesFromRequest);
+              print(context.read<GetUserPostsCubit>().posts[0].content!.sId);
               //   ImageViewer.showImageSlider(images: list);
             },
             child: const Text('child'),

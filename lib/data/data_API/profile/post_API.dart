@@ -7,6 +7,7 @@ import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/core/constants/url.dart';
 import 'package:rafiq/data/data_API/dio_helper.dart';
 import 'package:rafiq/data/models/add_post_model.dart';
+import 'package:rafiq/data/models/post/delete_post.dart';
 import 'package:rafiq/data/repositories/profile/post_repo.dart';
 import 'package:http_parser/http_parser.dart';
 
@@ -44,5 +45,13 @@ class PostAPI extends PostRepo {
       data: formData,
     );
     return AddPostModel.fromJson(response.data);
+  }
+
+  @override
+  Future<DeletePostModel> deletePostRepo({required String postId}) async {
+    final response = await DioHelper.deleteWithHeader(
+        url: '$URL/api/v1/users/$userName/posts/$postId',
+        header: {'access-token': token});
+    return DeletePostModel.fromjson(response.data);
   }
 }

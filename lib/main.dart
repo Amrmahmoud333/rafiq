@@ -79,8 +79,11 @@ class MyApp extends StatelessWidget {
           create: (context) => AddPostCubit(postRepo: PostAPI()),
         ),
         BlocProvider<GetUserPostsCubit>(
-            create: (context) => GetUserPostsCubit(
-                getProfileSectionsRepo: GetProfileSectionsAPI())),
+          create: (context) => GetUserPostsCubit(
+            getProfileSectionsRepo: GetProfileSectionsAPI(),
+            postRepo: PostAPI(),
+          ),
+        ),
         BlocProvider<PostLikeCubit>(
             create: (context) => PostLikeCubit(postLikeAPI: PostLikeAPI())),
       ],

@@ -59,7 +59,7 @@ class CoverImageAPI extends CoverImageRepo {
   @override
   Future<DeleteAvatarModel> deleteAvatarRepo() async {
     final response = await DioHelper.deleteWithHeader(
-        url: '$URL/api/v1/users/$userName/cover/',
+        url: '$URL/api/v1/users/$userName/avatar/',
         header: {'access-token': token});
 
     return DeleteAvatarModel.fromjson(response.data);
