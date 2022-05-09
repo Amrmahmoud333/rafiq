@@ -20,7 +20,7 @@ class PostLikeCubit extends Cubit<PostLikeState> {
     emit(PostLikeLoadingState());
     try {
       postLikeModel = await postLikeAPI.makeLikeToPost(postId: postId);
-      //isLikeModel.results!.isLiked = true;
+
       emit(PostLikeSuccessState());
     } on DioError catch (error) {
       emit(PostLikeErrorState());
@@ -33,7 +33,7 @@ class PostLikeCubit extends Cubit<PostLikeState> {
     emit(UnLikeLoadingState());
     try {
       unlikeModel = await postLikeAPI.unLike(postId: postId, userId: userId);
-      //   isLikeModel.results!.isLiked = false;
+
       emit(UnLikeSuccessState());
     } on DioError catch (error) {
       emit(UnLikeErrorState());
