@@ -20,21 +20,10 @@ class PostLikeCubit extends Cubit<PostLikeState> {
     emit(PostLikeLoadingState());
     try {
       postLikeModel = await postLikeAPI.makeLikeToPost(postId: postId);
+      //isLikeModel.results!.isLiked = true;
       emit(PostLikeSuccessState());
     } on DioError catch (error) {
       emit(PostLikeErrorState());
-      print(error.response);
-    }
-  }
-
-  late IsLikeModel isLikeModel;
-  Future<void> iSLike({required String postId}) async {
-    emit(IsLikeLoadingState());
-    try {
-      isLikeModel = await postLikeAPI.isLike(postId: postId);
-      emit(IsLikeSuccessState());
-    } on DioError catch (error) {
-      emit(IsLikeErrorState());
       print(error.response);
     }
   }
@@ -44,9 +33,24 @@ class PostLikeCubit extends Cubit<PostLikeState> {
     emit(UnLikeLoadingState());
     try {
       unlikeModel = await postLikeAPI.unLike(postId: postId, userId: userId);
+      //   isLikeModel.results!.isLiked = false;
       emit(UnLikeSuccessState());
     } on DioError catch (error) {
       emit(UnLikeErrorState());
+      print(error.response);
+    }
+  }
+
+  late IsLikeModel isLikeModel;
+  bool isLikeBool = false;
+  Future<void> iSLike({required String postId}) async {
+    emit(IsLikeLoadingState());
+    try {
+      isLikeModel = await postLikeAPI.isLike(postId: postId);
+      isLikeBool = isLikeModel.results!.isLiked!;
+      emit(IsLikeSuccessState());
+    } on DioError catch (error) {
+      emit(IsLikeErrorState());
       print(error.response);
     }
   }

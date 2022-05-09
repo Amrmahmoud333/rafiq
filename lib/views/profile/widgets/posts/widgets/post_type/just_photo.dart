@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rafiq/data/data_API/post_like_API.dart';
+import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/logic/cubit/get_user_sections/get_user_posts_cubit/get_user_posts_cubit.dart';
 import 'package:rafiq/logic/cubit/post_like_cubit/post_like_cubit.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
@@ -28,6 +28,10 @@ class JustPhoto extends StatelessWidget {
     double w(double n) {
       return MediaQuery.of(context).size.width * (n / 393);
     }
+
+    String postId = cubitPost.posts[index].sId!;
+    var cubitPostLike = context.read<PostLikeCubit>();
+    //  cubitPostLike.iSLike(postId: postId);
 
     return Container(
       color: const Color(0xffDBD4DD).withOpacity(0.15),
@@ -101,24 +105,42 @@ class JustPhoto extends StatelessWidget {
               SizedBox(width: w(9)),
               Column(
                 children: [
-                  BlocBuilder<GetUserPostsCubit, GetUserPostsState>(
+                  BlocBuilder<PostLikeCubit, PostLikeState>(
                     builder: (context, state) {
                       return InkWell(
                         onTap: () {
-                          context.read<PostLikeCubit>().makeLikeToPost(
-                              postId: cubitPost.posts[index].sId!);
+                          //  print(cubitPostLike.isLikeBool);
+
+                          cubitPost.posts[index].isLiked!
+                              ? cubitPostLike
+                                  .unLike(postId: postId, userId: userName!)
+                                  .then((value) {
+                                  cubitPost.posts[index].isLiked = false;
+                                  // cubitPostLike
+                                  //     .iSLike(postId: postId)
+                                  //     .then((value) {});
+                                })
+                              : cubitPostLike
+                                  .makeLikeToPost(postId: postId)
+                                  .then((value) {
+                                  cubitPost.posts[index].isLiked = true;
+                                  // cubitPostLike
+                                  //     .iSLike(postId: postId)
+                                  //     .then((value) {});
+                                });
                         },
                         child: Icon(
                           cubitPost.posts[index].isLiked!
                               ? Icons.favorite
-                              : Icons.favorite_border,
+                              : !cubitPost.posts[index].isLiked!
+                                  ? Icons.favorite_border
+                                  : Icons.abc,
                           color: const Color(0XFF5B618A),
                           size: 30,
                         ),
                       );
                     },
                   ),
-                  //
                   AutoSizeText(
                     '${cubitPost.posts[index].numberOfLikes!}',
                     style: const TextStyle(
