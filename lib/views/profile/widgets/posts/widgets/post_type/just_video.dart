@@ -68,7 +68,13 @@ class JustVideo extends StatelessWidget {
                 ),
                 SizedBox(width: w(160)),
                 InkWell(
-                  onTap: () => optionsBottomSheet(context: context),
+                  onTap: () async {
+                    await showModalBottomSheet(
+                      backgroundColor: const Color(0xffDBD4DD),
+                      context: context,
+                      builder: (context) => const BuildOptionsBottomSheet(),
+                    );
+                  },
                   child: SvgPicture.asset('assets/images/Options.svg'),
                 ),
               ],

@@ -2,15 +2,12 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-Future optionsBottomSheet({required BuildContext context}) async {
-  return await showModalBottomSheet(
-    backgroundColor: const Color(0xffDBD4DD),
-    context: context,
-    builder: (context) => buildBottomSheet(context),
-  );
-}
+class BuildOptionsBottomSheet extends StatelessWidget {
+  const BuildOptionsBottomSheet({Key? key}) : super(key: key);
 
-Widget buildBottomSheet(context) => SizedBox(
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
       height: 145,
       child: Column(
         children: [
@@ -82,3 +79,5 @@ Widget buildBottomSheet(context) => SizedBox(
         ],
       ),
     );
+  }
+}
