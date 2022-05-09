@@ -31,6 +31,7 @@ class JustPhoto extends StatelessWidget {
 
     String postId = cubitPost.posts[index].sId!;
     var cubitPostLike = context.read<PostLikeCubit>();
+    //  cubitPostLike.iSLike(postId: postId);
 
     return Container(
       color: const Color(0xffDBD4DD).withOpacity(0.15),
@@ -77,10 +78,11 @@ class JustPhoto extends StatelessWidget {
                       backgroundColor: const Color(0xffDBD4DD),
                       context: context,
                       builder: (context) => BuildOptionsBottomSheet(
-                        index: index,
-                        postId:
-                            context.read<GetUserPostsCubit>().posts[index].sId!,
-                      ),
+                          index: index,
+                          postId: context
+                              .read<GetUserPostsCubit>()
+                              .posts[index]
+                              .sId!),
                     );
                   },
                   child: SvgPicture.asset('assets/images/Options.svg'),
@@ -123,22 +125,11 @@ class JustPhoto extends StatelessWidget {
                                   .unLike(postId: postId, userId: userName!)
                                   .then((value) {
                                   cubitPost.posts[index].isLiked = false;
-                                  // decremant number of likes when use click like
-                                  cubitPost.posts[index].numberOfLikes != 0
-                                      ? cubitPost.posts[index].numberOfLikes =
-                                          cubitPost
-                                                  .posts[index].numberOfLikes! -
-                                              1
-                                      : cubitPost.posts[index].numberOfLikes =
-                                          0;
                                 })
                               : cubitPostLike
                                   .makeLikeToPost(postId: postId)
                                   .then((value) {
                                   cubitPost.posts[index].isLiked = true;
-                                  // incremant number of likes when use click like
-                                  cubitPost.posts[index].numberOfLikes =
-                                      cubitPost.posts[index].numberOfLikes! + 1;
                                 });
                         },
                         child: Icon(
@@ -146,24 +137,21 @@ class JustPhoto extends StatelessWidget {
                               ? Icons.favorite
                               : !cubitPost.posts[index].isLiked!
                                   ? Icons.favorite_border
-                                  : Icons.favorite_border,
+                                  : Icons.abc,
                           color: const Color(0XFF5B618A),
                           size: 30,
                         ),
                       );
                     },
                   ),
-                  BlocBuilder<PostLikeCubit, PostLikeState>(
-                      builder: (context, state) {
-                    return AutoSizeText(
-                      '${cubitPost.posts[index].numberOfLikes}',
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: Color(0XFF5B618A),
-                        fontFamily: 'DavidLibre',
-                      ),
-                    );
-                  }),
+                  AutoSizeText(
+                    '${cubitPost.posts[index].numberOfLikes!}',
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: Color(0XFF5B618A),
+                      fontFamily: 'DavidLibre',
+                    ),
+                  ),
                 ],
               ),
               SizedBox(width: w(24)),
