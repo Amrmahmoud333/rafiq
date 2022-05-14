@@ -4,12 +4,12 @@ import 'package:rafiq/logic/cubit/profile_cubit/tab_cubit/cubit/tab_cubit.dart';
 import 'package:rafiq/views/shared/sliver_tab_bar/row_tap_data.dart';
 
 class SliverAppBarWidget extends StatelessWidget {
-  SliverAppBarWidget(
+  const SliverAppBarWidget(
       {Key? key, required this.innerBoxIsScrolled, required this.tabController})
       : super(key: key);
 
-  TabController tabController;
-  bool innerBoxIsScrolled;
+  final TabController tabController;
+  final bool innerBoxIsScrolled;
   @override
   Widget build(BuildContext context) {
     double h(double n) {

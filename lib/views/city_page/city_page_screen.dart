@@ -6,6 +6,7 @@ import 'package:rafiq/views/city_page/widgets/city_cover.dart';
 import 'package:rafiq/views/city_page/widgets/city_information.dart';
 import 'package:rafiq/views/city_page/widgets/love_city_button.dart';
 import 'package:rafiq/views/city_page/widgets/sliver_app_bar_city/sliver_app_bar_city.dart';
+import 'package:rafiq/views/city_page/widgets/sliver_app_bar_city/tab_bar_city_view.dart';
 import 'package:rafiq/views/profile/widgets/sliver_app_bar/sliver_app_bar.dart';
 import 'package:rafiq/views/profile/widgets/tap_bar_view.dart';
 
@@ -73,7 +74,7 @@ class CityPageScreen extends StatelessWidget {
                           tabController: _tabController)
                     ];
                   },
-                  body: TabBarViewWidget(
+                  body: TabBarCityView(
                     tabController: _tabController,
                   ),
                 ),
