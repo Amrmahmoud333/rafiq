@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_589" data-name="Rectangle 589" width="20" height="20" transform="translate(0 0.186)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="First_aid" data-name="First aid" transform="translate(0 -0.186)" clip-path="url(#clip-path)">
+    <g id="local_hospital_black_24dp" transform="translate(0 0.077)">
+      <path id="Path_7558" data-name="Path 7558" d="M0,0H20V20H0Z" fill="none"/>
+      <path id="Path_7559" data-name="Path 7559" d="M17.083,3.75H5.417A1.664,1.664,0,0,0,3.758,5.417L3.75,17.083A1.672,1.672,0,0,0,5.417,18.75H17.083a1.672,1.672,0,0,0,1.667-1.667V5.417A1.672,1.672,0,0,0,17.083,3.75Zm-.833,9.167H12.917V16.25H9.583V12.917H6.25V9.583H9.583V6.25h3.333V9.583H16.25Z" transform="translate(-1.25 -1.25)" fill="#5b618a"/>
+    </g>
+  </g>
+</svg>

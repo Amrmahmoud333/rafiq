@@ -6,6 +6,14 @@ class CityInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double h(double n) {
+      return MediaQuery.of(context).size.height * (n / 851);
+    }
+
+    double w(double n) {
+      return MediaQuery.of(context).size.width * (n / 393);
+    }
+
     return Column(
       children: [
         Row(
@@ -21,7 +29,7 @@ class CityInformation extends StatelessWidget {
               ),
             ),
             AutoSizeText(
-              '(Italy)',
+              ' (Italy)',
               style: TextStyle(
                 color: Color(0xff5B618A),
                 fontFamily: 'DavidLibre',
@@ -30,7 +38,8 @@ class CityInformation extends StatelessWidget {
               ),
             ),
           ],
-        )
+        ),
+        SizedBox(height: h(18)),
       ],
     );
   }

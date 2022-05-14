@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_587" data-name="Rectangle 587" width="20" height="20" transform="translate(0 0.186)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="Fire" transform="translate(0 -0.186)" clip-path="url(#clip-path)">
+    <g id="local_fire_department_black_24dp" transform="translate(0 0.186)">
+      <g id="Group_668" data-name="Group 668">
+        <rect id="Rectangle_590" data-name="Rectangle 590" width="20" height="20" fill="none"/>
+      </g>
+      <g id="Group_669" data-name="Group 669" transform="translate(2.793 0.628)">
+        <path id="Path_7556" data-name="Path 7556" d="M19.13,11.686C17.7,8,12.594,7.8,13.827,2.434a.459.459,0,0,0-.685-.5,8.4,8.4,0,0,0-3.7,10.9.453.453,0,0,1-.685.534,4.481,4.481,0,0,1-1.68-4.3.457.457,0,0,0-.831-.307A8.445,8.445,0,0,0,5,13.513a7.316,7.316,0,0,0,6.216,6.819A7.882,7.882,0,0,0,17.56,18.64,6.213,6.213,0,0,0,19.13,11.686Zm-8.471,4.549a2.807,2.807,0,0,0,2.172-2.089c.3-1.293-.876-2.559-.082-4.6.3,1.691,2.985,2.749,2.985,4.594C15.807,16.425,13.306,18.387,10.659,16.235Z" transform="translate(-5 -1.87)" fill="#5b618a"/>
+      </g>
+    </g>
+  </g>
+</svg>
