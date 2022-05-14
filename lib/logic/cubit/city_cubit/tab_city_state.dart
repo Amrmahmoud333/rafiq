@@ -1,6 +1,8 @@
-part of 'tabcitycubit_cubit.dart';
+part of 'tab_city_cubit.dart';
 
 @immutable
-abstract class TabcitycubitState {}
+abstract class TabCityState {}
 
-class TabcitycubitInitial extends TabcitycubitState {}
+class TabCityInitial extends TabCityState {}
+
+class TabCityChangeIndexState extends TabCityState {}
