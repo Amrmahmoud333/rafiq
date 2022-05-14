@@ -59,7 +59,6 @@ class CityPageScreen extends StatelessWidget {
                                   height: h(18),
                                 ),
                                 const CityInformation(),
-                                // const ProfileInformation(),
                                 SizedBox(
                                   height: h(25),
                                 ),

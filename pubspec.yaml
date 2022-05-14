@@ -87,6 +87,7 @@ flutter:
     - assets/map_style.json
     - assets/images/edit_profile/
     - assets/images/posts/
+    - assets/images/city_icons/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

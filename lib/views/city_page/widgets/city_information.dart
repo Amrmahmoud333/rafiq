@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CityInformation extends StatelessWidget {
   const CityInformation({Key? key}) : super(key: key);
@@ -40,6 +41,132 @@ class CityInformation extends StatelessWidget {
           ],
         ),
         SizedBox(height: h(18)),
+        Column(
+          children: [
+            Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+              Row(children: [
+                SizedBox(
+                  width: w(23),
+                  height: h(22),
+                  child: SvgPicture.asset('assets/images/city_icons/temp.svg'),
+                ),
+                const AutoSizeText(
+                  '16 °',
+                  style: TextStyle(
+                    color: Color(0xffBE8CD5),
+                    fontSize: 20,
+                    fontFamily: 'DavidLibre',
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const AutoSizeText(
+                  'C',
+                  style: TextStyle(
+                    color: Color(0xff5B618A),
+                    fontSize: 20,
+                    fontFamily: 'DavidLibre',
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ]),
+              Row(children: [
+                SizedBox(
+                  width: w(23),
+                  height: h(22),
+                  child: SvgPicture.asset('assets/images/city_icons/clock.svg'),
+                ),
+                const AutoSizeText(
+                  '05:12',
+                  style: TextStyle(
+                    color: Color(0xffBE8CD5),
+                    fontSize: 20,
+                    fontFamily: 'DavidLibre',
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ]),
+              Row(children: [
+                SizedBox(
+                  width: w(23),
+                  height: h(22),
+                  child:
+                      SvgPicture.asset('assets/images/city_icons/people.svg'),
+                ),
+                const AutoSizeText(
+                  '60M ',
+                  style: TextStyle(
+                    color: Color(0xffBE8CD5),
+                    fontSize: 20,
+                    fontFamily: 'DavidLibre',
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const AutoSizeText(
+                  'people',
+                  style: TextStyle(
+                    color: Color(0xff5B618A),
+                    fontSize: 20,
+                    fontFamily: 'DavidLibre',
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ]),
+            ]),
+            SizedBox(height: h(29)),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+              Row(children: [
+                SizedBox(
+                  width: w(23),
+                  height: h(22),
+                  child: SvgPicture.asset('assets/images/city_icons/fire.svg'),
+                ),
+                const AutoSizeText(
+                  '115',
+                  style: TextStyle(
+                    color: Color(0xffBE8CD5),
+                    fontSize: 20,
+                    fontFamily: 'DavidLibre',
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ]),
+              Row(children: [
+                SizedBox(
+                  width: w(23),
+                  height: h(22),
+                  child:
+                      SvgPicture.asset('assets/images/city_icons/police.svg'),
+                ),
+                const AutoSizeText(
+                  '113',
+                  style: TextStyle(
+                    color: Color(0xffBE8CD5),
+                    fontSize: 20,
+                    fontFamily: 'DavidLibre',
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ]),
+              Row(children: [
+                SizedBox(
+                  width: w(23),
+                  height: h(22),
+                  child: SvgPicture.asset(
+                      'assets/images/city_icons/first_aid.svg'),
+                ),
+                const AutoSizeText(
+                  '118',
+                  style: TextStyle(
+                    color: Color(0xffBE8CD5),
+                    fontSize: 20,
+                    fontFamily: 'DavidLibre',
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ]),
+            ]),
+          ],
+        ),
       ],
     );
   }
