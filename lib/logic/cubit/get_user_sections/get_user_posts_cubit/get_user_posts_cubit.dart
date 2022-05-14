@@ -57,7 +57,7 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
       }
       lengthOfListThatComesFromRequest = getProfilePostsModel.posts!.length;
       print(posts.length);
-
+      isDeleted = false;
       emit(GetUserMorePostsSuccessState());
     } on DioError catch (error) {
       print(error.response!.data);
@@ -65,10 +65,13 @@ class GetUserPostsCubit extends Cubit<GetUserPostsState> {
     }
   }
 
-  Future<void> deletePost({required String postId}) async {
+  bool isDeleted = false;
+  Future<void> deletePost({required String postId, required int index}) async {
     emit(DeletePostLoadingState());
     try {
       deletePostModel = await postRepo.deletePostRepo(postId: postId);
+      posts.removeAt(index);
+      isDeleted = true;
       emit(DeletePostSuccessState());
     } on DioError catch (error) {
       print(error.response!.data);

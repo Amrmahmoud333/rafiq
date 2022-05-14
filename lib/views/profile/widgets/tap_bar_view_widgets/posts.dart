@@ -33,7 +33,10 @@ class Posts extends StatelessWidget {
             );
           } else {
             if (state is! GetUserMorePostsLoadinngState) {
-              if (index % 10 == 0 && index != 0) {
+              if (cubit.isDeleted && index == cubit.posts.length) {
+                cubit.getMorePosts(
+                    userID: userName, lastPostId: cubit.posts[index - 1].sId);
+              } else if (index % 10 == 0 && index != 0) {
                 cubit.getMorePosts(
                     userID: userName, lastPostId: cubit.posts[index - 1].sId);
               }

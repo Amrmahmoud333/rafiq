@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rafiq/views/main_pages/main_home/widgets/app_bar.dart';
+import 'package:rafiq/views/news_feed/widget/post_news_feed.dart';
 
 class NewsFeedScreen extends StatelessWidget {
   const NewsFeedScreen({Key? key}) : super(key: key);

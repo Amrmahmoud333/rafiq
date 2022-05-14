@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rafiq/data/data_API/profile/marker_API.dart';
 import 'package:rafiq/logic/cubit/get_user_sections/get_user_posts_cubit/get_user_posts_cubit.dart';
 
 class BuildOptionsBottomSheet extends StatelessWidget {
@@ -65,13 +66,10 @@ class BuildOptionsBottomSheet extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 25, top: 9.5),
             child: InkWell(
-              onTap: () {
-                context
+              onTap: () async {
+                await context
                     .read<GetUserPostsCubit>()
-                    .deletePost(postId: postId)
-                    .then((value) {
-                  context.read<GetUserPostsCubit>().posts.removeAt(index);
-                });
+                    .deletePost(postId: postId, index: index);
                 Navigator.pop(context);
               },
               child: Row(

@@ -31,7 +31,6 @@ class JustPhoto extends StatelessWidget {
 
     String postId = cubitPost.posts[index].sId!;
     var cubitPostLike = context.read<PostLikeCubit>();
-    //  cubitPostLike.iSLike(postId: postId);
 
     return Container(
       color: const Color(0xffDBD4DD).withOpacity(0.15),
