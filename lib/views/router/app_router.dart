@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rafiq/data/chach_helper.dart';
 import 'package:rafiq/views/Forget%20password/screens/second_forget_password.dart';
+import 'package:rafiq/views/city_page/city_page_screen.dart';
 import 'package:rafiq/views/home/screens/home_screen.dart';
 import 'package:rafiq/views/login/screens/login_screen.dart';
 import 'package:rafiq/views/profile/screens/profile_screen.dart';
@@ -21,8 +22,8 @@ class AppRouter {
       case '/':
         return MaterialPageRoute(
             builder: (context) => (token != null && rememberMe == true)
-                ? const MainHomeScreen()
-                : const LoginScreen());
+                ? const CityPageScreen()
+                : const CityPageScreen());
 
       /*  case FirstForgetPassword.routeName:
         return MaterialPageRoute(builder: (_) => FirstForgetPassword());*/
@@ -48,6 +49,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const AddPost());
       case SharePost.routeName:
         return MaterialPageRoute(builder: (_) => const SharePost());
+      case CityPageScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const CityPageScreen());
       default:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
     }
