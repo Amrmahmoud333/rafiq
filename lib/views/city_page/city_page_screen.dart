@@ -3,10 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/logic/cubit/city_cubit/city_cubit.dart';
 import 'package:rafiq/logic/cubit/city_cubit/tab_city_cubit.dart';
 import 'package:rafiq/views/city_page/widgets/city_cover.dart';
+import 'package:rafiq/views/city_page/widgets/city_information.dart';
 import 'package:rafiq/views/city_page/widgets/love_city_button.dart';
-import 'package:rafiq/views/profile/widgets/cover/cover.dart';
-import 'package:rafiq/views/profile/widgets/edit/edit_button.dart';
-import 'package:rafiq/views/profile/widgets/profile_Information.dart';
 import 'package:rafiq/views/profile/widgets/sliver_app_bar/sliver_app_bar.dart';
 import 'package:rafiq/views/profile/widgets/tap_bar_view.dart';
 
@@ -49,7 +47,7 @@ class CityPageScreen extends StatelessWidget {
                             Column(
                               children: [
                                 SizedBox(
-                                  height: h(288),
+                                  height: h(225),
                                   child: Stack(
                                     children: const [
                                       CityCover(),
@@ -58,8 +56,9 @@ class CityPageScreen extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: h(31),
+                                  height: h(18),
                                 ),
+                                const CityInformation(),
                                 // const ProfileInformation(),
                                 SizedBox(
                                   height: h(25),
