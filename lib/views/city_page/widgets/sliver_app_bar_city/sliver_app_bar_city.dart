@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:rafiq/logic/cubit/city_cubit/tab_city_cubit.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/tab_cubit/cubit/tab_cubit.dart';
 import 'package:rafiq/views/shared/sliver_tab_bar/row_tap_data.dart';
 
-class SliverAppBarWidget extends StatelessWidget {
-  SliverAppBarWidget(
+class SliverAppBarCity extends StatelessWidget {
+  const SliverAppBarCity(
       {Key? key, required this.innerBoxIsScrolled, required this.tabController})
       : super(key: key);
 
-  TabController tabController;
-  bool innerBoxIsScrolled;
+  final TabController tabController;
+  final bool innerBoxIsScrolled;
   @override
   Widget build(BuildContext context) {
     double h(double n) {
@@ -21,8 +23,8 @@ class SliverAppBarWidget extends StatelessWidget {
     }
 
     return BlocProvider(
-      create: (context) => TabCubit(),
-      child: BlocBuilder<TabCubit, TabState>(
+      create: (context) => TabCityCubit(),
+      child: BlocBuilder<TabCityCubit, TabCityState>(
         builder: (context, state) {
           return SliverPadding(
             padding: EdgeInsets.symmetric(horizontal: w(9)),
@@ -47,31 +49,35 @@ class SliverAppBarWidget extends StatelessWidget {
                 labelStyle: Theme.of(context).textTheme.headline6,
                 tabs: [
                   TapRowData(
-                    widget: BlocProvider.of<TabCubit>(context).currentIndex == 0
-                        ? const Icon(
-                            Icons.post_add_outlined,
-                            size: 21,
-                          )
-                        : Container(),
+                    widget:
+                        BlocProvider.of<TabCityCubit>(context).currentIndex == 0
+                            ? const Icon(
+                                Icons.post_add_outlined,
+                                size: 21,
+                              )
+                            : Container(),
                     lable: 'Posts',
                   ),
                   TapRowData(
-                    widget: BlocProvider.of<TabCubit>(context).currentIndex == 1
-                        ? const Icon(
-                            Icons.image,
-                            size: 21,
-                          )
-                        : Container(),
+                    widget:
+                        BlocProvider.of<TabCityCubit>(context).currentIndex == 1
+                            ? const Icon(
+                                Icons.image,
+                                size: 21,
+                              )
+                            : Container(),
                     lable: 'Image',
                   ),
                   TapRowData(
-                    widget: BlocProvider.of<TabCubit>(context).currentIndex == 2
-                        ? const Icon(
-                            Icons.videocam_outlined,
-                            size: 21,
-                          )
-                        : Container(),
-                    lable: 'Videos',
+                    widget:
+                        BlocProvider.of<TabCityCubit>(context).currentIndex == 2
+                            ? SizedBox(
+                                width: w(17),
+                                height: h(17),
+                                child: SvgPicture.asset(
+                                    'assets/images/city_icons/attraction.svg'))
+                            : Container(),
+                    lable: 'Activities',
                   ),
                   Row(
                     children: [
@@ -79,14 +85,15 @@ class SliverAppBarWidget extends StatelessWidget {
                         width: w(10),
                       ),
                       TapRowData(
-                        widget:
-                            BlocProvider.of<TabCubit>(context).currentIndex == 3
-                                ? const Icon(
-                                    Icons.map,
-                                    size: 21,
-                                  )
-                                : Container(),
-                        lable: 'Map',
+                        widget: BlocProvider.of<TabCityCubit>(context)
+                                    .currentIndex ==
+                                3
+                            ? const Icon(
+                                Icons.hotel,
+                                size: 21,
+                              )
+                            : Container(),
+                        lable: 'Hotels',
                       ),
                     ],
                   ),
