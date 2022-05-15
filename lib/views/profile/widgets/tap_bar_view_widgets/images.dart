@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Images extends StatelessWidget {
-  Images({Key? key}) : super(key: key);
-
-  final List<Widget> images = [];
+  const Images({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

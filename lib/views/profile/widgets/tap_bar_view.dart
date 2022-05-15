@@ -21,7 +21,7 @@ class TabBarViewWidget extends StatelessWidget {
         child: TabBarView(
           physics: const NeverScrollableScrollPhysics(),
           controller: tabController,
-          children: [const Posts(), Images(), const Videos(), Maps()],
+          children: [const Posts(), const Images(), const Videos(), Maps()],
         ),
       ),
     );
