@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/core/components/components.dart';
 import 'package:rafiq/data/models/register_model.dart';
 import 'package:rafiq/logic/cubit/register_cubit/register_cubit.dart';
-import 'package:rafiq/views/shared/log_sign_button.dart';
+import 'package:rafiq/views/shared/custom_button.dart';
 
 class BottomToNavigate extends StatelessWidget {
   const BottomToNavigate({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class BottomToNavigate extends StatelessWidget {
   Widget build(BuildContext context) {
     var cubit = context.read<RegisterCubit>();
     return BlocBuilder<RegisterCubit, RegisterState>(
-      builder: (context, state) => LogSignButton(
+      builder: (context, state) => CustomButton(
         label: cubit.lable,
         ontap: () {
           if (cubit.indexOfPageview == 0) {

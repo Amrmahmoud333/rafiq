@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rafiq/views/shared/input_field.dart';
-import 'package:rafiq/views/shared/log_sign_button.dart';
+import 'package:rafiq/views/shared/custom_button.dart';
 
 class ThridForgetPassword extends StatefulWidget {
   const ThridForgetPassword({Key? key}) : super(key: key);
@@ -157,7 +157,7 @@ class _ThridForgetPasswordState extends State<ThridForgetPassword> {
                           height: height(47),
                         ),
                         Center(
-                          child: LogSignButton(
+                          child: CustomButton(
                             label: 'Reset',
                             ontap: () {
                               print('object');

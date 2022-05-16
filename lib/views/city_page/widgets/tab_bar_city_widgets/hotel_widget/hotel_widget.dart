@@ -286,6 +286,29 @@ class HotelWidget extends StatelessWidget {
               ),
             ],
           ),
+          SizedBox(height: h(51)),
+          InkWell(
+            onTap: () {},
+            child: Container(
+              height: h(37),
+              width: w(118),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: const Color(0xFF5B618A),
+              ),
+              child: const Center(
+                child: AutoSizeText(
+                  'Find',
+                  style: TextStyle(
+                    color: Color(0xFFE9DCEC),
+                    fontSize: 20,
+                    fontFamily: 'DavidLibre',
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

@@ -13,7 +13,7 @@ import 'package:rafiq/views/main_pages/main_home/screens/main_home.dart';
 import 'package:rafiq/views/painter/bottom_cloud.dart';
 import 'package:rafiq/views/painter/top_cloud.dart';
 import 'package:rafiq/views/shared/input_field.dart';
-import 'package:rafiq/views/shared/log_sign_button.dart';
+import 'package:rafiq/views/shared/custom_button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -234,7 +234,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       EdgeInsets.symmetric(horizontal: w(53)),
                                   child: ConditionalBuilder(
                                     condition: (state is! LoginLoadingrState),
-                                    builder: (context) => LogSignButton(
+                                    builder: (context) => CustomButton(
                                       label: 'Log in',
                                       ontap: () async {
                                         if (customValidteEmail() &&

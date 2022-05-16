@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rafiq/views/city_page/widgets/tab_bar_city_widgets/activities_widgets/city_activities.dart';
 import 'package:rafiq/views/city_page/widgets/tab_bar_city_widgets/city_images.dart';
 import 'package:rafiq/views/city_page/widgets/tab_bar_city_widgets/city_posts_widgets/city_posts.dart';
-import 'package:rafiq/views/city_page/widgets/tab_bar_city_widgets/hotel_widget/city_hotel.dart';
+import 'package:rafiq/views/city_page/widgets/tab_bar_city_widgets/hotel_widget/hotel_widget.dart';
 
 class TabBarCityView extends StatelessWidget {
   const TabBarCityView({Key? key, required this.tabController})
@@ -25,7 +25,7 @@ class TabBarCityView extends StatelessWidget {
             CityPost(),
             CityImages(),
             CityActivities(),
-            CityHotels()
+            HotelWidget()
           ],
         ),
       ),

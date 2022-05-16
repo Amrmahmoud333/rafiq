@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
-class LogSignButton extends StatelessWidget {
-  const LogSignButton({
+class CustomButton extends StatelessWidget {
+  const CustomButton({
     Key? key,
     required this.label,
     required this.ontap,

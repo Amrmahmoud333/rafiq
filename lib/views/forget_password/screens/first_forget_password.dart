@@ -7,7 +7,7 @@ import 'package:rafiq/logic/cubit/forget_cubit/forget_cubit.dart';
 import 'package:rafiq/views/forget_password/screens/second_forget_password.dart';
 import 'package:rafiq/views/login/screens/login_screen.dart';
 import 'package:rafiq/views/shared/input_field.dart';
-import 'package:rafiq/views/shared/log_sign_button.dart';
+import 'package:rafiq/views/shared/custom_button.dart';
 
 class FirstForgetPassword extends StatelessWidget {
   FirstForgetPassword({Key? key}) : super(key: key);
@@ -132,7 +132,7 @@ class FirstForgetPassword extends StatelessWidget {
                             padding: EdgeInsets.only(
                               top: height(34),
                             ),
-                            child: LogSignButton(
+                            child: CustomButton(
                               label: 'Send',
                               ontap: () async {
                                 if (customValidteEmail()) {

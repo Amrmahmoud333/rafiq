@@ -39,6 +39,7 @@ class CustomFloationActionButton extends StatelessWidget {
           gradient: LinearGradient(
             colors: [
               Color(0xffB99AC2),
+              // ignore: use_full_hex_values_for_flutter_colors
               Color(0xff906F9ABD),
             ],
           ),
