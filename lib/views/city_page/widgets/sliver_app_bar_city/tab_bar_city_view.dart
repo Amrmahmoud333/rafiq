@@ -25,7 +25,7 @@ class TabBarCityView extends StatelessWidget {
             CityPost(),
             CityImages(),
             CityActivities(),
-            HotelWidget()
+            CityHotels()
           ],
         ),
       ),
