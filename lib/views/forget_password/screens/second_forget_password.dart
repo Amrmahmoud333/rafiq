@@ -3,7 +3,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:rafiq/views/Forget%20password/screens/first_forget_password.dart';
+import 'package:rafiq/views/forget_password/screens/first_forget_password.dart';
 
 class SecondForgetPassword extends StatefulWidget {
   const SecondForgetPassword({Key? key}) : super(key: key);
