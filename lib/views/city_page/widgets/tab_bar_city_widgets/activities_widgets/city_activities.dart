@@ -7,7 +7,7 @@ class CityActivities extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double h(double n) {
-      return MediaQuery.of(context).size.height * (n / 1380);
+      return MediaQuery.of(context).size.height * (n / 851);
     }
 
     double w(double n) {
@@ -16,10 +16,17 @@ class CityActivities extends StatelessWidget {
 
     return ListView.separated(
       itemCount: 3,
-      itemBuilder: (context, index) => const ActivityWidget(),
-      separatorBuilder: (context, index) => SizedBox(
-        height: h(23.5),
-      ),
+      itemBuilder: (context, index) {
+        return Container(
+            width: w(345),
+            //     height: h(373),
+            decoration: BoxDecoration(
+              //   color: const Color(0xff5B618A),
+              borderRadius: BorderRadius.circular(50),
+            ),
+            child: const ActivityWidget());
+      },
+      separatorBuilder: (context, index) => SizedBox(height: h(15)),
     );
   }
 }
