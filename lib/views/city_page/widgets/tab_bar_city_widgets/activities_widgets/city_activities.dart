@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq/views/city_page/widgets/tab_bar_city_widgets/activities_widgets/activity_widget.dart';
+import 'package:rafiq/views/city_page/widgets/tab_bar_city_widgets/hotel_widget/hotel_widget.dart';
 
 class CityActivities extends StatelessWidget {
   const CityActivities({Key? key}) : super(key: key);
@@ -15,11 +15,12 @@ class CityActivities extends StatelessWidget {
     }
 
     return ListView.separated(
-      itemCount: 3,
+      itemCount: 5,
       itemBuilder: (context, index) {
-        return ClipRRect(
-            borderRadius: BorderRadius.circular(30),
-            child: const ActivityWidget());
+        return Padding(
+          padding: EdgeInsets.only(top: h(15)),
+          child: const HotelWidget(),
+        );
       },
       separatorBuilder: (context, index) => SizedBox(height: h(15)),
     );
