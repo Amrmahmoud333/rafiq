@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rafiq/views/city_page/widgets/tab_bar_city_widgets/hotel_widget/result_hotels.dart';
 
 class CityHotels extends StatelessWidget {
   const CityHotels({Key? key}) : super(key: key);
@@ -16,11 +17,11 @@ class CityHotels extends StatelessWidget {
     }
 
     return SizedBox(
-      //width: w(300),
       height: h(300),
       child: Column(
         children: [
           SizedBox(height: h(60)),
+          // Check in && out Row
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -155,6 +156,7 @@ class CityHotels extends StatelessWidget {
             ],
           ),
           SizedBox(height: h(50)),
+
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -288,7 +290,9 @@ class CityHotels extends StatelessWidget {
           ),
           SizedBox(height: h(51)),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, ResultHotelScreen.routeName);
+            },
             child: Container(
               height: h(37),
               width: w(118),
