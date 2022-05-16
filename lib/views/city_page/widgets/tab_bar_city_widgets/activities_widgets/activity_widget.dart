@@ -2,6 +2,9 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+// ignore: todo
+// TODO make box decoration
+
 class ActivityWidget extends StatelessWidget {
   const ActivityWidget({Key? key}) : super(key: key);
 
@@ -50,7 +53,9 @@ class ActivityWidget extends StatelessWidget {
                     ],
                   ),
                 ),
-                // if text less than one line , it will be in the center
+
+                // ignore: todo
+                // TODO if text less than one line , it will be in the center
                 Padding(
                   padding: EdgeInsets.only(
                       left: w(12.5), top: h(14), bottom: h(18), right: w(13)),
@@ -105,25 +110,15 @@ Widget buildRating(double rate) {
   for (int i = 0; i < 5; i++) {
     if (rate < 1 && rate > 0 && rate > 0.4) {
       icon.add(
-        const Icon(
-          Icons.star_half,
-          color: Colors.yellow,
-        ),
+        const Icon(Icons.star_half, color: Colors.yellow),
       );
     } else if (rate >= 1) {
-      icon.add(const Icon(
-        Icons.star,
-        color: Colors.yellow,
-      ));
+      icon.add(const Icon(Icons.star, color: Colors.yellow));
     } else {
-      icon.add(const Icon(
-        Icons.star_border,
-        color: Colors.yellow,
-      ));
+      icon.add(const Icon(Icons.star_border, color: Colors.yellow));
     }
     rate--;
   }
-
   return Row(
     children: [
       for (int i = 0; i < 5; i++) icon[i],
