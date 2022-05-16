@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rafiq/core/components/components.dart';
 
 // ignore: todo
 // TODO make box decoration
@@ -102,26 +103,4 @@ class ActivityWidget extends StatelessWidget {
       ),
     );
   }
-}
-
-Widget buildRating(double rate) {
-  List<Icon> icon = [];
-
-  for (int i = 0; i < 5; i++) {
-    if (rate < 1 && rate > 0 && rate > 0.4) {
-      icon.add(
-        const Icon(Icons.star_half, color: Colors.yellow),
-      );
-    } else if (rate >= 1) {
-      icon.add(const Icon(Icons.star, color: Colors.yellow));
-    } else {
-      icon.add(const Icon(Icons.star_border, color: Colors.yellow));
-    }
-    rate--;
-  }
-  return Row(
-    children: [
-      for (int i = 0; i < 5; i++) icon[i],
-    ],
-  );
 }

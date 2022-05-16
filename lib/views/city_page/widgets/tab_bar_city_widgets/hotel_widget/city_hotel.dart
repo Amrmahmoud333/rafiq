@@ -15,9 +15,12 @@ class CityHotels extends StatelessWidget {
     }
 
     return ListView.separated(
-      itemCount: 3,
+      itemCount: 5,
       itemBuilder: (context, index) {
-        return const HotelWidget();
+        return Padding(
+          padding: EdgeInsets.only(top: h(15)),
+          child: const HotelWidget(),
+        );
       },
       separatorBuilder: (context, index) => SizedBox(height: h(15)),
     );

@@ -7,7 +7,6 @@ import 'package:motion_toast/motion_toast.dart';
 import 'package:motion_toast/resources/arrays.dart';
 import 'package:rafiq/logic/cubit/add_post_cubit/add_post_cubit.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
-import 'package:multi_image_picker/multi_image_picker.dart';
 
 void showTosat({required msg, required state}) => Fluttertoast.showToast(
       msg: msg,
@@ -99,4 +98,26 @@ Future<void> getVideoPost(context, videoSource) async {
   if (_video == null) return;
 
   BlocProvider.of<AddPostCubit>(context).addVideopostFiles(_video);
+}
+
+Widget buildRating(double rate) {
+  List<Icon> icon = [];
+
+  for (int i = 0; i < 5; i++) {
+    if (rate < 1 && rate > 0 && rate > 0.4) {
+      icon.add(
+        const Icon(Icons.star_half, color: Colors.yellow),
+      );
+    } else if (rate >= 1) {
+      icon.add(const Icon(Icons.star, color: Colors.yellow));
+    } else {
+      icon.add(const Icon(Icons.star_border, color: Colors.yellow));
+    }
+    rate--;
+  }
+  return Row(
+    children: [
+      for (int i = 0; i < 5; i++) icon[i],
+    ],
+  );
 }
