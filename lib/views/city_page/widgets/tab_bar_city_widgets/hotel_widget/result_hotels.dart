@@ -17,6 +17,7 @@ class ResultHotelScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: h(50),
         backgroundColor: const Color(0xffEFE7F2),
         elevation: 0,
         iconTheme: const IconThemeData(color: Color(0xff5B618A), size: 35),
@@ -172,7 +173,7 @@ class ResultHotelScreen extends StatelessWidget {
               }),
               itemCount: 2,
               itemWidth: w(320.0),
-              itemHeight: MediaQuery.of(context).size.height,
+              itemHeight: MediaQuery.of(context).size.height - h(130),
               layout: SwiperLayout.STACK,
               axisDirection: AxisDirection.right,
               onIndexChanged: (index) {},

@@ -36,8 +36,7 @@ void main() async {
   DioHelper.init();
   BlocOverrides.runZoned(
     () {
-      runApp(
-          DevicePreview(enabled: false, builder: (context) => const MyApp()));
+      runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
     },
     blocObserver: StateObserver(),
   );
