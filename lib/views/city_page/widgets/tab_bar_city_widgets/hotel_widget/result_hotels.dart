@@ -38,6 +38,7 @@ class ResultHotelScreen extends StatelessWidget {
             Swiper(
               itemBuilder: ((context, index) {
                 return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
                       height: h(434),
@@ -50,7 +51,7 @@ class ResultHotelScreen extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: w(200),
+                      width: MediaQuery.of(context).size.width,
                       color: const Color(0xffEFE7F2),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,7 +69,7 @@ class ResultHotelScreen extends StatelessWidget {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(top: h(17)),
+                            padding: EdgeInsets.only(top: h(17), left: w(20)),
                             child: const AutoSizeText(
                               'In the middle of city',
                               style: TextStyle(
@@ -78,13 +79,90 @@ class ResultHotelScreen extends StatelessWidget {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(top: h(17)),
+                            padding: EdgeInsets.only(top: h(17), left: w(20)),
                             child: const AutoSizeText(
                               '2,000 Reviews',
                               style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                   color: Color(0xff5B618A)),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsets.only(top: h(17), left: w(20)),
+                                child: Container(
+                                  width: w(30),
+                                  height: h(30),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xff618A5B),
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: const Center(
+                                    child: AutoSizeText(
+                                      '9.5',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    EdgeInsets.only(top: h(17), left: w(16)),
+                                child: const AutoSizeText(
+                                  'Exceptional',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500,
+                                    color: Color(0xff618A5B),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: h(17)),
+                          Padding(
+                            padding: EdgeInsets.only(left: w(185)),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const AutoSizeText(
+                                  '20\$/night',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500,
+                                    color: Color(0xff5B618A),
+                                  ),
+                                ),
+                                InkWell(
+                                  onTap: () {},
+                                  child: Container(
+                                    height: h(37),
+                                    width: w(118),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: const Color(0xFF5B618A),
+                                    ),
+                                    child: const Center(
+                                      child: AutoSizeText(
+                                        'Book Now',
+                                        style: TextStyle(
+                                          color: Color(0xFFE9DCEC),
+                                          fontSize: 20,
+                                          fontFamily: 'DavidLibre',
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
@@ -95,7 +173,7 @@ class ResultHotelScreen extends StatelessWidget {
               }),
               itemCount: 2,
               itemWidth: w(320.0),
-              itemHeight: h(600.0),
+              itemHeight: MediaQuery.of(context).size.height,
               layout: SwiperLayout.STACK,
               axisDirection: AxisDirection.right,
               onIndexChanged: (index) {},
