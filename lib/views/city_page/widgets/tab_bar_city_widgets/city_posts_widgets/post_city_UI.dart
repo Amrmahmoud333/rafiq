@@ -7,7 +7,7 @@ class PostCityUI extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return const SizedBox(
       width: 200,
       height: 200,
     );

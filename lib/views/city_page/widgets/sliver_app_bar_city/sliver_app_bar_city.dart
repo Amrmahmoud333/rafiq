@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rafiq/logic/cubit/city_cubit/tab_city_cubit.dart';
-import 'package:rafiq/logic/cubit/profile_cubit/tab_cubit/cubit/tab_cubit.dart';
 import 'package:rafiq/views/shared/sliver_tab_bar/row_tap_data.dart';
 
 class SliverAppBarCity extends StatelessWidget {

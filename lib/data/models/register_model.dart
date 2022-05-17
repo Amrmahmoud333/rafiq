@@ -13,20 +13,8 @@ class RegisterModel {
       print('register model');
     }
     results =
-        json['results'] != null ?  Results.fromJson(json['results']) : null;
-    error = json['error'] != null ?  Error.fromJson(json['error']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['success'] = success;
-    if (results != null) {
-      data['results'] = results!.toJson();
-    }
-    if (error != null) {
-      data['error'] = error!.toJson();
-    }
-    return data;
+        json['results'] != null ? Results.fromJson(json['results']) : null;
+    error = json['error'] != null ? Error.fromJson(json['error']) : null;
   }
 }
 
@@ -37,12 +25,6 @@ class Results {
 
   Results.fromJson(Map<String, dynamic> json) {
     message = json['message'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['message'] = message;
-    return data;
   }
 }
 
@@ -59,15 +41,6 @@ class Error {
     name = json['name'];
     message = json['message'];
     stack = json['stack'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['statusCode'] = statusCode;
-    data['name'] = name;
-    data['message'] = message;
-    data['stack'] = stack;
-    return data;
   }
 }
 
@@ -94,20 +67,8 @@ class RequsetRegisterModel {
     @required this.dateOfBirth,
   });
 
-  RequsetRegisterModel.fromJson(Map<String, dynamic> json) {
-    firstName = json['firstName'];
-    lastName = json['lastName'];
-    userName = json['userName'];
-    email = json['email'];
-    password = json['password'];
-    confirmPassword = json['confirmPassword'];
-    country = json['country'];
-    gender = json['gender'];
-    dateOfBirth = json['dateOfBirth'];
-  }
-
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['firstName'] = firstName;
     data['lastName'] = lastName;
     data['userName'] = userName;

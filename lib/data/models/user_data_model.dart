@@ -7,16 +7,7 @@ class UserDataModel {
   UserDataModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     results =
-        json['results'] != null ? new Results.fromJson(json['results']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['success'] = success;
-    if (results != null) {
-      data['results'] = results!.toJson();
-    }
-    return data;
+        json['results'] != null ? Results.fromJson(json['results']) : null;
   }
 }
 
@@ -67,25 +58,6 @@ class Results {
       });
     }
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['numberOfFollowings'] = numberOfFollowings;
-    data['firstName'] = firstName;
-    data['lastName'] = lastName;
-    data['userName'] = userName;
-    data['country'] = country;
-    data['dateOfBirth'] = dateOfBirth;
-    data['gender'] = gender;
-    data['cover'] = cover;
-    data['avatar'] = avatar;
-    data['numberOfFollowers'] = numberOfFollowers;
-    data['liveIn'] = liveIn;
-    if (socialMedia != null) {
-      data['socialMedia'] = socialMedia!.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
 }
 
 class SocialMedia {
@@ -103,15 +75,5 @@ class SocialMedia {
     sId = json['_id'];
     link = json['link'];
     id = json['id'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['userName'] = userName;
-    data['label'] = label;
-    data['_id'] = sId;
-    data['link'] = link;
-    data['id'] = id;
-    return data;
   }
 }

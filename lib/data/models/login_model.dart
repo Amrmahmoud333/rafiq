@@ -11,18 +11,6 @@ class LoginModel {
         json['results'] != null ? Results.fromJson(json['results']) : null;
     error = json['error'] != null ? Error.fromJson(json['error']) : null;
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['success'] = success;
-    if (results != null) {
-      data['results'] = results!.toJson();
-    }
-    if (error != null) {
-      data['error'] = error!.toJson();
-    }
-    return data;
-  }
 }
 
 class Results {
@@ -39,17 +27,6 @@ class Results {
     accessToken = json['accessToken'];
     refreshToken = json['refreshToken'];
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['message'] = message;
-    if (user != null) {
-      data['user'] = user!.toJson();
-    }
-    data['accessToken'] = accessToken;
-    data['refreshToken'] = refreshToken;
-    return data;
-  }
 }
 
 class User {
@@ -59,12 +36,6 @@ class User {
 
   User.fromJson(Map<String, dynamic> json) {
     userName = json['userName'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['userName'] = userName;
-    return data;
   }
 }
 
@@ -82,15 +53,6 @@ class Error {
     message = json['message'];
     stack = json['stack'];
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['statusCode'] = statusCode;
-    data['name'] = name;
-    data['message'] = message;
-    data['stack'] = stack;
-    return data;
-  }
 }
 
 class RequestLoginModel {
@@ -99,13 +61,8 @@ class RequestLoginModel {
 
   RequestLoginModel({this.userName, this.password});
 
-  RequestLoginModel.fromJson(Map<String, dynamic> json) {
-    userName = json['emailOrUserName'];
-    password = json['password'];
-  }
-
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['emailOrUserName'] = userName;
     data['password'] = password;
     return data;

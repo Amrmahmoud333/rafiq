@@ -10,10 +10,6 @@ class CityActivities extends StatelessWidget {
       return MediaQuery.of(context).size.height * (n / 851);
     }
 
-    double w(double n) {
-      return MediaQuery.of(context).size.width * (n / 393);
-    }
-
     return ListView.separated(
       itemCount: 5,
       itemBuilder: (context, index) {

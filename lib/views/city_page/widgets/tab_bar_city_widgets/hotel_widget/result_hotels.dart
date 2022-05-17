@@ -1,7 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class ResultHotelScreen extends StatelessWidget {
   const ResultHotelScreen({Key? key}) : super(key: key);
