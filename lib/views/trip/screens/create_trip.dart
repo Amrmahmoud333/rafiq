@@ -7,6 +7,7 @@ import 'package:rafiq/views/trip/const/country_list.dart';
 import 'package:rafiq/views/trip/widget/create_button.dart';
 import 'package:rafiq/views/trip/widget/drop_down_widget/country_city_transporation.dart';
 import 'package:rafiq/views/trip/widget/drop_down_widget/currencies.dart';
+import 'package:rafiq/views/trip/widget/filter_by_bottom_sheet.dart';
 
 class CreateTrip extends StatelessWidget {
   const CreateTrip({Key? key}) : super(key: key);
@@ -38,13 +39,18 @@ class CreateTrip extends StatelessWidget {
                         left: w(5.83),
                         top: h(21.83),
                         child: InkWell(
-                          onTap: () {
+                          onTap: () async {
+                            await showModalBottomSheet(
+                              context: context,
+                              builder: (context) =>
+                                  const BuildFilterByBottomSheet(),
+                            );
                             // Navigator.pop(context);
                           },
-                          child: Icon(
+                          child: const Icon(
                             Icons.arrow_back,
                             size: 30,
-                            color: const Color(0xff5B618A),
+                            color: Color(0xff5B618A),
                           ),
                         ),
                       ),

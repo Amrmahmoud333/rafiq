@@ -46,6 +46,7 @@ class CountryORcityORtransporationDropDownButton extends StatelessWidget {
               color: const Color(0xffCFCBDC),
               borderRadius: BorderRadius.circular(10)),
           child: DropdownButton<String>(
+            underline: const SizedBox(height: null),
             iconEnabledColor: const Color(0xFF5B618A),
             iconDisabledColor: const Color(0xFF5B618A),
             dropdownColor: const Color(0xffE9DCEC),
