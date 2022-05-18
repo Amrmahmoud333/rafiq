@@ -8,6 +8,7 @@ import 'package:rafiq/views/trip/widget/create_button.dart';
 import 'package:rafiq/views/trip/widget/drop_down_widget/country_city_transporation.dart';
 import 'package:rafiq/views/trip/widget/drop_down_widget/currencies.dart';
 import 'package:rafiq/views/trip/widget/filter_by_bottom_sheet.dart';
+import 'package:rafiq/views/trip/widget/trip_day_dialog.dart';
 
 class CreateTrip extends StatelessWidget {
   const CreateTrip({Key? key}) : super(key: key);
@@ -30,6 +31,7 @@ class CreateTrip extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Row Contains ArrowBack and  select image and text
                 SizedBox(
                   height: h(190),
                   width: double.infinity,
@@ -127,9 +129,12 @@ class CreateTrip extends StatelessWidget {
                     ],
                   ),
                 ),
+
                 SizedBox(
                   height: h(19.13),
                 ),
+
+                // Column Contains Country And city And transporation DropDown Button
                 Center(
                   child: Column(
                     children: [
@@ -162,6 +167,7 @@ class CreateTrip extends StatelessWidget {
                 SizedBox(
                   height: h(19.13),
                 ),
+                //Row Contains Price Text Field And Currencies DropDown Button
                 Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -198,8 +204,6 @@ class CreateTrip extends StatelessWidget {
                                   ),
                                 ),
                                 contentPadding: const EdgeInsets.all(10),
-                                //disabledBorder: InputBorder.none,
-                                //enabledBorder: InputBorder.none,
                                 fillColor: const Color(0xffCFCBDC),
                                 filled: true,
                               ),
@@ -220,6 +224,7 @@ class CreateTrip extends StatelessWidget {
                 SizedBox(
                   height: h(19.13),
                 ),
+                //  Column Contains 'Trip days And increase and decrease him
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -244,7 +249,13 @@ class CreateTrip extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           InkWell(
-                            onTap: () {},
+                            onTap: () async {
+                              await showDialog(
+                                useSafeArea: true,
+                                context: context,
+                                builder: (context) => const ShowSimpleDialog(),
+                              );
+                            },
                             child: Padding(
                               padding: EdgeInsets.only(left: w(13)),
                               child: const AutoSizeText(
@@ -287,6 +298,7 @@ class CreateTrip extends StatelessWidget {
                 SizedBox(
                   height: h(19.13),
                 ),
+                // Column Contains Description Text Field
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -334,6 +346,7 @@ class CreateTrip extends StatelessWidget {
                 SizedBox(
                   height: h(35),
                 ),
+                //Create Bottom
                 Center(
                   child: CreateButton(
                     label: 'Create',
