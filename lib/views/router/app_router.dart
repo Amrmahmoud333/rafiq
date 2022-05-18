@@ -9,6 +9,7 @@ import 'package:rafiq/views/profile/screens/profile_screen.dart';
 import 'package:rafiq/views/profile/widgets/edit/edit_screen.dart';
 import 'package:rafiq/views/profile/widgets/posts/add_post.dart';
 import 'package:rafiq/views/profile/widgets/posts/share_post.dart';
+import 'package:rafiq/views/trip/screens/create_trip.dart';
 import '../main_pages/main_home/screens/main_home.dart';
 import '../main_pages/main_sign_up/screens/main_sign_up.dart';
 import '../notification/screens/notification_screen.dart';
@@ -23,8 +24,8 @@ class AppRouter {
       case '/':
         return MaterialPageRoute(
             builder: (context) => (token != null && rememberMe == true)
-                ? const MainHomeScreen()
-                : const MainHomeScreen());
+                ? const CreateTrip()
+                : const CreateTrip());
 
       /*  case FirstForgetPassword.routeName:
         return MaterialPageRoute(builder: (_) => FirstForgetPassword());*/
@@ -54,6 +55,9 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const CityPageScreen());
       case ResultHotelScreen.routeName:
         return MaterialPageRoute(builder: (_) => const ResultHotelScreen());
+
+      case CreateTrip.routeName:
+        return MaterialPageRoute(builder: (_) => const CreateTrip());
       default:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
     }

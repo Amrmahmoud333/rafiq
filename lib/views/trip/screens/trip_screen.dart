@@ -3,7 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/logic/cubit/trip_cubit/trip_cubit_cubit.dart';
+import 'package:rafiq/views/shared/custom_button.dart';
 import 'package:rafiq/views/trip/const/country_list.dart';
+import 'package:rafiq/views/trip/widget/create_button.dart';
 import 'package:rafiq/views/trip/widget/drop_down_widget/country_city_transporation.dart';
 import 'package:rafiq/views/trip/widget/drop_down_widget/currencies.dart';
 
@@ -211,7 +213,7 @@ class TripScreen extends StatelessWidget {
                         ),
                         AutoSizeText(
                           '${BlocProvider.of<TripCubit>(context).tripDayValue}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.w500,
                             color: Color(0xff5B618A),
@@ -256,8 +258,12 @@ class TripScreen extends StatelessWidget {
                   Container(
                     width: w(322),
                     height: h(107),
-                    color: Color(0xFF5B618A),
+                    decoration: BoxDecoration(
+                      color: const Color(0xffCFCBDC),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                     child: TextField(
+                      maxLines: null,
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
@@ -272,14 +278,24 @@ class TripScreen extends StatelessWidget {
                           ),
                         ),
                         contentPadding: const EdgeInsets.all(10),
-                        //disabledBorder: InputBorder.none,
-                        //enabledBorder: InputBorder.none,
                         fillColor: const Color(0xffCFCBDC),
                         filled: true,
                       ),
                     ),
                   ),
                 ],
+              ),
+              SizedBox(
+                height: h(35),
+              ),
+              Center(
+                child: CreateButton(
+                  label: 'label',
+                  ontap: () {},
+                ),
+              ),
+              SizedBox(
+                height: h(30),
               ),
             ],
           ),
