@@ -14,7 +14,7 @@ class MainHomeCubit extends Cubit<MainHomeState> {
   List<Widget> bottumNavScreen = [
     HomeScreen(),
     const TripScreen(),
-    NotificationScreen(),
+    const NotificationScreen(),
     const ProfileScreen(),
   ];
   void changeIndexForNavScreen(index) {
