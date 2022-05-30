@@ -59,6 +59,7 @@ dependencies:
   url_launcher: ^6.1.0
   shimmer: ^2.0.0
   card_swiper: ^2.0.3
+  flutter_neumorphic: ^3.2.0
 
 dev_dependencies:
   flutter_test:

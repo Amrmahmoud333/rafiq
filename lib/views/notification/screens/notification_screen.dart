@@ -1,35 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rafiq/data/chach_helper.dart';
-import 'package:rafiq/logic/cubit/add_post_cubit/add_post_cubit.dart';
-import 'package:rafiq/logic/cubit/get_user_sections/get_user_posts_cubit/get_user_posts_cubit.dart';
-import 'package:rafiq/views/profile/widgets/posts/share_post.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class NotificationScreen extends StatelessWidget {
-  NotificationScreen({Key? key}) : super(key: key);
+  const NotificationScreen({Key? key}) : super(key: key);
   static const routeName = '/notification_screen';
   @override
-  String? token = CahchHelper.getData(key: 'token');
-  bool? rememberMe = CahchHelper.getData(key: 'rememberMe');
-  List<String> list = [
-    'assets/images/Done.png',
-    'assets/images/Forget password.png'
-  ];
   Widget build(BuildContext context) {
+    double h(double n) {
+      return MediaQuery.of(context).size.height * (n / 851);
+    }
+
+    double w(double n) {
+      return MediaQuery.of(context).size.width * (n / 393);
+    }
+
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            Navigator.pushReplacementNamed(context, SharePost.routeName),
-      ),
+      backgroundColor: const Color(0xffEFE7F2),
       body: Column(
         children: [
-          TextButton(
-            onPressed: () {
-              print(context.read<GetUserPostsCubit>().posts[0].content!.sId);
-              //   ImageViewer.showImageSlider(images: list);
-            },
-            child: const Text('child'),
-          ),
+          Padding(
+            padding: EdgeInsets.only(top: h(31)),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: const [
+                AutoSizeText(
+                  'Notification',
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w500,
+                    color: Color(0xff5B618A),
+                  ),
+                ),
+                NeumorphicSwitch(
+                  height: 32,
+                  style: NeumorphicSwitchStyle(
+                      activeTrackColor: Color(0xff5B618A),
+                      inactiveTrackColor: Color(0xffB2B2B2)),
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );

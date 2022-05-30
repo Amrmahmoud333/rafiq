@@ -100,6 +100,7 @@ Future<void> getVideoPost(context, videoSource) async {
   BlocProvider.of<AddPostCubit>(context).addVideopostFiles(_video);
 }
 
+
 Widget buildRating(double rate) {
   List<Icon> icon = [];
 
