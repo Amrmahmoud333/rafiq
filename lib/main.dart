@@ -5,6 +5,7 @@ import 'package:rafiq/core/themes/theme.dart';
 import 'package:rafiq/data/chach_helper.dart';
 import 'package:rafiq/data/data_API/authentication/forget_API.dart';
 import 'package:rafiq/data/data_API/authentication/login_API.dart';
+import 'package:rafiq/data/data_API/city/city_Info_API.dart';
 import 'package:rafiq/data/data_API/post_like_API.dart';
 import 'package:rafiq/data/data_API/profile/cover_image_API.dart';
 import 'package:rafiq/data/data_API/dio_helper.dart';
@@ -16,6 +17,7 @@ import 'package:rafiq/data/data_API/profile/update_user_info_API.dart';
 import 'package:rafiq/data/data_API/profile/user_data_API.dart';
 import 'package:rafiq/logic/cubit/add_post_cubit/add_post_cubit.dart';
 import 'package:rafiq/logic/cubit/city_cubit/city_cubit.dart';
+import 'package:rafiq/logic/cubit/city_information_cubit/cubit/city_information_cubit.dart';
 import 'package:rafiq/logic/cubit/forget_cubit/forget_cubit.dart';
 import 'package:rafiq/logic/cubit/get_user_sections/get_user_posts_cubit/get_user_posts_cubit.dart';
 import 'package:rafiq/logic/cubit/login_cubit/login_cubit.dart';
@@ -93,6 +95,10 @@ class MyApp extends StatelessWidget {
         BlocProvider<TripCubit>(create: (context) => TripCubit()),
         BlocProvider<NotificationCubit>(
             create: (context) => NotificationCubit()),
+        BlocProvider<CityInformationCubit>(
+          create: (context) =>
+              CityInformationCubit(cityInformationAPI: CityInformationAPI()),
+        ),
       ],
       child: MaterialApp(
         title: 'Rafiq',
