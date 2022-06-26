@@ -1,6 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rafiq/logic/cubit/city_information_cubit/cubit/city_information_cubit.dart';
 
 class CityInformation extends StatelessWidget {
   const CityInformation({Key? key}) : super(key: key);
@@ -15,14 +17,15 @@ class CityInformation extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
+    CityInformationCubit cubit = context.read<CityInformationCubit>();
     return Column(
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
+          children: [
             AutoSizeText(
-              'Roma',
-              style: TextStyle(
+              '${cubit.cityInformationModel.results!.country!.name}',
+              style: const TextStyle(
                 color: Color(0xff5B618A),
                 fontFamily: 'DavidLibre',
                 fontWeight: FontWeight.bold,
@@ -30,8 +33,10 @@ class CityInformation extends StatelessWidget {
               ),
             ),
             AutoSizeText(
-              ' (Italy)',
-              style: TextStyle(
+              cubit.cityInformationModel.results!.lastName!.isEmpty
+                  ? '(${cubit.cityInformationModel.results!.firstName!})'
+                  : '(${cubit.cityInformationModel.results!.firstName!}  ${cubit.cityInformationModel.results!.lastName!})',
+              style: const TextStyle(
                 color: Color(0xff5B618A),
                 fontFamily: 'DavidLibre',
                 fontWeight: FontWeight.w500,

@@ -24,64 +24,64 @@ class CityPageScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => TabCityCubit(),
       child: BlocConsumer<CityInformationCubit, CityInformationState>(
-          listener: (context, state) async {
-        await context.read<CityInformationCubit>().getCityInformation();
-      }, builder: (context, state) {
-        return DefaultTabController(
-          length: 4,
-          initialIndex: 0,
-          child: SafeArea(
-            child: Builder(builder: (context) {
-              TabController _tabController = DefaultTabController.of(context)!;
+          listener: (context, state) async {},
+          builder: (context, state) {
+            return DefaultTabController(
+              length: 4,
+              initialIndex: 0,
+              child: SafeArea(
+                child: Builder(builder: (context) {
+                  TabController _tabController =
+                      DefaultTabController.of(context)!;
 
-              _tabController.addListener(
-                () => BlocProvider.of<TabCityCubit>(context)
-                    .changeIndex(_tabController.index),
-              );
-              return Scaffold(
-                body: NestedScrollView(
-                  headerSliverBuilder: (context, innerBoxIsScrolled) {
-                    return [
-                      SliverList(
-                        delegate: SliverChildListDelegate(
-                          [
-                            Column(
-                              children: [
-                                SizedBox(
-                                  height: h(225),
-                                  child: Stack(
-                                    children: const [
-                                      CityCover(),
-                                      LoveCityButton(),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: h(18),
-                                ),
-                                const CityInformation(),
-                                SizedBox(
-                                  height: h(25),
+                  _tabController.addListener(
+                    () => BlocProvider.of<TabCityCubit>(context)
+                        .changeIndex(_tabController.index),
+                  );
+                  return Scaffold(
+                    body: NestedScrollView(
+                      headerSliverBuilder: (context, innerBoxIsScrolled) {
+                        return [
+                          SliverList(
+                            delegate: SliverChildListDelegate(
+                              [
+                                Column(
+                                  children: [
+                                    SizedBox(
+                                      height: h(225),
+                                      child: Stack(
+                                        children: const [
+                                          CityCover(),
+                                          LoveCityButton(),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: h(18),
+                                    ),
+                                    const CityInformation(),
+                                    SizedBox(
+                                      height: h(25),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
-                          ],
-                        ),
+                          ),
+                          SliverAppBarCity(
+                              innerBoxIsScrolled: innerBoxIsScrolled,
+                              tabController: _tabController)
+                        ];
+                      },
+                      body: TabBarCityView(
+                        tabController: _tabController,
                       ),
-                      SliverAppBarCity(
-                          innerBoxIsScrolled: innerBoxIsScrolled,
-                          tabController: _tabController)
-                    ];
-                  },
-                  body: TabBarCityView(
-                    tabController: _tabController,
-                  ),
-                ),
-              );
-            }),
-          ),
-        );
-      }),
+                    ),
+                  );
+                }),
+              ),
+            );
+          }),
     );
   }
 }

@@ -8,8 +8,8 @@ import 'package:rafiq/data/models/city/city_information_model.dart';
 class CityInformationAPI {
   Future<CityInformationModel> getCityInfo() async {
     final response = await DioHelper.getWithHeader(
-        // city id for cairo -290692
-        url: '$URL/api/v1/cities/29069/',
+        // city id for cairo 1392685764
+        url: '$URL/api/v1/cities/1392685764/',
         header: {'access-token': token});
     return CityInformationModel.fromJson(response.data);
   }
