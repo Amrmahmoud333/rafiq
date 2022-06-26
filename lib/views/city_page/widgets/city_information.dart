@@ -125,9 +125,10 @@ class CityInformation extends StatelessWidget {
                   height: h(22),
                   child: SvgPicture.asset('assets/images/city_icons/fire.svg'),
                 ),
-                const AutoSizeText(
-                  '115',
-                  style: TextStyle(
+                AutoSizeText(
+                  cubit.cityInformationModel.results!.country!.emergencyNumbers!
+                      .fire![0],
+                  style: const TextStyle(
                     color: Color(0xffBE8CD5),
                     fontSize: 20,
                     fontFamily: 'DavidLibre',
@@ -142,9 +143,10 @@ class CityInformation extends StatelessWidget {
                   child:
                       SvgPicture.asset('assets/images/city_icons/police.svg'),
                 ),
-                const AutoSizeText(
-                  '113',
-                  style: TextStyle(
+                AutoSizeText(
+                  cubit.cityInformationModel.results!.country!.emergencyNumbers!
+                      .police![0],
+                  style: const TextStyle(
                     color: Color(0xffBE8CD5),
                     fontSize: 20,
                     fontFamily: 'DavidLibre',
@@ -159,9 +161,10 @@ class CityInformation extends StatelessWidget {
                   child: SvgPicture.asset(
                       'assets/images/city_icons/first_aid.svg'),
                 ),
-                const AutoSizeText(
-                  '118',
-                  style: TextStyle(
+                AutoSizeText(
+                  cubit.cityInformationModel.results!.country!.emergencyNumbers!
+                      .ambulance![0],
+                  style: const TextStyle(
                     color: Color(0xffBE8CD5),
                     fontSize: 20,
                     fontFamily: 'DavidLibre',
