@@ -1,10 +1,10 @@
-class CityInformayionModel {
+class CityInformationModel {
   bool? success;
   Results? results;
 
-  CityInformayionModel({this.success, this.results});
+  CityInformationModel({this.success, this.results});
 
-  CityInformayionModel.fromJson(Map<String, dynamic> json) {
+  CityInformationModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     results =
         json['results'] != null ? Results.fromJson(json['results']) : null;

@@ -1,5 +1,4 @@
 // ignore_for_file: file_names
-import 'package:flutter/widgets.dart';
 import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/core/constants/url.dart';
 import 'package:rafiq/data/data_API/dio_helper.dart';
