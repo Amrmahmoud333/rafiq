@@ -15,7 +15,6 @@ class CityInformationCubit extends Cubit<CityInformationState> {
 
   Future<void> getCityInformation() async {
     emit(CityInformationLoading());
-
     try {
       cityInformationModel = await cityInformationAPI.getCityInfo();
       emit(CityInformationSuccess());

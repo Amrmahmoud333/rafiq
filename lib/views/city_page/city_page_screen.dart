@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/logic/cubit/city_cubit/city_cubit.dart';
 import 'package:rafiq/logic/cubit/city_cubit/tab_city_cubit.dart';
+import 'package:rafiq/logic/cubit/city_information_cubit/cubit/city_information_cubit.dart';
 import 'package:rafiq/views/city_page/widgets/city_cover.dart';
 import 'package:rafiq/views/city_page/widgets/city_information.dart';
 import 'package:rafiq/views/city_page/widgets/love_city_button.dart';
@@ -22,9 +23,9 @@ class CityPageScreen extends StatelessWidget {
 
     return BlocProvider(
       create: (context) => TabCityCubit(),
-      child:
-          BlocConsumer<CityCubit, CityState>(listener: (context, state) async {
-        //   await context.read<UserDataCubit>().getUserData();
+      child: BlocConsumer<CityInformationCubit, CityInformationState>(
+          listener: (context, state) async {
+        await context.read<CityInformationCubit>().getCityInformation();
       }, builder: (context, state) {
         return DefaultTabController(
           length: 4,

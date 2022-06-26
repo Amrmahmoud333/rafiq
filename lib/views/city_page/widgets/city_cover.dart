@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rafiq/logic/cubit/city_information_cubit/cubit/city_information_cubit.dart';
 
 class CityCover extends StatelessWidget {
   const CityCover({Key? key}) : super(key: key);
@@ -11,7 +13,7 @@ class CityCover extends StatelessWidget {
     }
 
     //  var cubit = context.read<UserDataCubit>();
-
+    var cubit = context.read<CityInformationCubit>();
     return Stack(
       children: [
         Opacity(

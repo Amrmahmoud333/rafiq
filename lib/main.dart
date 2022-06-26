@@ -17,6 +17,7 @@ import 'package:rafiq/data/data_API/profile/update_user_info_API.dart';
 import 'package:rafiq/data/data_API/profile/user_data_API.dart';
 import 'package:rafiq/logic/cubit/add_post_cubit/add_post_cubit.dart';
 import 'package:rafiq/logic/cubit/city_cubit/city_cubit.dart';
+import 'package:rafiq/logic/cubit/city_cubit/tab_city_cubit.dart';
 import 'package:rafiq/logic/cubit/city_information_cubit/cubit/city_information_cubit.dart';
 import 'package:rafiq/logic/cubit/forget_cubit/forget_cubit.dart';
 import 'package:rafiq/logic/cubit/get_user_sections/get_user_posts_cubit/get_user_posts_cubit.dart';
@@ -98,6 +99,9 @@ class MyApp extends StatelessWidget {
         BlocProvider<CityInformationCubit>(
           create: (context) =>
               CityInformationCubit(cityInformationAPI: CityInformationAPI()),
+        ),
+        BlocProvider<TabCityCubit>(
+          create: (context) => TabCityCubit(),
         ),
       ],
       child: MaterialApp(

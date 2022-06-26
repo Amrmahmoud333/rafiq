@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/data/chach_helper.dart';
+import 'package:rafiq/logic/cubit/city_information_cubit/cubit/city_information_cubit.dart';
 import 'package:rafiq/logic/cubit/login_cubit/login_cubit.dart';
 import 'package:rafiq/logic/cubit/main_home/main_home_cubit.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
+import 'package:rafiq/views/city_page/city_page_screen.dart';
 import 'package:rafiq/views/login/screens/login_screen.dart';
 import 'package:rafiq/views/shared/bottom_nav_bar.dart';
 import 'package:rafiq/views/shared/floation_action_button.dart';
@@ -16,6 +18,7 @@ class MainHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     BlocProvider.of<UserDataCubit>(context).getUserData();
+
     return BlocProvider(
       create: (context) => MainHomeCubit(),
       child: BlocConsumer<MainHomeCubit, MainHomeState>(
@@ -25,41 +28,58 @@ class MainHomeScreen extends StatelessWidget {
           return Scaffold(
             drawer: Drawer(
               child: Center(
-                child: TextButton(
-                  onPressed: () async {
-                    userName = '';
-                    token = '';
-                    fIRSTNAME = '';
-                    lIVEIN = '';
-                    lASTNAME = '';
-                    FACEBOOK = '';
-                    INSTAGRAM = '';
-                    YOUTUBE = '';
-                    TIKToK = '';
-                    if (context.read<LoginCubit>().checkedBox == true) {
-                      context.read<LoginCubit>().changeCheckBox();
-                    }
-                    await CahchHelper.clearData();
+                child: Column(
+                  children: [
+                    TextButton(
+                        onPressed: () async {
+                          await context
+                              .read<CityInformationCubit>()
+                              .getCityInformation();
 
-                    /*   print(cover);
+                          Navigator.pushReplacementNamed(
+                              context, CityPageScreen.routeName);
+                        },
+                        child: Text(
+                          'City',
+                          style: Theme.of(context).textTheme.headline3,
+                        )),
+                    TextButton(
+                      onPressed: () async {
+                        userName = '';
+                        token = '';
+                        fIRSTNAME = '';
+                        lIVEIN = '';
+                        lASTNAME = '';
+                        FACEBOOK = '';
+                        INSTAGRAM = '';
+                        YOUTUBE = '';
+                        TIKToK = '';
+                        if (context.read<LoginCubit>().checkedBox == true) {
+                          context.read<LoginCubit>().changeCheckBox();
+                        }
+                        await CahchHelper.clearData();
+
+                        /*   print(cover);
             print(avatar);
             cover = '';
             avatar = '';*/
-                    Navigator.pushReplacementNamed(
-                        context, LoginScreen.routeName);
-                    // Navigator.pushReplacementNamed(context, LoginScreen.routeName);
-                    /*await CahchHelper.removeData(key: 'token').then((value) {
+                        Navigator.pushReplacementNamed(
+                            context, LoginScreen.routeName);
+                        // Navigator.pushReplacementNamed(context, LoginScreen.routeName);
+                        /*await CahchHelper.removeData(key: 'token').then((value) {
               if (value) {
-                
-                //CahchHelper.removeData(key: 'rememberMe');
-                Navigator.pushReplacementNamed(context, LoginScreen.routeName);
+                    
+                    //CahchHelper.removeData(key: 'rememberMe');
+                    Navigator.pushReplacementNamed(context, LoginScreen.routeName);
               }
             });*/
-                  },
-                  child: Text(
-                    'Log out',
-                    style: Theme.of(context).textTheme.headline3,
-                  ),
+                      },
+                      child: Text(
+                        'Log out',
+                        style: Theme.of(context).textTheme.headline3,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
