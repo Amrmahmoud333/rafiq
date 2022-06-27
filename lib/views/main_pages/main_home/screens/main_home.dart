@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/data/chach_helper.dart';
+import 'package:rafiq/logic/cubit/city_activities_cubit/activities_cubit.dart';
 import 'package:rafiq/logic/cubit/city_information_cubit/cubit/city_information_cubit.dart';
 import 'package:rafiq/logic/cubit/login_cubit/login_cubit.dart';
 import 'package:rafiq/logic/cubit/main_home/main_home_cubit.dart';
@@ -35,7 +36,7 @@ class MainHomeScreen extends StatelessWidget {
                           await context
                               .read<CityInformationCubit>()
                               .getCityInformation();
-
+                          await context.read<ActivitiesCubit>().getActivities();
                           Navigator.pushReplacementNamed(
                               context, CityPageScreen.routeName);
                         },

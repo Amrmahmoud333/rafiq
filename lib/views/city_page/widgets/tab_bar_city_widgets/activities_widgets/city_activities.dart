@@ -10,15 +10,13 @@ class CityActivities extends StatelessWidget {
       return MediaQuery.of(context).size.height * (n / 851);
     }
 
-    return ListView.separated(
-      itemCount: 5,
-      itemBuilder: (context, index) {
-        return Padding(
+    return ListView(
+      children: [
+        Padding(
           padding: EdgeInsets.only(top: h(15)),
           child: const ActivityWidget(),
-        );
-      },
-      separatorBuilder: (context, index) => SizedBox(height: h(15)),
+        )
+      ],
     );
   }
 }

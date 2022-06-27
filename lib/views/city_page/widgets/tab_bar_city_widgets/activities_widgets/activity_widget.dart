@@ -1,10 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rafiq/core/components/components.dart';
 
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rafiq/logic/cubit/city_activities_cubit/activities_cubit.dart';
 
 class ActivityWidget extends StatefulWidget {
   const ActivityWidget({Key? key}) : super(key: key);
@@ -24,14 +26,15 @@ class _ActivityWidgetState extends State<ActivityWidget> {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
+    ActivitiesCubit cubit = context.read<ActivitiesCubit>();
+
     return SizedBox(
-      height: h(700),
+      height: h(800),
       child: Swiper(
         itemBuilder: ((context, index) {
           return Column(
             children: [
               SizedBox(
-                //   width: w(300),
                 height: h(445),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(18),
@@ -50,35 +53,51 @@ class _ActivityWidgetState extends State<ActivityWidget> {
                       padding: EdgeInsets.only(left: w(15), top: h(13)),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          AutoSizeText(
-                            'Leaning Tower of Pisa',
-                            style: TextStyle(
-                              color: Color(0xff5B618A),
-                              fontFamily: 'DavidLibre',
-                              fontSize: 22,
-                              fontWeight: FontWeight.w500,
+                        children: [
+                          SizedBox(
+                            width: w(302),
+                            child: AutoSizeText(
+                              cubit.activitiesModel.results!.data![0].name!,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                color: Color(0xff5B618A),
+                                fontFamily: 'DavidLibre',
+                                fontSize: 22,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
                         ],
                       ),
                     ),
-
-                    // ignore: todo
-                    // TODO if text less than one line , it will be in the center
                     Padding(
                       padding: EdgeInsets.only(
                           left: w(12.5),
                           top: h(14),
                           bottom: h(18),
                           right: w(13)),
-                      child: AutoSizeText(
-                        'Its is one of the most famous leaning towers in the world. It is the bell tower of the Cathedral of Pisa that has been under construction for almost 200 years, owing to a succession of wars as a symbol of the power of the maritime republic',
-                        style: TextStyle(
-                          color: const Color(0xff5B618A).withOpacity(0.9),
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: 'DavidLibre',
+                      child: SizedBox(
+                        height: h(145),
+                        width: w(302),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              AutoSizeText(
+                                cubit.activitiesModel.results!.data![0]
+                                    .shortDescription!,
+                                style: TextStyle(
+                                  color:
+                                      const Color(0xff5B618A).withOpacity(0.9),
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: 'DavidLibre',
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
