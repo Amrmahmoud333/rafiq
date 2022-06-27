@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
+import 'package:rafiq/core/constants/authentication_const.dart';
 
 class DioHelper {
   static late Dio dio;
@@ -53,7 +54,6 @@ class DioHelper {
     );
   }
 
-  // test
   static Future<Response> putWithHeader({
     @required String? url,
     @required Map<String, dynamic>? header,
@@ -62,6 +62,20 @@ class DioHelper {
     return await dio.put(
       url!,
       options: Options(headers: header),
+      data: data,
+    );
+  }
+
+  static Future<Response> putWithHeaderAndParameters({
+    @required String? url,
+    @required Map<String, dynamic>? header,
+    @required Map<String, dynamic>? parameters,
+    dynamic data,
+  }) async {
+    return await dio.put(
+      url!,
+      queryParameters: parameters,
+      options: Options(headers: {'access-token': token}),
       data: data,
     );
   }
