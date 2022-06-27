@@ -11,11 +11,8 @@ class CityActivities extends StatelessWidget {
     }
 
     return ListView(
-      children: [
-        Padding(
-          padding: EdgeInsets.only(top: h(15)),
-          child: const ActivityWidget(),
-        )
+      children: const [
+        ActivityWidget(),
       ],
     );
   }

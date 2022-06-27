@@ -8,14 +8,9 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq/logic/cubit/city_activities_cubit/activities_cubit.dart';
 
-class ActivityWidget extends StatefulWidget {
+class ActivityWidget extends StatelessWidget {
   const ActivityWidget({Key? key}) : super(key: key);
 
-  @override
-  State<ActivityWidget> createState() => _ActivityWidgetState();
-}
-
-class _ActivityWidgetState extends State<ActivityWidget> {
   @override
   Widget build(BuildContext context) {
     double h(double n) {
@@ -39,7 +34,7 @@ class _ActivityWidgetState extends State<ActivityWidget> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(18),
                   child: Image.network(
-                    "https://media.istockphoto.com/photos/mosque-and-pyramids-picture-id1174818077?k=20&m=1174818077&s=612x612&w=0&h=vAutxzWDTokCJkf6010sguiHP6yc8Nzt8qePG9DEew0=",
+                    cubit.activitiesModel.results!.data![index].pictures![0],
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -57,7 +52,7 @@ class _ActivityWidgetState extends State<ActivityWidget> {
                           SizedBox(
                             width: w(302),
                             child: AutoSizeText(
-                              cubit.activitiesModel.results!.data![0].name!,
+                              cubit.activitiesModel.results!.data![index].name!,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.center,
@@ -86,7 +81,7 @@ class _ActivityWidgetState extends State<ActivityWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               AutoSizeText(
-                                cubit.activitiesModel.results!.data![0]
+                                cubit.activitiesModel.results!.data![index]
                                     .shortDescription!,
                                 style: TextStyle(
                                   color:
@@ -106,7 +101,8 @@ class _ActivityWidgetState extends State<ActivityWidget> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          buildRating(3.5),
+                          buildRating(double.parse(cubit
+                              .activitiesModel.results!.data![index].rating!)),
                           InkWell(
                             child: Row(
                               children: [
