@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:rafiq/logic/cubit/city_information_cubit/cubit/city_information_cubit.dart';
+import 'package:rafiq/logic/cubit/city_information_cubit/city_information_cubit.dart';
 
 class CityInformation extends StatelessWidget {
   const CityInformation({Key? key}) : super(key: key);
