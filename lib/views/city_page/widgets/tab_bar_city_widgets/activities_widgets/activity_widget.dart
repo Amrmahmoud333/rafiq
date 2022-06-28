@@ -104,6 +104,7 @@ class ActivityWidget extends StatelessWidget {
                           buildRating(double.parse(cubit
                               .activitiesModel.results!.data![index].rating!)),
                           InkWell(
+                            onTap: () {},
                             child: Row(
                               children: [
                                 SvgPicture.asset(
