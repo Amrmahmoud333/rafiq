@@ -64,4 +64,12 @@ class FindHotelCubit extends Cubit<FindHotelState> {
     if (child != 0) child--;
     emit(MinusChildState());
   }
+
+  late DateTime dateTime = DateTime.now();
+
+  void changeDataTime(DateTime newDateTime) {
+    dateTime = newDateTime;
+
+    emit(ChangeDataTimeState());
+  }
 }

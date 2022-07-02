@@ -39,18 +39,16 @@ class CityHotels extends StatelessWidget {
                     onTap: () async {
                       DateTime? newDateTime = await showDatePicker(
                         context: context,
-                        initialDate: DateTime.parse('_/_/_'),
+                        initialDate: cubit.dateTime,
                         firstDate: DateTime(1900),
                         lastDate: DateTime(2100),
                         builder: (context, child) {
                           return Theme(
                             data: Theme.of(context).copyWith(
                               colorScheme: const ColorScheme.light(
-                                primary: Color(
-                                    0xFF5B618A), // header background color
-                                onPrimary:
-                                    Color(0xffE9DCEC), // header text color
-                                onSurface: Colors.black, // body text color
+                                primary: Color(0xFF5B618A),
+                                onPrimary: Color(0xffE9DCEC),
+                                onSurface: Colors.black,
                               ),
                               textButtonTheme: TextButtonThemeData(
                                 style: TextButton.styleFrom(
@@ -63,8 +61,8 @@ class CityHotels extends StatelessWidget {
                           );
                         },
                       );
-                      // if (newDateTime == null) return;
-                      // cubit.chandeDateTime(newDateTime);
+                      if (newDateTime == null) return;
+                      cubit.changeDataTime(newDateTime);
                     },
                     child: Container(
                       height: h(38),
@@ -78,10 +76,11 @@ class CityHotels extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const AutoSizeText(
-                              '_/_/_',
-                              //  '${cubit.dateTime.day}/${cubit.dateTime.month}/${cubit.dateTime.year}',
-                              style: TextStyle(fontSize: 16),
+                            BlocBuilder<FindHotelCubit, FindHotelState>(
+                              builder: (context, state) => AutoSizeText(
+                                '${cubit.dateTime.day}/${cubit.dateTime.month}/${cubit.dateTime.year}',
+                                style: const TextStyle(fontSize: 16),
+                              ),
                             ),
                             SvgPicture.asset(
                                 'assets/images/city_icons/calendar.svg'),
