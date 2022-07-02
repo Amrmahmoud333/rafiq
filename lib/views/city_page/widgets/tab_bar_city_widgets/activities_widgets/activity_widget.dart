@@ -138,7 +138,9 @@ class ActivityWidget extends StatelessWidget {
               ],
             );
           }),
-          itemCount: 2,
+          itemCount: state is ActivitiesLoading
+              ? 0
+              : cubit.activitiesModel.results!.data!.length,
           itemWidth: w(320.0),
           itemHeight: h(700.0),
           layout: SwiperLayout.STACK,

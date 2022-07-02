@@ -16,7 +16,7 @@ class ActivitiesCubit extends Cubit<ActivitiesState> {
     emit(ActivitiesLoading());
     try {
       activitiesModel = await activitiesAPI.getActivities();
-      print(activitiesModel.results!.data![0].rating);
+      print(activitiesModel.results!.data!.length);
       print(activitiesModel.results!.data![0].geoCode!.latitude);
       emit(ActivitiesSuccess());
     } on DioError catch (error) {
