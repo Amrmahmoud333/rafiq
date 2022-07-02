@@ -39,7 +39,7 @@ class CityHotels extends StatelessWidget {
                     onTap: () async {
                       DateTime? newDateTime = await showDatePicker(
                         context: context,
-                        initialDate: cubit.dateTime,
+                        initialDate: cubit.dateTimeCheckIn,
                         firstDate: DateTime(1900),
                         lastDate: DateTime(2100),
                         builder: (context, child) {
@@ -62,7 +62,7 @@ class CityHotels extends StatelessWidget {
                         },
                       );
                       if (newDateTime == null) return;
-                      cubit.changeDataTime(newDateTime);
+                      cubit.changeDataTimeCheckIn(newDateTime);
                     },
                     child: Container(
                       height: h(38),
@@ -78,7 +78,7 @@ class CityHotels extends StatelessWidget {
                           children: [
                             BlocBuilder<FindHotelCubit, FindHotelState>(
                               builder: (context, state) => AutoSizeText(
-                                '${cubit.dateTime.day}/${cubit.dateTime.month}/${cubit.dateTime.year}',
+                                '${cubit.dateTimeCheckIn.day}/${cubit.dateTimeCheckIn.month}/${cubit.dateTimeCheckIn.year}',
                                 style: const TextStyle(fontSize: 16),
                               ),
                             ),
@@ -102,7 +102,7 @@ class CityHotels extends StatelessWidget {
                     onTap: () async {
                       DateTime? newDateTime = await showDatePicker(
                         context: context,
-                        initialDate: DateTime.parse('_/_/_'),
+                        initialDate: cubit.dateTimeCheckOut,
                         firstDate: DateTime(1900),
                         lastDate: DateTime(2100),
                         builder: (context, child) {
@@ -126,8 +126,8 @@ class CityHotels extends StatelessWidget {
                           );
                         },
                       );
-                      // if (newDateTime == null) return;
-                      // cubit.chandeDateTime(newDateTime);
+                      if (newDateTime == null) return;
+                      cubit.changeDataTimeCheckOut(newDateTime);
                     },
                     child: Container(
                       height: h(38),
@@ -141,10 +141,11 @@ class CityHotels extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const AutoSizeText(
-                              '_/_/_',
-                              //  '${cubit.dateTime.day}/${cubit.dateTime.month}/${cubit.dateTime.year}',
-                              style: TextStyle(fontSize: 16),
+                            BlocBuilder<FindHotelCubit, FindHotelState>(
+                              builder: (context, state) => AutoSizeText(
+                                '${cubit.dateTimeCheckOut.day}/${cubit.dateTimeCheckOut.month}/${cubit.dateTimeCheckOut.year}',
+                                style: const TextStyle(fontSize: 16),
+                              ),
                             ),
                             SvgPicture.asset(
                                 'assets/images/city_icons/calendar.svg'),
@@ -221,7 +222,7 @@ class CityHotels extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const AutoSizeText(
-                    'adults',
+                    'Adults',
                     style: TextStyle(fontSize: 14.0, color: Color(0xff5B618A)),
                   ),
                   Container(

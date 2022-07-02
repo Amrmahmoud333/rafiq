@@ -23,4 +23,6 @@ class AddChildState extends FindHotelState {}
 
 class MinusChildState extends FindHotelState {}
 
-class ChangeDataTimeState extends FindHotelState {}
+class ChangeDataTimeCheckInState extends FindHotelState {}
+
+class ChangeDataTimeCheckOutState extends FindHotelState {}

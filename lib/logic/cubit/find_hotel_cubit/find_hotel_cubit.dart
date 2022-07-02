@@ -65,11 +65,19 @@ class FindHotelCubit extends Cubit<FindHotelState> {
     emit(MinusChildState());
   }
 
-  late DateTime dateTime = DateTime.now();
+  late DateTime dateTimeCheckIn = DateTime.now();
 
-  void changeDataTime(DateTime newDateTime) {
-    dateTime = newDateTime;
+  void changeDataTimeCheckIn(DateTime newDateTime) {
+    dateTimeCheckIn = newDateTime;
 
-    emit(ChangeDataTimeState());
+    emit(ChangeDataTimeCheckInState());
+  }
+
+  late DateTime dateTimeCheckOut = DateTime.now();
+
+  void changeDataTimeCheckOut(DateTime newDateTime) {
+    dateTimeCheckOut = newDateTime;
+
+    emit(ChangeDataTimeCheckOutState());
   }
 }
