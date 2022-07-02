@@ -1,12 +1,24 @@
 part of 'find_hotel_cubit.dart';
 
 @immutable
-abstract class FindHotelCubitState {}
+abstract class FindHotelState {}
 
-class FindHotelInitial extends FindHotelCubitState {}
+class FindHotelInitial extends FindHotelState {}
 
-class FindHotelLoading extends FindHotelCubitState {}
+class FindHotelLoading extends FindHotelState {}
 
-class FindHotelSuccess extends FindHotelCubitState {}
+class FindHotelSuccess extends FindHotelState {}
 
-class FindHotelError extends FindHotelCubitState {}
+class FindHotelError extends FindHotelState {}
+
+class AddRoomState extends FindHotelState {}
+
+class MinusRoomState extends FindHotelState {}
+
+class AddAdultsState extends FindHotelState {}
+
+class MinusAdultsState extends FindHotelState {}
+
+class AddChildState extends FindHotelState {}
+
+class MinusChildState extends FindHotelState {}

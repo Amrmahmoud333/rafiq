@@ -6,7 +6,7 @@ import 'package:rafiq/data/models/city/find_hotel_model.dart';
 
 part 'find_hotel_state.dart';
 
-class FindHotelCubit extends Cubit<FindHotelCubitState> {
+class FindHotelCubit extends Cubit<FindHotelState> {
   FindHotelAPI findHotelAPI;
   FindHotelCubit({required this.findHotelAPI}) : super(FindHotelInitial());
 
@@ -31,5 +31,37 @@ class FindHotelCubit extends Cubit<FindHotelCubitState> {
       print(error.response);
       emit(FindHotelError());
     }
+  }
+
+  // UI logic
+  int room = 0, adults = 0, child = 0;
+  addRoom() {
+    room++;
+    emit(AddRoomState());
+  }
+
+  minusRoom() {
+    if (room != 0) room--;
+    emit(MinusRoomState());
+  }
+
+  addAdults() {
+    adults++;
+    emit(AddAdultsState());
+  }
+
+  minusAdults() {
+    if (adults != 0) adults--;
+    emit(MinusAdultsState());
+  }
+
+  addChild() {
+    child++;
+    emit(AddChildState());
+  }
+
+  minusChild() {
+    if (child != 0) child--;
+    emit(MinusChildState());
   }
 }

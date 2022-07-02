@@ -1,6 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rafiq/logic/cubit/find_hotel_cubit/find_hotel_cubit.dart';
 import 'package:rafiq/views/city_page/widgets/tab_bar_city_widgets/hotel_widget/result_hotels.dart';
 
 class CityHotels extends StatelessWidget {
@@ -16,6 +18,7 @@ class CityHotels extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
+    FindHotelCubit cubit = context.read<FindHotelCubit>();
     return SizedBox(
       height: h(300),
       child: Column(
@@ -78,7 +81,7 @@ class CityHotels extends StatelessWidget {
                             const AutoSizeText(
                               '_/_/_',
                               //  '${cubit.dateTime.day}/${cubit.dateTime.month}/${cubit.dateTime.year}',
-                              style:  TextStyle(fontSize: 16),
+                              style: TextStyle(fontSize: 16),
                             ),
                             SvgPicture.asset(
                                 'assets/images/city_icons/calendar.svg'),
@@ -142,7 +145,7 @@ class CityHotels extends StatelessWidget {
                             const AutoSizeText(
                               '_/_/_',
                               //  '${cubit.dateTime.day}/${cubit.dateTime.month}/${cubit.dateTime.year}',
-                              style: const TextStyle(fontSize: 16),
+                              style: TextStyle(fontSize: 16),
                             ),
                             SvgPicture.asset(
                                 'assets/images/city_icons/calendar.svg'),
@@ -180,16 +183,29 @@ class CityHotels extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              cubit.addRoom();
+                            },
                             child: const Icon(
                               Icons.add,
                               size: 20,
                               color: Color(0xff5B618A),
                             ),
                           ),
-                          const AutoSizeText('0'),
+                          BlocBuilder<FindHotelCubit, FindHotelState>(
+                              builder: (context, state) {
+                            return AutoSizeText(
+                              '${cubit.room}',
+                              style: const TextStyle(
+                                fontSize: 16.0,
+                                color: Color(0xff5B618A),
+                              ),
+                            );
+                          }),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              cubit.minusRoom();
+                            },
                             child: const Icon(
                               Icons.minimize,
                               size: 20,
@@ -222,16 +238,29 @@ class CityHotels extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              cubit.addAdults();
+                            },
                             child: const Icon(
                               Icons.add,
                               size: 20,
                               color: Color(0xff5B618A),
                             ),
                           ),
-                          const AutoSizeText('0'),
+                          BlocBuilder<FindHotelCubit, FindHotelState>(
+                              builder: (context, state) {
+                            return AutoSizeText(
+                              '${cubit.adults}',
+                              style: const TextStyle(
+                                fontSize: 16.0,
+                                color: Color(0xff5B618A),
+                              ),
+                            );
+                          }),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              cubit.minusAdults();
+                            },
                             child: const Icon(
                               Icons.minimize,
                               size: 20,
@@ -264,16 +293,29 @@ class CityHotels extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              cubit.addChild();
+                            },
                             child: const Icon(
                               Icons.add,
                               size: 20,
                               color: Color(0xff5B618A),
                             ),
                           ),
-                          const AutoSizeText('0'),
+                          BlocBuilder<FindHotelCubit, FindHotelState>(
+                              builder: (context, state) {
+                            return AutoSizeText(
+                              '${cubit.child}',
+                              style: const TextStyle(
+                                fontSize: 16.0,
+                                color: Color(0xff5B618A),
+                              ),
+                            );
+                          }),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              cubit.minusChild();
+                            },
                             child: const Icon(
                               Icons.minimize,
                               size: 20,
