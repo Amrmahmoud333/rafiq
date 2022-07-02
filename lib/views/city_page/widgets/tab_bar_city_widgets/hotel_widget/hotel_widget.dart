@@ -78,7 +78,7 @@ class CityHotels extends StatelessWidget {
                             const AutoSizeText(
                               '_/_/_',
                               //  '${cubit.dateTime.day}/${cubit.dateTime.month}/${cubit.dateTime.year}',
-                              style: const TextStyle(fontSize: 16),
+                              style:  TextStyle(fontSize: 16),
                             ),
                             SvgPicture.asset(
                                 'assets/images/city_icons/calendar.svg'),

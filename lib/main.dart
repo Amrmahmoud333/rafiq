@@ -7,6 +7,7 @@ import 'package:rafiq/data/data_API/authentication/forget_API.dart';
 import 'package:rafiq/data/data_API/authentication/login_API.dart';
 import 'package:rafiq/data/data_API/city/activities_API.dart';
 import 'package:rafiq/data/data_API/city/city_Info_API.dart';
+import 'package:rafiq/data/data_API/city/find_hotel_API.dart';
 import 'package:rafiq/data/data_API/post_like_API.dart';
 import 'package:rafiq/data/data_API/profile/cover_image_API.dart';
 import 'package:rafiq/data/data_API/dio_helper.dart';
@@ -20,7 +21,8 @@ import 'package:rafiq/logic/cubit/add_post_cubit/add_post_cubit.dart';
 import 'package:rafiq/logic/cubit/city_activities_cubit/activities_cubit.dart';
 import 'package:rafiq/logic/cubit/city_cubit/city_cubit.dart';
 import 'package:rafiq/logic/cubit/city_cubit/tab_city_cubit.dart';
-import 'package:rafiq/logic/cubit/city_information_cubit/cubit/city_information_cubit.dart';
+import 'package:rafiq/logic/cubit/city_information_cubit/city_information_cubit.dart';
+import 'package:rafiq/logic/cubit/find_hotel_cubit/find_hotel_cubit.dart';
 import 'package:rafiq/logic/cubit/forget_cubit/forget_cubit.dart';
 import 'package:rafiq/logic/cubit/get_user_sections/get_user_posts_cubit/get_user_posts_cubit.dart';
 import 'package:rafiq/logic/cubit/login_cubit/login_cubit.dart';
@@ -99,15 +101,16 @@ class MyApp extends StatelessWidget {
         BlocProvider<NotificationCubit>(
             create: (context) => NotificationCubit()),
         BlocProvider<CityInformationCubit>(
-          create: (context) =>
-              CityInformationCubit(cityInformationAPI: CityInformationAPI()),
-        ),
+            create: (context) =>
+                CityInformationCubit(cityInformationAPI: CityInformationAPI())),
         BlocProvider<TabCityCubit>(
           create: (context) => TabCityCubit(),
         ),
         BlocProvider<ActivitiesCubit>(
-          create: (context) => ActivitiesCubit(activitiesAPI: ActivitiesAPI()),
-        ),
+            create: (context) =>
+                ActivitiesCubit(activitiesAPI: ActivitiesAPI())),
+        BlocProvider<FindHotelCubit>(
+            create: (context) => FindHotelCubit(findHotelAPI: FindHotelAPI())),
       ],
       child: MaterialApp(
         title: 'Rafiq',

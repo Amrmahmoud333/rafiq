@@ -63,8 +63,8 @@ class Data {
 }
 
 class GeoCode {
-  String? latitude;
-  String? longitude;
+  double? latitude;
+  double? longitude;
 
   GeoCode({this.latitude, this.longitude});
 

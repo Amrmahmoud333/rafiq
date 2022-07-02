@@ -25,119 +25,128 @@ class ActivityWidget extends StatelessWidget {
 
     return SizedBox(
       height: h(800),
-      child: Swiper(
-        itemBuilder: ((context, index) {
-          return Column(
-            children: [
-              SizedBox(
-                height: h(445),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(18),
-                  child: Image.network(
-                    cubit.activitiesModel.results!.data![index].pictures![0],
-                    fit: BoxFit.fill,
-                  ),
+      child: BlocBuilder<ActivitiesCubit, ActivitiesState>(
+          builder: (context, state) {
+        return Swiper(
+          itemBuilder: ((context, index) {
+            return Column(
+              children: [
+                SizedBox(
+                  height: h(445),
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.circular(18),
+                      child: state is ActivitiesLoading
+                          ? Image.asset('assets/images/test1.png')
+                          : Image.network(
+                              cubit.activitiesModel.results!.data![index]
+                                  .pictures![0],
+                              fit: BoxFit.fill,
+                            )),
                 ),
-              ),
-              Container(
-                width: w(345),
-                color: const Color(0xffEFE7F2),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: w(15), top: h(13)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            width: w(302),
-                            child: AutoSizeText(
-                              cubit.activitiesModel.results!.data![index].name!,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                color: Color(0xff5B618A),
-                                fontFamily: 'DavidLibre',
-                                fontSize: 22,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          left: w(12.5),
-                          top: h(14),
-                          bottom: h(18),
-                          right: w(13)),
-                      child: SizedBox(
-                        height: h(145),
-                        width: w(302),
-                        child: SingleChildScrollView(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              AutoSizeText(
-                                cubit.activitiesModel.results!.data![index]
-                                    .shortDescription!,
-                                style: TextStyle(
-                                  color:
-                                      const Color(0xff5B618A).withOpacity(0.9),
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w500,
+                Container(
+                  width: w(345),
+                  color: const Color(0xffEFE7F2),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: w(15), top: h(13)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: w(302),
+                              child: AutoSizeText(
+                                state is ActivitiesLoading
+                                    ? ''
+                                    : cubit.activitiesModel.results!
+                                        .data![index].name!,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  color: Color(0xff5B618A),
                                   fontFamily: 'DavidLibre',
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: w(20), right: w(20)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          buildRating(double.parse(cubit
-                              .activitiesModel.results!.data![index].rating!)),
-                          InkWell(
-                            onTap: () {},
-                            child: Row(
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: w(12.5),
+                            top: h(14),
+                            bottom: h(18),
+                            right: w(13)),
+                        child: SizedBox(
+                          height: h(145),
+                          width: w(302),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                SvgPicture.asset(
-                                    'assets/images/city_icons/location.svg'),
-                                const AutoSizeText(
-                                  'Location',
+                                AutoSizeText(
+                                  state is ActivitiesLoading
+                                      ? ''
+                                      : cubit.activitiesModel.results!
+                                          .data![index].shortDescription!,
                                   style: TextStyle(
-                                    color: Color(0xff5B618A),
-                                    fontSize: 22,
+                                    color: const Color(0xff5B618A)
+                                        .withOpacity(0.9),
+                                    fontSize: 18,
                                     fontWeight: FontWeight.w500,
                                     fontFamily: 'DavidLibre',
                                   ),
                                 ),
                               ],
                             ),
-                          )
-                        ],
+                          ),
+                        ),
                       ),
-                    )
-                  ],
+                      Padding(
+                        padding: EdgeInsets.only(left: w(20), right: w(20)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            buildRating(5.0),
+                            InkWell(
+                              onTap: () {},
+                              child: Row(
+                                children: [
+                                  SvgPicture.asset(
+                                      'assets/images/city_icons/location.svg'),
+                                  const AutoSizeText(
+                                    'Location',
+                                    style: TextStyle(
+                                      color: Color(0xff5B618A),
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w500,
+                                      fontFamily: 'DavidLibre',
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          );
-        }),
-        itemCount: 2,
-        itemWidth: w(320.0),
-        itemHeight: h(700.0),
-        layout: SwiperLayout.STACK,
-        axisDirection: AxisDirection.right,
-        onIndexChanged: (index) {},
-        onTap: (index) {},
-      ),
+              ],
+            );
+          }),
+          itemCount: 2,
+          itemWidth: w(320.0),
+          itemHeight: h(700.0),
+          layout: SwiperLayout.STACK,
+          axisDirection: AxisDirection.right,
+          onIndexChanged: (index) {},
+          onTap: (index) {},
+        );
+      }),
     );
   }
 }

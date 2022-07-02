@@ -68,7 +68,6 @@ class DioHelper {
 
   static Future<Response> putWithHeaderAndParameters({
     @required String? url,
-    @required Map<String, dynamic>? header,
     @required Map<String, dynamic>? parameters,
     dynamic data,
   }) async {
