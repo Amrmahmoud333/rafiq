@@ -332,7 +332,8 @@ class CityHotels extends StatelessWidget {
           ),
           SizedBox(height: h(51)),
           InkWell(
-            onTap: () {
+            onTap: () async {
+              await cubit.findHotel();
               Navigator.pushNamed(context, ResultHotelScreen.routeName);
             },
             child: Container(

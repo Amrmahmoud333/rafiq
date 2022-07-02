@@ -12,20 +12,18 @@ class FindHotelCubit extends Cubit<FindHotelState> {
 
   late FindHotelsModel findHotelsModel;
 
-  Future<void> findHotel(
-      {required int roomNum,
-      required int adultsNum,
-      required int childrenNum,
-      required String checkInDate,
-      required String checkOutDate}) async {
+  Future<void> findHotel() async {
     emit(FindHotelLoading());
     try {
       findHotelsModel = await findHotelAPI.findHotel(
-          roomNum: roomNum,
-          adultsNum: adultsNum,
-          childrenNum: childrenNum,
-          checkInDate: checkInDate,
-          checkOutDate: checkOutDate);
+        roomNum: room,
+        adultsNum: adults,
+        childrenNum: child,
+        checkInDate:
+            '${dateTimeCheckIn.day}-${dateTimeCheckIn.month}-${dateTimeCheckIn.year}',
+        checkOutDate:
+            '${dateTimeCheckOut.day}-${dateTimeCheckOut.month}-${dateTimeCheckOut.year}',
+      );
       emit(FindHotelSuccess());
     } on DioError catch (error) {
       print(error.response);
