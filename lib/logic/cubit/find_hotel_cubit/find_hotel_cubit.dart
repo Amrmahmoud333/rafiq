@@ -19,10 +19,20 @@ class FindHotelCubit extends Cubit<FindHotelState> {
         roomNum: room,
         adultsNum: adults,
         childrenNum: child,
-        checkInDate:
-            '${dateTimeCheckIn.day}-${dateTimeCheckIn.month}-${dateTimeCheckIn.year}',
-        checkOutDate:
-            '${dateTimeCheckOut.day}-${dateTimeCheckOut.month}-${dateTimeCheckOut.year}',
+        checkInDate: dateTimeCheckIn.month < 10
+            ? '${dateTimeCheckIn.year}-0${dateTimeCheckIn.month}-${dateTimeCheckIn.day}'
+            : dateTimeCheckIn.day < 10
+                ? '${dateTimeCheckIn.year}-${dateTimeCheckIn.month}-0${dateTimeCheckIn.day}'
+                : (dateTimeCheckIn.day < 10 && dateTimeCheckIn.month < 10)
+                    ? '${dateTimeCheckIn.year}-0${dateTimeCheckIn.month}-0${dateTimeCheckIn.day}'
+                    : '${dateTimeCheckIn.year}-${dateTimeCheckIn.month}-${dateTimeCheckIn.day}',
+        checkOutDate: dateTimeCheckOut.month < 10
+            ? '${dateTimeCheckOut.year}-0${dateTimeCheckOut.month}-${dateTimeCheckOut.day}'
+            : dateTimeCheckOut.day < 10
+                ? '${dateTimeCheckOut.year}-${dateTimeCheckOut.month}-0${dateTimeCheckOut.day}'
+                : (dateTimeCheckOut.day < 10 && dateTimeCheckOut.month < 10)
+                    ? '${dateTimeCheckOut.year}-0${dateTimeCheckOut.month}-0${dateTimeCheckOut.day}'
+                    : '${dateTimeCheckOut.year}-${dateTimeCheckOut.month}-${dateTimeCheckOut.day}',
       );
       emit(FindHotelSuccess());
     } on DioError catch (error) {
