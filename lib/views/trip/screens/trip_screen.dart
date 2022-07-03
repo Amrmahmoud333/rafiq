@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:rafiq/views/trip/widget/swiper_trip_widget.dart';
+import 'package:rafiq/views/trip/widget/swiper_widget/info_for_trip_swiper.dart';
+import 'package:rafiq/views/trip/widget/swiper_widget/swiper_trip_widget.dart';
 
 class TripScreen extends StatelessWidget {
   const TripScreen({Key? key}) : super(key: key);
@@ -66,7 +66,8 @@ class TripScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SwiperTripWidget()
+              const SwiperTripWidget(),
+              const TripSwiperInfo(),
             ],
           ),
         ),
