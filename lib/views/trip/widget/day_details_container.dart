@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 
-class DayDetailsContainer extends StatelessWidget {
-  const DayDetailsContainer(
+class DayTirpDetailsContainer extends StatelessWidget {
+  const DayTirpDetailsContainer(
       {Key? key,
       required this.numOfDAy,
       required this.nameOfCity,
