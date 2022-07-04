@@ -7,6 +7,7 @@ import 'package:rafiq/core/components/components.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq/logic/cubit/city_activities_cubit/activities_cubit.dart';
+import 'package:rafiq/views/city_page/widgets/tab_bar_city_widgets/activities_widgets/map_location.dart';
 
 class ActivityWidget extends StatelessWidget {
   const ActivityWidget({Key? key}) : super(key: key);
@@ -34,14 +35,15 @@ class ActivityWidget extends StatelessWidget {
                 SizedBox(
                   height: h(445),
                   child: ClipRRect(
-                      borderRadius: BorderRadius.circular(18),
-                      child: state is ActivitiesLoading
-                          ? Image.asset('assets/images/test1.png')
-                          : Image.network(
-                              cubit.activitiesModel.results!.data![index]
-                                  .pictures![0],
-                              fit: BoxFit.fill,
-                            )),
+                    borderRadius: BorderRadius.circular(18),
+                    child: state is ActivitiesLoading
+                        ? Image.asset('assets/images/test1.png')
+                        : Image.network(
+                            cubit.activitiesModel.results!.data![index]
+                                .pictures![0],
+                            fit: BoxFit.fill,
+                          ),
+                  ),
                 ),
                 Container(
                   width: w(345),
@@ -110,9 +112,20 @@ class ActivityWidget extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            buildRating(5.0),
+                            buildRating(0.0),
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: ((context) => ActivityMapLocation(
+                                        latitude: cubit.activitiesModel.results!
+                                            .data![index].geoCode!.latitude!,
+                                        longitude: cubit
+                                            .activitiesModel
+                                            .results!
+                                            .data![index]
+                                            .geoCode!
+                                            .longitude!))));
+                              },
                               child: Row(
                                 children: [
                                   SvgPicture.asset(
