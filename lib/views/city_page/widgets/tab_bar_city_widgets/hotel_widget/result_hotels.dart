@@ -1,6 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rafiq/logic/cubit/find_hotel_cubit/find_hotel_cubit.dart';
 
 class ResultHotelScreen extends StatelessWidget {
   const ResultHotelScreen({Key? key}) : super(key: key);
@@ -14,6 +16,8 @@ class ResultHotelScreen extends StatelessWidget {
     double w(double n) {
       return MediaQuery.of(context).size.width * (n / 393);
     }
+
+    FindHotelCubit cubit = context.read<FindHotelCubit>();
 
     return Scaffold(
       appBar: AppBar(
@@ -44,9 +48,19 @@ class ResultHotelScreen extends StatelessWidget {
                       height: h(434),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(18),
-                        child: Image.network(
-                          "https://media.istockphoto.com/photos/mosque-and-pyramids-picture-id1174818077?k=20&m=1174818077&s=612x612&w=0&h=vAutxzWDTokCJkf6010sguiHP6yc8Nzt8qePG9DEew0=",
-                          fit: BoxFit.fill,
+                        child: BlocBuilder<FindHotelCubit, FindHotelState>(
+                          builder: (context, state) {
+                            return state is FindHotelLoading
+                                ? Image.network(
+                                    "https://media.istockphoto.com/photos/mosque-and-pyramids-picture-id1174818077?k=20&m=1174818077&s=612x612&w=0&h=vAutxzWDTokCJkf6010sguiHP6yc8Nzt8qePG9DEew0=",
+                                    fit: BoxFit.fill,
+                                  )
+                                //  cubit.findHotelsModel.results!.data![index].mainPhotoUrl!
+                                : Image.network(
+                                    "https://media.istockphoto.com/photos/mosque-and-pyramids-picture-id1174818077?k=20&m=1174818077&s=612x612&w=0&h=vAutxzWDTokCJkf6010sguiHP6yc8Nzt8qePG9DEew0=",
+                                    fit: BoxFit.fill,
+                                  );
+                          },
                         ),
                       ),
                     ),
@@ -58,34 +72,75 @@ class ResultHotelScreen extends StatelessWidget {
                         children: [
                           Padding(
                             padding: EdgeInsets.only(top: h(17)),
-                            child: const Center(
-                              child: AutoSizeText(
-                                'Cavalletto Hotel',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color(0xff5B618A)),
+                            child: Center(
+                              child:
+                                  BlocBuilder<FindHotelCubit, FindHotelState>(
+                                builder: (context, state) {
+                                  return state is FindHotelLoading
+                                      ? const AutoSizeText(
+                                          '',
+                                          style: TextStyle(
+                                              fontSize: 24,
+                                              fontWeight: FontWeight.bold,
+                                              color: Color(0xff5B618A)),
+                                        )
+                                      : const AutoSizeText(
+                                          //cubit.findHotelsModel.results!.data![index].hotelName!
+                                          'Cavalletto Hotel',
+                                          style: TextStyle(
+                                              fontSize: 24,
+                                              fontWeight: FontWeight.bold,
+                                              color: Color(0xff5B618A)),
+                                        );
+                                },
                               ),
                             ),
                           ),
                           Padding(
                             padding: EdgeInsets.only(top: h(17), left: w(20)),
-                            child: const AutoSizeText(
-                              'In the middle of city',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xff5B618A)),
+                            child: BlocBuilder<FindHotelCubit, FindHotelState>(
+                              builder: (context, state) {
+                                return state is FindHotelLoading
+                                    ? const AutoSizeText(
+                                        '',
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                            color: Color(0xff5B618A)),
+                                      )
+                                    : const AutoSizeText(
+                                        //cubit.findHotelsModel.results!.data![index].address!
+                                        'In the middle of city',
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                            color: Color(0xff5B618A)),
+                                      );
+                              },
                             ),
                           ),
                           Padding(
                             padding: EdgeInsets.only(top: h(17), left: w(20)),
-                            child: const AutoSizeText(
-                              '2,000 Reviews',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xff5B618A)),
+                            child: BlocBuilder<FindHotelCubit, FindHotelState>(
+                              builder: (context, state) {
+                                return state is FindHotelLoading
+                                    ? const AutoSizeText(
+                                        '',
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                            color: Color(0xff5B618A)),
+                                      )
+                                    : const AutoSizeText(
+                                        //  '${cubit.findHotelsModel.results!.data![index].reviewNr!} Reviews'
+                                        '2,000 Reviews',
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xff5B618A),
+                                        ),
+                                      );
+                              },
                             ),
                           ),
                           Row(
@@ -100,14 +155,29 @@ class ResultHotelScreen extends StatelessWidget {
                                     color: const Color(0xff618A5B),
                                     borderRadius: BorderRadius.circular(5),
                                   ),
-                                  child: const Center(
-                                    child: AutoSizeText(
-                                      '9.5',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                      ),
+                                  child: Center(
+                                    child: BlocBuilder<FindHotelCubit,
+                                        FindHotelState>(
+                                      builder: (context, state) {
+                                        return state is FindHotelLoading
+                                            ? const AutoSizeText(
+                                                '',
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.white,
+                                                ),
+                                              )
+                                            : const AutoSizeText(
+                                                // '${cubit.findHotelsModel.results!.data![index].reviewScore!}'
+                                                '9.5',
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.white,
+                                                ),
+                                              );
+                                      },
                                     ),
                                   ),
                                 ),
@@ -115,13 +185,28 @@ class ResultHotelScreen extends StatelessWidget {
                               Padding(
                                 padding:
                                     EdgeInsets.only(top: h(17), left: w(16)),
-                                child: const AutoSizeText(
-                                  'Exceptional',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w500,
-                                    color: Color(0xff618A5B),
-                                  ),
+                                child:
+                                    BlocBuilder<FindHotelCubit, FindHotelState>(
+                                  builder: (context, state) {
+                                    return state is FindHotelLoading
+                                        ? const AutoSizeText(
+                                            '',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white,
+                                            ),
+                                          )
+                                        : const AutoSizeText(
+                                            // '${cubit.findHotelsModel.results!.data![index].review_score_word!}'
+                                            'Exceptional',
+                                            style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500,
+                                              color: Color(0xff618A5B),
+                                            ),
+                                          );
+                                  },
                                 ),
                               ),
                             ],
@@ -132,13 +217,27 @@ class ResultHotelScreen extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                const AutoSizeText(
-                                  '20\$/night',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w500,
-                                    color: Color(0xff5B618A),
-                                  ),
+                                BlocBuilder<FindHotelCubit, FindHotelState>(
+                                  builder: (context, state) {
+                                    return state is FindHotelLoading
+                                        ? const AutoSizeText(
+                                            '',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white,
+                                            ),
+                                          )
+                                        : const AutoSizeText(
+                                            // '${cubit.findHotelsModel.results!.data![index].min_total_price!}\$night'
+                                            '20\$/night',
+                                            style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500,
+                                              color: Color(0xff5B618A),
+                                            ),
+                                          );
+                                  },
                                 ),
                                 InkWell(
                                   onTap: () {},
