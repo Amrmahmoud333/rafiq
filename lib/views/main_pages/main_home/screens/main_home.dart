@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/data/chach_helper.dart';
@@ -85,13 +86,18 @@ class MainHomeScreen extends StatelessWidget {
               ),
             ),
 
-            appBar: cubit.currentIndex == 2
-                ? AppBar(toolbarHeight: 0)
+            appBar: (cubit.currentIndex == 2 || cubit.currentIndex == 1)
+                ? AppBar(
+                    toolbarHeight: 0,
+                    backgroundColor: const Color(0xffE8DEEB),
+                    systemOverlayStyle: SystemUiOverlayStyle.dark,
+                  )
                 : MyAppBar(newContext: context),
             // change between list of screens in the same page to navigate between them
             body: cubit.bottumNavScreen[cubit.currentIndex],
             // add floatingActionButton to the CustomBottomNavgiationBar
-            floatingActionButton: const CustomFloationActionButton(),
+            floatingActionButton:
+                CustomFloationActionButton(index: cubit.currentIndex),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerDocked,
             bottomNavigationBar: CustomBottomNavgiationBar(),

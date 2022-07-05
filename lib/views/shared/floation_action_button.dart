@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:rafiq/views/profile/widgets/posts/add_post.dart';
+import 'package:rafiq/views/trip/screens/create_trip.dart';
 
 class CustomFloationActionButton extends StatelessWidget {
   const CustomFloationActionButton({
     Key? key,
+    required this.index,
   }) : super(key: key);
 
+  final int index;
   @override
   Widget build(BuildContext context) {
     double h(double n) {
@@ -46,7 +49,11 @@ class CustomFloationActionButton extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        Navigator.pushNamed(context, AddPost.routeName);
+        if (index == 1) {
+          Navigator.pushNamed(context, CreateTrip.routeName);
+        } else {
+          Navigator.pushNamed(context, AddPost.routeName);
+        }
       },
       heroTag: null,
     );

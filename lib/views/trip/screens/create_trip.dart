@@ -24,6 +24,7 @@ class CreateTrip extends StatelessWidget {
     }
 
     return Scaffold(
+      backgroundColor: const Color(0xffE8DEEB),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -42,12 +43,7 @@ class CreateTrip extends StatelessWidget {
                         top: h(21.83),
                         child: InkWell(
                           onTap: () async {
-                            await showModalBottomSheet(
-                              context: context,
-                              builder: (context) =>
-                                  const BuildFilterByBottomSheet(),
-                            );
-                            // Navigator.pop(context);
+                            Navigator.pop(context);
                           },
                           child: const Icon(
                             Icons.arrow_back,

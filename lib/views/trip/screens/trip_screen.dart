@@ -23,7 +23,7 @@ class TripScreen extends StatelessWidget {
         height: h(800),
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.only(top: h(15)),
+            padding: EdgeInsets.only(top: h(5)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

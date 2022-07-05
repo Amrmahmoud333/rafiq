@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rafiq/views/trip/screens/trip_country_search.dart';
 
 class BuildFilterByBottomSheet extends StatelessWidget {
   const BuildFilterByBottomSheet({Key? key}) : super(key: key);
@@ -50,7 +51,10 @@ class BuildFilterByBottomSheet extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: w(25), top: h(17), bottom: h(16.46)),
             child: InkWell(
-              onTap: () {},
+              onTap: () async {
+                await Navigator.pushNamed(context, TripCountrySearch.routeName);
+                Navigator.pop(context);
+              },
               child: Row(
                 children: [
                   SvgPicture.asset(

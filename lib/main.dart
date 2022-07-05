@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/core/themes/theme.dart';
 import 'package:rafiq/data/chach_helper.dart';
@@ -39,6 +40,9 @@ import 'package:rafiq/views/router/app_router.dart';
 import 'logic/state_observer.dart';
 
 void main() async {
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.purple,
+  ));
   WidgetsFlutterBinding.ensureInitialized();
 
   await CahchHelper.init();
