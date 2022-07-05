@@ -27,7 +27,7 @@ class DayTirpDetailsContainer extends StatelessWidget {
     }
 
     return Padding(
-      padding: EdgeInsets.only(top: h(29)),
+      padding: EdgeInsets.only(bottom: h(29)),
       child: Container(
         color: const Color(0xffDBD4DD),
         child: Column(

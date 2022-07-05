@@ -15,32 +15,23 @@ class SwiperTripWidget extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
-    return SizedBox(
-      height: h(800),
-      child: Swiper(
-        itemBuilder: ((context, index) {
-          return Column(
-            children: [
-              SizedBox(
-                height: h(300),
-                width: double.infinity,
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(45),
-                    child: Image.asset('assets/images/test2.png')),
-              ),
-            ],
-          );
-        }),
-        itemCount: 3,
-        itemWidth: w(320.0),
-        itemHeight: h(700.0),
-        layout: SwiperLayout.STACK,
-        axisDirection: AxisDirection.right,
-
-        onIndexChanged: (index) {},
-        onTap: (index) {},
-        // containerWidth: w(200.0),
-      ),
+    return Swiper(
+      itemBuilder: ((context, index) {
+        return ClipRRect(
+          borderRadius: BorderRadius.circular(18),
+          child: Image.asset(
+            'assets/images/test2.png',
+            fit: BoxFit.fill,
+          ),
+        );
+      }),
+      itemCount: 3,
+      itemWidth: w(320.0),
+      itemHeight: h(400.0),
+      layout: SwiperLayout.STACK,
+      axisDirection: AxisDirection.right,
+      onIndexChanged: (index) {},
+      onTap: (index) {},
     );
   }
 }
