@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/logic/cubit/trip_cubit/trip_cubit_cubit.dart';
 
 class CountryORcityORtransporationDropDownButton extends StatelessWidget {
-  const CountryORcityORtransporationDropDownButton(
+  CountryORcityORtransporationDropDownButton(
       {Key? key,
       required this.value,
       required this.items,
@@ -12,8 +12,8 @@ class CountryORcityORtransporationDropDownButton extends StatelessWidget {
       required this.title})
       : super(key: key);
   final String title;
-  final String? value;
-  final List<String>? items;
+  String? value;
+  List<String>? items;
   final String? countryORcityORtransporation;
   @override
   Widget build(BuildContext context) {

@@ -32,6 +32,7 @@ import 'package:rafiq/logic/cubit/notification_cubit/notification_cubit.dart';
 import 'package:rafiq/logic/cubit/post_like_cubit/post_like_cubit.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
 import 'package:rafiq/logic/cubit/register_cubit/register_cubit.dart';
+import 'package:rafiq/logic/cubit/search_cubit/search_cubit.dart';
 import 'package:rafiq/logic/cubit/trip_cubit/trip_cubit_cubit.dart';
 import 'package:rafiq/logic/cubit/update_user_info_cubit/update_user_cubit.dart';
 import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
@@ -78,6 +79,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<ForgetCubit>(
           create: (context) => ForgetCubit(forgetPasswordRepo: ForgetApi()),
+        ),
+        BlocProvider<SearchCubit>(
+          create: (context) => SearchCubit(),
         ),
         BlocProvider<ProfileCubit>(
           create: (context) => ProfileCubit(coverImageRepo: CoverImageAPI()),

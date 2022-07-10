@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class ThemeOfProject {
   static final ligthTheme = ThemeData(
@@ -14,6 +15,10 @@ class ThemeOfProject {
       titleTextStyle: TextStyle(
         fontSize: 25,
         fontWeight: FontWeight.w500,
+      ),
+      systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarColor: const Color(0xffE8DEEB),
+        statusBarIconBrightness: Brightness.dark,
       ),
     ),
     textTheme: const TextTheme(
