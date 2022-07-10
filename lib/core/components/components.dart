@@ -7,6 +7,7 @@ import 'package:motion_toast/motion_toast.dart';
 import 'package:motion_toast/resources/arrays.dart';
 import 'package:rafiq/logic/cubit/add_post_cubit/add_post_cubit.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
+import 'package:rafiq/logic/cubit/search_cubit/search_cubit.dart';
 
 void showTosat({required msg, required state}) => Fluttertoast.showToast(
       msg: msg,
@@ -100,6 +101,12 @@ Future<void> getVideoPost(context, videoSource) async {
   BlocProvider.of<AddPostCubit>(context).addVideopostFiles(_video);
 }
 
+Future<void> searchImageFromGallery(context) async {
+  final XFile? _images = await _image.pickImage(source: ImageSource.gallery);
+  if (_images == null) return;
+
+  BlocProvider.of<SearchCubit>(context).getImageFromGellureToSearch(_images);
+}
 
 Widget buildRating(double rate) {
   List<Icon> icon = [];

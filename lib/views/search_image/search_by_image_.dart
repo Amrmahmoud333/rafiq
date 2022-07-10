@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rafiq/core/components/components.dart';
 import 'package:rafiq/logic/cubit/search_cubit/search_cubit.dart';
 import 'package:rafiq/views/search_image/widget/no_results_column.dart';
 import 'package:rafiq/views/search_image/widget/options.dart';
@@ -118,7 +119,9 @@ class SearchByImage extends StatelessWidget {
 
                 // Container Search by image from gallery
                 InkWell(
-                  onTap: () {},
+                  onTap: () async {
+                    await searchImageFromGallery(context);
+                  },
                   child: Container(
                     width: w(39),
                     height: h(40),
