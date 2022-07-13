@@ -30,6 +30,18 @@ class SearchCubit extends Cubit<SearchState> {
     }
   }
 
+  Future<void> searchPlace({required String place}) async {
+    emit(SearchPlaceLoading());
+    try {
+      searchPlaceModel = await searchAPI.searchPlace(place: place);
+
+      emit(SearchPlaceSuccess());
+    } on DioError catch (error) {
+      log(error.response!.data);
+      emit(SearchPlaceError());
+    }
+  }
+
   // UI logic
   String? dropDownVal;
   List<String> listVals = ['Users', 'Cities'];
