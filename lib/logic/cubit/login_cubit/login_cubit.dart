@@ -24,7 +24,7 @@ class LoginCubit extends Cubit<LoginState> {
     } on DioError catch (error) {
       error.message.contains('SocketException')
           ? messege = 'No internet connection'
-          : messege = error.response!.data['error']['message'];
+          : messege = error.response!.data;
       // print(error.response!.data['error']['message']);
       emit(LoginErrorState());
     }
