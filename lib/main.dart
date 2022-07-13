@@ -18,6 +18,7 @@ import 'package:rafiq/data/data_API/profile/marker_API.dart';
 import 'package:rafiq/data/data_API/profile/post_API.dart';
 import 'package:rafiq/data/data_API/profile/update_user_info_API.dart';
 import 'package:rafiq/data/data_API/profile/user_data_API.dart';
+import 'package:rafiq/data/data_API/seach/search_API.dart';
 import 'package:rafiq/logic/cubit/add_post_cubit/add_post_cubit.dart';
 import 'package:rafiq/logic/cubit/city_activities_cubit/activities_cubit.dart';
 import 'package:rafiq/logic/cubit/city_cubit/city_cubit.dart';
@@ -81,7 +82,7 @@ class MyApp extends StatelessWidget {
           create: (context) => ForgetCubit(forgetPasswordRepo: ForgetApi()),
         ),
         BlocProvider<SearchCubit>(
-          create: (context) => SearchCubit(),
+          create: (context) => SearchCubit(searchAPI: SearchAPI()),
         ),
         BlocProvider<ProfileCubit>(
           create: (context) => ProfileCubit(coverImageRepo: CoverImageAPI()),
