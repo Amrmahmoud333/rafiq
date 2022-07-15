@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/logic/cubit/search_cubit/search_cubit.dart';
 
 class OptionsDropDownButton extends StatelessWidget {
-  OptionsDropDownButton({
+  const OptionsDropDownButton({
     Key? key,
     required this.value,
     required this.items,
@@ -14,7 +14,7 @@ class OptionsDropDownButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double height(double n) {
-      return MediaQuery.of(context).size.height * (n / 800);
+      return MediaQuery.of(context).size.height * (n / 851);
     }
 
     double width(double n) {
@@ -22,8 +22,8 @@ class OptionsDropDownButton extends StatelessWidget {
     }
 
     return Container(
-      height: height(42),
-      width: width(68),
+      height: height(32),
+      width: width(64),
       decoration: const BoxDecoration(
         color: Color(0xff9C9BB7),
         borderRadius: BorderRadius.only(
@@ -57,7 +57,7 @@ DropdownMenuItem<String> buildMenuItem(String country) => DropdownMenuItem(
           style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w400,
-            color: Color(0xFF5B618A),
+            color: Color(0xffEBEBEBB5),
           ),
         ),
       ),

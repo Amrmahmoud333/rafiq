@@ -25,7 +25,7 @@ class LoginCubit extends Cubit<LoginState> {
       error.message.contains('SocketException')
           ? messege = 'No internet connection'
           : messege = error.response!.data;
-      // print(error.response!.data['error']['message']);
+
       emit(LoginErrorState());
     }
   }

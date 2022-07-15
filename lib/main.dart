@@ -40,6 +40,7 @@ import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 import 'package:rafiq/views/router/app_router.dart';
 
 import 'logic/state_observer.dart';
+import 'package:dcdg/dcdg.dart';
 
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(

@@ -13,7 +13,7 @@ class Cover extends StatelessWidget {
       return MediaQuery.of(context).size.height * (n / 851);
     }
 
-    var cubit = context.read<UserDataCubit>();
+    UserDataCubit cubit = context.read<UserDataCubit>();
 
     return Stack(
       children: [

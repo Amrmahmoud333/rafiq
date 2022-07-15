@@ -50,9 +50,9 @@ class SearchCubit extends Cubit<SearchState> {
     emit(ChangeDropDownValState());
   }
 
-  XFile? imageToSearch;
+  File? imageToSearch;
   void getImageFromGellureToSearch(XFile images) {
-    imageToSearch == (File(images.path));
+    imageToSearch = (File(images.path));
     emit(GetImageFromGalleryToSearchSuccess());
   }
 }

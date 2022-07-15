@@ -18,7 +18,6 @@ class ProfileCubit extends Cubit<ProfileStates> {
   late DeleteAvatarModel _deleteAvatarModel;
 
   //API
-
   // two functions for Set covrt && avatart
   Future<void> setCover({File? file}) async {
     emit(SetCoverLoadingState());
