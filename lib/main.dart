@@ -9,6 +9,7 @@ import 'package:rafiq/data/data_API/authentication/login_API.dart';
 import 'package:rafiq/data/data_API/city/activities_API.dart';
 import 'package:rafiq/data/data_API/city/city_Info_API.dart';
 import 'package:rafiq/data/data_API/city/find_hotel_API.dart';
+import 'package:rafiq/data/data_API/newsfeed_API.dart';
 import 'package:rafiq/data/data_API/post_like_API.dart';
 import 'package:rafiq/data/data_API/profile/cover_image_API.dart';
 import 'package:rafiq/data/data_API/dio_helper.dart';
@@ -29,6 +30,7 @@ import 'package:rafiq/logic/cubit/forget_cubit/forget_cubit.dart';
 import 'package:rafiq/logic/cubit/get_user_sections/get_user_posts_cubit/get_user_posts_cubit.dart';
 import 'package:rafiq/logic/cubit/login_cubit/login_cubit.dart';
 import 'package:rafiq/logic/cubit/marker_cubit/marker_cubit.dart';
+import 'package:rafiq/logic/cubit/newsfeed_cubit/newsfeed_cubit.dart';
 import 'package:rafiq/logic/cubit/notification_cubit/notification_cubit.dart';
 import 'package:rafiq/logic/cubit/post_like_cubit/post_like_cubit.dart';
 import 'package:rafiq/logic/cubit/profile_cubit/profile_cubit.dart';
@@ -120,6 +122,9 @@ class MyApp extends StatelessWidget {
                 ActivitiesCubit(activitiesAPI: ActivitiesAPI())),
         BlocProvider<FindHotelCubit>(
             create: (context) => FindHotelCubit(findHotelAPI: FindHotelAPI())),
+        BlocProvider<NewsfeedCubit>(
+            create: (context) =>
+                NewsfeedCubit(newsFeedAPI: NewsFeedAPI())..getposts()),
       ],
       child: MaterialApp(
         title: 'Rafiq',

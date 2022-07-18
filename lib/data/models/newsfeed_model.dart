@@ -1,21 +1,20 @@
-class GetProfilePostsModel {
-  List<Newsfeed>? posts;
+class NewsfeedModel {
+  List<NewsFeed>? newsFeed;
 
-  GetProfilePostsModel({this.posts});
+  NewsfeedModel({this.newsFeed});
 
-  GetProfilePostsModel.fromJson(Map<String, dynamic> json) {
+  NewsfeedModel.fromJson(Map<String, dynamic> json) {
     if (json['newsFeed'] != null) {
-      posts = <Newsfeed>[];
+      newsFeed = <NewsFeed>[];
       json['newsFeed'].forEach((v) {
-        posts!.add(Newsfeed.fromJson(v));
+        newsFeed!.add(NewsFeed.fromJson(v));
       });
     }
   }
 }
 
-class Newsfeed {
+class NewsFeed {
   AuthorInfo? authorInfo;
-  String? sId;
   Content? content;
   bool? isLiked;
   int? numberOfLikes;
@@ -23,26 +22,23 @@ class Newsfeed {
   List<String>? shares;
   bool? isShared;
   SharedSource? sharedSource;
+  String? sId;
 
-  bool isMore = false;
+  NewsFeed(
+      {this.authorInfo,
+      this.content,
+      this.isLiked,
+      this.numberOfLikes,
+      this.numberOfComments,
+      this.shares,
+      this.isShared,
+      this.sharedSource,
+      this.sId});
 
-  Newsfeed({
-    this.authorInfo,
-    this.sId,
-    this.content,
-    this.isLiked,
-    this.numberOfLikes,
-    this.numberOfComments,
-    this.shares,
-    this.isShared,
-    this.sharedSource,
-  });
-
-  Newsfeed.fromJson(Map<String, dynamic> json) {
+  NewsFeed.fromJson(Map<String, dynamic> json) {
     authorInfo = json['authorInfo'] != null
         ? AuthorInfo.fromJson(json['authorInfo'])
         : null;
-    sId = json['_id'];
     content =
         json['content'] != null ? Content.fromJson(json['content']) : null;
     isLiked = json['isLiked'];
@@ -51,8 +47,9 @@ class Newsfeed {
     shares = json['shares'].cast<String>();
     isShared = json['isShared'];
     sharedSource = json['sharedSource'] != null
-        ? SharedSource.fromJson(json['sharedSource'])
+        ? new SharedSource.fromJson(json['sharedSource'])
         : null;
+    sId = json['_id'];
   }
 }
 

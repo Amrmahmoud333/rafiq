@@ -7,7 +7,7 @@ import 'package:rafiq/data/data_API/dio_helper.dart';
 
 class NewsFeedAPI {
   Future<NewsfeedModel> getPosts() async {
-    final response = DioHelper.getWithHeader(
+    final response = await DioHelper.getWithHeader(
         url: '$URL/api/v1/newsFeed', header: {'access-token': token});
     return NewsfeedModel.fromJson(response.data);
   }
