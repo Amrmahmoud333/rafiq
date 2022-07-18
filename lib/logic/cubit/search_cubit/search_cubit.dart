@@ -42,6 +42,13 @@ class SearchCubit extends Cubit<SearchState> {
     }
   }
 
+  String label = '';
+  bool isSearchScreen = false;
+  setLabel({required String label}) {
+    this.label = label;
+    isSearchScreen = true;
+  }
+
   // UI logic
   String? dropDownVal;
   List<String> listVals = ['Users', 'Cities'];

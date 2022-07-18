@@ -137,7 +137,7 @@ class SearchByImage extends StatelessWidget {
               ],
             ),
           ),
-          NoResultsColumn()
+          const NoResultsColumn(),
         ],
       ),
     );

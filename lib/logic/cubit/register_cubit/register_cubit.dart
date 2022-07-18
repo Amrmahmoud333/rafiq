@@ -10,16 +10,18 @@ class RegisterCubit extends Cubit<RegisterState> {
   RegisterRepo authRepo; // RegisterAPI or local
   RegisterCubit({required this.authRepo}) : super(RegisterInitial());
 
-  late RegisterModel _registerModel;
-
+  late RegisterModel registerModel;
+  String massege = '';
   Future<void> userRegister(RequsetRegisterModel authRequsetModel) async {
     try {
-      _registerModel = await authRepo.registerRepo(authRequsetModel);
-      if (_registerModel.success!) {
-        print(_registerModel.results!.message.toString());
+      registerModel = await authRepo.registerRepo(authRequsetModel);
+      if (registerModel.success!) {
+        massege = registerModel.results!.message!;
+        print(registerModel.results!.message.toString());
         emit(RegisterSuccessState());
       }
     } on DioError catch (error) {
+      massege = error.response!.data['error']['message'];
       print(error.response!.data['error']['message']);
       emit(RegisterErrorState());
     }

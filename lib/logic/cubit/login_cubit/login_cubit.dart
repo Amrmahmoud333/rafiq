@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
@@ -25,7 +27,7 @@ class LoginCubit extends Cubit<LoginState> {
       error.message.contains('SocketException')
           ? messege = 'No internet connection'
           : messege = error.response!.data;
-
+      log(error.response!.data);
       emit(LoginErrorState());
     }
   }

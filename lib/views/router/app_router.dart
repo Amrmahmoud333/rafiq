@@ -3,6 +3,7 @@ import 'package:rafiq/data/chach_helper.dart';
 import 'package:rafiq/views/city_page/city_page_screen.dart';
 import 'package:rafiq/views/city_page/widgets/tab_bar_city_widgets/activities_widgets/map_location.dart';
 import 'package:rafiq/views/city_page/widgets/tab_bar_city_widgets/hotel_widget/result_hotels.dart';
+import 'package:rafiq/views/forget_password/screens/first_forget_password.dart';
 import 'package:rafiq/views/forget_password/screens/second_forget_password.dart';
 import 'package:rafiq/views/home/screens/home_screen.dart';
 import 'package:rafiq/views/login/screens/login_screen.dart';
@@ -11,6 +12,7 @@ import 'package:rafiq/views/profile/widgets/edit/edit_screen.dart';
 import 'package:rafiq/views/profile/widgets/posts/add_post.dart';
 import 'package:rafiq/views/profile/widgets/posts/share_post.dart';
 import 'package:rafiq/views/search_image/search_by_image_.dart';
+import 'package:rafiq/views/search_image/search_screen.dart';
 import 'package:rafiq/views/trip/screens/create_trip.dart';
 import 'package:rafiq/views/trip/screens/trip_country_search.dart';
 import '../main_pages/main_home/screens/main_home.dart';
@@ -30,8 +32,8 @@ class AppRouter {
                 ? const MainHomeScreen()
                 : const LoginScreen());
 
-      /*  case FirstForgetPassword.routeName:
-        return MaterialPageRoute(builder: (_) => FirstForgetPassword());*/
+      case FirstForgetPassword.routeName:
+        return MaterialPageRoute(builder: (_) => FirstForgetPassword());
       case SecondForgetPassword.routeName:
         return MaterialPageRoute(builder: (_) => const SecondForgetPassword());
       case EditScreen.routeName:
@@ -64,6 +66,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const SearchByImage());
       case CreateTrip.routeName:
         return MaterialPageRoute(builder: (_) => const CreateTrip());
+      case SearchScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const SearchScreen());
       default:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
     }

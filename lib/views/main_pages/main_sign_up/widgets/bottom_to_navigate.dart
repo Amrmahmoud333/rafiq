@@ -14,7 +14,7 @@ class BottomToNavigate extends StatelessWidget {
     return BlocBuilder<RegisterCubit, RegisterState>(
       builder: (context, state) => CustomButton(
         label: cubit.lable,
-        ontap: () {
+        ontap: () async {
           if (cubit.indexOfPageview == 0) {
             if (cubit.customValidteFirstName() &&
                 cubit.customValidteLastName() &&
@@ -82,7 +82,7 @@ class BottomToNavigate extends StatelessWidget {
               }
             }
           } else {
-            BlocProvider.of<RegisterCubit>(context)
+            await BlocProvider.of<RegisterCubit>(context)
                 .userRegister(RequsetRegisterModel(
               firstName: cubit.firstName,
               lastName: cubit.lastName,
@@ -95,6 +95,7 @@ class BottomToNavigate extends StatelessWidget {
               dateOfBirth:
                   '${cubit.dateTime.day}/${cubit.dateTime.month}/${cubit.dateTime.year}',
             ));
+            showValidationTosat(context, cubit.massege);
           }
         },
       ),
