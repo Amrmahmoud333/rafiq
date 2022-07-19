@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/widgets.dart';
 
 class RegisterModel {
@@ -10,7 +12,7 @@ class RegisterModel {
   RegisterModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     if (json['success'] == false) {
-      print('register model');
+      log('register model');
     }
     results =
         json['results'] != null ? Results.fromJson(json['results']) : null;

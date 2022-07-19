@@ -17,7 +17,7 @@ class ThemeOfProject {
         fontWeight: FontWeight.w500,
       ),
       systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarColor: const Color(0xffE8DEEB),
+        statusBarColor: Color(0xffE8DEEB),
         statusBarIconBrightness: Brightness.dark,
       ),
     ),

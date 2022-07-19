@@ -1,4 +1,6 @@
 // ignore_for_file: file_names
+import 'dart:developer';
+
 import 'package:rafiq/core/constants/url.dart';
 import 'package:rafiq/data/data_API/dio_helper.dart';
 import 'package:rafiq/data/models/city/find_hotel_model.dart';
@@ -11,7 +13,7 @@ class FindHotelAPI {
       int childrenAges = 1,
       required String checkInDate,
       required String checkOutDate}) async {
-    print(checkInDate);
+    log(checkInDate);
     final response = await DioHelper.putWithHeaderAndParameters(
         url: '$URL/api/v1/cities/1356872604/hotels',
         parameters: {

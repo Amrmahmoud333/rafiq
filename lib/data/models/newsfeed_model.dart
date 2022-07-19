@@ -48,7 +48,7 @@ class NewsFeed {
     shares = json['shares'].cast<String>();
     isShared = json['isShared'];
     sharedSource = json['sharedSource'] != null
-        ? new SharedSource.fromJson(json['sharedSource'])
+        ? SharedSource.fromJson(json['sharedSource'])
         : null;
     sId = json['_id'];
   }

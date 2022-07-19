@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
@@ -28,7 +29,7 @@ class AddPostCubit extends Cubit<AddPostState> {
           text: text, photoOrVideo: postOrVideo, isVideo: isVideo);
       emit(AddPostSuccessState());
     } on DioError catch (error) {
-      print(error.response!.data);
+      log(error.response!.data);
       emit(AddPostErrorState());
     }
   }

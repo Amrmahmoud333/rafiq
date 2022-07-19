@@ -76,7 +76,6 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                             size: 25,
                             color: Color(0xffCFCBDC),
                           ),
-                          hintText: 'Search',
                           labelText: cubit.label,
                           hintStyle: const TextStyle(
                             fontSize: 18,
