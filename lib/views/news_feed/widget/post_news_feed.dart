@@ -23,7 +23,9 @@ class PostNewsFeed extends StatelessWidget {
             ? JustPhotoNewsfeed(cubitPost: cubitPost, index: index)
             : check == 'justText'
                 ? JustTextNewsfeed(cubitPost: cubitPost, index: index)
-                : Container();
+                : check == 'TextWithPhoto'
+                    ? TextWithPhotoNewsfeed(cubitPost: cubitPost, index: index)
+                    : Container();
       },
     );
     // : check == 'TextWithPhoto'

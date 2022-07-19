@@ -56,8 +56,8 @@ class JustPhotoNewsfeed extends StatelessWidget {
                                       null
                                   ? const DecorationImage(
                                       fit: BoxFit.fill,
-                                      image:
-                                          AssetImage('assets/images/test1.png'),
+                                      image: AssetImage(
+                                          'assets/images/default.png'),
                                     )
                                   : DecorationImage(
                                       fit: BoxFit.fill,

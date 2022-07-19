@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq/core/constants/authentication_const.dart';
-import 'package:rafiq/logic/cubit/get_user_sections/get_user_posts_cubit/get_user_posts_cubit.dart';
 import 'package:rafiq/logic/cubit/newsfeed_cubit/newsfeed_cubit.dart';
 import 'package:rafiq/logic/cubit/post_like_cubit/post_like_cubit.dart';
 import 'package:rafiq/views/profile/widgets/posts/widgets/options_bottom_sheet.dart';
@@ -53,7 +52,7 @@ class JustTextNewsfeed extends StatelessWidget {
                             null
                         ? const DecorationImage(
                             fit: BoxFit.fill,
-                            image: AssetImage('assets/images/test1.png'),
+                            image: AssetImage('assets/images/default.png'),
                           )
                         : DecorationImage(
                             fit: BoxFit.fill,
