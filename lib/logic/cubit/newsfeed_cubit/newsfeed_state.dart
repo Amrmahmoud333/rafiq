@@ -10,3 +10,5 @@ class GetPostsLoading extends NewsfeedState {}
 class GetPostsSuccess extends NewsfeedState {}
 
 class GetPostsError extends NewsfeedState {}
+
+class ChangeISMoreState extends NewsfeedState {}

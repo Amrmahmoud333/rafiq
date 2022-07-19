@@ -23,6 +23,7 @@ class NewsFeed {
   bool? isShared;
   SharedSource? sharedSource;
   String? sId;
+  bool isMore = false;
 
   NewsFeed(
       {this.authorInfo,

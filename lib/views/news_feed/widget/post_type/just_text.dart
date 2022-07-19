@@ -4,20 +4,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq/core/constants/authentication_const.dart';
 import 'package:rafiq/logic/cubit/get_user_sections/get_user_posts_cubit/get_user_posts_cubit.dart';
+import 'package:rafiq/logic/cubit/newsfeed_cubit/newsfeed_cubit.dart';
 import 'package:rafiq/logic/cubit/post_like_cubit/post_like_cubit.dart';
-import 'package:rafiq/logic/cubit/user_data_cubit/user_data_cubit.dart';
 import 'package:rafiq/views/profile/widgets/posts/widgets/options_bottom_sheet.dart';
 
 class JustTextNewsfeed extends StatelessWidget {
   const JustTextNewsfeed({
     Key? key,
-    required this.cubit,
     required this.cubitPost,
     required this.index,
   }) : super(key: key);
 
-  final UserDataCubit cubit;
-  final GetUserPostsCubit cubitPost;
+  final NewsfeedCubit cubitPost;
   final int index;
 
   @override
@@ -30,7 +28,7 @@ class JustTextNewsfeed extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
-    String postId = cubitPost.posts[index].sId!;
+    String postId = cubitPost.newsFeedModel.newsFeed![index].sId!;
     var cubitPostLike = context.read<PostLikeCubit>();
 
     return Container(
@@ -50,10 +48,18 @@ class JustTextNewsfeed extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     border:
                         Border.all(color: const Color(0xffE8DEEB), width: 2),
-                    image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: NetworkImage(cubit.avatar!),
-                    ),
+                    image: cubitPost.newsFeedModel.newsFeed![index].authorInfo!
+                                .avatar ==
+                            null
+                        ? const DecorationImage(
+                            fit: BoxFit.fill,
+                            image: AssetImage('assets/images/test1.png'),
+                          )
+                        : DecorationImage(
+                            fit: BoxFit.fill,
+                            image: NetworkImage(cubitPost.newsFeedModel
+                                .newsFeed![index].authorInfo!.avatar!),
+                          ),
                   ),
                 ),
                 SizedBox(width: w(6)),
@@ -61,7 +67,7 @@ class JustTextNewsfeed extends StatelessWidget {
                   width: w(121),
                   child: FittedBox(
                     child: AutoSizeText(
-                      '${cubit.firstName} ${cubit.lastName}',
+                      '${cubitPost.newsFeedModel.newsFeed![index].authorInfo!.firstName} ${cubitPost.newsFeedModel.newsFeed![index].authorInfo!.lastName}',
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -79,10 +85,8 @@ class JustTextNewsfeed extends StatelessWidget {
                       context: context,
                       builder: (context) => BuildOptionsBottomSheet(
                           index: index,
-                          postId: context
-                              .read<GetUserPostsCubit>()
-                              .posts[index]
-                              .sId!),
+                          postId:
+                              cubitPost.newsFeedModel.newsFeed![index].sId!),
                     );
                   },
                   child: SvgPicture.asset('assets/images/Options.svg'),
@@ -91,18 +95,19 @@ class JustTextNewsfeed extends StatelessWidget {
             ),
           ),
 
-          BlocBuilder<GetUserPostsCubit, GetUserPostsState>(
+          BlocBuilder<NewsfeedCubit, NewsfeedState>(
             builder: (context, state) {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  !context.read<GetUserPostsCubit>().posts[index].isMore
+                  !cubitPost.newsFeedModel.newsFeed![index].isMore
                       ? SizedBox(
                           width: w(390),
                           child: Padding(
                             padding: EdgeInsets.only(left: w(10), right: w(15)),
                             child: AutoSizeText(
-                              cubitPost.posts[index].content!.text!,
+                              cubitPost.newsFeedModel.newsFeed![index].content!
+                                  .text!,
                               style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w500,
@@ -121,7 +126,8 @@ class JustTextNewsfeed extends StatelessWidget {
                             padding: EdgeInsets.only(
                                 left: w(10), right: w(15), top: h(5)),
                             child: AutoSizeText(
-                              cubitPost.posts[index].content!.text!,
+                              cubitPost.newsFeedModel.newsFeed![index].content!
+                                  .text!,
                               style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
@@ -131,7 +137,8 @@ class JustTextNewsfeed extends StatelessWidget {
                               minFontSize: 18,
                             ),
                           )),
-                  cubitPost.checkSeeMore(cubitPost.posts[index].content!.text!)
+                  cubitPost.checkSeeMore(cubitPost
+                          .newsFeedModel.newsFeed![index].content!.text!)
                       ? InkWell(
                           onTap: () {
                             cubitPost.changeIsMore(index);
@@ -139,7 +146,7 @@ class JustTextNewsfeed extends StatelessWidget {
                           child: Padding(
                             padding: EdgeInsets.only(right: w(25)),
                             child: AutoSizeText(
-                              cubitPost.posts[index].isMore
+                              cubitPost.newsFeedModel.newsFeed![index].isMore
                                   ? "See Less..."
                                   : 'See More...',
                               style: TextStyle(
@@ -171,33 +178,42 @@ class JustTextNewsfeed extends StatelessWidget {
                     builder: (context, state) {
                       return InkWell(
                         onTap: () {
-                          cubitPost.posts[index].isLiked!
+                          cubitPost.newsFeedModel.newsFeed![index].isLiked!
                               ? cubitPostLike
                                   .unLike(postId: postId, userId: userName!)
                                   .then((value) {
-                                  cubitPost.posts[index].isLiked = false;
+                                  cubitPost.newsFeedModel.newsFeed![index]
+                                      .isLiked = false;
                                   // decremant number of likes when use click like
-                                  cubitPost.posts[index].numberOfLikes != 0
-                                      ? cubitPost.posts[index].numberOfLikes =
-                                          cubitPost
-                                                  .posts[index].numberOfLikes! -
-                                              1
-                                      : cubitPost.posts[index].numberOfLikes =
-                                          0;
+                                  cubitPost.newsFeedModel.newsFeed![index]
+                                              .numberOfLikes !=
+                                          0
+                                      ? cubitPost.newsFeedModel.newsFeed![index]
+                                          .numberOfLikes = cubitPost
+                                              .newsFeedModel
+                                              .newsFeed![index]
+                                              .numberOfLikes! -
+                                          1
+                                      : cubitPost.newsFeedModel.newsFeed![index]
+                                          .numberOfLikes = 0;
                                 })
                               : cubitPostLike
                                   .makeLikeToPost(postId: postId)
                                   .then((value) {
-                                  cubitPost.posts[index].isLiked = true;
+                                  cubitPost.newsFeedModel.newsFeed![index]
+                                      .isLiked = true;
                                   // incremant number of likes when use click like
-                                  cubitPost.posts[index].numberOfLikes =
-                                      cubitPost.posts[index].numberOfLikes! + 1;
+                                  cubitPost.newsFeedModel.newsFeed![index]
+                                      .numberOfLikes = cubitPost.newsFeedModel
+                                          .newsFeed![index].numberOfLikes! +
+                                      1;
                                 });
                         },
                         child: Icon(
-                          cubitPost.posts[index].isLiked!
+                          cubitPost.newsFeedModel.newsFeed![index].isLiked!
                               ? Icons.favorite
-                              : !cubitPost.posts[index].isLiked!
+                              : !cubitPost
+                                      .newsFeedModel.newsFeed![index].isLiked!
                                   ? Icons.favorite_border
                                   : Icons.favorite_border,
                           color: const Color(0XFF5B618A),
@@ -209,7 +225,7 @@ class JustTextNewsfeed extends StatelessWidget {
                   BlocBuilder<PostLikeCubit, PostLikeState>(
                       builder: (context, state) {
                     return AutoSizeText(
-                      '${cubitPost.posts[index].numberOfLikes}',
+                      '${cubitPost.newsFeedModel.newsFeed![index].numberOfLikes}',
                       style: const TextStyle(
                         fontSize: 12,
                         color: Color(0XFF5B618A),
@@ -230,7 +246,7 @@ class JustTextNewsfeed extends StatelessWidget {
                     ),
                   ),
                   AutoSizeText(
-                    '${cubitPost.posts[index].numberOfComments!}',
+                    '${cubitPost.newsFeedModel.newsFeed![index].numberOfComments!}',
                     style: const TextStyle(
                       fontSize: 12,
                       color: Color(0XFF5B618A),

@@ -19,7 +19,11 @@ class PostNewsFeed extends StatelessWidget {
 
     return BlocBuilder<NewsfeedCubit, NewsfeedState>(
       builder: (context, state) {
-        return JustPhotoNewsfeed(cubitPost: cubitPost, index: index);
+        return check == 'justPhoto'
+            ? JustPhotoNewsfeed(cubitPost: cubitPost, index: index)
+            : check == 'justText'
+                ? JustTextNewsfeed(cubitPost: cubitPost, index: index)
+                : Container();
       },
     );
     // : check == 'TextWithPhoto'

@@ -49,4 +49,19 @@ class NewsfeedCubit extends Cubit<NewsfeedState> {
     }
     return messege;
   }
+
+  bool checkSeeMore(String latter) {
+    int count = 0;
+    for (int i = 0; i < latter.length; i++) {
+      count++;
+    }
+    if (count > 84) return true;
+    return false;
+  }
+
+  void changeIsMore(index) {
+    newsFeedModel.newsFeed![index].isMore =
+        !newsFeedModel.newsFeed![index].isMore;
+    emit(ChangeISMoreState());
+  }
 }
