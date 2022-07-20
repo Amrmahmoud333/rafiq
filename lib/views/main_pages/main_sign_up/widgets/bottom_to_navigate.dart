@@ -21,12 +21,6 @@ class BottomToNavigate extends StatelessWidget {
                 cubit.customValidteUserName()) {
               cubit.setFirstSignUp(cubit.firstNameController.text,
                   cubit.lastNameController.text, cubit.userNameController.text);
-              cubit.controllerpage.nextPage(
-                duration: const Duration(
-                  milliseconds: 750,
-                ),
-                curve: Curves.fastLinearToSlowEaseIn,
-              );
             } else {
               if (!cubit.customValidteFirstName() &&
                   cubit.customValidteLastName() &&

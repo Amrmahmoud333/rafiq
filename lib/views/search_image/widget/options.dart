@@ -55,7 +55,7 @@ DropdownMenuItem<String> buildMenuItem(String country) => DropdownMenuItem(
         child: AutoSizeText(
           country,
           style: const TextStyle(
-            fontSize: 16,
+            fontSize: 11,
             fontWeight: FontWeight.w400,
             color: Color(0xffEBEBEBB5),
           ),

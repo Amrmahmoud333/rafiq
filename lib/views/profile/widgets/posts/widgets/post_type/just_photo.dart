@@ -49,10 +49,15 @@ class JustPhoto extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     border:
                         Border.all(color: const Color(0xffE8DEEB), width: 2),
-                    image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: NetworkImage(cubit.avatar!),
-                    ),
+                    image: cubit.avatar == null
+                        ? const DecorationImage(
+                            fit: BoxFit.fill,
+                            image: AssetImage('assets/images/default.png'),
+                          )
+                        : DecorationImage(
+                            fit: BoxFit.fill,
+                            image: NetworkImage(cubit.avatar!),
+                          ),
                   ),
                 ),
                 SizedBox(width: w(6)),

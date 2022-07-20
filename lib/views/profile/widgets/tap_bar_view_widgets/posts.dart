@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/data/data_API/profile/marker_API.dart';
@@ -18,9 +19,14 @@ class Posts extends StatelessWidget {
     return BlocBuilder<GetUserPostsCubit, GetUserPostsState>(
         builder: (context, state) {
       if (state is GetUserFirstPostsLoadinngState) {
-        return const CircularProgressIndicator();
+        return const Center(
+            child: CircularProgressIndicator(
+          color: Color(0xffE5E5E5),
+        ));
       }
-
+      if (cubit.posts.isEmpty) {
+        return const Center(child: AutoSizeText('No Posts Yet !!'));
+      }
       return ListView.builder(
         itemCount: cubit.posts.length + 1,
         itemBuilder: (context, index) {
@@ -50,7 +56,9 @@ class Posts extends StatelessWidget {
                 : Padding(
                     padding: EdgeInsets.only(bottom: h(35), top: h(9)),
                     child: const Center(
-                      child: CircularProgressIndicator(),
+                      child: CircularProgressIndicator(
+                        color: Color(0xffE5E5E5),
+                      ),
                     ),
                   );
           }
