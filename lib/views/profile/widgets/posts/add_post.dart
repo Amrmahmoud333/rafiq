@@ -9,7 +9,6 @@ import 'package:rafiq/views/profile/widgets/posts/widgets/image_post_dialog.dart
 import 'package:rafiq/views/profile/widgets/posts/widgets/video_post_dialog.dart';
 import 'package:rafiq/views/profile/widgets/posts/widgets/add_container.dart';
 
-// TODO add name insted of user name
 
 class AddPost extends StatelessWidget {
   const AddPost({Key? key}) : super(key: key);

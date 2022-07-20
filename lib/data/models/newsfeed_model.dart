@@ -6,9 +6,9 @@ class NewsfeedModel {
   NewsfeedModel.fromJson(Map<String, dynamic> json) {
     if (json['newsFeed'] != null) {
       newsFeed = <NewsFeed>[];
-      json['newsFeed'].forEach((v) {
-        newsFeed!.add(NewsFeed.fromJson(v));
-      });
+      for (int i = 0; i < json['newsFeed'].length; i++) {
+        newsFeed!.add(NewsFeed.fromJson(json['newsFeed'][i]));
+      }
     }
   }
 }

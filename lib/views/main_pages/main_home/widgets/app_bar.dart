@@ -25,13 +25,12 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     }
 
     var cubit = BlocProvider.of<SearchCubit>(context);
+    TextEditingController controller = TextEditingController();
 
     return AppBar(
       backgroundColor: const Color(0xffE8DEEB),
       title: InkWell(
-        onTap: () {
-          // showSearch(context: context, delegate: MySearchDelegate());
-        },
+        onTap: () {},
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -39,7 +38,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               children: [
                 InkWell(
                   child: Container(
-                    width: w(200),
+                    width: w(180),
                     height: h(32),
                     padding: const EdgeInsets.all(5.5),
                     decoration: const BoxDecoration(
@@ -51,16 +50,21 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                     ),
                     child: Center(
                       child: TextFormField(
+                        controller: controller,
                         onChanged: (value) async {
-                          if (value != '' && !cubit.isSearchScreen) {
-                            cubit.setLabel(label: value);
-                            Navigator.pushNamed(
-                                context, SearchScreen.routeName);
+                          if (!cubit.isChange) {
+                            if (value != '' && !cubit.isSearchScreen) {
+                              cubit.setLabel(label: value);
+                              cubit.isSearchScreen = true;
 
-                            cubit.searchPlace(place: value);
-                          }
-                          if (cubit.isSearchScreen) {
-                            cubit.searchPlace(place: value);
+                              Navigator.pushNamed(
+                                  context, SearchScreen.routeName);
+                            }
+                            if (cubit.isSearchScreen) {
+                              cubit.searchPlace(place: value);
+                            }
+                          } else {
+                            cubit.isChange = true;
                           }
                         },
                         style: const TextStyle(
@@ -68,16 +72,15 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                           fontWeight: FontWeight.w500,
                           color: Color(0xff5B618A),
                         ),
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
-                          prefixIcon: const Icon(
+                          prefixIcon: Icon(
                             Icons.search,
-                            size: 25,
+                            size: 20,
                             color: Color(0xffCFCBDC),
                           ),
-                          labelText: cubit.label,
-                          hintStyle: const TextStyle(
+                          hintStyle: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w400,
                             color: Color(0xffEBEBEBB5),
