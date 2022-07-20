@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq/logic/cubit/search_cubit/search_cubit.dart';
 
-class SearchReslut extends StatelessWidget {
-  const SearchReslut({Key? key}) : super(key: key);
+class SearchByPlaceReslut extends StatelessWidget {
+  const SearchByPlaceReslut({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,8 @@ class SearchReslut extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       AutoSizeText(
-                        '${cubit.searchPlaceModel.results!.suggestions![index].firstName!}',
+                        cubit.searchPlaceModel.results!.suggestions![index]
+                            .firstName!,
                         style: const TextStyle(
                             fontSize: 26,
                             fontWeight: FontWeight.w500,

@@ -28,7 +28,7 @@ class SearchScreen extends StatelessWidget {
                 )
               : cubit.searchPlaceModel.results!.suggestions!.isEmpty
                   ? const NoResultsColumn()
-                  : const SearchReslut();
+                  : const SearchByPlaceReslut();
         }),
       ),
     );
