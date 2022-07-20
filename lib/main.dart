@@ -27,6 +27,7 @@ import 'package:rafiq/logic/cubit/city_cubit/tab_city_cubit.dart';
 import 'package:rafiq/logic/cubit/city_information_cubit/city_information_cubit.dart';
 import 'package:rafiq/logic/cubit/find_hotel_cubit/find_hotel_cubit.dart';
 import 'package:rafiq/logic/cubit/forget_cubit/forget_cubit.dart';
+import 'package:rafiq/logic/cubit/get_user_sections/get_user_photos_cubit/cubit/get_user_photo_cubit.dart';
 import 'package:rafiq/logic/cubit/get_user_sections/get_user_posts_cubit/get_user_posts_cubit.dart';
 import 'package:rafiq/logic/cubit/login_cubit/login_cubit.dart';
 import 'package:rafiq/logic/cubit/marker_cubit/marker_cubit.dart';
@@ -125,6 +126,9 @@ class MyApp extends StatelessWidget {
         BlocProvider<NewsfeedCubit>(
             create: (context) =>
                 NewsfeedCubit(newsFeedAPI: NewsFeedAPI())..getposts()),
+        BlocProvider<GetUserPhotoCubit>(
+            create: (context) => GetUserPhotoCubit(
+                getProfileSectionsRepo: GetProfileSectionsAPI())),
       ],
       child: MaterialApp(
         title: 'Rafiq',

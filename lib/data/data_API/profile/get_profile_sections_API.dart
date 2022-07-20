@@ -1,7 +1,9 @@
 // ignore_for_file: file_names
 import 'package:rafiq/core/constants/authentication_const.dart';
+import 'package:rafiq/core/constants/url.dart';
 import 'package:rafiq/data/data_API/dio_helper.dart';
 import 'package:rafiq/data/models/get_profile_posts_model.dart';
+import 'package:rafiq/data/models/profile_image_model.dart';
 import 'package:rafiq/data/repositories/profile/get_profile_sections_repo.dart';
 
 class GetProfileSectionsAPI extends GetProfileSectionsRepo {
@@ -22,8 +24,13 @@ class GetProfileSectionsAPI extends GetProfileSectionsRepo {
   }
 
   @override
-  void getSomeUserPhotos() {
-    // TODO: implement getSomeUserPhotos
+  Future<ProfileImageModel> getSomeUserPhotos() async {
+    final response = await DioHelper.getWithHeader(
+      // TODO useName
+      url: '$URL/api/v1/users/amrma/posts/images',
+      header: {'access-token': token},
+    );
+    return ProfileImageModel.fromJson(response.data);
   }
 
   @override
