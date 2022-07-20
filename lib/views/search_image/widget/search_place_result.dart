@@ -19,8 +19,12 @@ class SearchByPlaceReslut extends StatelessWidget {
 
     SearchCubit cubit = context.read<SearchCubit>();
     return Scaffold(
+            backgroundColor: const Color(0xffE5E5E5),
+
       body: BlocBuilder<SearchCubit, SearchState>(builder: (context, state) {
-        return ListView.builder(
+        return ListView.separated(
+                      separatorBuilder: (context, index) => SizedBox(height: h(15)),
+ 
             itemCount: cubit.searchPlaceModel.results!.suggestions!.length,
             itemBuilder: (context, index) {
               return Container(
