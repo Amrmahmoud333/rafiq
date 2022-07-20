@@ -49,44 +49,56 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                       ),
                     ),
                     child: Center(
-                      child: TextFormField(
-                        controller: controller,
-                        onChanged: (value) async {
-                          if (!cubit.isChange) {
-                            if (value != '' && !cubit.isSearchScreen) {
-                              cubit.setLabel(label: value);
-                              cubit.isSearchScreen = true;
+                      child: BlocBuilder<SearchCubit, SearchState>(
+                          builder: (context, state) {
+                        return TextFormField(
+                          controller: controller,
+                          onChanged: (value) async {
+                            if (!cubit.isChange) {
+                              if (value != '' && !cubit.isSearchScreen) {
+                                cubit.setLabel(label: value);
+                                cubit.isSearchScreen = true;
 
-                              Navigator.pushNamed(
-                                  context, SearchScreen.routeName);
+                                Navigator.pushNamed(
+                                    context, SearchScreen.routeName);
+                              }
+                              if (cubit.isSearchScreen &&
+                                  cubit.dropDownVal == 'Users') {
+                                cubit.searchByUser(user: value);
+                              } else {
+                                cubit.searchPlace(place: value);
+                              }
+                              state is ChangeDropDownValState
+                                  ? cubit.isSearchScreen &&
+                                          cubit.dropDownVal == 'Users'
+                                      ? cubit.searchByUser(user: value)
+                                      : cubit.searchPlace(place: value)
+                                  : cubit.test++;
+                            } else {
+                              cubit.isChange = true;
                             }
-                            if (cubit.isSearchScreen) {
-                              cubit.searchPlace(place: value);
-                            }
-                          } else {
-                            cubit.isChange = true;
-                          }
-                        },
-                        style: const TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w500,
-                          color: Color(0xff5B618A),
-                        ),
-                        decoration: const InputDecoration(
-                          focusedBorder: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          prefixIcon: Icon(
-                            Icons.search,
-                            size: 20,
-                            color: Color(0xffCFCBDC),
+                          },
+                          style: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xff5B618A),
                           ),
-                          hintStyle: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xffEBEBEBB5),
+                          decoration: const InputDecoration(
+                            focusedBorder: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            prefixIcon: Icon(
+                              Icons.search,
+                              size: 20,
+                              color: Color(0xffCFCBDC),
+                            ),
+                            hintStyle: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xffEBEBEBB5),
+                            ),
                           ),
-                        ),
-                      ),
+                        );
+                      }),
                     ),
                   ),
                 ),

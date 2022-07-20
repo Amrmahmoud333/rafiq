@@ -50,10 +50,12 @@ class SearchCubit extends Cubit<SearchState> {
 
   bool isChange = false;
   // UI logic
-  String? dropDownVal;
+  String dropDownVal = 'Users';
   List<String> listVals = ['Users', 'Cities'];
   void changeVal(String newVal) {
     dropDownVal = newVal;
+    print(dropDownVal);
+
     emit(ChangeDropDownValState());
   }
 
@@ -62,4 +64,6 @@ class SearchCubit extends Cubit<SearchState> {
     imageToSearch = (File(images.path));
     emit(GetImageFromGalleryToSearchSuccess());
   }
+
+  int test = 0;
 }
