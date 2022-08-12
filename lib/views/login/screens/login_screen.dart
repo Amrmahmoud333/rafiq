@@ -95,21 +95,10 @@ class _LoginScreenState extends State<LoginScreen> {
             });
           }
           Navigator.pushReplacementNamed(context, MainHomeScreen.routeName);
-          // refreshtoken
-          /*  if (CahchHelper.getData(key: 'refreshToken') == '') {
-            CahchHelper.saveData(
-                    key: 'refreshToken',
-                    value: cubit.loginModel.results!.accessToken)
-                .then(
-              (value) => Navigator.pushReplacementNamed(
-                  context, MainHomeScreen.routeName),
-            );
-          } 
-*/
 
-          showTosat(msg: cubit.messege, state: true);
+          showTosat(msg: 'Login Successfluy', state: true);
         } else if (state is LoginErrorState) {
-          showTosat(msg: cubit.messege, state: false);
+          showTosat(msg: 'Username or Password is not correct', state: false);
         }
       },
       builder: (context, state) {

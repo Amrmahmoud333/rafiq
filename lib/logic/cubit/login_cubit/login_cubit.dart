@@ -13,21 +13,17 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit({required this.loginRepo}) : super(LoginInitialState());
 
   late LoginModel loginModel;
-  late String messege;
 
   Future<void> login(RequestLoginModel requestLoginModel) async {
     emit(LoginLoadingrState());
     try {
       loginModel = await loginRepo.loginRepo(requestLoginModel);
-      messege = loginModel.results!.message!;
 
       print(loginModel.results!.message.toString());
       emit(LoginSuccessState());
     } on DioError catch (error) {
-      error.message.contains('SocketException')
-          ? messege = 'No internet connection'
-          : messege = error.response!.data;
-      log(error.response!.data);
+      print(error.response);
+
       emit(LoginErrorState());
     }
   }

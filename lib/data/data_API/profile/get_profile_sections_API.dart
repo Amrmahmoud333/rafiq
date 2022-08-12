@@ -26,8 +26,7 @@ class GetProfileSectionsAPI extends GetProfileSectionsRepo {
   @override
   Future<ProfileImageModel> getSomeUserPhotos() async {
     final response = await DioHelper.getWithHeader(
-      // TODO useName
-      url: '$URL/api/v1/users/amrma/posts/images',
+      url: '$URL/api/v1/users/$userName/posts/images',
       header: {'access-token': token},
     );
     return ProfileImageModel.fromJson(response.data);
