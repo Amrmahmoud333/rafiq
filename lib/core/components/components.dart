@@ -22,7 +22,7 @@ void showTosat({required msg, required state}) => Fluttertoast.showToast(
 void showValidationTosat(context, message) {
   MotionToast.error(
     title: const Text(
-      "Error",
+      'Error',
       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
     ),
     description: Text(message,
@@ -34,7 +34,7 @@ void showValidationTosat(context, message) {
   ).show(context);
 }
 
-Future showSuccessTosat({required context, required String message}) async {
+Future showSuccessTosat(context, String message) async {
   MotionToast.success(
     title: const Text(
       "Success",

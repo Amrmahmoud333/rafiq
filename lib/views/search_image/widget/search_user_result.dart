@@ -24,7 +24,14 @@ class SearchUserReslut extends StatelessWidget {
           itemCount: cubit.searchUserModel.results!.suggestions!.length,
           itemBuilder: (context, index) {
             return InkWell(
-              onTap: () {},
+              onTap: () async {
+                // await context.read<CityInformationCubit>().getCityInformation(
+                //     cityID: cubit
+                //         .searchPlaceModel.results!.suggestions![index].sId!);
+                // await context.read<ActivitiesCubit>().getActivities();
+                // Navigator.pushReplacementNamed(
+                //     context, CityPageScreen.routeName);
+              },
               child: Container(
                 width: w(350),
                 height: h(60),

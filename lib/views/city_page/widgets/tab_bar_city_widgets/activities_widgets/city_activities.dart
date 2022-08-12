@@ -6,10 +6,6 @@ class CityActivities extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double h(double n) {
-      return MediaQuery.of(context).size.height * (n / 851);
-    }
-
     return ListView(
       children: const [
         ActivityWidget(),
