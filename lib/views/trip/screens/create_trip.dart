@@ -7,7 +7,6 @@ import 'package:rafiq/views/trip/const/country_list.dart';
 import 'package:rafiq/views/trip/widget/create_button.dart';
 import 'package:rafiq/views/trip/widget/drop_down_widget/country_city_transporation.dart';
 import 'package:rafiq/views/trip/widget/drop_down_widget/currencies.dart';
-import 'package:rafiq/views/trip/widget/filter_by_bottom_sheet.dart';
 import 'package:rafiq/views/trip/widget/trip_day_dialog.dart';
 
 class CreateTrip extends StatelessWidget {

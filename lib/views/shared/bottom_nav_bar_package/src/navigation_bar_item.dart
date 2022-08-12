@@ -19,6 +19,7 @@ class NavigationBarItem extends StatelessWidget {
 
   // ignore: prefer_const_constructors_in_immutables
   NavigationBarItem({
+    Key? key,
     required this.isActive,
     required this.bubbleRadius,
     required this.maxBubbleRadius,
@@ -31,7 +32,7 @@ class NavigationBarItem extends StatelessWidget {
     required this.onTap,
     this.child,
     this.path,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

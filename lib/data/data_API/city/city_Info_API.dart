@@ -9,7 +9,7 @@ class CityInformationAPI {
   Future<CityInformationModel> getCityInfo() async {
     final response = await DioHelper.getWithHeader(
         // city id for cairo 1392685764
-        url: '$URL/api/v1/cities/1392685764/',
+        url: '$URL/api/v1/cities/1840034016/',
         header: {'access-token': token});
     return CityInformationModel.fromJson(response.data);
   }

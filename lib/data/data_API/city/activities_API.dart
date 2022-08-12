@@ -8,7 +8,7 @@ class ActivitiesAPI {
   Future<ActivitiesModel> getActivities() async {
     final response = await DioHelper.getWithHeader(
         // city id for cairo 1392685764
-        url: '$URL/api/v1/cities/1392685764/activities',
+        url: '$URL/api/v1/cities/1840034016/activities',
         header: {'access-token': token});
     return ActivitiesModel.fromJson(response.data);
   }

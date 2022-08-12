@@ -31,15 +31,22 @@ class CityCover extends StatelessWidget {
         ClipPath(
           clipper: CustomCover(),
           child: Container(
-              width: double.infinity,
-              height: h(215),
-              decoration: const BoxDecoration(
-                color: Color(0xffE8DEEB),
-              ),
-              child: SvgPicture.asset(
-                'assets/images/default_cover.svg',
-                fit: BoxFit.fill,
-              )),
+            width: double.infinity,
+            height: h(215),
+            decoration: BoxDecoration(
+              color: const Color(0xffE8DEEB),
+              image: cubit.cityInformationModel.results!.images!.isEmpty
+                  ? const DecorationImage(
+                      fit: BoxFit.fill,
+                      image: AssetImage('assets/images/default_cover.png'),
+                    )
+                  : DecorationImage(
+                      fit: BoxFit.fill,
+                      image: NetworkImage(
+                          cubit.cityInformationModel.results!.images![0]),
+                    ),
+            ),
+          ),
         ),
       ],
     );

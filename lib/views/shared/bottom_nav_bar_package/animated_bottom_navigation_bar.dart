@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_single_cascade_in_expression_statements
+
 library animated_bottom_navigation_bar;
 
 import 'package:flutter/foundation.dart';

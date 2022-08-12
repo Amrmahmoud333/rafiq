@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -26,7 +28,7 @@ class ProfileInformation extends StatelessWidget {
       children: [
         const RowData(
           imagePath: 'assets/images/posts_icon.svg',
-          text: '0 Posts',
+          text: '2 Posts',
           sizedWidth: 12.25,
         ),
         SizedBox(height: h(12)),

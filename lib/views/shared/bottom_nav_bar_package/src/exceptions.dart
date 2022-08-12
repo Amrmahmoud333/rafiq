@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_final_fields
+
 class GapLocationException implements Exception {
   final String _cause;
 

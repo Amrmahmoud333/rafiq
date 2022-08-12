@@ -47,7 +47,6 @@ class Posts extends StatelessWidget {
                     userID: userName, lastPostId: cubit.posts[index - 1].sId);
               }
             }
-
             return cubit.lengthOfListThatComesFromRequest == 0 ||
                     cubit.posts.length % 10 != 0
                 ? Container(

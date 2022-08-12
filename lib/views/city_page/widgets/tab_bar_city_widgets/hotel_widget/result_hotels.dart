@@ -52,12 +52,12 @@ class ResultHotelScreen extends StatelessWidget {
                           builder: (context, state) {
                             return state is FindHotelLoading
                                 ? Image.network(
-                                    "https://media.istockphoto.com/photos/mosque-and-pyramids-picture-id1174818077?k=20&m=1174818077&s=612x612&w=0&h=vAutxzWDTokCJkf6010sguiHP6yc8Nzt8qePG9DEew0=",
+                                    "https://cf.bstatic.com/xdata/images/hotel/max1024x768/164957631.jpg?k=f847d43341020e39e2c14f61cc4b245b0ed56205e49bd4289dadf5ccc5770427&o=&hp=1%27",
                                     fit: BoxFit.fill,
                                   )
                                 //  cubit.findHotelsModel.results!.data![index].mainPhotoUrl!
                                 : Image.network(
-                                    "https://media.istockphoto.com/photos/mosque-and-pyramids-picture-id1174818077?k=20&m=1174818077&s=612x612&w=0&h=vAutxzWDTokCJkf6010sguiHP6yc8Nzt8qePG9DEew0=",
+                                    "https://cf.bstatic.com/xdata/images/hotel/max1024x768/164957631.jpg?k=f847d43341020e39e2c14f61cc4b245b0ed56205e49bd4289dadf5ccc5770427&o=&hp=1%27",
                                     fit: BoxFit.fill,
                                   );
                           },
@@ -86,7 +86,7 @@ class ResultHotelScreen extends StatelessWidget {
                                         )
                                       : const AutoSizeText(
                                           //cubit.findHotelsModel.results!.data![index].hotelName!
-                                          'Cavalletto Hotel',
+                                          'Element Times Square West',
                                           style: TextStyle(
                                               fontSize: 24,
                                               fontWeight: FontWeight.bold,
@@ -110,7 +110,7 @@ class ResultHotelScreen extends StatelessWidget {
                                       )
                                     : const AutoSizeText(
                                         //cubit.findHotelsModel.results!.data![index].address!
-                                        'In the middle of city',
+                                        '311 West 39th Street, Hells Kitchen',
                                         style: TextStyle(
                                             fontSize: 20,
                                             fontWeight: FontWeight.bold,
@@ -133,7 +133,7 @@ class ResultHotelScreen extends StatelessWidget {
                                       )
                                     : const AutoSizeText(
                                         //  '${cubit.findHotelsModel.results!.data![index].reviewNr!} Reviews'
-                                        '2,000 Reviews',
+                                        '6363 Reviews',
                                         style: TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
@@ -170,7 +170,7 @@ class ResultHotelScreen extends StatelessWidget {
                                               )
                                             : const AutoSizeText(
                                                 // '${cubit.findHotelsModel.results!.data![index].reviewScore!}'
-                                                '9.5',
+                                                '7.9',
                                                 style: TextStyle(
                                                   fontSize: 16,
                                                   fontWeight: FontWeight.w500,
@@ -199,7 +199,7 @@ class ResultHotelScreen extends StatelessWidget {
                                           )
                                         : const AutoSizeText(
                                             // '${cubit.findHotelsModel.results!.data![index].review_score_word!}'
-                                            'Exceptional',
+                                            'Good',
                                             style: TextStyle(
                                               fontSize: 20,
                                               fontWeight: FontWeight.w500,
@@ -230,7 +230,7 @@ class ResultHotelScreen extends StatelessWidget {
                                           )
                                         : const AutoSizeText(
                                             // '${cubit.findHotelsModel.results!.data![index].min_total_price!}\$night'
-                                            '20\$/night',
+                                            '530.34\$/night',
                                             style: TextStyle(
                                               fontSize: 20,
                                               fontWeight: FontWeight.w500,

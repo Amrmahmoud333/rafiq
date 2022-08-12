@@ -20,7 +20,7 @@ class SwiperTripWidget extends StatelessWidget {
         return ClipRRect(
           borderRadius: BorderRadius.circular(18),
           child: Image.asset(
-            'assets/images/test2.png',
+            'assets/images/test.jpg',
             fit: BoxFit.fill,
           ),
         );

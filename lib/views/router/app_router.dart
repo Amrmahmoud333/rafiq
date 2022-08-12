@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rafiq/data/chach_helper.dart';
 import 'package:rafiq/views/city_page/city_page_screen.dart';
-import 'package:rafiq/views/city_page/widgets/tab_bar_city_widgets/activities_widgets/map_location.dart';
 import 'package:rafiq/views/city_page/widgets/tab_bar_city_widgets/hotel_widget/result_hotels.dart';
 import 'package:rafiq/views/forget_password/screens/first_forget_password.dart';
 import 'package:rafiq/views/forget_password/screens/second_forget_password.dart';

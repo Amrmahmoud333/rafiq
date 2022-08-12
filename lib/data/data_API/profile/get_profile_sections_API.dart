@@ -34,7 +34,5 @@ class GetProfileSectionsAPI extends GetProfileSectionsRepo {
   }
 
   @override
-  void getSomeUserVideos() {
-    // TODO: implement getSomeUserVideos
-  }
+  void getSomeUserVideos() {}
 }

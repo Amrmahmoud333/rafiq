@@ -7,7 +7,7 @@ class CityPost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 5,
+      itemCount: 1,
       itemBuilder: (context, index) => const PostCityUI(),
     );
   }

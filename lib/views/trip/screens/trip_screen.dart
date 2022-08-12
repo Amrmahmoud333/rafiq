@@ -75,9 +75,9 @@ class TripScreen extends StatelessWidget {
                             child: Padding(
                               padding: EdgeInsets.only(left: w(15), top: h(8)),
                               child: const AutoSizeText(
-                                'filter by',
+                                'best Rated',
                                 style: TextStyle(
-                                  fontSize: 22.0,
+                                  fontSize: 20.0,
                                   fontWeight: FontWeight.w400,
                                   color: Color(0xff5B618A),
                                 ),

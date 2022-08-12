@@ -1,3 +1,5 @@
+// ignore_for_file: use_full_hex_values_for_flutter_colors
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -126,7 +128,7 @@ class SearchByImage extends StatelessWidget {
                     width: w(39),
                     height: h(40),
                     decoration: BoxDecoration(
-                      color: Color(0xff5B618A).withOpacity(0.9),
+                      color: const Color(0xff5B618A).withOpacity(0.9),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Image.asset(

@@ -56,7 +56,7 @@ class CityInformation extends StatelessWidget {
                   child: SvgPicture.asset('assets/images/city_icons/temp.svg'),
                 ),
                 const AutoSizeText(
-                  '16 °',
+                  '30 °',
                   style: TextStyle(
                     color: Color(0xffBE8CD5),
                     fontSize: 20,
@@ -98,7 +98,7 @@ class CityInformation extends StatelessWidget {
                       SvgPicture.asset('assets/images/city_icons/people.svg'),
                 ),
                 const AutoSizeText(
-                  '60M ',
+                  '18713220',
                   style: TextStyle(
                     color: Color(0xffBE8CD5),
                     fontSize: 20,
