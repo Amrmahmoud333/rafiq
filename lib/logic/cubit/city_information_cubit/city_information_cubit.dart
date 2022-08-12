@@ -13,10 +13,11 @@ class CityInformationCubit extends Cubit<CityInformationState> {
 
   late CityInformationModel cityInformationModel;
 
-  Future<void> getCityInformation() async {
+  Future<void> getCityInformation({required String cityID}) async {
     emit(CityInformationLoading());
     try {
-      cityInformationModel = await cityInformationAPI.getCityInfo();
+      cityInformationModel =
+          await cityInformationAPI.getCityInfo(cityID: cityID);
       emit(CityInformationSuccess());
     } on DioError catch (error) {
       print(error.response!.data);

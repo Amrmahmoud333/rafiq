@@ -2,6 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rafiq/logic/cubit/city_activities_cubit/activities_cubit.dart';
+import 'package:rafiq/logic/cubit/city_information_cubit/city_information_cubit.dart';
 import 'package:rafiq/logic/cubit/search_cubit/search_cubit.dart';
 
 import '../../city_page/city_page_screen.dart';
@@ -28,7 +30,11 @@ class SearchByPlaceReslut extends StatelessWidget {
             itemCount: cubit.searchPlaceModel.results!.suggestions!.length,
             itemBuilder: (context, index) {
               return InkWell(
-                onTap: () {
+                onTap: () async {
+                  await context.read<CityInformationCubit>().getCityInformation(
+                      cityID: cubit
+                          .searchPlaceModel.results!.suggestions![index].sId!);
+                  await context.read<ActivitiesCubit>().getActivities();
                   Navigator.pushReplacementNamed(
                       context, CityPageScreen.routeName);
                 },

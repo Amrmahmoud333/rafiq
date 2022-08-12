@@ -23,25 +23,31 @@ class SearchScreen extends StatelessWidget {
       child: Scaffold(
         appBar: MyAppBar(newContext: context),
         body: BlocBuilder<SearchCubit, SearchState>(builder: (context, state) {
-          return cubit.dropDownVal == 'Users'
-              ? state is SearchByUserLoading
-                  ? const Center(
-                      child: CircularProgressIndicator(
-                        color: Color(0xffE5E5E5),
-                      ),
-                    )
-                  : cubit.searchUserModel.results!.suggestions!.isEmpty
-                      ? const NoResultsColumn()
-                      : const SearchUserReslut()
-              : state is SearchPlaceLoading
-                  ? const Center(
-                      child: CircularProgressIndicator(
-                        color: Color(0xffE5E5E5),
-                      ),
-                    )
-                  : cubit.searchPlaceModel.results!.suggestions!.isEmpty
-                      ? const NoResultsColumn()
-                      : const SearchByPlaceReslut();
+          if (cubit.dropDownVal == 'Users') {
+            if (state is SearchByUserLoading) {
+              return const Center(
+                child: CircularProgressIndicator(
+                  color: Color(0xffE5E5E5),
+                ),
+              );
+            } else {
+              return cubit.searchUserModel.results!.suggestions!.isEmpty
+                  ? const NoResultsColumn()
+                  : const SearchUserReslut();
+            }
+          } else {
+            if (state is SearchPlaceLoading) {
+              return const Center(
+                child: CircularProgressIndicator(
+                  color: Color(0xffE5E5E5),
+                ),
+              );
+            } else {
+              return cubit.searchPlaceModel.results!.suggestions!.isEmpty
+                  ? const NoResultsColumn()
+                  : const SearchByPlaceReslut();
+            }
+          }
         }),
       ),
     );

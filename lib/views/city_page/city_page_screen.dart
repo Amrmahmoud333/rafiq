@@ -18,8 +18,6 @@ class CityPageScreen extends StatelessWidget {
       return MediaQuery.of(context).size.height * (n / 851);
     }
 
-    // context.read<GetUserPostsCubit>().getFirstPosts(userID: userName);
-
     return BlocProvider(
       create: (context) => TabCityCubit(),
       child: BlocConsumer<CityInformationCubit, CityInformationState>(
