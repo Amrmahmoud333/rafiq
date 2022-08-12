@@ -37,7 +37,7 @@ class SearchCubit extends Cubit<SearchState> {
       print(searchPlaceModel.results!.suggestions![0].images!.length);
       emit(SearchPlaceSuccess());
     } on DioError catch (error) {
-      log(error.response!.data);
+      print(error.response!);
       emit(SearchPlaceError());
     }
   }

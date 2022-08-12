@@ -47,7 +47,8 @@ class SearchByPlaceReslut extends StatelessWidget {
                                   .suggestions![index].images!.isEmpty
                               ? const DecorationImage(
                                   fit: BoxFit.fill,
-                                  image: AssetImage('assets/images/clouds.png'),
+                                  image: AssetImage(
+                                      'assets/images/default_cover.png'),
                                 )
                               : DecorationImage(
                                   fit: BoxFit.fill,
