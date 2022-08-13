@@ -37,7 +37,9 @@ class MainHomeScreen extends StatelessWidget {
                           await context
                               .read<CityInformationCubit>()
                               .getCityInformation(cityID: '1840034016');
-                          await context.read<ActivitiesCubit>().getActivities();
+                          await context
+                              .read<ActivitiesCubit>()
+                              .getActivities(cityId: '1840034016');
                           Navigator.pushReplacementNamed(
                               context, CityPageScreen.routeName);
                         },

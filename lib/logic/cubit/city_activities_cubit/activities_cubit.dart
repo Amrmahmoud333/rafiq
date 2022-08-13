@@ -12,10 +12,10 @@ class ActivitiesCubit extends Cubit<ActivitiesState> {
 
   late ActivitiesModel activitiesModel;
 
-  Future<void> getActivities() async {
+  Future<void> getActivities({required String cityId}) async {
     emit(ActivitiesLoading());
     try {
-      activitiesModel = await activitiesAPI.getActivities();
+      activitiesModel = await activitiesAPI.getActivities(cityId: cityId);
       print(activitiesModel.results!.data!.length);
 
       emit(ActivitiesSuccess());

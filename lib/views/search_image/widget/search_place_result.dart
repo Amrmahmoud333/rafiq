@@ -34,7 +34,9 @@ class SearchByPlaceReslut extends StatelessWidget {
                   await context.read<CityInformationCubit>().getCityInformation(
                       cityID: cubit
                           .searchPlaceModel.results!.suggestions![index].sId!);
-                  await context.read<ActivitiesCubit>().getActivities();
+                  await context.read<ActivitiesCubit>().getActivities(
+                      cityId: cubit
+                          .searchPlaceModel.results!.suggestions![index].sId!);
                   Navigator.pushReplacementNamed(
                       context, CityPageScreen.routeName);
                 },

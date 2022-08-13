@@ -5,10 +5,10 @@ import 'package:rafiq/data/data_API/dio_helper.dart';
 import 'package:rafiq/data/models/city/activities_model.dart';
 
 class ActivitiesAPI {
-  Future<ActivitiesModel> getActivities() async {
+  Future<ActivitiesModel> getActivities({required String cityId}) async {
     final response = await DioHelper.getWithHeader(
         // city id for cairo 1392685764
-        url: '$URL/api/v1/cities/1840034016/activities',
+        url: '$URL/api/v1/cities/$cityId/activities',
         header: {'access-token': token});
     return ActivitiesModel.fromJson(response.data);
   }
