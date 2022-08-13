@@ -64,7 +64,7 @@ class FirstForgetPassword extends StatelessWidget {
                     ),
                     Expanded(
                       child: Image.asset(
-                        'assets/images/Forget password.png',
+                        'assets/images/forget_password.png',
                         width: width(295),
                         height: height(217),
                       ),

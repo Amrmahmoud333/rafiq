@@ -26,6 +26,11 @@ class NewsFeedScreen extends StatelessWidget {
                 itemBuilder: ((context, index) {
                   return BlocBuilder<NewsfeedCubit, NewsfeedState>(
                     builder: (context, state) {
+                      if (cubit.newsFeedModel.newsFeed!.isEmpty) {
+                        return const Center(
+                          child: Text('No Posts!'),
+                        );
+                      }
                       return PostNewsFeed(
                         index: index,
                       );

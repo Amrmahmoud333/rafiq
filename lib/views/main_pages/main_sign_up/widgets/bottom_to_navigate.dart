@@ -85,20 +85,21 @@ class BottomToNavigate extends StatelessWidget {
               }
             }
           } else {
-            await BlocProvider.of<RegisterCubit>(context)
-                .userRegister(RequsetRegisterModel(
-              firstName: cubit.firstName,
-              lastName: cubit.lastName,
-              userName: cubit.userName,
-              email: cubit.email,
-              password: cubit.password,
-              confirmPassword: cubit.confirmPassword,
-              country: cubit.countryValue,
-              gender: cubit.genderChoose,
-              dateOfBirth:
-                  '${cubit.dateTime.day}/${cubit.dateTime.month}/${cubit.dateTime.year}',
-            ));
-            showSuccessTosat(context, cubit.massege);
+            await BlocProvider.of<RegisterCubit>(context).userRegister(
+                RequsetRegisterModel(
+                  firstName: cubit.firstName,
+                  lastName: cubit.lastName,
+                  userName: cubit.userName,
+                  email: cubit.email,
+                  password: cubit.password,
+                  confirmPassword: cubit.confirmPassword,
+                  country: cubit.countryValue,
+                  gender: cubit.genderChoose,
+                  dateOfBirth:
+                      '${cubit.dateTime.day}/${cubit.dateTime.month}/${cubit.dateTime.year}',
+                ),
+                context);
+
             Navigator.pushReplacementNamed(context, LoginScreen.routeName);
           }
         },

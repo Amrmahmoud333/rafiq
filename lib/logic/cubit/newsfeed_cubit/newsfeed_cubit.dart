@@ -18,7 +18,7 @@ class NewsfeedCubit extends Cubit<NewsfeedState> {
     emit(GetPostsLoading());
     try {
       newsFeedModel = await newsFeedAPI.getPosts();
-      log(newsFeedModel.newsFeed![0].authorInfo.toString());
+
       emit(GetPostsSuccess());
     } on DioError catch (error) {
       emit(GetPostsError());

@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:rafiq/core/components/components.dart';
 import 'package:rafiq/data/models/register_model.dart';
 import 'package:rafiq/data/repositories/authentication/register_repo.dart';
 
@@ -12,17 +13,20 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   late RegisterModel registerModel;
   String massege = '';
-  Future<void> userRegister(RequsetRegisterModel authRequsetModel) async {
+  Future<void> userRegister(
+      RequsetRegisterModel authRequsetModel, BuildContext context) async {
     try {
       registerModel = await authRepo.registerRepo(authRequsetModel);
       if (registerModel.success!) {
         massege = registerModel.results!.message!;
         print(registerModel.results!.message.toString());
+        showSuccessTosat(context, registerModel.results!.message.toString());
         emit(RegisterSuccessState());
       }
     } on DioError catch (error) {
       massege = error.response!.data['error']['message'];
       print(error.response!.data['error']['message']);
+      showValidationTosat(context, error.response!.data['error']['message']);
       emit(RegisterErrorState());
     }
   }

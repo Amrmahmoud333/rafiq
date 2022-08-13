@@ -144,15 +144,6 @@ class MyApp extends StatelessWidget {
 }
 
 
-// TODO Mustafa 
-// TODO Validate Third sgin up inputs
-
-// TODO   الجزء العلوي ف السكرول ال تاب بار لما برفعها لاعلي الشاشه
-// TODO Add Maps to IOS
-// TODO Add Shimmer Effect
-
-// TODO seonde requset posts send more than once
-
 /*
 If you are using an iOS simulator,
  you will not be able to play videos. 

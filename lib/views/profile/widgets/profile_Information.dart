@@ -79,19 +79,20 @@ class ProfileInformation extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                state is UserGetDataLoadingState
-                    ? const RowData(
-                        imagePath: 'assets/images/lives_in_icon.svg',
-                        text: 'Lives in ',
-                        sizedWidth: 4.71,
-                      )
-                    : cubit.liveIn == null
-                        ? const SizedBox()
-                        : RowData(
-                            imagePath: 'assets/images/lives_in_icon.svg',
-                            text: 'Lives in ${cubit.liveIn}',
-                            sizedWidth: 4.71,
-                          ),
+                if (state is UserGetDataLoadingState)
+                  const RowData(
+                    imagePath: 'assets/images/lives_in_icon.svg',
+                    text: 'Lives in ',
+                    sizedWidth: 4.71,
+                  )
+                else
+                  cubit.liveIn == 'null'
+                      ? const SizedBox()
+                      : RowData(
+                          imagePath: 'assets/images/lives_in_icon.svg',
+                          text: 'Lives in ${cubit.liveIn}',
+                          sizedWidth: 4.71,
+                        ),
                 Padding(
                   padding: EdgeInsets.only(right: w(5)),
                   child: Row(
